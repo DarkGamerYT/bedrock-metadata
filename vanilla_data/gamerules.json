@@ -1,0 +1,191 @@
+{
+    "data_items": [
+        {
+            "name": "commandBlockOutput",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "commandBlocksEnabled",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doDayLightCycle",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doEntityDrops",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doFireTick",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doImmediateRespawn",
+            "type": "boolean",
+            "default_value": false
+        },
+        {
+            "name": "doInsomnia",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doLimitedCrafting",
+            "type": "boolean",
+            "default_value": false
+        },
+        {
+            "name": "doMobLoot",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doMobSpawning",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doTileDrops",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "doWeatherCycle",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "drowningDamage",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "fallDamage",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "fireDamage",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "freezeDamage",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "functionCommandLimit",
+            "type": "number",
+            "default_value": 10000
+        },
+        {
+            "name": "keepInventory",
+            "type": "boolean",
+            "default_value": false
+        },
+        {
+            "name": "maxCommandChainLength",
+            "type": "number",
+            "default_value": 65535
+        },
+        {
+            "name": "mobGriefing",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "naturalRegeneration",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "playersSleepingPercentage",
+            "type": "number",
+            "default_value": 100
+        },
+        {
+            "name": "projectilesCanBreakBlocks",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "pvp",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "randomTickSpeed",
+            "type": "number",
+            "default_value": 1
+        },
+        {
+            "name": "recipesUnlock",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "respawnBlocksExplode",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "sendCommandFeedback",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "showBorderEffect",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "showCoordinates",
+            "type": "boolean",
+            "default_value": false
+        },
+        {
+            "name": "showDaysPlayed",
+            "type": "boolean",
+            "default_value": false
+        },
+        {
+            "name": "showDeathMessages",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "showRecipeMessages",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "showTags",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "spawnRadius",
+            "type": "number",
+            "default_value": 10
+        },
+        {
+            "name": "tntExplodes",
+            "type": "boolean",
+            "default_value": true
+        },
+        {
+            "name": "tntExplosionDropDecay",
+            "type": "boolean",
+            "default_value": false
+        }
+    ],
+    "minecraft_version": "1.21.40-preview.22",
+    "name": "gamerules"
+}

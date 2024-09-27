@@ -1,0 +1,27 @@
+{
+    "data_items": [
+        {
+            "name": "minecraft:nether",
+            "height_range": {
+                "min": 0,
+                "max": 128
+            }
+        },
+        {
+            "name": "minecraft:overworld",
+            "height_range": {
+                "min": -64,
+                "max": 320
+            }
+        },
+        {
+            "name": "minecraft:the_end",
+            "height_range": {
+                "min": 0,
+                "max": 256
+            }
+        }
+    ],
+    "minecraft_version": "1.21.40-preview.22",
+    "name": "dimensions"
+}
