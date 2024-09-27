@@ -1,14 +1,14 @@
 {
-    "version": "1.21.40-preview.22",
+    "version": "1.21.40-preview.23",
     "is_preview": true,
     "platform": "win32",
     "metadata": {
-        "date": "2024-09-18T15:30:43.000Z",
-        "branch": "main",
-        "commit_hash": "99b234bd12f0b02a003bb5a205e7943f95c0fac5",
+        "date": "2024-09-25T15:45:59.000Z",
+        "branch": "r/21_u4",
+        "commit_hash": "182b5a1667432fc30c720fbfd45dcac3a6847b39",
         "configuration": "Publish",
-        "build_id": "27814252"
+        "build_id": "27998135"
     },
-    "size_in_bytes": 40381738,
-    "download_url": "https://minecraft.azureedge.net/bin-win-preview/bedrock-server-1.21.40.22.zip"
+    "size_in_bytes": 40379979,
+    "download_url": "https://www.minecraft.net/bedrockdedicatedserver/bin-win-preview/bedrock-server-1.21.40.23.zip"
 }
