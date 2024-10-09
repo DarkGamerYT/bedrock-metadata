@@ -76,6 +76,7 @@ export class RegistrationBuilder {
     requiredSuccessfulAttempts(attemptCount: number): RegistrationBuilder;
     rotateTest(rotate: boolean): RegistrationBuilder;
     setupTicks(tickCount: number): RegistrationBuilder;
+    structureLocation(structureLocation: minecraftserver.Vector3): RegistrationBuilder;
     structureName(structureName: string): RegistrationBuilder;
     tag(tag: string): RegistrationBuilder;
 }

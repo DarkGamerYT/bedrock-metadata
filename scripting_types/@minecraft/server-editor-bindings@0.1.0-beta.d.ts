@@ -24,6 +24,11 @@ export enum BlockPaletteItemType {
     Probability = 1,
 }
 
+export enum BrushShapeType {
+    OffsetList = "OffsetList",
+    WeightedSphere = "WeightedSphere",
+}
+
 export enum CursorControlMode {
     Keyboard = 0,
     Mouse = 1,
@@ -89,6 +94,17 @@ export enum KeyInputType {
     Invalid = 0,
     Press = 1,
     Release = 2,
+}
+
+export enum PaintCompletionState {
+    Success = 0,
+    Canceled = 1,
+    Failed = 2,
+}
+
+export enum PaintMode {
+    BlockPaint = 0,
+    FreehandSelect = 1,
 }
 
 export enum Plane {
@@ -218,6 +234,12 @@ export enum WidgetGroupSelectionMode {
     Single = "Single",
 }
 
+export enum WidgetMouseButtonActionType {
+    Pressed = 0,
+    Released = 1,
+    Drag = 2,
+}
+
 export class BlockPalette {
     getItem(index: number): IBlockPaletteItem;
     removeItemAt(index: number): void;
@@ -245,11 +267,11 @@ export class BrushShapeManager {
     readonly activeBrushShape?: BrushShape;
     readonly activeBrushVolume?: minecraftserver.CompoundBlockVolume;
     readonly brushShapeList: BrushShape[];
-    activateBrushShape(name: string): minecraftserver.CompoundBlockVolume;
     activateBrushTool(): void;
-    beginPainting(): void;
+    beginPainting(onComplete: (arg: PaintCompletionState) => void): void;
     deactivateBrushTool(): void;
-    endPainting(): void;
+    endPainting(cancelled: boolean): void;
+    getBrushShapeOffset(): minecraftserver.Vector3;
     getSettingsUIElements(brushName: string): SettingsUIElement[];
     registerBrushShape(
         name: string,
@@ -257,9 +279,12 @@ export class BrushShapeManager {
         rebuild: () => minecraftserver.CompoundBlockVolume,
         getSettingsUIElements: () => SettingsUIElement[],
     ): void;
-    setBlockPaletteOverride(overrideBlock?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
     setBrushMask(mask: BlockMaskList): void;
     setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
+    setBrushShapeOffset(offset: minecraftserver.Vector3): void;
+    singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
+    switchBrushPaintMode(paintMode: PaintMode): void;
+    switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
     uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }
 
@@ -665,6 +690,7 @@ export class ThemeSettings {
     canThemeBeModified(id: string): boolean;
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
+    getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
     getThemeList(): string[];
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     setCurrentTheme(id: string): void;
@@ -841,10 +867,19 @@ export class WidgetManager {
     deleteGroup(groupToDelete: WidgetGroup): void;
 }
 
+export class WidgetMouseButtonEventData {
+    private constructor();
+    readonly action: WidgetMouseButtonActionType;
+    readonly altPressed: boolean;
+    readonly controlPressed: boolean;
+    readonly shiftPressed: boolean;
+}
+
 export class WidgetStateChangeEventData {
     private constructor();
     readonly group: WidgetGroup;
     readonly location?: minecraftserver.Vector3;
+    readonly mouseEvent?: WidgetMouseButtonEventData;
     readonly selected?: boolean;
     readonly visible?: boolean;
     readonly widget: Widget;

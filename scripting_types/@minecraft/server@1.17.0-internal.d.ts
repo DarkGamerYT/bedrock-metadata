@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @beta
+ * @internal
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "1.16.0-beta"
+ *     "version": "1.17.0-internal"
  * }
  * ```
  */
@@ -349,9 +349,26 @@ export enum HudVisibility {
     Reset = 1,
 }
 
+export enum InputMode {
+    Gamepad = "Gamepad",
+    KeyboardAndMouse = "KeyboardAndMouse",
+    MotionController = "MotionController",
+    Touch = "Touch",
+    Undetermined = "Undetermined",
+}
+
 export enum InputPermissionCategory {
     Camera = 1,
     Movement = 2,
+    LateralMovement = 4,
+    Sneak = 5,
+    Jump = 6,
+    Mount = 7,
+    Dismount = 8,
+    MoveForward = 9,
+    MoveBackward = 10,
+    MoveLeft = 11,
+    MoveRight = 12,
 }
 
 export enum ItemComponentTypes {
@@ -1893,6 +1910,12 @@ export class ILeverActionAfterEventSignal {
     unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
 }
 
+export class InputInfo {
+    private constructor();
+    readonly lastInputModeUsed: InputMode;
+    readonly touchOnlyAffectsHotbar: boolean;
+}
+
 export class IPlayerJoinAfterEventSignal {
     private constructor();
     subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
@@ -2254,6 +2277,7 @@ export class Player extends Entity {
     private constructor();
     readonly camera: Camera;
     readonly clientSystemInfo: ClientSystemInfo;
+    readonly inputInfo: InputInfo;
     readonly inputPermissions: PlayerInputPermissions;
     readonly isEmoting: boolean;
     readonly isFlying: boolean;
@@ -2380,6 +2404,19 @@ export class PlayerGameModeChangeBeforeEventSignal {
     unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
 }
 
+export class PlayerInputModeChangeAfterEvent {
+    private constructor();
+    readonly newInputModeUsed: InputMode;
+    readonly player: Player;
+    readonly previousInputModeUsed: InputMode;
+}
+
+export class PlayerInputModeChangeAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): (arg: PlayerInputModeChangeAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): void;
+}
+
 export class PlayerInputPermissionCategoryChangeAfterEvent {
     private constructor();
     readonly category: InputPermissionCategory;
@@ -2397,6 +2434,8 @@ export class PlayerInputPermissions {
     private constructor();
     cameraEnabled: boolean;
     movementEnabled: boolean;
+    isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
+    setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }
 
 export class PlayerInteractWithBlockAfterEvent {
@@ -2736,6 +2775,20 @@ export class StructureManager {
     get(identifier: string): Structure | undefined;
     getWorldStructureIds(): string[];
     place(structure: string | Structure, dimension: Dimension, location: Vector3, options?: StructurePlaceOptions): void;
+    placeJigsaw(
+        pool: string,
+        targetJigsaw: string,
+        maxDepth: number,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawPlaceOptions,
+    ): void;
+    placeJigsawStructure(
+        identifier: string,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawStructurePlaceOptions,
+    ): void;
 }
 
 export class System {
@@ -2903,6 +2956,7 @@ export class WorldAfterEvents {
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
+    readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
@@ -3218,6 +3272,15 @@ export interface ItemCustomComponent {
     onUseOn?: (arg: ItemComponentUseOnEvent) => void;
 }
 
+export interface JigsawPlaceOptions {
+    keepJigsaws?: boolean;
+}
+
+export interface JigsawStructurePlaceOptions {
+    ignoreStartHeight?: boolean;
+    keepJigsaws?: boolean;
+}
+
 export interface LessThanComparison {
     lessThan: number;
 }
@@ -3303,6 +3366,7 @@ export interface ScriptEventMessageFilterOptions {
 
 export interface SpawnEntityOptions {
     initialPersistence?: boolean;
+    initialRotation?: number;
 }
 
 export interface StructureCreateOptions {
@@ -3404,6 +3468,12 @@ export class InvalidContainerSlotError {
     private constructor();
 }
 
+export class InvalidEntityError {
+    private constructor();
+    readonly id: string;
+    readonly "type": string;
+}
+
 export class InvalidIteratorError {
     private constructor();
 }
@@ -3436,12 +3506,17 @@ export class LocationOutOfWorldBoundariesError {
     private constructor();
 }
 
+export class PlaceJigsawError {
+    private constructor();
+}
+
 export class UnloadedChunksError {
     private constructor();
 }
 
 export const HudElementsCount = 13;
 export const HudVisibilityCount = 2;
+export const isInternal = true;
 export const MoonPhaseCount = 8;
 export const TicksPerDay = 24000;
 export const TicksPerSecond = 20;

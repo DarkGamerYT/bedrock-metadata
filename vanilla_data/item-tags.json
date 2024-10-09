@@ -68,6 +68,12 @@
                     "name": "minecraft:oak_chest_boat"
                 },
                 {
+                    "name": "minecraft:pale_oak_boat"
+                },
+                {
+                    "name": "minecraft:pale_oak_chest_boat"
+                },
+                {
                     "name": "minecraft:spruce_boat"
                 },
                 {
@@ -125,6 +131,12 @@
                 },
                 {
                     "name": "minecraft:oak_chest_boat"
+                },
+                {
+                    "name": "minecraft:pale_oak_boat"
+                },
+                {
+                    "name": "minecraft:pale_oak_chest_boat"
                 },
                 {
                     "name": "minecraft:spruce_boat"
@@ -422,6 +434,9 @@
                     "name": "minecraft:oxidized_copper_door"
                 },
                 {
+                    "name": "minecraft:pale_oak_door"
+                },
+                {
                     "name": "minecraft:spruce_door"
                 },
                 {
@@ -516,6 +531,9 @@
                 },
                 {
                     "name": "minecraft:oak_hanging_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_hanging_sign"
                 },
                 {
                     "name": "minecraft:spruce_hanging_sign"
@@ -1168,6 +1186,12 @@
                     "name": "minecraft:oak_wood"
                 },
                 {
+                    "name": "minecraft:pale_oak_log"
+                },
+                {
+                    "name": "minecraft:pale_oak_wood"
+                },
+                {
                     "name": "minecraft:spruce_log"
                 },
                 {
@@ -1220,6 +1244,12 @@
                 },
                 {
                     "name": "minecraft:stripped_oak_wood"
+                },
+                {
+                    "name": "minecraft:stripped_pale_oak_log"
+                },
+                {
+                    "name": "minecraft:stripped_pale_oak_wood"
                 },
                 {
                     "name": "minecraft:stripped_spruce_log"
@@ -1287,6 +1317,12 @@
                     "name": "minecraft:oak_wood"
                 },
                 {
+                    "name": "minecraft:pale_oak_log"
+                },
+                {
+                    "name": "minecraft:pale_oak_wood"
+                },
+                {
                     "name": "minecraft:spruce_log"
                 },
                 {
@@ -1333,6 +1369,12 @@
                 },
                 {
                     "name": "minecraft:stripped_oak_wood"
+                },
+                {
+                    "name": "minecraft:stripped_pale_oak_log"
+                },
+                {
+                    "name": "minecraft:stripped_pale_oak_wood"
                 },
                 {
                     "name": "minecraft:stripped_spruce_log"
@@ -1484,6 +1526,9 @@
                     "name": "minecraft:oak_planks"
                 },
                 {
+                    "name": "minecraft:pale_oak_planks"
+                },
+                {
                     "name": "minecraft:spruce_planks"
                 },
                 {
@@ -1560,6 +1605,12 @@
                     "name": "minecraft:oak_sign"
                 },
                 {
+                    "name": "minecraft:pale_oak_hanging_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_sign"
+                },
+                {
                     "name": "minecraft:spruce_hanging_sign"
                 },
                 {
@@ -1631,6 +1682,9 @@
                 },
                 {
                     "name": "minecraft:cow_spawn_egg"
+                },
+                {
+                    "name": "minecraft:creaking_spawn_egg"
                 },
                 {
                     "name": "minecraft:creeper_spawn_egg"
@@ -2271,6 +2325,9 @@
                     "name": "minecraft:oak_slab"
                 },
                 {
+                    "name": "minecraft:pale_oak_slab"
+                },
+                {
                     "name": "minecraft:spruce_slab"
                 },
                 {
@@ -2352,6 +2409,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.40-preview.25",
+    "minecraft_version": "1.21.50-preview.20",
     "name": "item-tags"
 }

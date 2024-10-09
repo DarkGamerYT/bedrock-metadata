@@ -24,11 +24,6 @@
                     "name": "@minecraft/common",
                     "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                     "version": "1.0.0"
-                },
-                {
-                    "name": "@minecraft/server",
-                    "uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
-                    "version": "1.8.0"
                 }
             ],
             "versions": [
@@ -65,7 +60,7 @@
                 {
                     "name": "@minecraft/server",
                     "uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
-                    "version": "1.16.0-beta"
+                    "version": "1.17.0-beta"
                 }
             ],
             "versions": [
@@ -200,10 +195,13 @@
                     "name": "2.0.0-alpha"
                 },
                 {
-                    "name": "1.16.0-internal"
+                    "name": "1.17.0-internal"
                 },
                 {
-                    "name": "1.16.0-beta"
+                    "name": "1.17.0-beta"
+                },
+                {
+                    "name": "1.16.0"
                 },
                 {
                     "name": "1.15.0"
@@ -293,6 +291,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.40-preview.25",
+    "minecraft_version": "1.21.50-preview.20",
     "name": "script-modules"
 }
