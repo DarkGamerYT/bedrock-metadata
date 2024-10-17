@@ -13,6 +13,7 @@
  * ```
  */
 import * as minecraftcommon from "@minecraft/common";
+import * as minecraftserver from "@minecraft/server";
 export class SecretString {
     constructor(value: string);
 }
@@ -29,5 +30,6 @@ export class ServerVariables {
     get(name: string): any | undefined;
 }
 
+export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
 export const secrets: ServerSecrets;
 export const variables: ServerVariables;

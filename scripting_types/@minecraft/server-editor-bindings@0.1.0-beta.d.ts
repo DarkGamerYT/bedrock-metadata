@@ -545,6 +545,7 @@ export class IBlockPaletteItem {
 
 export class InputService {
     private constructor();
+    focusViewport(): void;
     registerKeyBinding(
         contextId: string,
         bindingId: string,

@@ -353,7 +353,6 @@ export enum InputMode {
     KeyboardAndMouse = "KeyboardAndMouse",
     MotionController = "MotionController",
     Touch = "Touch",
-    Undetermined = "Undetermined",
 }
 
 export enum InputPermissionCategory {
@@ -1215,6 +1214,7 @@ export class Entity {
     hasTag(tag: string): boolean;
     isValid(): boolean;
     kill(): boolean;
+    lookAt(targetLocation: Vector3): void;
     matches(options: EntityQueryOptions): boolean;
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     remove(): void;
@@ -2722,6 +2722,18 @@ export class ServerMessageAfterEventSignal {
     unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
 }
 
+export class StartupBeforeEventSignal {
+    private constructor();
+    subscribe(callback: (arg: StartupEvent) => void): (arg: StartupEvent) => void;
+    unsubscribe(callback: (arg: StartupEvent) => void): void;
+}
+
+export class StartupEvent {
+    private constructor();
+    readonly blockComponentRegistry: BlockComponentRegistry;
+    readonly itemComponentRegistry: ItemComponentRegistry;
+}
+
 export class Structure {
     private constructor();
     readonly id: string;
@@ -2786,23 +2798,13 @@ export class SystemAfterEvents {
 
 export class SystemBeforeEvents {
     private constructor();
-    readonly systemInitialize: SystemInitializeBeforeEventSignal;
+    readonly startup: StartupBeforeEventSignal;
     readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
 }
 
 export class SystemInfo {
     private constructor();
     readonly memoryTier: MemoryTier;
-}
-
-export class SystemInitializeBeforeEvent {
-    private constructor();
-}
-
-export class SystemInitializeBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: SystemInitializeBeforeEvent) => void): (arg: SystemInitializeBeforeEvent) => void;
-    unsubscribe(callback: (arg: SystemInitializeBeforeEvent) => void): void;
 }
 
 export class TargetBlockHitAfterEvent extends BlockEvent {
@@ -2954,7 +2956,7 @@ export class WorldAfterEvents {
     readonly targetBlockHit: TargetBlockHitAfterEventSignal;
     readonly tripWireTrip: TripWireTripAfterEventSignal;
     readonly weatherChange: WeatherChangeAfterEventSignal;
-    readonly worldInitialize: WorldInitializeAfterEventSignal;
+    readonly worldLoad: WorldLoadAfterEventSignal;
 }
 
 export class WorldBeforeEvents {
@@ -2972,29 +2974,16 @@ export class WorldBeforeEvents {
     readonly playerLeave: PlayerLeaveBeforeEventSignal;
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     readonly weatherChange: WeatherChangeBeforeEventSignal;
-    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }
 
-export class WorldInitializeAfterEvent {
+export class WorldLoadAfterEvent {
     private constructor();
 }
 
-export class WorldInitializeAfterEventSignal {
+export class WorldLoadAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: WorldInitializeAfterEvent) => void): (arg: WorldInitializeAfterEvent) => void;
-    unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;
-}
-
-export class WorldInitializeBeforeEvent {
-    private constructor();
-    readonly blockComponentRegistry: BlockComponentRegistry;
-    readonly itemComponentRegistry: ItemComponentRegistry;
-}
-
-export class WorldInitializeBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: WorldInitializeBeforeEvent) => void): (arg: WorldInitializeBeforeEvent) => void;
-    unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;
+    subscribe(callback: (arg: WorldLoadAfterEvent) => void): (arg: WorldLoadAfterEvent) => void;
+    unsubscribe(callback: (arg: WorldLoadAfterEvent) => void): void;
 }
 
 export interface BiomeSearchOptions {

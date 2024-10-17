@@ -354,7 +354,6 @@ export enum InputMode {
     KeyboardAndMouse = "KeyboardAndMouse",
     MotionController = "MotionController",
     Touch = "Touch",
-    Undetermined = "Undetermined",
 }
 
 export enum InputPermissionCategory {
@@ -1214,6 +1213,7 @@ export class Entity {
     hasTag(tag: string): boolean;
     isValid(): boolean;
     kill(): boolean;
+    lookAt(targetLocation: Vector3): void;
     matches(options: EntityQueryOptions): boolean;
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     remove(): void;

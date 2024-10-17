@@ -2827,9 +2827,6 @@
                     "name": "minecraft:copper_bulb"
                 },
                 {
-                    "name": "minecraft:copper_door"
-                },
-                {
                     "name": "minecraft:copper_grate"
                 },
                 {
@@ -2867,9 +2864,6 @@
                 },
                 {
                     "name": "minecraft:exposed_copper_bulb"
-                },
-                {
-                    "name": "minecraft:exposed_copper_door"
                 },
                 {
                     "name": "minecraft:exposed_copper_grate"
@@ -2914,9 +2908,6 @@
                     "name": "minecraft:oxidized_copper_bulb"
                 },
                 {
-                    "name": "minecraft:oxidized_copper_door"
-                },
-                {
                     "name": "minecraft:oxidized_copper_grate"
                 },
                 {
@@ -2950,9 +2941,6 @@
                     "name": "minecraft:waxed_copper_bulb"
                 },
                 {
-                    "name": "minecraft:waxed_copper_door"
-                },
-                {
                     "name": "minecraft:waxed_copper_grate"
                 },
                 {
@@ -2978,9 +2966,6 @@
                 },
                 {
                     "name": "minecraft:waxed_exposed_copper_bulb"
-                },
-                {
-                    "name": "minecraft:waxed_exposed_copper_door"
                 },
                 {
                     "name": "minecraft:waxed_exposed_copper_grate"
@@ -3010,9 +2995,6 @@
                     "name": "minecraft:waxed_oxidized_copper_bulb"
                 },
                 {
-                    "name": "minecraft:waxed_oxidized_copper_door"
-                },
-                {
                     "name": "minecraft:waxed_oxidized_copper_grate"
                 },
                 {
@@ -3040,9 +3022,6 @@
                     "name": "minecraft:waxed_weathered_copper_bulb"
                 },
                 {
-                    "name": "minecraft:waxed_weathered_copper_door"
-                },
-                {
                     "name": "minecraft:waxed_weathered_copper_grate"
                 },
                 {
@@ -3068,9 +3047,6 @@
                 },
                 {
                     "name": "minecraft:weathered_copper_bulb"
-                },
-                {
-                    "name": "minecraft:weathered_copper_door"
                 },
                 {
                     "name": "minecraft:weathered_copper_grate"
@@ -4352,6 +4328,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.50-preview.20",
+    "minecraft_version": "1.21.50-preview.24",
     "name": "block-tags"
 }
