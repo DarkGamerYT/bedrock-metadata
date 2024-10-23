@@ -687,14 +687,16 @@ export class SimulationState {
 
 export class ThemeSettings {
     private constructor();
-    addNewTheme(id: string): void;
+    addNewTheme(id: string, name?: string, sourceThemeId?: string): void;
     canThemeBeModified(id: string): boolean;
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
     getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
-    getThemeList(): string[];
+    getThemeIdList(): string[];
+    getThemeName(id: string): string;
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     setCurrentTheme(id: string): void;
+    setThemeName(id: string, name: string): void;
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
 }
 

@@ -34,6 +34,11 @@ export enum BlockVolumeIntersection {
     Intersects = 2,
 }
 
+export enum ButtonState {
+    Pressed = "Pressed",
+    Released = "Released",
+}
+
 export enum CompoundBlockVolumeAction {
     Add = 0,
     Subtract = 1,
@@ -347,6 +352,11 @@ export enum HudElement {
 export enum HudVisibility {
     Hide = 0,
     Reset = 1,
+}
+
+export enum InputButton {
+    Jump = "Jump",
+    Sneak = "Sneak",
 }
 
 export enum InputMode {
@@ -1914,6 +1924,8 @@ export class InputInfo {
     private constructor();
     readonly lastInputModeUsed: InputMode;
     readonly touchOnlyAffectsHotbar: boolean;
+    getButtonState(button: InputButton): ButtonState;
+    getMovementVector(): Vector2;
 }
 
 export class IPlayerJoinAfterEventSignal {
@@ -2342,6 +2354,22 @@ export class PlayerBreakBlockBeforeEventSignal {
         options?: BlockEventOptions,
     ): (arg: PlayerBreakBlockBeforeEvent) => void;
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
+}
+
+export class PlayerButtonInputAfterEvent {
+    private constructor();
+    readonly button: InputButton;
+    readonly newButtonState: ButtonState;
+    readonly player: Player;
+}
+
+export class PlayerButtonInputAfterEventSignal {
+    private constructor();
+    subscribe(
+        callback: (arg: PlayerButtonInputAfterEvent) => void,
+        options?: InputEventOptions,
+    ): (arg: PlayerButtonInputAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerButtonInputAfterEvent) => void): void;
 }
 
 export class PlayerCursorInventoryComponent extends EntityComponent {
@@ -2953,6 +2981,7 @@ export class WorldAfterEvents {
     readonly messageReceive: ServerMessageAfterEventSignal;
     readonly pistonActivate: PistonActivateAfterEventSignal;
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
+    readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
@@ -3260,6 +3289,11 @@ export interface GreaterThanComparison {
 
 export interface GreaterThanOrEqualsComparison {
     greaterThanOrEquals: number;
+}
+
+export interface InputEventOptions {
+    buttons?: InputButton[];
+    state?: ButtonState;
 }
 
 export interface ItemCustomComponent {

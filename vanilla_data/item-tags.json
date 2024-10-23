@@ -2034,6 +2034,9 @@
                 },
                 {
                     "name": "minecraft:redstone"
+                },
+                {
+                    "name": "minecraft:resin_clump"
                 }
             ]
         },
@@ -2409,6 +2412,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.50-preview.24",
+    "minecraft_version": "1.21.50-preview.25",
     "name": "item-tags"
 }
