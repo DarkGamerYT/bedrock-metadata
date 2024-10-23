@@ -1588,9 +1588,6 @@
             "name": "minecraft:spawn_egg",
             "items": [
                 {
-                    "name": "editor:map_marker_spawn_egg"
-                },
-                {
                     "name": "minecraft:allay_spawn_egg"
                 },
                 {
@@ -2352,6 +2349,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.40-preview.25",
+    "minecraft_version": "1.21.41-stable",
     "name": "item-tags"
 }
