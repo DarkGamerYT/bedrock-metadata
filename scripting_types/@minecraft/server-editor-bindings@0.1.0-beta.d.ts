@@ -108,9 +108,9 @@ export enum PaintMode {
 }
 
 export enum Plane {
-    XY = "XY",
-    XZ = "XZ",
-    YZ = "YZ",
+    XY = 0,
+    XZ = 1,
+    YZ = 2,
 }
 
 export enum PlayerPermissionLevel {
@@ -136,11 +136,11 @@ export enum PlaytestSessionResult {
 }
 
 export enum PrimitiveType {
-    AxialSphere = "AxialSphere",
-    Box = "Box",
-    Disc = "Disc",
-    Line = "Line",
-    Text = "Text",
+    Text = 0,
+    Box = 1,
+    Line = 2,
+    Disc = 4,
+    AxialSphere = 5,
 }
 
 export enum ProjectExportType {
@@ -150,8 +150,8 @@ export enum ProjectExportType {
 }
 
 export enum SplineType {
-    Hermite = "Hermite",
-    Line = "Line",
+    Line = 0,
+    Hermite = 1,
 }
 
 export enum ThemeSettingsColorKey {
@@ -220,6 +220,7 @@ export enum ThemeSettingsColorKey {
 }
 
 export enum WidgetComponentType {
+    Clipboard = "Clipboard",
     Entity = "Entity",
     Gizmo = "Gizmo",
     Guide = "Guide",
@@ -302,6 +303,7 @@ export class ClipboardChangeAfterEventSignal {
 
 export class ClipboardItem {
     private constructor();
+    readonly id: string;
     readonly isEmpty: boolean;
     clear(): void;
     getPredictedWriteAsCompoundBlockVolume(
@@ -349,28 +351,14 @@ export class Cursor {
     private constructor();
     readonly faceDirection: number;
     readonly isVisible: boolean;
-    attachClipboardItem(item: ClipboardItem): void;
-    clearAttachment(): void;
-    getAttachmentProperties(): CursorAttachmentProperties;
     getPosition(): minecraftserver.Vector3;
     getProperties(): CursorProperties;
+    getRay(): CursorRay;
     hide(): void;
     moveBy(offset: minecraftserver.Vector3): minecraftserver.Vector3;
     resetToDefaultState(): void;
-    setAttachmentProperties(properties: CursorAttachmentProperties): void;
     setProperties(properties: CursorProperties): void;
     show(): void;
-}
-
-export class CursorAttachmentPropertiesChangeAfterEvent {
-    private constructor();
-    readonly properties: CursorAttachmentProperties;
-}
-
-export class CursorAttachmentPropertyChangeAfterEventSignal {
-    private constructor();
-    subscribe(callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void): (arg: CursorAttachmentPropertiesChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: CursorAttachmentPropertiesChangeAfterEvent) => void): void;
 }
 
 export class CursorPropertiesChangeAfterEvent {
@@ -443,6 +431,14 @@ export class DataStoreModalToolContainer {
     private constructor();
     readonly toolActivationChanged: DataStoreModalToolActivationChangedEventSignal;
     getSelectedTool(): string | undefined;
+    getToolPayload(id: string): string;
+    getToolProperty(id: string, property: string): boolean | number | string | undefined;
+    hasToolPayload(id: string): boolean;
+    hasToolProperty(id: string, property: string): boolean;
+    registerTool(id: string, payload: string): void;
+    unregisterTool(id: string): void;
+    updateRegisteredTool(id: string, payload: string): void;
+    updateRegisteredToolProperty(id: string, payload: string, property: string): void;
     updateSelectedTool(toolId?: string): void;
 }
 
@@ -521,7 +517,6 @@ export class ExtensionContextAfterEvents {
     readonly clipboardChange: ClipboardChangeAfterEventSignal;
     readonly currentThemeChange: CurrentThemeChangeAfterEventSignal;
     readonly currentThemeColorChange: CurrentThemeColorChangeAfterEventSignal;
-    readonly cursorAttachmentPropertyChange: CursorAttachmentPropertyChangeAfterEventSignal;
     readonly cursorPropertyChange: CursorPropertyChangeAfterEventSignal;
     readonly modeChange: ModeChangeAfterEventSignal;
     readonly primarySelectionChange: PrimarySelectionChangeAfterEventSignal;
@@ -580,6 +575,7 @@ export class MinecraftEditor {
 
 export class MinecraftEditorInternal {
     private constructor();
+    fireTelemetryEvent(player: minecraftserver.Player, source: string, eventName: string, metadata: string): void;
     getMapColorUnsafe(player: minecraftserver.Player, coordinate: minecraftserver.Vector3): minecraftserver.RGBA;
     getPlayerServices(player: minecraftserver.Player): InternalPlayerServiceContext;
     registerExtension(
@@ -741,15 +737,22 @@ export class UserDefinedTransactionHandlerId {
 
 export class Widget {
     private constructor();
+    bindPositionToBlockCursor: boolean;
     collisionOffset: minecraftserver.Vector3;
     collisionRadius: number;
     location: minecraftserver.Vector3;
+    lockPositionToSurface: boolean;
     readonly selectable: boolean;
     selected: boolean;
     showBoundingBox: boolean;
     showCollisionRadius: boolean;
     snapToBlockLocation: boolean;
     visible: boolean;
+    addClipboardComponent(
+        componentName: string,
+        clipboardItem?: ClipboardItem,
+        options?: WidgetComponentClipboardOptions,
+    ): WidgetComponentClipboard;
     addEntityComponent(
         componentName: string,
         actorNameId: string,
@@ -760,10 +763,10 @@ export class Widget {
     addRenderPrimitiveComponent(
         componentName: string,
         primitiveType: 
-            | WidgetComponentRenderPrimitiveAxialSphere
-            | WidgetComponentRenderPrimitiveBox
-            | WidgetComponentRenderPrimitiveDisc
-            | WidgetComponentRenderPrimitiveLine,
+            | WidgetComponentRenderPrimitiveTypeAxialSphere
+            | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeDisc
+            | WidgetComponentRenderPrimitiveTypeLine,
         options?: WidgetComponentRenderPrimitiveOptions,
     ): WidgetComponentRenderPrimitive;
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
@@ -779,12 +782,25 @@ export class WidgetComponentBase {
     private constructor();
     readonly componentType: WidgetComponentType;
     readonly location: minecraftserver.Vector3;
+    lockToSurface: boolean;
     readonly name: string;
     offset: minecraftserver.Vector3;
     readonly valid: boolean;
     visible: boolean;
     readonly widget: Widget;
     delete(): void;
+    setStateChangeEvent(eventFunction?: (arg: WidgetComponentStateChangeEventData) => void): void;
+}
+
+export class WidgetComponentClipboard extends WidgetComponentBase {
+    private constructor();
+    clipboardMirror: minecraftserver.StructureMirrorAxis;
+    clipboardNormalizedOrigin: minecraftserver.Vector3;
+    clipboardOffset: minecraftserver.Vector3;
+    clipboardRotation: minecraftserver.StructureRotation;
+    fillColor: minecraftserver.RGBA;
+    outlineColor: minecraftserver.RGBA;
+    showBounds: boolean;
 }
 
 export class WidgetComponentEntity extends WidgetComponentBase {
@@ -795,6 +811,7 @@ export class WidgetComponentEntity extends WidgetComponentBase {
 
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
+    activated: boolean;
 }
 
 export class WidgetComponentGuide extends WidgetComponentBase {
@@ -803,35 +820,41 @@ export class WidgetComponentGuide extends WidgetComponentBase {
 
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();
+    readonly primitiveType: PrimitiveType;
     setPrimitive(primitive: 
-            | WidgetComponentRenderPrimitiveAxialSphere
-            | WidgetComponentRenderPrimitiveBox
-            | WidgetComponentRenderPrimitiveDisc
-            | WidgetComponentRenderPrimitiveLine): void;
+            | WidgetComponentRenderPrimitiveTypeAxialSphere
+            | WidgetComponentRenderPrimitiveTypeBox
+            | WidgetComponentRenderPrimitiveTypeDisc
+            | WidgetComponentRenderPrimitiveTypeLine): void;
 }
 
-export class WidgetComponentRenderPrimitiveAxialSphere {
+export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color?: minecraftserver.RGBA;
     radius: number;
     constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
 }
 
-export class WidgetComponentRenderPrimitiveBox {
+export class WidgetComponentRenderPrimitiveTypeBase {
+    private constructor();
+    readonly primitiveType: PrimitiveType;
+}
+
+export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color: minecraftserver.RGBA;
     size?: minecraftserver.Vector3;
     constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
 }
 
-export class WidgetComponentRenderPrimitiveDisc {
+export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color: minecraftserver.RGBA;
     radius: number;
     constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
 }
 
-export class WidgetComponentRenderPrimitiveLine {
+export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRenderPrimitiveTypeBase {
     color: minecraftserver.RGBA;
     end: minecraftserver.Vector3;
     start: minecraftserver.Vector3;
@@ -844,6 +867,14 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     getControlPoints(): Widget[];
     getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
     setControlPoints(widgetList: Widget[]): void;
+}
+
+export class WidgetComponentStateChangeEventData {
+    private constructor();
+    readonly component: WidgetComponentBase;
+    readonly gizmoActivated?: boolean;
+    readonly group: WidgetGroup;
+    readonly widget: Widget;
 }
 
 export class WidgetComponentText extends WidgetComponentBase {
@@ -899,21 +930,9 @@ export interface BrushShape {
 }
 
 export interface ClipboardWriteOptions {
-    anchor?: minecraftserver.Vector3;
     mirror?: minecraftserver.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserver.Vector3;
     offset?: minecraftserver.Vector3;
-    rotation?: minecraftserver.StructureRotation;
-}
-
-export interface CursorAttachmentProperties {
-    boundsFillColor?: minecraftserver.RGBA;
-    boundsVisible?: boolean;
-    boundsWireframeColor?: minecraftserver.RGBA;
-    contentsFillColor?: minecraftserver.RGBA;
-    contentsWireframeColor?: minecraftserver.RGBA;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    offset?: minecraftserver.Vector3;
-    origin?: minecraftserver.Vector3;
     rotation?: minecraftserver.StructureRotation;
 }
 
@@ -925,6 +944,12 @@ export interface CursorProperties {
     projectThroughLiquid?: boolean;
     targetMode?: CursorTargetMode;
     visible?: boolean;
+}
+
+export interface CursorRay {
+    end: minecraftserver.Vector3;
+    hit: boolean;
+    start: minecraftserver.Vector3;
 }
 
 export interface DataTransferCollectionNameData {
@@ -1027,8 +1052,20 @@ export interface WeightedBlock {
 }
 
 export interface WidgetComponentBaseOptions {
+    lockToSurface?: boolean;
     offset?: minecraftserver.Vector3;
+    stateChangeEvent?: (arg: WidgetComponentStateChangeEventData) => void;
     visible?: boolean;
+}
+
+export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
+    boundsFillColor?: minecraftserver.RGBA;
+    boundsOutlineColor?: minecraftserver.RGBA;
+    clipboardMirror?: minecraftserver.StructureMirrorAxis;
+    clipboardNormalizedOrigin?: minecraftserver.Vector3;
+    clipboardOffset?: minecraftserver.Vector3;
+    clipboardRotation?: minecraftserver.StructureRotation;
+    showBounds?: boolean;
 }
 
 export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions {
@@ -1056,8 +1093,10 @@ export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
 }
 
 export interface WidgetCreateOptions {
+    bindPositionToBlockCursor?: boolean;
     collisionOffset?: minecraftserver.Vector3;
     collisionRadius?: number;
+    lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;
     stateChangeEvent?: (arg: WidgetStateChangeEventData) => void;

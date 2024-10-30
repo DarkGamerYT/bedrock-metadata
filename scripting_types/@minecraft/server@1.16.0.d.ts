@@ -347,6 +347,14 @@ export enum ItemLockMode {
     slot = "slot",
 }
 
+export enum MemoryTier {
+    SuperLow = 0,
+    Low = 1,
+    Mid = 2,
+    High = 3,
+    SuperHigh = 4,
+}
+
 export enum MoonPhase {
     FullMoon = 0,
     WaningGibbous = 1,
@@ -380,6 +388,12 @@ export enum PaletteColor {
     Green = 13,
     Red = 14,
     Black = 15,
+}
+
+export enum PlatformType {
+    Console = "Console",
+    Desktop = "Desktop",
+    Mobile = "Mobile",
 }
 
 export enum ScoreboardIdentityType {
@@ -678,6 +692,12 @@ export class Camera {
             | CameraSetPosOptions
             | CameraSetRotOptions,
     ): void;
+}
+
+export class ClientSystemInfo extends SystemInfo {
+    private constructor();
+    readonly maxRenderDistance: number;
+    readonly platformType: PlatformType;
 }
 
 export class CommandResult {
@@ -1899,6 +1919,7 @@ export class PistonActivateAfterEventSignal {
 export class Player extends Entity {
     private constructor();
     readonly camera: Camera;
+    readonly clientSystemInfo: ClientSystemInfo;
     readonly inputPermissions: PlayerInputPermissions;
     readonly isEmoting: boolean;
     readonly isFlying: boolean;
@@ -2330,6 +2351,7 @@ export class System {
     private constructor();
     readonly afterEvents: SystemAfterEvents;
     readonly currentTick: number;
+    readonly serverSystemInfo: SystemInfo;
     clearJob(jobId: number): void;
     clearRun(runId: number): void;
     run(callback: () => void): number;
@@ -2342,6 +2364,11 @@ export class System {
 export class SystemAfterEvents {
     private constructor();
     readonly scriptEventReceive: ScriptEventCommandMessageAfterEventSignal;
+}
+
+export class SystemInfo {
+    private constructor();
+    readonly memoryTier: MemoryTier;
 }
 
 export class TargetBlockHitAfterEvent extends BlockEvent {

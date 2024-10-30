@@ -380,6 +380,7 @@ export enum InputPermissionCategory {
 }
 
 export enum ItemComponentTypes {
+    Compostable = "minecraft:compostable",
     Cooldown = "minecraft:cooldown",
     Durability = "minecraft:durability",
     Dyeable = "minecraft:dyeable",
@@ -395,12 +396,11 @@ export enum ItemLockMode {
 }
 
 export enum MemoryTier {
-    Undetermined = 0,
-    SuperLow = 1,
-    Low = 2,
-    Mid = 3,
-    High = 4,
-    SuperHigh = 5,
+    SuperLow = 0,
+    Low = 1,
+    Mid = 2,
+    High = 3,
+    SuperHigh = 4,
 }
 
 export enum MoonPhase {
@@ -660,12 +660,14 @@ export type ItemComponentTypeMap = {
     durability: ItemDurabilityComponent;
     enchantable: ItemEnchantableComponent;
     cooldown: ItemCooldownComponent;
+    compostable: ItemCompostableComponent;
     potion: ItemPotionComponent;
     dyeable: ItemDyeableComponent;
     "minecraft:food": ItemFoodComponent;
     "minecraft:durability": ItemDurabilityComponent;
     "minecraft:enchantable": ItemEnchantableComponent;
     "minecraft:cooldown": ItemCooldownComponent;
+    "minecraft:compostable": ItemCompostableComponent;
     "minecraft:potion": ItemPotionComponent;
     "minecraft:dyeable": ItemDyeableComponent;
 }
@@ -1991,6 +1993,11 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
     readonly usedOnBlockPermutation: BlockPermutation;
 }
 
+export class ItemCompostableComponent extends ItemComponent {
+    private constructor();
+    readonly compostingChance: number;
+}
+
 export class ItemCooldownComponent extends ItemComponent {
     private constructor();
     readonly cooldownCategory: string;
@@ -2057,6 +2064,7 @@ export class ItemReleaseUseAfterEventSignal {
 
 export class ItemStack {
     amount: number;
+    readonly compostingChance: number;
     readonly isStackable: boolean;
     keepOnDeath: boolean;
     lockMode: ItemLockMode;
