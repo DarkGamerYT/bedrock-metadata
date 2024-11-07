@@ -14,7 +14,14 @@
  */
 import * as minecraftcommon from "@minecraft/common";
 import * as minecraftserver from "@minecraft/server";
+export enum Axis {
+    X = 1,
+    Y = 2,
+    Z = 4,
+}
+
 export enum BlockMaskListType {
+    Disabled = "Disabled",
     Mask = "Mask",
     Replace = "Replace",
 }
@@ -78,6 +85,7 @@ export enum GamePublishSetting {
 
 export enum GraphicsSettingsProperty {
     ShowChunkBoundaries = "ShowChunkBoundaries",
+    ShowCompass = "ShowCompass",
     ShowInvisibleBlocks = "ShowInvisibleBlocks",
 }
 
@@ -105,12 +113,13 @@ export enum PaintCompletionState {
 export enum PaintMode {
     BlockPaint = 0,
     FreehandSelect = 1,
+    Smooth = 2,
 }
 
 export enum Plane {
-    XY = 0,
-    XZ = 1,
-    YZ = 2,
+    XY = 1,
+    XZ = 2,
+    YZ = 4,
 }
 
 export enum PlayerPermissionLevel {
@@ -147,6 +156,10 @@ export enum ProjectExportType {
     PlayableWorld = 0,
     ProjectBackup = 1,
     WorldTemplate = 2,
+}
+
+export enum SpeedSettingsProperty {
+    FlySpeedMultiplier = "FlySpeedMultiplier",
 }
 
 export enum SplineType {
@@ -263,6 +276,14 @@ export class BlockPaletteManager {
     setSelectedItem(item: IBlockPaletteItem): void;
 }
 
+export class BlockUtilities {
+    private constructor();
+    fillVolume(
+        volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | Selection,
+        block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+    ): void;
+}
+
 export class BrushShapeManager {
     private constructor();
     readonly activeBrushShape?: BrushShape;
@@ -283,6 +304,8 @@ export class BrushShapeManager {
     setBrushMask(mask: BlockMaskList): void;
     setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
     setBrushShapeOffset(offset: minecraftserver.Vector3): void;
+    setBrushShapeVisible(visible: boolean): void;
+    setSmoothStrength(smoothStrength: number): void;
     singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
     switchBrushPaintMode(paintMode: PaintMode): void;
     switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
@@ -498,6 +521,7 @@ export class ExtensionContext {
     private constructor();
     readonly afterEvents: ExtensionContextAfterEvents;
     readonly blockPalette: BlockPaletteManager;
+    readonly blockUtilities: BlockUtilities;
     readonly brushShapeManager: BrushShapeManager;
     readonly clipboardManager: ClipboardManager;
     readonly cursor: Cursor;
@@ -533,7 +557,7 @@ export class GraphicsSettings {
 export class IBlockPaletteItem {
     private constructor();
     getBlock(): minecraftserver.BlockType | undefined;
-    getDisplayName(): string;
+    getDisplayName(): string | undefined;
     getType(): BlockPaletteItemType;
     setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
 }
@@ -655,6 +679,7 @@ export class SelectionManager {
 export class SettingsManager {
     private constructor();
     readonly graphics: GraphicsSettings;
+    readonly speed: SpeedSettings;
     readonly theme: ThemeSettings;
 }
 
@@ -679,6 +704,14 @@ export class SimulationState {
     private constructor();
     isPaused(): boolean;
     setPaused(isPaused: boolean): void;
+}
+
+export class SpeedSettings {
+    private constructor();
+    get(property: SpeedSettingsProperty): number | undefined;
+    getAll(): Record<string, number>;
+    set(property: SpeedSettingsProperty, value: number): void;
+    setAll(properties: Record<string, number>): void;
 }
 
 export class ThemeSettings {
@@ -1075,6 +1108,8 @@ export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions
 }
 
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
+    axes?: Axis;
+    enablePlanes?: boolean;
 }
 
 export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {

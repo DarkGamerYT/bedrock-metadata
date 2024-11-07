@@ -776,9 +776,16 @@ export class Dimension {
     private constructor();
     readonly heightRange: minecraftcommon.NumberRange;
     readonly id: string;
+    containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
+    fillBlocks(
+        volume: BlockVolumeBase,
+        block: BlockPermutation | BlockType | string,
+        options?: BlockFillOptions,
+    ): ListBlockVolume;
     getBlock(location: Vector3): Block | undefined;
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
+    getBlocks(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): ListBlockVolume;
     getEntities(options?: EntityQueryOptions): Entity[];
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
@@ -1847,6 +1854,7 @@ export class ItemUseOnAfterEvent {
     readonly block: Block;
     readonly blockFace: Direction;
     readonly faceLocation: Vector3;
+    readonly isFirstEvent: boolean;
     readonly itemStack: ItemStack;
     readonly source: Player;
 }
@@ -2563,6 +2571,11 @@ export interface BlockEventOptions {
     permutations?: BlockPermutation[];
 }
 
+export interface BlockFillOptions {
+    blockFilter?: BlockFilter;
+    ignoreChunkBoundErrors?: boolean;
+}
+
 export interface BlockFilter {
     excludePermutations?: BlockPermutation[];
     excludeTags?: string[];
@@ -2984,6 +2997,10 @@ export class LocationInUnloadedChunkError {
 }
 
 export class LocationOutOfWorldBoundariesError {
+    private constructor();
+}
+
+export class UnloadedChunksError {
     private constructor();
 }
 
