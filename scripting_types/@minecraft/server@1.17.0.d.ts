@@ -2,13 +2,12 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @beta
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "1.17.0-beta"
+ *     "version": "1.17.0"
  * }
  * ```
  */
@@ -34,31 +33,9 @@ export enum BlockVolumeIntersection {
     Intersects = 2,
 }
 
-export enum ButtonState {
-    Pressed = "Pressed",
-    Released = "Released",
-}
-
-export enum CompoundBlockVolumeAction {
-    Add = 0,
-    Subtract = 1,
-}
-
-export enum CompoundBlockVolumePositionRelativity {
-    Relative = 0,
-    Absolute = 1,
-}
-
 export enum CustomComponentNameErrorReason {
     NoNamespace = 1,
     DisallowedNamespace = 2,
-}
-
-export enum Difficulty {
-    Peaceful = 0,
-    Easy = 1,
-    Normal = 2,
-    Hard = 3,
 }
 
 export enum Direction {
@@ -204,7 +181,6 @@ export enum EntityComponentTypes {
     NavigationGeneric = "minecraft:navigation.generic",
     NavigationHover = "minecraft:navigation.hover",
     NavigationWalk = "minecraft:navigation.walk",
-    Npc = "minecraft:npc",
     OnFire = "minecraft:onfire",
     Projectile = "minecraft:projectile",
     PushThrough = "minecraft:push_through",
@@ -270,7 +246,6 @@ export enum EntityInitializationCause {
 }
 
 export enum EquipmentSlot {
-    Body = "Body",
     Chest = "Chest",
     Feet = "Feet",
     Head = "Head",
@@ -354,18 +329,6 @@ export enum HudVisibility {
     Reset = 1,
 }
 
-export enum InputButton {
-    Jump = "Jump",
-    Sneak = "Sneak",
-}
-
-export enum InputMode {
-    Gamepad = "Gamepad",
-    KeyboardAndMouse = "KeyboardAndMouse",
-    MotionController = "MotionController",
-    Touch = "Touch",
-}
-
 export enum InputPermissionCategory {
     Camera = 1,
     Movement = 2,
@@ -381,13 +344,10 @@ export enum InputPermissionCategory {
 }
 
 export enum ItemComponentTypes {
-    Compostable = "minecraft:compostable",
     Cooldown = "minecraft:cooldown",
     Durability = "minecraft:durability",
-    Dyeable = "minecraft:dyeable",
     Enchantable = "minecraft:enchantable",
     Food = "minecraft:food",
-    Potion = "minecraft:potion",
 }
 
 export enum ItemLockMode {
@@ -497,191 +457,10 @@ export enum TimeOfDay {
     Sunrise = 23000,
 }
 
-export enum WatchdogTerminateReason {
-    Hang = "Hang",
-    StackOverflow = "StackOverflow",
-}
-
 export enum WeatherType {
     Clear = "Clear",
     Rain = "Rain",
     Thunder = "Thunder",
-}
-
-export type BlockComponentTypeMap = {
-    fluidContainer: BlockFluidContainerComponent;
-    inventory: BlockInventoryComponent;
-    piston: BlockPistonComponent;
-    record_player: BlockRecordPlayerComponent;
-    sign: BlockSignComponent;
-    "minecraft:fluidContainer": BlockFluidContainerComponent;
-    "minecraft:inventory": BlockInventoryComponent;
-    "minecraft:piston": BlockPistonComponent;
-    "minecraft:record_player": BlockRecordPlayerComponent;
-    "minecraft:sign": BlockSignComponent;
-}
-
-export type EntityComponentTypeMap = {
-    addrider: EntityAddRiderComponent;
-    ageable: EntityAgeableComponent;
-    breathable: EntityBreathableComponent;
-    can_climb: EntityCanClimbComponent;
-    can_fly: EntityCanFlyComponent;
-    can_power_jump: EntityCanPowerJumpComponent;
-    color: EntityColorComponent;
-    color2: EntityColor2Component;
-    cursor_inventory: PlayerCursorInventoryComponent;
-    equippable: EntityEquippableComponent;
-    fire_immune: EntityFireImmuneComponent;
-    floats_in_liquid: EntityFloatsInLiquidComponent;
-    flying_speed: EntityFlyingSpeedComponent;
-    friction_modifier: EntityFrictionModifierComponent;
-    ground_offset: EntityGroundOffsetComponent;
-    healable: EntityHealableComponent;
-    health: EntityHealthComponent;
-    inventory: EntityInventoryComponent;
-    is_baby: EntityIsBabyComponent;
-    is_charged: EntityIsChargedComponent;
-    is_chested: EntityIsChestedComponent;
-    is_dyeable: EntityIsDyeableComponent;
-    is_hidden_when_invisible: EntityIsHiddenWhenInvisibleComponent;
-    is_ignited: EntityIsIgnitedComponent;
-    is_illager_captain: EntityIsIllagerCaptainComponent;
-    is_saddled: EntityIsSaddledComponent;
-    is_shaking: EntityIsShakingComponent;
-    is_sheared: EntityIsShearedComponent;
-    is_stackable: EntityIsStackableComponent;
-    is_stunned: EntityIsStunnedComponent;
-    is_tamed: EntityIsTamedComponent;
-    item: EntityItemComponent;
-    lava_movement: EntityLavaMovementComponent;
-    leashable: EntityLeashableComponent;
-    mark_variant: EntityMarkVariantComponent;
-    movement: EntityMovementComponent;
-    "movement.amphibious": EntityMovementAmphibiousComponent;
-    "movement.basic": EntityMovementBasicComponent;
-    "movement.fly": EntityMovementFlyComponent;
-    "movement.generic": EntityMovementGenericComponent;
-    "movement.glide": EntityMovementGlideComponent;
-    "movement.hover": EntityMovementHoverComponent;
-    "movement.jump": EntityMovementJumpComponent;
-    "movement.skip": EntityMovementSkipComponent;
-    "movement.sway": EntityMovementSwayComponent;
-    "navigation.climb": EntityNavigationClimbComponent;
-    "navigation.float": EntityNavigationFloatComponent;
-    "navigation.fly": EntityNavigationFlyComponent;
-    "navigation.generic": EntityNavigationGenericComponent;
-    "navigation.hover": EntityNavigationHoverComponent;
-    "navigation.walk": EntityNavigationWalkComponent;
-    npc: EntityNpcComponent;
-    onfire: EntityOnFireComponent;
-    projectile: EntityProjectileComponent;
-    push_through: EntityPushThroughComponent;
-    rideable: EntityRideableComponent;
-    riding: EntityRidingComponent;
-    scale: EntityScaleComponent;
-    skin_id: EntitySkinIdComponent;
-    strength: EntityStrengthComponent;
-    tameable: EntityTameableComponent;
-    tamemount: EntityTameMountComponent;
-    type_family: EntityTypeFamilyComponent;
-    underwater_movement: EntityUnderwaterMovementComponent;
-    variant: EntityVariantComponent;
-    wants_jockey: EntityWantsJockeyComponent;
-    "minecraft:addrider": EntityAddRiderComponent;
-    "minecraft:ageable": EntityAgeableComponent;
-    "minecraft:breathable": EntityBreathableComponent;
-    "minecraft:can_climb": EntityCanClimbComponent;
-    "minecraft:can_fly": EntityCanFlyComponent;
-    "minecraft:can_power_jump": EntityCanPowerJumpComponent;
-    "minecraft:color": EntityColorComponent;
-    "minecraft:color2": EntityColor2Component;
-    "minecraft:cursor_inventory": PlayerCursorInventoryComponent;
-    "minecraft:equippable": EntityEquippableComponent;
-    "minecraft:fire_immune": EntityFireImmuneComponent;
-    "minecraft:floats_in_liquid": EntityFloatsInLiquidComponent;
-    "minecraft:flying_speed": EntityFlyingSpeedComponent;
-    "minecraft:friction_modifier": EntityFrictionModifierComponent;
-    "minecraft:ground_offset": EntityGroundOffsetComponent;
-    "minecraft:healable": EntityHealableComponent;
-    "minecraft:health": EntityHealthComponent;
-    "minecraft:inventory": EntityInventoryComponent;
-    "minecraft:is_baby": EntityIsBabyComponent;
-    "minecraft:is_charged": EntityIsChargedComponent;
-    "minecraft:is_chested": EntityIsChestedComponent;
-    "minecraft:is_dyeable": EntityIsDyeableComponent;
-    "minecraft:is_hidden_when_invisible": EntityIsHiddenWhenInvisibleComponent;
-    "minecraft:is_ignited": EntityIsIgnitedComponent;
-    "minecraft:is_illager_captain": EntityIsIllagerCaptainComponent;
-    "minecraft:is_saddled": EntityIsSaddledComponent;
-    "minecraft:is_shaking": EntityIsShakingComponent;
-    "minecraft:is_sheared": EntityIsShearedComponent;
-    "minecraft:is_stackable": EntityIsStackableComponent;
-    "minecraft:is_stunned": EntityIsStunnedComponent;
-    "minecraft:is_tamed": EntityIsTamedComponent;
-    "minecraft:item": EntityItemComponent;
-    "minecraft:lava_movement": EntityLavaMovementComponent;
-    "minecraft:leashable": EntityLeashableComponent;
-    "minecraft:mark_variant": EntityMarkVariantComponent;
-    "minecraft:movement": EntityMovementComponent;
-    "minecraft:movement.amphibious": EntityMovementAmphibiousComponent;
-    "minecraft:movement.basic": EntityMovementBasicComponent;
-    "minecraft:movement.fly": EntityMovementFlyComponent;
-    "minecraft:movement.generic": EntityMovementGenericComponent;
-    "minecraft:movement.glide": EntityMovementGlideComponent;
-    "minecraft:movement.hover": EntityMovementHoverComponent;
-    "minecraft:movement.jump": EntityMovementJumpComponent;
-    "minecraft:movement.skip": EntityMovementSkipComponent;
-    "minecraft:movement.sway": EntityMovementSwayComponent;
-    "minecraft:navigation.climb": EntityNavigationClimbComponent;
-    "minecraft:navigation.float": EntityNavigationFloatComponent;
-    "minecraft:navigation.fly": EntityNavigationFlyComponent;
-    "minecraft:navigation.generic": EntityNavigationGenericComponent;
-    "minecraft:navigation.hover": EntityNavigationHoverComponent;
-    "minecraft:navigation.walk": EntityNavigationWalkComponent;
-    "minecraft:npc": EntityNpcComponent;
-    "minecraft:onfire": EntityOnFireComponent;
-    "minecraft:projectile": EntityProjectileComponent;
-    "minecraft:push_through": EntityPushThroughComponent;
-    "minecraft:rideable": EntityRideableComponent;
-    "minecraft:riding": EntityRidingComponent;
-    "minecraft:scale": EntityScaleComponent;
-    "minecraft:skin_id": EntitySkinIdComponent;
-    "minecraft:strength": EntityStrengthComponent;
-    "minecraft:tameable": EntityTameableComponent;
-    "minecraft:tamemount": EntityTameMountComponent;
-    "minecraft:type_family": EntityTypeFamilyComponent;
-    "minecraft:underwater_movement": EntityUnderwaterMovementComponent;
-    "minecraft:variant": EntityVariantComponent;
-    "minecraft:wants_jockey": EntityWantsJockeyComponent;
-}
-
-export type ItemComponentTypeMap = {
-    compostable: ItemCompostableComponent;
-    cooldown: ItemCooldownComponent;
-    durability: ItemDurabilityComponent;
-    dyeable: ItemDyeableComponent;
-    enchantable: ItemEnchantableComponent;
-    food: ItemFoodComponent;
-    potion: ItemPotionComponent;
-    "minecraft:compostable": ItemCompostableComponent;
-    "minecraft:cooldown": ItemCooldownComponent;
-    "minecraft:durability": ItemDurabilityComponent;
-    "minecraft:dyeable": ItemDyeableComponent;
-    "minecraft:enchantable": ItemEnchantableComponent;
-    "minecraft:food": ItemFoodComponent;
-    "minecraft:potion": ItemPotionComponent;
-}
-
-export class BiomeType {
-    private constructor();
-    readonly id: string;
-}
-
-export class BiomeTypes {
-    private constructor();
-    static get(typeName: string): BiomeType | undefined;
-    static getAll(): BiomeType[];
 }
 
 export class Block {
@@ -689,8 +468,6 @@ export class Block {
     readonly dimension: Dimension;
     readonly isAir: boolean;
     readonly isLiquid: boolean;
-    readonly isSolid: boolean;
-    readonly isWaterlogged: boolean;
     readonly location: Vector3;
     readonly permutation: BlockPermutation;
     readonly "type": BlockType;
@@ -701,12 +478,10 @@ export class Block {
     above(steps?: number): Block | undefined;
     below(steps?: number): Block | undefined;
     bottomCenter(): Vector3;
-    canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     center(): Vector3;
     east(steps?: number): Block | undefined;
     getComponent(componentId: string): BlockComponent | undefined;
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
-    getMapColor(): RGBA;
     getRedstonePower(): number | undefined;
     getTags(): string[];
     hasTag(tag: string): boolean;
@@ -716,9 +491,7 @@ export class Block {
     offset(offset: Vector3): Block | undefined;
     setPermutation(permutation: BlockPermutation): void;
     setType(blockType: BlockType | string): void;
-    setWaterlogged(isWaterlogged: boolean): void;
     south(steps?: number): Block | undefined;
-    trySetPermutation(permutation: BlockPermutation): boolean;
     west(steps?: number): Block | undefined;
 }
 
@@ -877,7 +650,6 @@ export class BlockStateType {
 
 export class BlockType {
     private constructor();
-    readonly canBeWaterlogged: boolean;
     readonly id: string;
 }
 
@@ -899,28 +671,12 @@ export class BlockVolume extends BlockVolumeBase {
 export class BlockVolumeBase {
     private constructor();
     getBlockLocationIterator(): BlockLocationIterator;
-    getBoundingBox(): BoundingBox;
     getCapacity(): number;
     getMax(): Vector3;
     getMin(): Vector3;
     getSpan(): Vector3;
     isInside(location: Vector3): boolean;
     translate(delta: Vector3): void;
-}
-
-export class BoundingBoxUtils {
-    private constructor();
-    static createValid(min: Vector3, max: Vector3): BoundingBox;
-    static dilate(box: BoundingBox, size: Vector3): BoundingBox;
-    static equals(box: BoundingBox, other: BoundingBox): boolean;
-    static expand(box: BoundingBox, other: BoundingBox): BoundingBox;
-    static getCenter(box: BoundingBox): Vector3;
-    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
-    static getSpan(box: BoundingBox): Vector3;
-    static intersects(box: BoundingBox, other: BoundingBox): boolean;
-    static isInside(box: BoundingBox, pos: Vector3): boolean;
-    static isValid(box: BoundingBox): boolean;
-    static translate(box: BoundingBox, delta: Vector3): BoundingBox;
 }
 
 export class ButtonPushAfterEvent extends BlockEvent {
@@ -940,40 +696,11 @@ export class Camera {
         cameraPreset: string,
         setOptions?: 
             | CameraDefaultOptions
-            | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
-            | CameraSetRotOptions
-            | CameraTargetOptions,
+            | CameraSetRotOptions,
     ): void;
-}
-
-export class ChatSendAfterEvent {
-    private constructor();
-    readonly message: string;
-    readonly sender: Player;
-    readonly targets?: Player[];
-}
-
-export class ChatSendAfterEventSignal {
-    private constructor();
-    subscribe(callback: (arg: ChatSendAfterEvent) => void): (arg: ChatSendAfterEvent) => void;
-    unsubscribe(callback: (arg: ChatSendAfterEvent) => void): void;
-}
-
-export class ChatSendBeforeEvent {
-    private constructor();
-    cancel: boolean;
-    readonly message: string;
-    readonly sender: Player;
-    readonly targets?: Player[];
-}
-
-export class ChatSendBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: ChatSendBeforeEvent) => void): (arg: ChatSendBeforeEvent) => void;
-    unsubscribe(callback: (arg: ChatSendBeforeEvent) => void): void;
 }
 
 export class ClientSystemInfo extends SystemInfo {
@@ -991,28 +718,6 @@ export class Component {
     private constructor();
     readonly typeId: string;
     isValid(): boolean;
-}
-
-export class CompoundBlockVolume {
-    readonly capacity: number;
-    readonly items: CompoundBlockVolumeItem[];
-    readonly itemsAbsolute: CompoundBlockVolumeItem[];
-    readonly volumeCount: number;
-    constructor(origin?: Vector3);
-    clear(): void;
-    getBlockLocationIterator(): BlockLocationIterator;
-    getBoundingBox(): BoundingBox;
-    getMax(): Vector3;
-    getMin(): Vector3;
-    getOrigin(): Vector3;
-    isEmpty(): boolean;
-    isInside(worldLocation: Vector3): boolean;
-    peekLastVolume(forceRelativity?: CompoundBlockVolumePositionRelativity): CompoundBlockVolumeItem | undefined;
-    popVolume(): boolean;
-    pushVolume(item: CompoundBlockVolumeItem): void;
-    replaceOrAddLastVolume(item: CompoundBlockVolumeItem): boolean;
-    setOrigin(position: Vector3, preserveExistingVolumes?: boolean): void;
-    translateOrigin(delta: Vector3, preserveExistingVolumes?: boolean): void;
 }
 
 export class Container {
@@ -1083,14 +788,11 @@ export class Dimension {
     containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     fillBlocks(
-        volume: BlockVolumeBase | CompoundBlockVolume,
+        volume: BlockVolumeBase,
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
     ): ListBlockVolume;
-    findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
     getBlock(location: Vector3): Block | undefined;
-    getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
-    getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     getBlocks(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): ListBlockVolume;
     getEntities(options?: EntityQueryOptions): Entity[];
@@ -1098,14 +800,13 @@ export class Dimension {
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     getPlayers(options?: EntityQueryOptions): Player[];
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
-    getWeather(): WeatherType;
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     runCommand(commandString: string): CommandResult;
     runCommandAsync(commandString: string): Promise<CommandResult>;
     setBlockPermutation(location: Vector3, permutation: BlockPermutation): void;
     setBlockType(location: Vector3, blockType: BlockType | string): void;
     setWeather(weatherType: WeatherType, duration?: number): void;
-    spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
+    spawnEntity(identifier: string, location: Vector3): Entity;
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
 }
@@ -1197,7 +898,6 @@ export class Entity {
     readonly location: Vector3;
     nameTag: string;
     readonly scoreboardIdentity?: ScoreboardIdentity;
-    readonly target?: Entity;
     readonly typeId: string;
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     addTag(tag: string): boolean;
@@ -1226,7 +926,6 @@ export class Entity {
     hasTag(tag: string): boolean;
     isValid(): boolean;
     kill(): boolean;
-    lookAt(targetLocation: Vector3): void;
     matches(options: EntityQueryOptions): boolean;
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     remove(): void;
@@ -1278,12 +977,10 @@ export class EntityBaseMovementComponent extends EntityComponent {
 
 export class EntityBreathableComponent extends EntityComponent {
     private constructor();
-    airSupply: number;
     readonly breathesAir: boolean;
     readonly breathesLava: boolean;
     readonly breathesSolids: boolean;
     readonly breathesWater: boolean;
-    readonly canBreathe: boolean;
     readonly generatesBubbles: boolean;
     readonly inhaleTime: number;
     readonly suffocateTime: number;
@@ -1512,12 +1209,6 @@ export class EntityItemComponent extends EntityComponent {
     readonly itemStack: ItemStack;
 }
 
-export class EntityIterator implements Iterable<Entity> {
-    private constructor();
-    [Symbol.iterator](): Iterator<Entity>;
-    next(): IteratorResult<Entity>;
-}
-
 export class EntityLavaMovementComponent extends EntityAttributeComponent {
     private constructor();
 }
@@ -1640,13 +1331,6 @@ export class EntityNavigationHoverComponent extends EntityNavigationComponent {
 
 export class EntityNavigationWalkComponent extends EntityNavigationComponent {
     private constructor();
-}
-
-export class EntityNpcComponent extends EntityComponent {
-    private constructor();
-    defaultScene: string;
-    name: string;
-    skinIndex: number;
 }
 
 export class EntityOnFireComponent extends EntityComponent {
@@ -1785,12 +1469,6 @@ export class EntityTypeFamilyComponent extends EntityComponent {
     hasTypeFamily(typeFamily: string): boolean;
 }
 
-export class EntityTypeIterator implements Iterable<EntityType> {
-    private constructor();
-    [Symbol.iterator](): Iterator<EntityType>;
-    next(): IteratorResult<EntityType>;
-}
-
 export class EntityTypes {
     private constructor();
     static get(identifier: string): EntityType | undefined;
@@ -1848,10 +1526,6 @@ export class FeedItemEffect {
     readonly chance: number;
     readonly duration: number;
     readonly name: string;
-}
-
-export class FilterGroup {
-    private constructor();
 }
 
 export class FluidContainer {
@@ -1921,14 +1595,6 @@ export class ILeverActionAfterEventSignal {
     private constructor();
     subscribe(callback: (arg: LeverActionAfterEvent) => void): (arg: LeverActionAfterEvent) => void;
     unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
-}
-
-export class InputInfo {
-    private constructor();
-    readonly lastInputModeUsed: InputMode;
-    readonly touchOnlyAffectsHotbar: boolean;
-    getButtonState(button: InputButton): ButtonState;
-    getMovementVector(): Vector2;
 }
 
 export class IPlayerJoinAfterEventSignal {
@@ -2023,11 +1689,6 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
     readonly usedOnBlockPermutation: BlockPermutation;
 }
 
-export class ItemCompostableComponent extends ItemComponent {
-    private constructor();
-    readonly compostingChance: number;
-}
-
 export class ItemCooldownComponent extends ItemComponent {
     private constructor();
     readonly cooldownCategory: string;
@@ -2043,12 +1704,6 @@ export class ItemDurabilityComponent extends ItemComponent {
     readonly maxDurability: number;
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
     getDamageChanceRange(): minecraftcommon.NumberRange;
-}
-
-export class ItemDyeableComponent extends ItemComponent {
-    private constructor();
-    color?: RGB;
-    readonly defaultColor?: RGB;
 }
 
 export class ItemEnchantableComponent extends ItemComponent {
@@ -2072,13 +1727,6 @@ export class ItemFoodComponent extends ItemComponent {
     readonly usingConvertsTo: string;
 }
 
-export class ItemPotionComponent extends ItemComponent {
-    private constructor();
-    readonly potionEffectType: PotionEffectType;
-    readonly potionLiquidType: PotionLiquidType;
-    readonly potionModifierType: PotionModifierType;
-}
-
 export class ItemReleaseUseAfterEvent {
     private constructor();
     readonly itemStack?: ItemStack;
@@ -2094,7 +1742,6 @@ export class ItemReleaseUseAfterEventSignal {
 
 export class ItemStack {
     amount: number;
-    readonly compostingChance: number;
     readonly isStackable: boolean;
     keepOnDeath: boolean;
     lockMode: ItemLockMode;
@@ -2122,7 +1769,6 @@ export class ItemStack {
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     setLore(loreList?: string[]): void;
-    static createPotion(options: PotionOptions): ItemStack;
 }
 
 export class ItemStartUseAfterEvent {
@@ -2263,13 +1909,6 @@ export class ListBlockVolume extends BlockVolumeBase {
     remove(locations: Vector3[]): void;
 }
 
-export class MessageReceiveAfterEvent {
-    private constructor();
-    readonly id: string;
-    readonly message: string;
-    readonly player: Player;
-}
-
 export class MinecraftDimensionTypes {
     private constructor();
 }
@@ -2298,7 +1937,6 @@ export class Player extends Entity {
     private constructor();
     readonly camera: Camera;
     readonly clientSystemInfo: ClientSystemInfo;
-    readonly inputInfo: InputInfo;
     readonly inputPermissions: PlayerInputPermissions;
     readonly isEmoting: boolean;
     readonly isFlying: boolean;
@@ -2312,22 +1950,17 @@ export class Player extends Entity {
     readonly xpEarnedAtCurrentLevel: number;
     addExperience(amount: number): number;
     addLevels(amount: number): number;
-    eatItem(itemStack: ItemStack): void;
     getGameMode(): GameMode;
     getItemCooldown(cooldownCategory: string): number;
     getSpawnPoint(): DimensionLocation | undefined;
     getTotalXp(): number;
-    isOp(): boolean;
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
-    postClientMessage(id: string, value: string): void;
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     resetLevel(): void;
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     setGameMode(gameMode?: GameMode): void;
-    setOp(isOp: boolean): void;
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
-    spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     stopMusic(): void;
 }
@@ -2363,22 +1996,6 @@ export class PlayerBreakBlockBeforeEventSignal {
         options?: BlockEventOptions,
     ): (arg: PlayerBreakBlockBeforeEvent) => void;
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
-}
-
-export class PlayerButtonInputAfterEvent {
-    private constructor();
-    readonly button: InputButton;
-    readonly newButtonState: ButtonState;
-    readonly player: Player;
-}
-
-export class PlayerButtonInputAfterEventSignal {
-    private constructor();
-    subscribe(
-        callback: (arg: PlayerButtonInputAfterEvent) => void,
-        options?: InputEventOptions,
-    ): (arg: PlayerButtonInputAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerButtonInputAfterEvent) => void): void;
 }
 
 export class PlayerCursorInventoryComponent extends EntityComponent {
@@ -2439,19 +2056,6 @@ export class PlayerGameModeChangeBeforeEventSignal {
     private constructor();
     subscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): (arg: PlayerGameModeChangeBeforeEvent) => void;
     unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
-}
-
-export class PlayerInputModeChangeAfterEvent {
-    private constructor();
-    readonly newInputModeUsed: InputMode;
-    readonly player: Player;
-    readonly previousInputModeUsed: InputMode;
-}
-
-export class PlayerInputModeChangeAfterEventSignal {
-    private constructor();
-    subscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): (arg: PlayerInputModeChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): void;
 }
 
 export class PlayerInputPermissionCategoryChangeAfterEvent {
@@ -2537,12 +2141,6 @@ export class PlayerInteractWithEntityBeforeEventSignal {
     unsubscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): void;
 }
 
-export class PlayerIterator implements Iterable<Player> {
-    private constructor();
-    [Symbol.iterator](): Iterator<Player>;
-    next(): IteratorResult<Player>;
-}
-
 export class PlayerJoinAfterEvent {
     private constructor();
     readonly playerId: string;
@@ -2588,24 +2186,6 @@ export class PlayerPlaceBlockAfterEventSignal {
     unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;
 }
 
-export class PlayerPlaceBlockBeforeEvent extends BlockEvent {
-    private constructor();
-    cancel: boolean;
-    readonly face: Direction;
-    readonly faceLocation: Vector3;
-    readonly permutationBeingPlaced: BlockPermutation;
-    readonly player: Player;
-}
-
-export class PlayerPlaceBlockBeforeEventSignal {
-    private constructor();
-    subscribe(
-        callback: (arg: PlayerPlaceBlockBeforeEvent) => void,
-        options?: BlockEventOptions,
-    ): (arg: PlayerPlaceBlockBeforeEvent) => void;
-    unsubscribe(callback: (arg: PlayerPlaceBlockBeforeEvent) => void): void;
-}
-
 export class PlayerSpawnAfterEvent {
     private constructor();
     initialSpawn: boolean;
@@ -2614,28 +2194,6 @@ export class PlayerSpawnAfterEvent {
 
 export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
     private constructor();
-}
-
-export class PotionEffectType {
-    private constructor();
-    readonly id: string;
-}
-
-export class PotionLiquidType {
-    private constructor();
-    readonly id: string;
-}
-
-export class PotionModifierType {
-    private constructor();
-    readonly id: string;
-}
-
-export class Potions {
-    private constructor();
-    static getPotionEffectType(potionEffectId: string): PotionEffectType | undefined;
-    static getPotionLiquidType(potionLiquidId: string): PotionLiquidType | undefined;
-    static getPotionModifierType(potionModifierId: string): PotionModifierType | undefined;
 }
 
 export class PressurePlatePopAfterEvent extends BlockEvent {
@@ -2780,12 +2338,6 @@ export class Seat {
     readonly seatRotation: number;
 }
 
-export class ServerMessageAfterEventSignal {
-    private constructor();
-    subscribe(callback: (arg: MessageReceiveAfterEvent) => void): (arg: MessageReceiveAfterEvent) => void;
-    unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
-}
-
 export class Structure {
     private constructor();
     readonly id: string;
@@ -2812,26 +2364,11 @@ export class StructureManager {
     get(identifier: string): Structure | undefined;
     getWorldStructureIds(): string[];
     place(structure: string | Structure, dimension: Dimension, location: Vector3, options?: StructurePlaceOptions): void;
-    placeJigsaw(
-        pool: string,
-        targetJigsaw: string,
-        maxDepth: number,
-        dimension: Dimension,
-        location: Vector3,
-        options?: JigsawPlaceOptions,
-    ): void;
-    placeJigsawStructure(
-        identifier: string,
-        dimension: Dimension,
-        location: Vector3,
-        options?: JigsawStructurePlaceOptions,
-    ): void;
 }
 
 export class System {
     private constructor();
     readonly afterEvents: SystemAfterEvents;
-    readonly beforeEvents: SystemBeforeEvents;
     readonly currentTick: number;
     readonly serverSystemInfo: SystemInfo;
     clearJob(jobId: number): void;
@@ -2846,11 +2383,6 @@ export class System {
 export class SystemAfterEvents {
     private constructor();
     readonly scriptEventReceive: ScriptEventCommandMessageAfterEventSignal;
-}
-
-export class SystemBeforeEvents {
-    private constructor();
-    readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
 }
 
 export class SystemInfo {
@@ -2889,18 +2421,6 @@ export class TripWireTripAfterEventSignal {
     unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;
 }
 
-export class WatchdogTerminateBeforeEvent {
-    private constructor();
-    cancel: boolean;
-    readonly terminateReason: WatchdogTerminateReason;
-}
-
-export class WatchdogTerminateBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): (arg: WatchdogTerminateBeforeEvent) => void;
-    unsubscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): void;
-}
-
 export class WeatherChangeAfterEvent {
     private constructor();
     readonly dimension: string;
@@ -2936,7 +2456,6 @@ export class World {
     readonly isHardcore: boolean;
     readonly scoreboard: Scoreboard;
     readonly structureManager: StructureManager;
-    broadcastClientMessage(id: string, value: string): void;
     clearDynamicProperties(): void;
     getAbsoluteTime(): number;
     getAllPlayers(): Player[];
@@ -2965,7 +2484,6 @@ export class WorldAfterEvents {
     private constructor();
     readonly blockExplode: BlockExplodeAfterEventSignal;
     readonly buttonPush: ButtonPushAfterEventSignal;
-    readonly chatSend: ChatSendAfterEventSignal;
     readonly dataDrivenEntityTrigger: DataDrivenEntityTriggerAfterEventSignal;
     readonly effectAdd: EffectAddAfterEventSignal;
     readonly entityDie: EntityDieAfterEventSignal;
@@ -2987,14 +2505,11 @@ export class WorldAfterEvents {
     readonly itemUse: ItemUseAfterEventSignal;
     readonly itemUseOn: ItemUseOnAfterEventSignal;
     readonly leverAction: LeverActionAfterEventSignal;
-    readonly messageReceive: ServerMessageAfterEventSignal;
     readonly pistonActivate: PistonActivateAfterEventSignal;
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
-    readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
-    readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
@@ -3014,7 +2529,6 @@ export class WorldAfterEvents {
 
 export class WorldBeforeEvents {
     private constructor();
-    readonly chatSend: ChatSendBeforeEventSignal;
     readonly effectAdd: EffectAddBeforeEventSignal;
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     readonly explosion: ExplosionBeforeEventSignal;
@@ -3025,7 +2539,6 @@ export class WorldBeforeEvents {
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
     readonly playerInteractWithEntity: PlayerInteractWithEntityBeforeEventSignal;
     readonly playerLeave: PlayerLeaveBeforeEventSignal;
-    readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     readonly weatherChange: WeatherChangeBeforeEventSignal;
     readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }
@@ -3050,10 +2563,6 @@ export class WorldInitializeBeforeEventSignal {
     private constructor();
     subscribe(callback: (arg: WorldInitializeBeforeEvent) => void): (arg: WorldInitializeBeforeEvent) => void;
     unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;
-}
-
-export interface BiomeSearchOptions {
-    boundingSize?: Vector3;
 }
 
 export interface BlockCustomComponent {
@@ -3105,11 +2614,6 @@ export interface BlockRaycastOptions extends BlockFilter {
     maxDistance?: number;
 }
 
-export interface BoundingBox {
-    max: Vector3;
-    min: Vector3;
-}
-
 export interface CameraDefaultOptions {
     easeOptions: CameraEaseOptions;
 }
@@ -3128,11 +2632,6 @@ export interface CameraFadeTimeOptions {
     fadeInTime: number;
     fadeOutTime: number;
     holdTime: number;
-}
-
-export interface CameraFixedBoomOptions {
-    entityOffset?: Vector3;
-    viewOffset?: Vector2;
 }
 
 export interface CameraSetFacingOptions {
@@ -3158,21 +2657,9 @@ export interface CameraSetRotOptions {
     rotation: Vector2;
 }
 
-export interface CameraTargetOptions {
-    offsetFromTargetCenter?: Vector3;
-    targetEntity: Entity;
-}
-
-export interface CompoundBlockVolumeItem {
-    action?: CompoundBlockVolumeAction;
-    locationRelativity?: CompoundBlockVolumePositionRelativity;
-    volume: BlockVolume;
-}
-
 export interface DefinitionModifier {
     addedComponentGroups: string[];
     removedComponentGroups: string[];
-    triggers: Trigger[];
 }
 
 export interface DimensionLocation {
@@ -3306,11 +2793,6 @@ export interface GreaterThanOrEqualsComparison {
     greaterThanOrEquals: number;
 }
 
-export interface InputEventOptions {
-    buttons?: InputButton[];
-    state?: ButtonState;
-}
-
 export interface ItemCustomComponent {
     onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
     onCompleteUse?: (arg: ItemComponentCompleteUseEvent) => void;
@@ -3319,15 +2801,6 @@ export interface ItemCustomComponent {
     onMineBlock?: (arg: ItemComponentMineBlockEvent) => void;
     onUse?: (arg: ItemComponentUseEvent) => void;
     onUseOn?: (arg: ItemComponentUseOnEvent) => void;
-}
-
-export interface JigsawPlaceOptions {
-    keepJigsaws?: boolean;
-}
-
-export interface JigsawStructurePlaceOptions {
-    ignoreStartHeight?: boolean;
-    keepJigsaws?: boolean;
 }
 
 export interface LessThanComparison {
@@ -3360,12 +2833,6 @@ export interface PlayerSoundOptions {
     location?: Vector3;
     pitch?: number;
     volume?: number;
-}
-
-export interface PotionOptions {
-    effect: PotionEffectType | string;
-    liquid?: PotionLiquidType | string;
-    modifier?: PotionModifierType | string;
 }
 
 export interface ProjectileShootOptions {
@@ -3411,11 +2878,6 @@ export interface ScoreboardObjectiveDisplayOptions {
 
 export interface ScriptEventMessageFilterOptions {
     namespaces: string[];
-}
-
-export interface SpawnEntityOptions {
-    initialPersistence?: boolean;
-    initialRotation?: number;
 }
 
 export interface StructureCreateOptions {
@@ -3517,12 +2979,6 @@ export class InvalidContainerSlotError {
     private constructor();
 }
 
-export class InvalidEntityError {
-    private constructor();
-    readonly id: string;
-    readonly "type": string;
-}
-
 export class InvalidIteratorError {
     private constructor();
 }
@@ -3555,10 +3011,6 @@ export class LocationOutOfWorldBoundariesError {
     private constructor();
 }
 
-export class PlaceJigsawError {
-    private constructor();
-}
-
 export class UnloadedChunksError {
     private constructor();
 }
@@ -3566,7 +3018,6 @@ export class UnloadedChunksError {
 export const HudElementsCount = 13;
 export const HudVisibilityCount = 2;
 export const MoonPhaseCount = 8;
-export const TicksPerDay = 24000;
 export const TicksPerSecond = 20;
 export const system: System;
 export const world: World;

@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @internal
+ * @beta
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "1.17.0-internal"
+ *     "version": "1.18.0-beta"
  * }
  * ```
  */
@@ -2094,7 +2094,6 @@ export class ItemReleaseUseAfterEventSignal {
 
 export class ItemStack {
     amount: number;
-    readonly compostingChance: number;
     readonly isStackable: boolean;
     keepOnDeath: boolean;
     lockMode: ItemLockMode;
@@ -2786,6 +2785,16 @@ export class ServerMessageAfterEventSignal {
     unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
 }
 
+export class ShutdownBeforeEventSignal {
+    private constructor();
+    subscribe(callback: (arg: ShutdownEvent) => void): (arg: ShutdownEvent) => void;
+    unsubscribe(callback: (arg: ShutdownEvent) => void): void;
+}
+
+export class ShutdownEvent {
+    private constructor();
+}
+
 export class Structure {
     private constructor();
     readonly id: string;
@@ -2819,13 +2828,13 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawPlaceOptions,
-    ): void;
+    ): BoundingBox;
     placeJigsawStructure(
         identifier: string,
         dimension: Dimension,
         location: Vector3,
         options?: JigsawStructurePlaceOptions,
-    ): void;
+    ): BoundingBox;
 }
 
 export class System {
@@ -2850,6 +2859,7 @@ export class SystemAfterEvents {
 
 export class SystemBeforeEvents {
     private constructor();
+    readonly shutdown: ShutdownBeforeEventSignal;
     readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
 }
 
@@ -3565,7 +3575,6 @@ export class UnloadedChunksError {
 
 export const HudElementsCount = 13;
 export const HudVisibilityCount = 2;
-export const isInternal = true;
 export const MoonPhaseCount = 8;
 export const TicksPerDay = 24000;
 export const TicksPerSecond = 20;

@@ -114,6 +114,8 @@ export enum PaintMode {
     BlockPaint = 0,
     FreehandSelect = 1,
     Smooth = 2,
+    Roughen = 3,
+    Flatten = 4,
 }
 
 export enum Plane {
@@ -305,7 +307,9 @@ export class BrushShapeManager {
     setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
     setBrushShapeOffset(offset: minecraftserver.Vector3): void;
     setBrushShapeVisible(visible: boolean): void;
-    setSmoothStrength(smoothStrength: number): void;
+    setFlattenHeight(flattenHeight: number): void;
+    setFlattenRadius(flattenRadius: number): void;
+    setTerrainStrength(terrainStrength: number): void;
     singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
     switchBrushPaintMode(paintMode: PaintMode): void;
     switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
@@ -1010,6 +1014,7 @@ export interface ExtensionOptionalParameters {
 }
 
 export interface GameOptions {
+    bedsWork?: boolean;
     bonusChest?: boolean;
     cheats?: boolean;
     commandBlockEnabled?: boolean;
@@ -1041,6 +1046,7 @@ export interface GameOptions {
     showCoordinates?: boolean;
     showDaysPlayed?: boolean;
     simulationDistance?: number;
+    sleepSkipPercent?: number;
     spawnPosition?: minecraftserver.Vector3;
     startingMap?: boolean;
     tileDrops?: boolean;
