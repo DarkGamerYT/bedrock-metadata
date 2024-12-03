@@ -367,6 +367,6 @@
             "name": "itemGroup.name.woolCarpet"
         }
     ],
-    "minecraft_version": "1.21.50-preview.28",
+    "minecraft_version": "1.21.50-stable",
     "name": "item-groups"
 }

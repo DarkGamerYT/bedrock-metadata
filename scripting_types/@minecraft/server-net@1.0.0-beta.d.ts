@@ -185,7 +185,6 @@ export enum PacketId {
     SetHudPacket = "SetHudPacket",
     SetLastHurtByPacket = "SetLastHurtByPacket",
     SetLocalPlayerAsInitializedPacket = "SetLocalPlayerAsInitializedPacket",
-    SetMovementAuthorityPacket = "SetMovementAuthorityPacket",
     SetPlayerGameTypePacket = "SetPlayerGameTypePacket",
     SetPlayerInventoryOptionsPacket = "SetPlayerInventoryOptionsPacket",
     SetScoreboardIdentityPacket = "SetScoreboardIdentityPacket",
