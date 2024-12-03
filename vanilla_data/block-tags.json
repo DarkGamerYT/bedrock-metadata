@@ -114,6 +114,9 @@
                     "name": "minecraft:mycelium"
                 },
                 {
+                    "name": "minecraft:pale_moss_block"
+                },
+                {
                     "name": "minecraft:podzol"
                 }
             ]
@@ -153,6 +156,9 @@
                 },
                 {
                     "name": "minecraft:oxeye_daisy"
+                },
+                {
+                    "name": "minecraft:pale_moss_block"
                 },
                 {
                     "name": "minecraft:pink_tulip"
@@ -403,16 +409,25 @@
             ]
         },
         {
-            "name": "minecraft:is_hatchet_item_destructible",
+            "name": "minecraft:is_axe_item_destructible",
             "items": [
                 {
                     "name": "minecraft:acacia_button"
+                },
+                {
+                    "name": "minecraft:acacia_door"
                 },
                 {
                     "name": "minecraft:acacia_double_slab"
                 },
                 {
                     "name": "minecraft:acacia_fence"
+                },
+                {
+                    "name": "minecraft:acacia_fence_gate"
+                },
+                {
+                    "name": "minecraft:acacia_hanging_sign"
                 },
                 {
                     "name": "minecraft:acacia_log"
@@ -427,6 +442,18 @@
                     "name": "minecraft:acacia_slab"
                 },
                 {
+                    "name": "minecraft:acacia_stairs"
+                },
+                {
+                    "name": "minecraft:acacia_standing_sign"
+                },
+                {
+                    "name": "minecraft:acacia_trapdoor"
+                },
+                {
+                    "name": "minecraft:acacia_wall_sign"
+                },
+                {
                     "name": "minecraft:acacia_wood"
                 },
                 {
@@ -436,19 +463,85 @@
                     "name": "minecraft:bamboo_block"
                 },
                 {
+                    "name": "minecraft:bamboo_button"
+                },
+                {
+                    "name": "minecraft:bamboo_door"
+                },
+                {
+                    "name": "minecraft:bamboo_double_slab"
+                },
+                {
+                    "name": "minecraft:bamboo_fence"
+                },
+                {
+                    "name": "minecraft:bamboo_fence_gate"
+                },
+                {
+                    "name": "minecraft:bamboo_hanging_sign"
+                },
+                {
+                    "name": "minecraft:bamboo_mosaic"
+                },
+                {
+                    "name": "minecraft:bamboo_mosaic_double_slab"
+                },
+                {
+                    "name": "minecraft:bamboo_mosaic_slab"
+                },
+                {
+                    "name": "minecraft:bamboo_mosaic_stairs"
+                },
+                {
+                    "name": "minecraft:bamboo_planks"
+                },
+                {
+                    "name": "minecraft:bamboo_pressure_plate"
+                },
+                {
+                    "name": "minecraft:bamboo_slab"
+                },
+                {
+                    "name": "minecraft:bamboo_stairs"
+                },
+                {
+                    "name": "minecraft:bamboo_standing_sign"
+                },
+                {
+                    "name": "minecraft:bamboo_trapdoor"
+                },
+                {
+                    "name": "minecraft:bamboo_wall_sign"
+                },
+                {
+                    "name": "minecraft:barrel"
+                },
+                {
                     "name": "minecraft:bee_nest"
                 },
                 {
                     "name": "minecraft:beehive"
                 },
                 {
+                    "name": "minecraft:big_dripleaf"
+                },
+                {
                     "name": "minecraft:birch_button"
+                },
+                {
+                    "name": "minecraft:birch_door"
                 },
                 {
                     "name": "minecraft:birch_double_slab"
                 },
                 {
                     "name": "minecraft:birch_fence"
+                },
+                {
+                    "name": "minecraft:birch_fence_gate"
+                },
+                {
+                    "name": "minecraft:birch_hanging_sign"
                 },
                 {
                     "name": "minecraft:birch_log"
@@ -463,19 +556,82 @@
                     "name": "minecraft:birch_slab"
                 },
                 {
+                    "name": "minecraft:birch_stairs"
+                },
+                {
+                    "name": "minecraft:birch_standing_sign"
+                },
+                {
+                    "name": "minecraft:birch_trapdoor"
+                },
+                {
+                    "name": "minecraft:birch_wall_sign"
+                },
+                {
                     "name": "minecraft:birch_wood"
                 },
                 {
                     "name": "minecraft:bookshelf"
                 },
                 {
+                    "name": "minecraft:brown_mushroom_block"
+                },
+                {
+                    "name": "minecraft:camera"
+                },
+                {
                     "name": "minecraft:campfire"
+                },
+                {
+                    "name": "minecraft:cartography_table"
                 },
                 {
                     "name": "minecraft:carved_pumpkin"
                 },
                 {
+                    "name": "minecraft:chalkboard"
+                },
+                {
+                    "name": "minecraft:cherry_button"
+                },
+                {
+                    "name": "minecraft:cherry_door"
+                },
+                {
+                    "name": "minecraft:cherry_double_slab"
+                },
+                {
+                    "name": "minecraft:cherry_fence"
+                },
+                {
+                    "name": "minecraft:cherry_fence_gate"
+                },
+                {
+                    "name": "minecraft:cherry_hanging_sign"
+                },
+                {
                     "name": "minecraft:cherry_log"
+                },
+                {
+                    "name": "minecraft:cherry_planks"
+                },
+                {
+                    "name": "minecraft:cherry_pressure_plate"
+                },
+                {
+                    "name": "minecraft:cherry_slab"
+                },
+                {
+                    "name": "minecraft:cherry_stairs"
+                },
+                {
+                    "name": "minecraft:cherry_standing_sign"
+                },
+                {
+                    "name": "minecraft:cherry_trapdoor"
+                },
+                {
+                    "name": "minecraft:cherry_wall_sign"
                 },
                 {
                     "name": "minecraft:cherry_wood"
@@ -484,22 +640,88 @@
                     "name": "minecraft:chest"
                 },
                 {
+                    "name": "minecraft:chiseled_bookshelf"
+                },
+                {
+                    "name": "minecraft:chorus_flower"
+                },
+                {
+                    "name": "minecraft:chorus_plant"
+                },
+                {
+                    "name": "minecraft:cocoa"
+                },
+                {
                     "name": "minecraft:composter"
+                },
+                {
+                    "name": "minecraft:crafting_table"
+                },
+                {
+                    "name": "minecraft:creaking_heart"
+                },
+                {
+                    "name": "minecraft:crimson_button"
+                },
+                {
+                    "name": "minecraft:crimson_door"
+                },
+                {
+                    "name": "minecraft:crimson_double_slab"
+                },
+                {
+                    "name": "minecraft:crimson_fence"
+                },
+                {
+                    "name": "minecraft:crimson_fence_gate"
+                },
+                {
+                    "name": "minecraft:crimson_hanging_sign"
                 },
                 {
                     "name": "minecraft:crimson_hyphae"
                 },
                 {
+                    "name": "minecraft:crimson_planks"
+                },
+                {
+                    "name": "minecraft:crimson_pressure_plate"
+                },
+                {
+                    "name": "minecraft:crimson_slab"
+                },
+                {
+                    "name": "minecraft:crimson_stairs"
+                },
+                {
+                    "name": "minecraft:crimson_standing_sign"
+                },
+                {
                     "name": "minecraft:crimson_stem"
                 },
                 {
+                    "name": "minecraft:crimson_trapdoor"
+                },
+                {
+                    "name": "minecraft:crimson_wall_sign"
+                },
+                {
                     "name": "minecraft:dark_oak_button"
+                },
+                {
+                    "name": "minecraft:dark_oak_door"
                 },
                 {
                     "name": "minecraft:dark_oak_double_slab"
                 },
                 {
                     "name": "minecraft:dark_oak_fence"
+                },
+                {
+                    "name": "minecraft:dark_oak_fence_gate"
+                },
+                {
+                    "name": "minecraft:dark_oak_hanging_sign"
                 },
                 {
                     "name": "minecraft:dark_oak_log"
@@ -514,16 +736,55 @@
                     "name": "minecraft:dark_oak_slab"
                 },
                 {
+                    "name": "minecraft:dark_oak_stairs"
+                },
+                {
+                    "name": "minecraft:dark_oak_trapdoor"
+                },
+                {
                     "name": "minecraft:dark_oak_wood"
                 },
                 {
+                    "name": "minecraft:darkoak_standing_sign"
+                },
+                {
+                    "name": "minecraft:darkoak_wall_sign"
+                },
+                {
+                    "name": "minecraft:daylight_detector"
+                },
+                {
+                    "name": "minecraft:daylight_detector_inverted"
+                },
+                {
+                    "name": "minecraft:fence_gate"
+                },
+                {
+                    "name": "minecraft:fletching_table"
+                },
+                {
+                    "name": "minecraft:glow_lichen"
+                },
+                {
+                    "name": "minecraft:jukebox"
+                },
+                {
                     "name": "minecraft:jungle_button"
+                },
+                {
+                    "name": "minecraft:jungle_door"
                 },
                 {
                     "name": "minecraft:jungle_double_slab"
                 },
                 {
                     "name": "minecraft:jungle_fence"
+                },
+                {
+                    "name": "minecraft:jungle_fence_gate"
+                },
+                {
+                    "name": "minecraft:jungle_hanging_sign"
                 },
                 {
                     "name": "minecraft:jungle_log"
@@ -538,16 +799,76 @@
                     "name": "minecraft:jungle_slab"
                 },
                 {
+                    "name": "minecraft:jungle_stairs"
+                },
+                {
+                    "name": "minecraft:jungle_standing_sign"
+                },
+                {
+                    "name": "minecraft:jungle_trapdoor"
+                },
+                {
+                    "name": "minecraft:jungle_wall_sign"
+                },
+                {
                     "name": "minecraft:jungle_wood"
+                },
+                {
+                    "name": "minecraft:ladder"
+                },
+                {
+                    "name": "minecraft:lectern"
                 },
                 {
                     "name": "minecraft:lit_pumpkin"
                 },
                 {
+                    "name": "minecraft:loom"
+                },
+                {
+                    "name": "minecraft:mangrove_button"
+                },
+                {
+                    "name": "minecraft:mangrove_door"
+                },
+                {
+                    "name": "minecraft:mangrove_double_slab"
+                },
+                {
+                    "name": "minecraft:mangrove_fence"
+                },
+                {
+                    "name": "minecraft:mangrove_fence_gate"
+                },
+                {
+                    "name": "minecraft:mangrove_hanging_sign"
+                },
+                {
                     "name": "minecraft:mangrove_log"
                 },
                 {
+                    "name": "minecraft:mangrove_planks"
+                },
+                {
+                    "name": "minecraft:mangrove_pressure_plate"
+                },
+                {
                     "name": "minecraft:mangrove_roots"
+                },
+                {
+                    "name": "minecraft:mangrove_slab"
+                },
+                {
+                    "name": "minecraft:mangrove_stairs"
+                },
+                {
+                    "name": "minecraft:mangrove_standing_sign"
+                },
+                {
+                    "name": "minecraft:mangrove_trapdoor"
+                },
+                {
+                    "name": "minecraft:mangrove_wall_sign"
                 },
                 {
                     "name": "minecraft:mangrove_wood"
@@ -556,10 +877,19 @@
                     "name": "minecraft:melon_block"
                 },
                 {
+                    "name": "minecraft:mushroom_stem"
+                },
+                {
+                    "name": "minecraft:noteblock"
+                },
+                {
                     "name": "minecraft:oak_double_slab"
                 },
                 {
                     "name": "minecraft:oak_fence"
+                },
+                {
+                    "name": "minecraft:oak_hanging_sign"
                 },
                 {
                     "name": "minecraft:oak_log"
@@ -571,13 +901,67 @@
                     "name": "minecraft:oak_slab"
                 },
                 {
+                    "name": "minecraft:oak_stairs"
+                },
+                {
                     "name": "minecraft:oak_wood"
+                },
+                {
+                    "name": "minecraft:pale_oak_button"
+                },
+                {
+                    "name": "minecraft:pale_oak_door"
+                },
+                {
+                    "name": "minecraft:pale_oak_double_slab"
+                },
+                {
+                    "name": "minecraft:pale_oak_fence"
+                },
+                {
+                    "name": "minecraft:pale_oak_fence_gate"
+                },
+                {
+                    "name": "minecraft:pale_oak_hanging_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_log"
+                },
+                {
+                    "name": "minecraft:pale_oak_planks"
+                },
+                {
+                    "name": "minecraft:pale_oak_pressure_plate"
+                },
+                {
+                    "name": "minecraft:pale_oak_slab"
+                },
+                {
+                    "name": "minecraft:pale_oak_stairs"
+                },
+                {
+                    "name": "minecraft:pale_oak_standing_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_trapdoor"
+                },
+                {
+                    "name": "minecraft:pale_oak_wall_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_wood"
                 },
                 {
                     "name": "minecraft:pumpkin"
                 },
                 {
+                    "name": "minecraft:red_mushroom_block"
+                },
+                {
                     "name": "minecraft:scaffolding"
+                },
+                {
+                    "name": "minecraft:smithing_table"
                 },
                 {
                     "name": "minecraft:soul_campfire"
@@ -586,10 +970,19 @@
                     "name": "minecraft:spruce_button"
                 },
                 {
+                    "name": "minecraft:spruce_door"
+                },
+                {
                     "name": "minecraft:spruce_double_slab"
                 },
                 {
                     "name": "minecraft:spruce_fence"
+                },
+                {
+                    "name": "minecraft:spruce_fence_gate"
+                },
+                {
+                    "name": "minecraft:spruce_hanging_sign"
                 },
                 {
                     "name": "minecraft:spruce_log"
@@ -604,7 +997,25 @@
                     "name": "minecraft:spruce_slab"
                 },
                 {
+                    "name": "minecraft:spruce_stairs"
+                },
+                {
+                    "name": "minecraft:spruce_standing_sign"
+                },
+                {
+                    "name": "minecraft:spruce_trapdoor"
+                },
+                {
+                    "name": "minecraft:spruce_wall_sign"
+                },
+                {
                     "name": "minecraft:spruce_wood"
+                },
+                {
+                    "name": "minecraft:standing_banner"
+                },
+                {
+                    "name": "minecraft:standing_sign"
                 },
                 {
                     "name": "minecraft:stripped_acacia_log"
@@ -613,10 +1024,22 @@
                     "name": "minecraft:stripped_acacia_wood"
                 },
                 {
+                    "name": "minecraft:stripped_bamboo_block"
+                },
+                {
                     "name": "minecraft:stripped_birch_log"
                 },
                 {
                     "name": "minecraft:stripped_birch_wood"
+                },
+                {
+                    "name": "minecraft:stripped_cherry_log"
+                },
+                {
+                    "name": "minecraft:stripped_cherry_wood"
+                },
+                {
+                    "name": "minecraft:stripped_crimson_hyphae"
                 },
                 {
                     "name": "minecraft:stripped_crimson_stem"
@@ -634,6 +1057,9 @@
                     "name": "minecraft:stripped_jungle_wood"
                 },
                 {
+                    "name": "minecraft:stripped_mangrove_log"
+                },
+                {
                     "name": "minecraft:stripped_mangrove_wood"
                 },
                 {
@@ -643,22 +1069,88 @@
                     "name": "minecraft:stripped_oak_wood"
                 },
                 {
+                    "name": "minecraft:stripped_pale_oak_log"
+                },
+                {
+                    "name": "minecraft:stripped_pale_oak_wood"
+                },
+                {
                     "name": "minecraft:stripped_spruce_log"
                 },
                 {
                     "name": "minecraft:stripped_spruce_wood"
                 },
                 {
+                    "name": "minecraft:stripped_warped_hyphae"
+                },
+                {
                     "name": "minecraft:stripped_warped_stem"
+                },
+                {
+                    "name": "minecraft:trapdoor"
+                },
+                {
+                    "name": "minecraft:trapped_chest"
+                },
+                {
+                    "name": "minecraft:vine"
+                },
+                {
+                    "name": "minecraft:wall_banner"
+                },
+                {
+                    "name": "minecraft:wall_sign"
+                },
+                {
+                    "name": "minecraft:warped_button"
+                },
+                {
+                    "name": "minecraft:warped_door"
+                },
+                {
+                    "name": "minecraft:warped_double_slab"
+                },
+                {
+                    "name": "minecraft:warped_fence"
+                },
+                {
+                    "name": "minecraft:warped_fence_gate"
+                },
+                {
+                    "name": "minecraft:warped_hanging_sign"
                 },
                 {
                     "name": "minecraft:warped_hyphae"
                 },
                 {
+                    "name": "minecraft:warped_planks"
+                },
+                {
+                    "name": "minecraft:warped_pressure_plate"
+                },
+                {
+                    "name": "minecraft:warped_slab"
+                },
+                {
+                    "name": "minecraft:warped_stairs"
+                },
+                {
+                    "name": "minecraft:warped_standing_sign"
+                },
+                {
                     "name": "minecraft:warped_stem"
                 },
                 {
+                    "name": "minecraft:warped_trapdoor"
+                },
+                {
+                    "name": "minecraft:warped_wall_sign"
+                },
+                {
                     "name": "minecraft:wooden_button"
+                },
+                {
+                    "name": "minecraft:wooden_door"
                 },
                 {
                     "name": "minecraft:wooden_pressure_plate"
@@ -714,6 +1206,15 @@
                     "name": "minecraft:oak_leaves"
                 },
                 {
+                    "name": "minecraft:pale_moss_block"
+                },
+                {
+                    "name": "minecraft:pale_moss_carpet"
+                },
+                {
+                    "name": "minecraft:pale_oak_leaves"
+                },
+                {
                     "name": "minecraft:sculk"
                 },
                 {
@@ -749,14 +1250,6 @@
             ]
         },
         {
-            "name": "minecraft:is_mace_item_destructible",
-            "items": [
-                {
-                    "name": "minecraft:web"
-                }
-            ]
-        },
-        {
             "name": "minecraft:is_pickaxe_item_destructible",
             "items": [
                 {
@@ -781,19 +1274,79 @@
                     "name": "minecraft:andesite_slab"
                 },
                 {
+                    "name": "minecraft:andesite_stairs"
+                },
+                {
                     "name": "minecraft:andesite_wall"
+                },
+                {
+                    "name": "minecraft:anvil"
+                },
+                {
+                    "name": "minecraft:basalt"
+                },
+                {
+                    "name": "minecraft:bell"
                 },
                 {
                     "name": "minecraft:black_concrete"
                 },
                 {
+                    "name": "minecraft:black_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:black_shulker_box"
+                },
+                {
+                    "name": "minecraft:black_terracotta"
+                },
+                {
+                    "name": "minecraft:blackstone"
+                },
+                {
+                    "name": "minecraft:blackstone_double_slab"
+                },
+                {
+                    "name": "minecraft:blackstone_slab"
+                },
+                {
+                    "name": "minecraft:blackstone_stairs"
+                },
+                {
+                    "name": "minecraft:blackstone_wall"
+                },
+                {
+                    "name": "minecraft:blast_furnace"
                 },
                 {
                     "name": "minecraft:blue_concrete"
                 },
                 {
+                    "name": "minecraft:blue_glazed_terracotta"
+                },
+                {
+                    "name": "minecraft:blue_ice"
+                },
+                {
                     "name": "minecraft:blue_shulker_box"
+                },
+                {
+                    "name": "minecraft:blue_terracotta"
+                },
+                {
+                    "name": "minecraft:bone_block"
+                },
+                {
+                    "name": "minecraft:border_block"
+                },
+                {
+                    "name": "minecraft:brain_coral_block"
+                },
+                {
+                    "name": "minecraft:brewing_stand"
+                },
+                {
+                    "name": "minecraft:brick_block"
                 },
                 {
                     "name": "minecraft:brick_double_slab"
@@ -802,19 +1355,64 @@
                     "name": "minecraft:brick_slab"
                 },
                 {
+                    "name": "minecraft:brick_stairs"
+                },
+                {
                     "name": "minecraft:brick_wall"
                 },
                 {
                     "name": "minecraft:brown_concrete"
                 },
                 {
+                    "name": "minecraft:brown_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:brown_shulker_box"
+                },
+                {
+                    "name": "minecraft:brown_terracotta"
+                },
+                {
+                    "name": "minecraft:bubble_coral_block"
+                },
+                {
+                    "name": "minecraft:budding_amethyst"
                 },
                 {
                     "name": "minecraft:calcite"
                 },
                 {
+                    "name": "minecraft:cauldron"
+                },
+                {
+                    "name": "minecraft:chain"
+                },
+                {
+                    "name": "minecraft:chemical_heat"
+                },
+                {
+                    "name": "minecraft:chipped_anvil"
+                },
+                {
                     "name": "minecraft:chiseled_copper"
+                },
+                {
+                    "name": "minecraft:chiseled_deepslate"
+                },
+                {
+                    "name": "minecraft:chiseled_nether_bricks"
+                },
+                {
+                    "name": "minecraft:chiseled_polished_blackstone"
+                },
+                {
+                    "name": "minecraft:chiseled_quartz_block"
+                },
+                {
+                    "name": "minecraft:chiseled_red_sandstone"
+                },
+                {
+                    "name": "minecraft:chiseled_resin_bricks"
                 },
                 {
                     "name": "minecraft:chiseled_sandstone"
@@ -823,10 +1421,31 @@
                     "name": "minecraft:chiseled_stone_bricks"
                 },
                 {
+                    "name": "minecraft:chiseled_tuff"
+                },
+                {
+                    "name": "minecraft:chiseled_tuff_bricks"
+                },
+                {
                     "name": "minecraft:coal_block"
                 },
                 {
                     "name": "minecraft:coal_ore"
+                },
+                {
+                    "name": "minecraft:cobbled_deepslate"
+                },
+                {
+                    "name": "minecraft:cobbled_deepslate_double_slab"
+                },
+                {
+                    "name": "minecraft:cobbled_deepslate_slab"
+                },
+                {
+                    "name": "minecraft:cobbled_deepslate_stairs"
+                },
+                {
+                    "name": "minecraft:cobbled_deepslate_wall"
                 },
                 {
                     "name": "minecraft:cobblestone"
@@ -839,6 +1458,12 @@
                 },
                 {
                     "name": "minecraft:cobblestone_wall"
+                },
+                {
+                    "name": "minecraft:compound_creator"
+                },
+                {
+                    "name": "minecraft:conduit"
                 },
                 {
                     "name": "minecraft:copper_block"
@@ -859,10 +1484,25 @@
                     "name": "minecraft:copper_trapdoor"
                 },
                 {
+                    "name": "minecraft:cracked_deepslate_bricks"
+                },
+                {
+                    "name": "minecraft:cracked_deepslate_tiles"
+                },
+                {
+                    "name": "minecraft:cracked_nether_bricks"
+                },
+                {
+                    "name": "minecraft:cracked_polished_blackstone_bricks"
+                },
+                {
                     "name": "minecraft:cracked_stone_bricks"
                 },
                 {
                     "name": "minecraft:crafter"
+                },
+                {
+                    "name": "minecraft:crimson_nylium"
                 },
                 {
                     "name": "minecraft:crying_obsidian"
@@ -875,6 +1515,9 @@
                 },
                 {
                     "name": "minecraft:cut_copper_stairs"
+                },
+                {
+                    "name": "minecraft:cut_red_sandstone"
                 },
                 {
                     "name": "minecraft:cut_red_sandstone_double_slab"
@@ -895,7 +1538,19 @@
                     "name": "minecraft:cyan_concrete"
                 },
                 {
+                    "name": "minecraft:cyan_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:cyan_shulker_box"
+                },
+                {
+                    "name": "minecraft:cyan_terracotta"
+                },
+                {
+                    "name": "minecraft:damaged_anvil"
+                },
+                {
+                    "name": "minecraft:dark_prismarine"
                 },
                 {
                     "name": "minecraft:dark_prismarine_double_slab"
@@ -904,7 +1559,43 @@
                     "name": "minecraft:dark_prismarine_slab"
                 },
                 {
+                    "name": "minecraft:dark_prismarine_stairs"
+                },
+                {
+                    "name": "minecraft:dead_brain_coral_block"
+                },
+                {
+                    "name": "minecraft:dead_bubble_coral_block"
+                },
+                {
+                    "name": "minecraft:dead_fire_coral_block"
+                },
+                {
+                    "name": "minecraft:dead_horn_coral_block"
+                },
+                {
+                    "name": "minecraft:dead_tube_coral_block"
+                },
+                {
                     "name": "minecraft:deepslate"
+                },
+                {
+                    "name": "minecraft:deepslate_brick_double_slab"
+                },
+                {
+                    "name": "minecraft:deepslate_brick_slab"
+                },
+                {
+                    "name": "minecraft:deepslate_brick_stairs"
+                },
+                {
+                    "name": "minecraft:deepslate_brick_wall"
+                },
+                {
+                    "name": "minecraft:deepslate_bricks"
+                },
+                {
+                    "name": "minecraft:deepslate_coal_ore"
                 },
                 {
                     "name": "minecraft:deepslate_copper_ore"
@@ -928,6 +1619,30 @@
                     "name": "minecraft:deepslate_redstone_ore"
                 },
                 {
+                    "name": "minecraft:deepslate_tile_double_slab"
+                },
+                {
+                    "name": "minecraft:deepslate_tile_slab"
+                },
+                {
+                    "name": "minecraft:deepslate_tile_stairs"
+                },
+                {
+                    "name": "minecraft:deepslate_tile_wall"
+                },
+                {
+                    "name": "minecraft:deepslate_tiles"
+                },
+                {
+                    "name": "minecraft:deprecated_anvil"
+                },
+                {
+                    "name": "minecraft:deprecated_purpur_block_1"
+                },
+                {
+                    "name": "minecraft:deprecated_purpur_block_2"
+                },
+                {
                     "name": "minecraft:detector_rail"
                 },
                 {
@@ -946,7 +1661,13 @@
                     "name": "minecraft:diorite_slab"
                 },
                 {
+                    "name": "minecraft:diorite_stairs"
+                },
+                {
                     "name": "minecraft:diorite_wall"
+                },
+                {
+                    "name": "minecraft:dispenser"
                 },
                 {
                     "name": "minecraft:double_cut_copper_slab"
@@ -955,10 +1676,28 @@
                     "name": "minecraft:dripstone_block"
                 },
                 {
+                    "name": "minecraft:dropper"
+                },
+                {
+                    "name": "minecraft:element_constructor"
+                },
+                {
                     "name": "minecraft:emerald_block"
                 },
                 {
                     "name": "minecraft:emerald_ore"
+                },
+                {
+                    "name": "minecraft:enchanting_table"
+                },
+                {
+                    "name": "minecraft:end_brick_stairs"
+                },
+                {
+                    "name": "minecraft:end_bricks"
+                },
+                {
+                    "name": "minecraft:end_stone"
                 },
                 {
                     "name": "minecraft:end_stone_brick_double_slab"
@@ -968,6 +1707,9 @@
                 },
                 {
                     "name": "minecraft:end_stone_brick_wall"
+                },
+                {
+                    "name": "minecraft:ender_chest"
                 },
                 {
                     "name": "minecraft:exposed_chiseled_copper"
@@ -1000,6 +1742,15 @@
                     "name": "minecraft:exposed_double_cut_copper_slab"
                 },
                 {
+                    "name": "minecraft:fire_coral_block"
+                },
+                {
+                    "name": "minecraft:furnace"
+                },
+                {
+                    "name": "minecraft:gilded_blackstone"
+                },
+                {
                     "name": "minecraft:glowingobsidian"
                 },
                 {
@@ -1021,22 +1772,55 @@
                     "name": "minecraft:granite_slab"
                 },
                 {
+                    "name": "minecraft:granite_stairs"
+                },
+                {
                     "name": "minecraft:granite_wall"
                 },
                 {
                     "name": "minecraft:gray_concrete"
                 },
                 {
+                    "name": "minecraft:gray_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:gray_shulker_box"
+                },
+                {
+                    "name": "minecraft:gray_terracotta"
                 },
                 {
                     "name": "minecraft:green_concrete"
                 },
                 {
+                    "name": "minecraft:green_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:green_shulker_box"
                 },
                 {
+                    "name": "minecraft:green_terracotta"
+                },
+                {
+                    "name": "minecraft:grindstone"
+                },
+                {
+                    "name": "minecraft:hardened_clay"
+                },
+                {
                     "name": "minecraft:heavy_core"
+                },
+                {
+                    "name": "minecraft:heavy_weighted_pressure_plate"
+                },
+                {
+                    "name": "minecraft:hopper"
+                },
+                {
+                    "name": "minecraft:horn_coral_block"
+                },
+                {
+                    "name": "minecraft:ice"
                 },
                 {
                     "name": "minecraft:infested_chiseled_stone_bricks"
@@ -1060,10 +1844,25 @@
                     "name": "minecraft:infested_stone_bricks"
                 },
                 {
+                    "name": "minecraft:iron_bars"
+                },
+                {
                     "name": "minecraft:iron_block"
                 },
                 {
+                    "name": "minecraft:iron_door"
+                },
+                {
                     "name": "minecraft:iron_ore"
+                },
+                {
+                    "name": "minecraft:iron_trapdoor"
+                },
+                {
+                    "name": "minecraft:lab_table"
+                },
+                {
+                    "name": "minecraft:lantern"
                 },
                 {
                     "name": "minecraft:lapis_block"
@@ -1078,7 +1877,13 @@
                     "name": "minecraft:light_blue_concrete"
                 },
                 {
+                    "name": "minecraft:light_blue_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:light_blue_shulker_box"
+                },
+                {
+                    "name": "minecraft:light_blue_terracotta"
                 },
                 {
                     "name": "minecraft:light_gray_concrete"
@@ -1087,28 +1892,67 @@
                     "name": "minecraft:light_gray_shulker_box"
                 },
                 {
+                    "name": "minecraft:light_gray_terracotta"
+                },
+                {
+                    "name": "minecraft:light_weighted_pressure_plate"
+                },
+                {
                     "name": "minecraft:lightning_rod"
                 },
                 {
                     "name": "minecraft:lime_concrete"
                 },
                 {
+                    "name": "minecraft:lime_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:lime_shulker_box"
+                },
+                {
+                    "name": "minecraft:lime_terracotta"
+                },
+                {
+                    "name": "minecraft:lit_blast_furnace"
                 },
                 {
                     "name": "minecraft:lit_deepslate_redstone_ore"
                 },
                 {
+                    "name": "minecraft:lit_furnace"
+                },
+                {
                     "name": "minecraft:lit_redstone_ore"
+                },
+                {
+                    "name": "minecraft:lit_smoker"
+                },
+                {
+                    "name": "minecraft:lodestone"
                 },
                 {
                     "name": "minecraft:magenta_concrete"
                 },
                 {
+                    "name": "minecraft:magenta_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:magenta_shulker_box"
                 },
                 {
+                    "name": "minecraft:magenta_terracotta"
+                },
+                {
+                    "name": "minecraft:magma"
+                },
+                {
+                    "name": "minecraft:material_reducer"
+                },
+                {
                     "name": "minecraft:medium_amethyst_bud"
+                },
+                {
+                    "name": "minecraft:mob_spawner"
                 },
                 {
                     "name": "minecraft:mossy_cobblestone"
@@ -1120,6 +1964,9 @@
                     "name": "minecraft:mossy_cobblestone_slab"
                 },
                 {
+                    "name": "minecraft:mossy_cobblestone_stairs"
+                },
+                {
                     "name": "minecraft:mossy_cobblestone_wall"
                 },
                 {
@@ -1127,6 +1974,9 @@
                 },
                 {
                     "name": "minecraft:mossy_stone_brick_slab"
+                },
+                {
+                    "name": "minecraft:mossy_stone_brick_stairs"
                 },
                 {
                     "name": "minecraft:mossy_stone_brick_wall"
@@ -1150,10 +2000,19 @@
                     "name": "minecraft:mud_bricks"
                 },
                 {
+                    "name": "minecraft:nether_brick"
+                },
+                {
                     "name": "minecraft:nether_brick_double_slab"
                 },
                 {
+                    "name": "minecraft:nether_brick_fence"
+                },
+                {
                     "name": "minecraft:nether_brick_slab"
+                },
+                {
+                    "name": "minecraft:nether_brick_stairs"
                 },
                 {
                     "name": "minecraft:nether_brick_wall"
@@ -1165,10 +2024,22 @@
                     "name": "minecraft:netherite_block"
                 },
                 {
+                    "name": "minecraft:netherrack"
+                },
+                {
+                    "name": "minecraft:netherreactor"
+                },
+                {
                     "name": "minecraft:normal_stone_double_slab"
                 },
                 {
                     "name": "minecraft:normal_stone_slab"
+                },
+                {
+                    "name": "minecraft:normal_stone_stairs"
+                },
+                {
+                    "name": "minecraft:observer"
                 },
                 {
                     "name": "minecraft:obsidian"
@@ -1177,7 +2048,13 @@
                     "name": "minecraft:orange_concrete"
                 },
                 {
+                    "name": "minecraft:orange_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:orange_shulker_box"
+                },
+                {
+                    "name": "minecraft:orange_terracotta"
                 },
                 {
                     "name": "minecraft:oxidized_chiseled_copper"
@@ -1210,6 +2087,9 @@
                     "name": "minecraft:oxidized_double_cut_copper_slab"
                 },
                 {
+                    "name": "minecraft:packed_ice"
+                },
+                {
                     "name": "minecraft:packed_mud"
                 },
                 {
@@ -1222,7 +2102,13 @@
                     "name": "minecraft:pink_concrete"
                 },
                 {
+                    "name": "minecraft:pink_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:pink_shulker_box"
+                },
+                {
+                    "name": "minecraft:pink_terracotta"
                 },
                 {
                     "name": "minecraft:piston"
@@ -1243,6 +2129,63 @@
                     "name": "minecraft:polished_andesite_slab"
                 },
                 {
+                    "name": "minecraft:polished_andesite_stairs"
+                },
+                {
+                    "name": "minecraft:polished_basalt"
+                },
+                {
+                    "name": "minecraft:polished_blackstone"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_brick_double_slab"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_brick_slab"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_brick_stairs"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_brick_wall"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_bricks"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_button"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_double_slab"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_pressure_plate"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_slab"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_stairs"
+                },
+                {
+                    "name": "minecraft:polished_blackstone_wall"
+                },
+                {
+                    "name": "minecraft:polished_deepslate"
+                },
+                {
+                    "name": "minecraft:polished_deepslate_double_slab"
+                },
+                {
+                    "name": "minecraft:polished_deepslate_slab"
+                },
+                {
+                    "name": "minecraft:polished_deepslate_stairs"
+                },
+                {
+                    "name": "minecraft:polished_deepslate_wall"
+                },
+                {
                     "name": "minecraft:polished_diorite"
                 },
                 {
@@ -1250,6 +2193,9 @@
                 },
                 {
                     "name": "minecraft:polished_diorite_slab"
+                },
+                {
+                    "name": "minecraft:polished_diorite_stairs"
                 },
                 {
                     "name": "minecraft:polished_granite"
@@ -1261,10 +2207,37 @@
                     "name": "minecraft:polished_granite_slab"
                 },
                 {
+                    "name": "minecraft:polished_granite_stairs"
+                },
+                {
+                    "name": "minecraft:polished_tuff"
+                },
+                {
+                    "name": "minecraft:polished_tuff_double_slab"
+                },
+                {
+                    "name": "minecraft:polished_tuff_slab"
+                },
+                {
+                    "name": "minecraft:polished_tuff_stairs"
+                },
+                {
+                    "name": "minecraft:polished_tuff_wall"
+                },
+                {
+                    "name": "minecraft:prismarine"
+                },
+                {
                     "name": "minecraft:prismarine_brick_double_slab"
                 },
                 {
                     "name": "minecraft:prismarine_brick_slab"
+                },
+                {
+                    "name": "minecraft:prismarine_bricks"
+                },
+                {
+                    "name": "minecraft:prismarine_bricks_stairs"
                 },
                 {
                     "name": "minecraft:prismarine_double_slab"
@@ -1273,25 +2246,58 @@
                     "name": "minecraft:prismarine_slab"
                 },
                 {
+                    "name": "minecraft:prismarine_stairs"
+                },
+                {
                     "name": "minecraft:prismarine_wall"
                 },
                 {
                     "name": "minecraft:purple_concrete"
                 },
                 {
+                    "name": "minecraft:purple_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:purple_shulker_box"
+                },
+                {
+                    "name": "minecraft:purple_terracotta"
+                },
+                {
+                    "name": "minecraft:purpur_block"
                 },
                 {
                     "name": "minecraft:purpur_double_slab"
                 },
                 {
+                    "name": "minecraft:purpur_pillar"
+                },
+                {
                     "name": "minecraft:purpur_slab"
+                },
+                {
+                    "name": "minecraft:purpur_stairs"
+                },
+                {
+                    "name": "minecraft:quartz_block"
+                },
+                {
+                    "name": "minecraft:quartz_bricks"
                 },
                 {
                     "name": "minecraft:quartz_double_slab"
                 },
                 {
+                    "name": "minecraft:quartz_ore"
+                },
+                {
+                    "name": "minecraft:quartz_pillar"
+                },
+                {
                     "name": "minecraft:quartz_slab"
+                },
+                {
+                    "name": "minecraft:quartz_stairs"
                 },
                 {
                     "name": "minecraft:rail"
@@ -1309,13 +2315,25 @@
                     "name": "minecraft:red_concrete"
                 },
                 {
+                    "name": "minecraft:red_glazed_terracotta"
+                },
+                {
+                    "name": "minecraft:red_nether_brick"
+                },
+                {
                     "name": "minecraft:red_nether_brick_double_slab"
                 },
                 {
                     "name": "minecraft:red_nether_brick_slab"
                 },
                 {
+                    "name": "minecraft:red_nether_brick_stairs"
+                },
+                {
                     "name": "minecraft:red_nether_brick_wall"
+                },
+                {
+                    "name": "minecraft:red_sandstone"
                 },
                 {
                     "name": "minecraft:red_sandstone_double_slab"
@@ -1324,13 +2342,37 @@
                     "name": "minecraft:red_sandstone_slab"
                 },
                 {
+                    "name": "minecraft:red_sandstone_stairs"
+                },
+                {
                     "name": "minecraft:red_sandstone_wall"
                 },
                 {
                     "name": "minecraft:red_shulker_box"
                 },
                 {
+                    "name": "minecraft:red_terracotta"
+                },
+                {
+                    "name": "minecraft:redstone_block"
+                },
+                {
                     "name": "minecraft:redstone_ore"
+                },
+                {
+                    "name": "minecraft:resin_brick_double_slab"
+                },
+                {
+                    "name": "minecraft:resin_brick_slab"
+                },
+                {
+                    "name": "minecraft:resin_brick_stairs"
+                },
+                {
+                    "name": "minecraft:resin_brick_wall"
+                },
+                {
+                    "name": "minecraft:resin_bricks"
                 },
                 {
                     "name": "minecraft:respawn_anchor"
@@ -1345,13 +2387,25 @@
                     "name": "minecraft:sandstone_slab"
                 },
                 {
+                    "name": "minecraft:sandstone_stairs"
+                },
+                {
                     "name": "minecraft:sandstone_wall"
+                },
+                {
+                    "name": "minecraft:silver_glazed_terracotta"
                 },
                 {
                     "name": "minecraft:small_amethyst_bud"
                 },
                 {
+                    "name": "minecraft:smoker"
+                },
+                {
                     "name": "minecraft:smooth_basalt"
+                },
+                {
+                    "name": "minecraft:smooth_quartz"
                 },
                 {
                     "name": "minecraft:smooth_quartz_double_slab"
@@ -1360,10 +2414,19 @@
                     "name": "minecraft:smooth_quartz_slab"
                 },
                 {
+                    "name": "minecraft:smooth_quartz_stairs"
+                },
+                {
+                    "name": "minecraft:smooth_red_sandstone"
+                },
+                {
                     "name": "minecraft:smooth_red_sandstone_double_slab"
                 },
                 {
                     "name": "minecraft:smooth_red_sandstone_slab"
+                },
+                {
+                    "name": "minecraft:smooth_red_sandstone_stairs"
                 },
                 {
                     "name": "minecraft:smooth_sandstone"
@@ -1375,10 +2438,19 @@
                     "name": "minecraft:smooth_sandstone_slab"
                 },
                 {
+                    "name": "minecraft:smooth_sandstone_stairs"
+                },
+                {
+                    "name": "minecraft:smooth_stone"
+                },
+                {
                     "name": "minecraft:smooth_stone_double_slab"
                 },
                 {
                     "name": "minecraft:smooth_stone_slab"
+                },
+                {
+                    "name": "minecraft:soul_lantern"
                 },
                 {
                     "name": "minecraft:sticky_piston"
@@ -1396,10 +2468,67 @@
                     "name": "minecraft:stone_brick_slab"
                 },
                 {
+                    "name": "minecraft:stone_brick_stairs"
+                },
+                {
                     "name": "minecraft:stone_brick_wall"
                 },
                 {
+                    "name": "minecraft:stone_bricks"
+                },
+                {
+                    "name": "minecraft:stone_button"
+                },
+                {
+                    "name": "minecraft:stone_pressure_plate"
+                },
+                {
+                    "name": "minecraft:stone_stairs"
+                },
+                {
+                    "name": "minecraft:stonecutter"
+                },
+                {
+                    "name": "minecraft:stonecutter_block"
+                },
+                {
+                    "name": "minecraft:tube_coral_block"
+                },
+                {
                     "name": "minecraft:tuff"
+                },
+                {
+                    "name": "minecraft:tuff_brick_double_slab"
+                },
+                {
+                    "name": "minecraft:tuff_brick_slab"
+                },
+                {
+                    "name": "minecraft:tuff_brick_stairs"
+                },
+                {
+                    "name": "minecraft:tuff_brick_wall"
+                },
+                {
+                    "name": "minecraft:tuff_bricks"
+                },
+                {
+                    "name": "minecraft:tuff_double_slab"
+                },
+                {
+                    "name": "minecraft:tuff_slab"
+                },
+                {
+                    "name": "minecraft:tuff_stairs"
+                },
+                {
+                    "name": "minecraft:tuff_wall"
+                },
+                {
+                    "name": "minecraft:undyed_shulker_box"
+                },
+                {
+                    "name": "minecraft:warped_nylium"
                 },
                 {
                     "name": "minecraft:waxed_chiseled_copper"
@@ -1555,13 +2684,25 @@
                     "name": "minecraft:white_concrete"
                 },
                 {
+                    "name": "minecraft:white_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:white_shulker_box"
+                },
+                {
+                    "name": "minecraft:white_terracotta"
                 },
                 {
                     "name": "minecraft:yellow_concrete"
                 },
                 {
+                    "name": "minecraft:yellow_glazed_terracotta"
+                },
+                {
                     "name": "minecraft:yellow_shulker_box"
+                },
+                {
+                    "name": "minecraft:yellow_terracotta"
                 }
             ]
         },
@@ -1576,9 +2717,6 @@
         {
             "name": "minecraft:is_shovel_item_destructible",
             "items": [
-                {
-                    "name": "minecraft:bamboo"
-                },
                 {
                     "name": "minecraft:black_concrete_powder"
                 },
@@ -1664,6 +2802,12 @@
                     "name": "minecraft:sand"
                 },
                 {
+                    "name": "minecraft:snow"
+                },
+                {
+                    "name": "minecraft:snow_layer"
+                },
+                {
                     "name": "minecraft:soul_sand"
                 },
                 {
@@ -1701,10 +2845,16 @@
                     "name": "minecraft:copper_block"
                 },
                 {
+                    "name": "minecraft:copper_bulb"
+                },
+                {
+                    "name": "minecraft:copper_grate"
+                },
+                {
                     "name": "minecraft:copper_ore"
                 },
                 {
-                    "name": "minecraft:crafter"
+                    "name": "minecraft:copper_trapdoor"
                 },
                 {
                     "name": "minecraft:cut_copper"
@@ -1732,6 +2882,15 @@
                 },
                 {
                     "name": "minecraft:exposed_copper"
+                },
+                {
+                    "name": "minecraft:exposed_copper_bulb"
+                },
+                {
+                    "name": "minecraft:exposed_copper_grate"
+                },
+                {
+                    "name": "minecraft:exposed_copper_trapdoor"
                 },
                 {
                     "name": "minecraft:exposed_cut_copper"
@@ -1767,6 +2926,15 @@
                     "name": "minecraft:oxidized_copper"
                 },
                 {
+                    "name": "minecraft:oxidized_copper_bulb"
+                },
+                {
+                    "name": "minecraft:oxidized_copper_grate"
+                },
+                {
+                    "name": "minecraft:oxidized_copper_trapdoor"
+                },
+                {
                     "name": "minecraft:oxidized_cut_copper"
                 },
                 {
@@ -1791,6 +2959,15 @@
                     "name": "minecraft:waxed_copper"
                 },
                 {
+                    "name": "minecraft:waxed_copper_bulb"
+                },
+                {
+                    "name": "minecraft:waxed_copper_grate"
+                },
+                {
+                    "name": "minecraft:waxed_copper_trapdoor"
+                },
+                {
                     "name": "minecraft:waxed_cut_copper"
                 },
                 {
@@ -1807,6 +2984,15 @@
                 },
                 {
                     "name": "minecraft:waxed_exposed_copper"
+                },
+                {
+                    "name": "minecraft:waxed_exposed_copper_bulb"
+                },
+                {
+                    "name": "minecraft:waxed_exposed_copper_grate"
+                },
+                {
+                    "name": "minecraft:waxed_exposed_copper_trapdoor"
                 },
                 {
                     "name": "minecraft:waxed_exposed_cut_copper"
@@ -1827,6 +3013,15 @@
                     "name": "minecraft:waxed_oxidized_copper"
                 },
                 {
+                    "name": "minecraft:waxed_oxidized_copper_bulb"
+                },
+                {
+                    "name": "minecraft:waxed_oxidized_copper_grate"
+                },
+                {
+                    "name": "minecraft:waxed_oxidized_copper_trapdoor"
+                },
+                {
                     "name": "minecraft:waxed_oxidized_cut_copper"
                 },
                 {
@@ -1845,6 +3040,15 @@
                     "name": "minecraft:waxed_weathered_copper"
                 },
                 {
+                    "name": "minecraft:waxed_weathered_copper_bulb"
+                },
+                {
+                    "name": "minecraft:waxed_weathered_copper_grate"
+                },
+                {
+                    "name": "minecraft:waxed_weathered_copper_trapdoor"
+                },
+                {
                     "name": "minecraft:waxed_weathered_cut_copper"
                 },
                 {
@@ -1861,6 +3065,15 @@
                 },
                 {
                     "name": "minecraft:weathered_copper"
+                },
+                {
+                    "name": "minecraft:weathered_copper_bulb"
+                },
+                {
+                    "name": "minecraft:weathered_copper_grate"
+                },
+                {
+                    "name": "minecraft:weathered_copper_trapdoor"
                 },
                 {
                     "name": "minecraft:weathered_cut_copper"
@@ -2019,6 +3232,15 @@
                 },
                 {
                     "name": "minecraft:oxidized_copper_trapdoor"
+                },
+                {
+                    "name": "minecraft:pale_oak_door"
+                },
+                {
+                    "name": "minecraft:pale_oak_fence_gate"
+                },
+                {
+                    "name": "minecraft:pale_oak_trapdoor"
                 },
                 {
                     "name": "minecraft:spruce_door"
@@ -2564,6 +3786,15 @@
                     "name": "minecraft:oak_hanging_sign"
                 },
                 {
+                    "name": "minecraft:pale_oak_hanging_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_standing_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_wall_sign"
+                },
+                {
                     "name": "minecraft:spruce_hanging_sign"
                 },
                 {
@@ -2627,6 +3858,9 @@
                 },
                 {
                     "name": "minecraft:oxidized_copper_trapdoor"
+                },
+                {
+                    "name": "minecraft:pale_oak_trapdoor"
                 },
                 {
                     "name": "minecraft:spruce_trapdoor"
@@ -2963,6 +4197,33 @@
                     "name": "minecraft:oak_wood"
                 },
                 {
+                    "name": "minecraft:pale_oak_button"
+                },
+                {
+                    "name": "minecraft:pale_oak_fence_gate"
+                },
+                {
+                    "name": "minecraft:pale_oak_hanging_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_log"
+                },
+                {
+                    "name": "minecraft:pale_oak_pressure_plate"
+                },
+                {
+                    "name": "minecraft:pale_oak_standing_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_trapdoor"
+                },
+                {
+                    "name": "minecraft:pale_oak_wall_sign"
+                },
+                {
+                    "name": "minecraft:pale_oak_wood"
+                },
+                {
                     "name": "minecraft:smithing_table"
                 },
                 {
@@ -3056,6 +4317,12 @@
                     "name": "minecraft:stripped_oak_wood"
                 },
                 {
+                    "name": "minecraft:stripped_pale_oak_log"
+                },
+                {
+                    "name": "minecraft:stripped_pale_oak_wood"
+                },
+                {
                     "name": "minecraft:stripped_spruce_log"
                 },
                 {
@@ -3082,6 +4349,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.41-stable",
+    "minecraft_version": "1.21.50-stable",
     "name": "block-tags"
 }

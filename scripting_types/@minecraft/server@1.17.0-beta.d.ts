@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @alpha
+ * @beta
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "2.0.0-alpha"
+ *     "version": "1.17.0-beta"
  * }
  * ```
  */
@@ -254,6 +254,7 @@ export enum EntityDamageCause {
     stalagmite = "stalagmite",
     starve = "starve",
     suffocation = "suffocation",
+    suicide = "suicide",
     temperature = "temperature",
     thorns = "thorns",
     void = "void",
@@ -927,10 +928,8 @@ export class ButtonPushAfterEvent extends BlockEvent {
     readonly source: Entity;
 }
 
-export class ButtonPushAfterEventSignal {
+export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ButtonPushAfterEvent) => void): (arg: ButtonPushAfterEvent) => void;
-    unsubscribe(callback: (arg: ButtonPushAfterEvent) => void): void;
 }
 
 export class Camera {
@@ -1912,12 +1911,42 @@ export class GameRules {
     tntExplosionDropDecay: boolean;
 }
 
+export class IButtonPushAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: ButtonPushAfterEvent) => void): (arg: ButtonPushAfterEvent) => void;
+    unsubscribe(callback: (arg: ButtonPushAfterEvent) => void): void;
+}
+
+export class ILeverActionAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: LeverActionAfterEvent) => void): (arg: LeverActionAfterEvent) => void;
+    unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
+}
+
 export class InputInfo {
     private constructor();
     readonly lastInputModeUsed: InputMode;
     readonly touchOnlyAffectsHotbar: boolean;
     getButtonState(button: InputButton): ButtonState;
     getMovementVector(): Vector2;
+}
+
+export class IPlayerJoinAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerJoinAfterEvent) => void): void;
+}
+
+export class IPlayerLeaveAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: PlayerLeaveAfterEvent) => void): (arg: PlayerLeaveAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerLeaveAfterEvent) => void): void;
+}
+
+export class IPlayerSpawnAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: PlayerSpawnAfterEvent) => void): (arg: PlayerSpawnAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerSpawnAfterEvent) => void): void;
 }
 
 export class ItemCompleteUseAfterEvent {
@@ -2224,10 +2253,8 @@ export class LeverActionAfterEvent extends BlockEvent {
     readonly player: Player;
 }
 
-export class LeverActionAfterEventSignal {
+export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: LeverActionAfterEvent) => void): (arg: LeverActionAfterEvent) => void;
-    unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
 }
 
 export class ListBlockVolume extends BlockVolumeBase {
@@ -2241,6 +2268,10 @@ export class MessageReceiveAfterEvent {
     readonly id: string;
     readonly message: string;
     readonly player: Player;
+}
+
+export class MinecraftDimensionTypes {
+    private constructor();
 }
 
 export class MolangVariableMap {
@@ -2438,6 +2469,8 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
 
 export class PlayerInputPermissions {
     private constructor();
+    cameraEnabled: boolean;
+    movementEnabled: boolean;
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }
@@ -2516,10 +2549,8 @@ export class PlayerJoinAfterEvent {
     readonly playerName: string;
 }
 
-export class PlayerJoinAfterEventSignal {
+export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerJoinAfterEvent) => void): void;
 }
 
 export class PlayerLeaveAfterEvent {
@@ -2528,10 +2559,8 @@ export class PlayerLeaveAfterEvent {
     readonly playerName: string;
 }
 
-export class PlayerLeaveAfterEventSignal {
+export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerLeaveAfterEvent) => void): (arg: PlayerLeaveAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerLeaveAfterEvent) => void): void;
 }
 
 export class PlayerLeaveBeforeEvent {
@@ -2583,10 +2612,8 @@ export class PlayerSpawnAfterEvent {
     player: Player;
 }
 
-export class PlayerSpawnAfterEventSignal {
+export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerSpawnAfterEvent) => void): (arg: PlayerSpawnAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerSpawnAfterEvent) => void): void;
 }
 
 export class PotionEffectType {
@@ -2759,28 +2786,6 @@ export class ServerMessageAfterEventSignal {
     unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
 }
 
-export class ShutdownBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: ShutdownEvent) => void): (arg: ShutdownEvent) => void;
-    unsubscribe(callback: (arg: ShutdownEvent) => void): void;
-}
-
-export class ShutdownEvent {
-    private constructor();
-}
-
-export class StartupBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: StartupEvent) => void): (arg: StartupEvent) => void;
-    unsubscribe(callback: (arg: StartupEvent) => void): void;
-}
-
-export class StartupEvent {
-    private constructor();
-    readonly blockComponentRegistry: BlockComponentRegistry;
-    readonly itemComponentRegistry: ItemComponentRegistry;
-}
-
 export class Structure {
     private constructor();
     readonly id: string;
@@ -2845,8 +2850,6 @@ export class SystemAfterEvents {
 
 export class SystemBeforeEvents {
     private constructor();
-    readonly shutdown: ShutdownBeforeEventSignal;
-    readonly startup: StartupBeforeEventSignal;
     readonly watchdogTerminate: WatchdogTerminateBeforeEventSignal;
 }
 
@@ -2948,6 +2951,7 @@ export class World {
     getPlayers(options?: EntityQueryOptions): Player[];
     getTimeOfDay(): number;
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     setAbsoluteTime(absoluteTime: number): void;
@@ -3005,7 +3009,7 @@ export class WorldAfterEvents {
     readonly targetBlockHit: TargetBlockHitAfterEventSignal;
     readonly tripWireTrip: TripWireTripAfterEventSignal;
     readonly weatherChange: WeatherChangeAfterEventSignal;
-    readonly worldLoad: WorldLoadAfterEventSignal;
+    readonly worldInitialize: WorldInitializeAfterEventSignal;
 }
 
 export class WorldBeforeEvents {
@@ -3023,16 +3027,29 @@ export class WorldBeforeEvents {
     readonly playerLeave: PlayerLeaveBeforeEventSignal;
     readonly playerPlaceBlock: PlayerPlaceBlockBeforeEventSignal;
     readonly weatherChange: WeatherChangeBeforeEventSignal;
+    readonly worldInitialize: WorldInitializeBeforeEventSignal;
 }
 
-export class WorldLoadAfterEvent {
+export class WorldInitializeAfterEvent {
     private constructor();
 }
 
-export class WorldLoadAfterEventSignal {
+export class WorldInitializeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: WorldLoadAfterEvent) => void): (arg: WorldLoadAfterEvent) => void;
-    unsubscribe(callback: (arg: WorldLoadAfterEvent) => void): void;
+    subscribe(callback: (arg: WorldInitializeAfterEvent) => void): (arg: WorldInitializeAfterEvent) => void;
+    unsubscribe(callback: (arg: WorldInitializeAfterEvent) => void): void;
+}
+
+export class WorldInitializeBeforeEvent {
+    private constructor();
+    readonly blockComponentRegistry: BlockComponentRegistry;
+    readonly itemComponentRegistry: ItemComponentRegistry;
+}
+
+export class WorldInitializeBeforeEventSignal {
+    private constructor();
+    subscribe(callback: (arg: WorldInitializeBeforeEvent) => void): (arg: WorldInitializeBeforeEvent) => void;
+    unsubscribe(callback: (arg: WorldInitializeBeforeEvent) => void): void;
 }
 
 export interface BiomeSearchOptions {
@@ -3548,8 +3565,6 @@ export class UnloadedChunksError {
 
 export const HudElementsCount = 13;
 export const HudVisibilityCount = 2;
-export const isAlpha = true;
-export const isInternal = true;
 export const MoonPhaseCount = 8;
 export const TicksPerDay = 24000;
 export const TicksPerSecond = 20;

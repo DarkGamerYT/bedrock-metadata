@@ -8,7 +8,7 @@
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "1.16.0-internal"
+ *     "version": "1.17.0-internal"
  * }
  * ```
  */
@@ -32,6 +32,11 @@ export enum BlockVolumeIntersection {
     Disjoint = 0,
     Contains = 1,
     Intersects = 2,
+}
+
+export enum ButtonState {
+    Pressed = "Pressed",
+    Released = "Released",
 }
 
 export enum CompoundBlockVolumeAction {
@@ -349,12 +354,34 @@ export enum HudVisibility {
     Reset = 1,
 }
 
+export enum InputButton {
+    Jump = "Jump",
+    Sneak = "Sneak",
+}
+
+export enum InputMode {
+    Gamepad = "Gamepad",
+    KeyboardAndMouse = "KeyboardAndMouse",
+    MotionController = "MotionController",
+    Touch = "Touch",
+}
+
 export enum InputPermissionCategory {
     Camera = 1,
     Movement = 2,
+    LateralMovement = 4,
+    Sneak = 5,
+    Jump = 6,
+    Mount = 7,
+    Dismount = 8,
+    MoveForward = 9,
+    MoveBackward = 10,
+    MoveLeft = 11,
+    MoveRight = 12,
 }
 
 export enum ItemComponentTypes {
+    Compostable = "minecraft:compostable",
     Cooldown = "minecraft:cooldown",
     Durability = "minecraft:durability",
     Dyeable = "minecraft:dyeable",
@@ -370,12 +397,11 @@ export enum ItemLockMode {
 }
 
 export enum MemoryTier {
-    Undetermined = 0,
-    SuperLow = 1,
-    Low = 2,
-    Mid = 3,
-    High = 4,
-    SuperHigh = 5,
+    SuperLow = 0,
+    Low = 1,
+    Mid = 2,
+    High = 3,
+    SuperHigh = 4,
 }
 
 export enum MoonPhase {
@@ -483,42 +509,37 @@ export enum WeatherType {
 }
 
 export type BlockComponentTypeMap = {
+    fluidContainer: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     piston: BlockPistonComponent;
-    sign: BlockSignComponent;
-    fluidContainer: BlockFluidContainerComponent;
     record_player: BlockRecordPlayerComponent;
+    sign: BlockSignComponent;
+    "minecraft:fluidContainer": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
     "minecraft:piston": BlockPistonComponent;
-    "minecraft:sign": BlockSignComponent;
-    "minecraft:fluidContainer": BlockFluidContainerComponent;
     "minecraft:record_player": BlockRecordPlayerComponent;
+    "minecraft:sign": BlockSignComponent;
 }
 
 export type EntityComponentTypeMap = {
     addrider: EntityAddRiderComponent;
     ageable: EntityAgeableComponent;
     breathable: EntityBreathableComponent;
-    cursor_inventory: PlayerCursorInventoryComponent;
-    equippable: EntityEquippableComponent;
-    healable: EntityHealableComponent;
-    inventory: EntityInventoryComponent;
-    item: EntityItemComponent;
-    leashable: EntityLeashableComponent;
-    tamemount: EntityTameMountComponent;
-    npc: EntityNpcComponent;
-    onfire: EntityOnFireComponent;
-    projectile: EntityProjectileComponent;
-    rideable: EntityRideableComponent;
-    riding: EntityRidingComponent;
-    strength: EntityStrengthComponent;
-    tameable: EntityTameableComponent;
-    type_family: EntityTypeFamilyComponent;
     can_climb: EntityCanClimbComponent;
     can_fly: EntityCanFlyComponent;
     can_power_jump: EntityCanPowerJumpComponent;
+    color: EntityColorComponent;
+    color2: EntityColor2Component;
+    cursor_inventory: PlayerCursorInventoryComponent;
+    equippable: EntityEquippableComponent;
     fire_immune: EntityFireImmuneComponent;
     floats_in_liquid: EntityFloatsInLiquidComponent;
+    flying_speed: EntityFlyingSpeedComponent;
+    friction_modifier: EntityFrictionModifierComponent;
+    ground_offset: EntityGroundOffsetComponent;
+    healable: EntityHealableComponent;
+    health: EntityHealthComponent;
+    inventory: EntityInventoryComponent;
     is_baby: EntityIsBabyComponent;
     is_charged: EntityIsChargedComponent;
     is_chested: EntityIsChestedComponent;
@@ -532,22 +553,13 @@ export type EntityComponentTypeMap = {
     is_stackable: EntityIsStackableComponent;
     is_stunned: EntityIsStunnedComponent;
     is_tamed: EntityIsTamedComponent;
-    wants_jockey: EntityWantsJockeyComponent;
-    color: EntityColorComponent;
-    color2: EntityColor2Component;
-    flying_speed: EntityFlyingSpeedComponent;
-    friction_modifier: EntityFrictionModifierComponent;
-    ground_offset: EntityGroundOffsetComponent;
-    mark_variant: EntityMarkVariantComponent;
-    push_through: EntityPushThroughComponent;
-    scale: EntityScaleComponent;
-    skin_id: EntitySkinIdComponent;
-    variant: EntityVariantComponent;
-    health: EntityHealthComponent;
+    item: EntityItemComponent;
     lava_movement: EntityLavaMovementComponent;
+    leashable: EntityLeashableComponent;
+    mark_variant: EntityMarkVariantComponent;
+    movement: EntityMovementComponent;
     "movement.amphibious": EntityMovementAmphibiousComponent;
     "movement.basic": EntityMovementBasicComponent;
-    movement: EntityMovementComponent;
     "movement.fly": EntityMovementFlyComponent;
     "movement.generic": EntityMovementGenericComponent;
     "movement.glide": EntityMovementGlideComponent;
@@ -561,30 +573,39 @@ export type EntityComponentTypeMap = {
     "navigation.generic": EntityNavigationGenericComponent;
     "navigation.hover": EntityNavigationHoverComponent;
     "navigation.walk": EntityNavigationWalkComponent;
+    npc: EntityNpcComponent;
+    onfire: EntityOnFireComponent;
+    projectile: EntityProjectileComponent;
+    push_through: EntityPushThroughComponent;
+    rideable: EntityRideableComponent;
+    riding: EntityRidingComponent;
+    scale: EntityScaleComponent;
+    skin_id: EntitySkinIdComponent;
+    strength: EntityStrengthComponent;
+    tameable: EntityTameableComponent;
+    tamemount: EntityTameMountComponent;
+    type_family: EntityTypeFamilyComponent;
     underwater_movement: EntityUnderwaterMovementComponent;
+    variant: EntityVariantComponent;
+    wants_jockey: EntityWantsJockeyComponent;
     "minecraft:addrider": EntityAddRiderComponent;
     "minecraft:ageable": EntityAgeableComponent;
     "minecraft:breathable": EntityBreathableComponent;
-    "minecraft:cursor_inventory": PlayerCursorInventoryComponent;
-    "minecraft:equippable": EntityEquippableComponent;
-    "minecraft:healable": EntityHealableComponent;
-    "minecraft:inventory": EntityInventoryComponent;
-    "minecraft:item": EntityItemComponent;
-    "minecraft:leashable": EntityLeashableComponent;
-    "minecraft:tamemount": EntityTameMountComponent;
-    "minecraft:npc": EntityNpcComponent;
-    "minecraft:onfire": EntityOnFireComponent;
-    "minecraft:projectile": EntityProjectileComponent;
-    "minecraft:rideable": EntityRideableComponent;
-    "minecraft:riding": EntityRidingComponent;
-    "minecraft:strength": EntityStrengthComponent;
-    "minecraft:tameable": EntityTameableComponent;
-    "minecraft:type_family": EntityTypeFamilyComponent;
     "minecraft:can_climb": EntityCanClimbComponent;
     "minecraft:can_fly": EntityCanFlyComponent;
     "minecraft:can_power_jump": EntityCanPowerJumpComponent;
+    "minecraft:color": EntityColorComponent;
+    "minecraft:color2": EntityColor2Component;
+    "minecraft:cursor_inventory": PlayerCursorInventoryComponent;
+    "minecraft:equippable": EntityEquippableComponent;
     "minecraft:fire_immune": EntityFireImmuneComponent;
     "minecraft:floats_in_liquid": EntityFloatsInLiquidComponent;
+    "minecraft:flying_speed": EntityFlyingSpeedComponent;
+    "minecraft:friction_modifier": EntityFrictionModifierComponent;
+    "minecraft:ground_offset": EntityGroundOffsetComponent;
+    "minecraft:healable": EntityHealableComponent;
+    "minecraft:health": EntityHealthComponent;
+    "minecraft:inventory": EntityInventoryComponent;
     "minecraft:is_baby": EntityIsBabyComponent;
     "minecraft:is_charged": EntityIsChargedComponent;
     "minecraft:is_chested": EntityIsChestedComponent;
@@ -598,22 +619,13 @@ export type EntityComponentTypeMap = {
     "minecraft:is_stackable": EntityIsStackableComponent;
     "minecraft:is_stunned": EntityIsStunnedComponent;
     "minecraft:is_tamed": EntityIsTamedComponent;
-    "minecraft:wants_jockey": EntityWantsJockeyComponent;
-    "minecraft:color": EntityColorComponent;
-    "minecraft:color2": EntityColor2Component;
-    "minecraft:flying_speed": EntityFlyingSpeedComponent;
-    "minecraft:friction_modifier": EntityFrictionModifierComponent;
-    "minecraft:ground_offset": EntityGroundOffsetComponent;
-    "minecraft:mark_variant": EntityMarkVariantComponent;
-    "minecraft:push_through": EntityPushThroughComponent;
-    "minecraft:scale": EntityScaleComponent;
-    "minecraft:skin_id": EntitySkinIdComponent;
-    "minecraft:variant": EntityVariantComponent;
-    "minecraft:health": EntityHealthComponent;
+    "minecraft:item": EntityItemComponent;
     "minecraft:lava_movement": EntityLavaMovementComponent;
+    "minecraft:leashable": EntityLeashableComponent;
+    "minecraft:mark_variant": EntityMarkVariantComponent;
+    "minecraft:movement": EntityMovementComponent;
     "minecraft:movement.amphibious": EntityMovementAmphibiousComponent;
     "minecraft:movement.basic": EntityMovementBasicComponent;
-    "minecraft:movement": EntityMovementComponent;
     "minecraft:movement.fly": EntityMovementFlyComponent;
     "minecraft:movement.generic": EntityMovementGenericComponent;
     "minecraft:movement.glide": EntityMovementGlideComponent;
@@ -627,22 +639,38 @@ export type EntityComponentTypeMap = {
     "minecraft:navigation.generic": EntityNavigationGenericComponent;
     "minecraft:navigation.hover": EntityNavigationHoverComponent;
     "minecraft:navigation.walk": EntityNavigationWalkComponent;
+    "minecraft:npc": EntityNpcComponent;
+    "minecraft:onfire": EntityOnFireComponent;
+    "minecraft:projectile": EntityProjectileComponent;
+    "minecraft:push_through": EntityPushThroughComponent;
+    "minecraft:rideable": EntityRideableComponent;
+    "minecraft:riding": EntityRidingComponent;
+    "minecraft:scale": EntityScaleComponent;
+    "minecraft:skin_id": EntitySkinIdComponent;
+    "minecraft:strength": EntityStrengthComponent;
+    "minecraft:tameable": EntityTameableComponent;
+    "minecraft:tamemount": EntityTameMountComponent;
+    "minecraft:type_family": EntityTypeFamilyComponent;
     "minecraft:underwater_movement": EntityUnderwaterMovementComponent;
+    "minecraft:variant": EntityVariantComponent;
+    "minecraft:wants_jockey": EntityWantsJockeyComponent;
 }
 
 export type ItemComponentTypeMap = {
-    food: ItemFoodComponent;
-    durability: ItemDurabilityComponent;
-    enchantable: ItemEnchantableComponent;
+    compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
-    potion: ItemPotionComponent;
+    durability: ItemDurabilityComponent;
     dyeable: ItemDyeableComponent;
-    "minecraft:food": ItemFoodComponent;
-    "minecraft:durability": ItemDurabilityComponent;
-    "minecraft:enchantable": ItemEnchantableComponent;
+    enchantable: ItemEnchantableComponent;
+    food: ItemFoodComponent;
+    potion: ItemPotionComponent;
+    "minecraft:compostable": ItemCompostableComponent;
     "minecraft:cooldown": ItemCooldownComponent;
-    "minecraft:potion": ItemPotionComponent;
+    "minecraft:durability": ItemDurabilityComponent;
     "minecraft:dyeable": ItemDyeableComponent;
+    "minecraft:enchantable": ItemEnchantableComponent;
+    "minecraft:food": ItemFoodComponent;
+    "minecraft:potion": ItemPotionComponent;
 }
 
 export class BiomeType {
@@ -676,7 +704,7 @@ export class Block {
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     center(): Vector3;
     east(steps?: number): Block | undefined;
-    getComponent<T extends keyof BlockComponentTypeMap>(componentId: string): BlockComponentTypeMap[T] | undefined;
+    getComponent(componentId: string): BlockComponent | undefined;
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     getMapColor(): RGBA;
     getRedstonePower(): number | undefined;
@@ -916,7 +944,8 @@ export class Camera {
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
-            | CameraSetRotOptions,
+            | CameraSetRotOptions
+            | CameraTargetOptions,
     ): void;
 }
 
@@ -1179,7 +1208,7 @@ export class Entity {
     clearVelocity(): void;
     extinguishFire(useEffects?: boolean): boolean;
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
-    getComponent<T extends keyof EntityComponentTypeMap>(componentId: string): EntityComponentTypeMap[T] | undefined;
+    getComponent(componentId: string): EntityComponent | undefined;
     getComponents(): EntityComponent[];
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     getDynamicPropertyIds(): string[];
@@ -1197,6 +1226,7 @@ export class Entity {
     hasTag(tag: string): boolean;
     isValid(): boolean;
     kill(): boolean;
+    lookAt(targetLocation: Vector3): void;
     matches(options: EntityQueryOptions): boolean;
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     remove(): void;
@@ -1893,6 +1923,14 @@ export class ILeverActionAfterEventSignal {
     unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
 }
 
+export class InputInfo {
+    private constructor();
+    readonly lastInputModeUsed: InputMode;
+    readonly touchOnlyAffectsHotbar: boolean;
+    getButtonState(button: InputButton): ButtonState;
+    getMovementVector(): Vector2;
+}
+
 export class IPlayerJoinAfterEventSignal {
     private constructor();
     subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
@@ -1985,6 +2023,11 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
     readonly usedOnBlockPermutation: BlockPermutation;
 }
 
+export class ItemCompostableComponent extends ItemComponent {
+    private constructor();
+    readonly compostingChance: number;
+}
+
 export class ItemCooldownComponent extends ItemComponent {
     private constructor();
     readonly cooldownCategory: string;
@@ -2051,6 +2094,7 @@ export class ItemReleaseUseAfterEventSignal {
 
 export class ItemStack {
     amount: number;
+    readonly compostingChance: number;
     readonly isStackable: boolean;
     keepOnDeath: boolean;
     lockMode: ItemLockMode;
@@ -2063,7 +2107,7 @@ export class ItemStack {
     clone(): ItemStack;
     getCanDestroy(): string[];
     getCanPlaceOn(): string[];
-    getComponent<T extends keyof ItemComponentTypeMap>(componentId: string): ItemComponentTypeMap[T] | undefined;
+    getComponent(componentId: string): ItemComponent | undefined;
     getComponents(): ItemComponent[];
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     getDynamicPropertyIds(): string[];
@@ -2254,6 +2298,7 @@ export class Player extends Entity {
     private constructor();
     readonly camera: Camera;
     readonly clientSystemInfo: ClientSystemInfo;
+    readonly inputInfo: InputInfo;
     readonly inputPermissions: PlayerInputPermissions;
     readonly isEmoting: boolean;
     readonly isFlying: boolean;
@@ -2320,6 +2365,22 @@ export class PlayerBreakBlockBeforeEventSignal {
     unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
 }
 
+export class PlayerButtonInputAfterEvent {
+    private constructor();
+    readonly button: InputButton;
+    readonly newButtonState: ButtonState;
+    readonly player: Player;
+}
+
+export class PlayerButtonInputAfterEventSignal {
+    private constructor();
+    subscribe(
+        callback: (arg: PlayerButtonInputAfterEvent) => void,
+        options?: InputEventOptions,
+    ): (arg: PlayerButtonInputAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerButtonInputAfterEvent) => void): void;
+}
+
 export class PlayerCursorInventoryComponent extends EntityComponent {
     private constructor();
     readonly item?: ItemStack;
@@ -2380,6 +2441,19 @@ export class PlayerGameModeChangeBeforeEventSignal {
     unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
 }
 
+export class PlayerInputModeChangeAfterEvent {
+    private constructor();
+    readonly newInputModeUsed: InputMode;
+    readonly player: Player;
+    readonly previousInputModeUsed: InputMode;
+}
+
+export class PlayerInputModeChangeAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): (arg: PlayerInputModeChangeAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): void;
+}
+
 export class PlayerInputPermissionCategoryChangeAfterEvent {
     private constructor();
     readonly category: InputPermissionCategory;
@@ -2397,6 +2471,8 @@ export class PlayerInputPermissions {
     private constructor();
     cameraEnabled: boolean;
     movementEnabled: boolean;
+    isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
+    setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }
 
 export class PlayerInteractWithBlockAfterEvent {
@@ -2736,6 +2812,20 @@ export class StructureManager {
     get(identifier: string): Structure | undefined;
     getWorldStructureIds(): string[];
     place(structure: string | Structure, dimension: Dimension, location: Vector3, options?: StructurePlaceOptions): void;
+    placeJigsaw(
+        pool: string,
+        targetJigsaw: string,
+        maxDepth: number,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawPlaceOptions,
+    ): void;
+    placeJigsawStructure(
+        identifier: string,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawStructurePlaceOptions,
+    ): void;
 }
 
 export class System {
@@ -2900,9 +2990,11 @@ export class WorldAfterEvents {
     readonly messageReceive: ServerMessageAfterEventSignal;
     readonly pistonActivate: PistonActivateAfterEventSignal;
     readonly playerBreakBlock: PlayerBreakBlockAfterEventSignal;
+    readonly playerButtonInput: PlayerButtonInputAfterEventSignal;
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
+    readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
@@ -3039,6 +3131,7 @@ export interface CameraFadeTimeOptions {
 }
 
 export interface CameraFixedBoomOptions {
+    entityOffset?: Vector3;
     viewOffset?: Vector2;
 }
 
@@ -3063,6 +3156,11 @@ export interface CameraSetRotOptions {
     easeOptions?: CameraEaseOptions;
     location?: Vector3;
     rotation: Vector2;
+}
+
+export interface CameraTargetOptions {
+    offsetFromTargetCenter?: Vector3;
+    targetEntity: Entity;
 }
 
 export interface CompoundBlockVolumeItem {
@@ -3208,6 +3306,11 @@ export interface GreaterThanOrEqualsComparison {
     greaterThanOrEquals: number;
 }
 
+export interface InputEventOptions {
+    buttons?: InputButton[];
+    state?: ButtonState;
+}
+
 export interface ItemCustomComponent {
     onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
     onCompleteUse?: (arg: ItemComponentCompleteUseEvent) => void;
@@ -3216,6 +3319,15 @@ export interface ItemCustomComponent {
     onMineBlock?: (arg: ItemComponentMineBlockEvent) => void;
     onUse?: (arg: ItemComponentUseEvent) => void;
     onUseOn?: (arg: ItemComponentUseOnEvent) => void;
+}
+
+export interface JigsawPlaceOptions {
+    keepJigsaws?: boolean;
+}
+
+export interface JigsawStructurePlaceOptions {
+    ignoreStartHeight?: boolean;
+    keepJigsaws?: boolean;
 }
 
 export interface LessThanComparison {
@@ -3303,6 +3415,7 @@ export interface ScriptEventMessageFilterOptions {
 
 export interface SpawnEntityOptions {
     initialPersistence?: boolean;
+    initialRotation?: number;
 }
 
 export interface StructureCreateOptions {
@@ -3404,6 +3517,12 @@ export class InvalidContainerSlotError {
     private constructor();
 }
 
+export class InvalidEntityError {
+    private constructor();
+    readonly id: string;
+    readonly "type": string;
+}
+
 export class InvalidIteratorError {
     private constructor();
 }
@@ -3433,6 +3552,10 @@ export class LocationInUnloadedChunkError {
 }
 
 export class LocationOutOfWorldBoundariesError {
+    private constructor();
+}
+
+export class PlaceJigsawError {
     private constructor();
 }
 

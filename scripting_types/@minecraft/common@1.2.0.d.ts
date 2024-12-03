@@ -38,3 +38,7 @@ export class PropertyOutOfBoundsError {
     readonly minValue: number;
     readonly value: number;
 }
+
+export class RuntimeConditionError {
+    private constructor();
+}

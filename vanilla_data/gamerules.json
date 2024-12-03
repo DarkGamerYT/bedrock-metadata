@@ -186,6 +186,6 @@
             "default_value": false
         }
     ],
-    "minecraft_version": "1.21.41-stable",
+    "minecraft_version": "1.21.50-stable",
     "name": "gamerules"
 }
