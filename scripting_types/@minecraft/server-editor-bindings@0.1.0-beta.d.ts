@@ -104,6 +104,13 @@ export enum KeyInputType {
     Release = 2,
 }
 
+export enum MouseActionCategory {
+    Invalid = 0,
+    Button = 1,
+    Wheel = 2,
+    Drag = 3,
+}
+
 export enum PaintCompletionState {
     Success = 0,
     Canceled = 1,
@@ -576,7 +583,9 @@ export class InputService {
         modifier: InputModifier,
         info: InputBindingInfo,
     ): void;
+    registerMouseBinding(contextId: string, bindingId: string, mouseAction: MouseActionCategory): void;
     unregisterKeyBinding(controlId: string, bindingId: string): void;
+    unregisterMouseBinding(controlId: string, bindingId: string): void;
 }
 
 export class InternalPlayerServiceContext {

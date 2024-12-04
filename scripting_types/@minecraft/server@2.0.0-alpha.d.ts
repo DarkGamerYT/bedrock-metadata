@@ -395,6 +395,10 @@ export enum ItemLockMode {
     slot = "slot",
 }
 
+export enum LiquidType {
+    Water = "Water",
+}
+
 export enum MemoryTier {
     SuperLow = 0,
     Low = 1,
@@ -412,6 +416,11 @@ export enum MoonPhase {
     WaxingCrescent = 5,
     LastQuarter = 6,
     WaxingGibbous = 7,
+}
+
+export enum NamespaceNameErrorReason {
+    DisallowedNamespace = "DisallowedNamespace",
+    NoNamespace = "NoNamespace",
 }
 
 export enum ObjectiveSortOrder {
@@ -700,6 +709,8 @@ export class Block {
     above(steps?: number): Block | undefined;
     below(steps?: number): Block | undefined;
     bottomCenter(): Vector3;
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    canContainLiquid(liquidType: LiquidType): boolean;
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     center(): Vector3;
     east(steps?: number): Block | undefined;
@@ -709,7 +720,10 @@ export class Block {
     getRedstonePower(): number | undefined;
     getTags(): string[];
     hasTag(tag: string): boolean;
+    isLiquidBlocking(liquidType: LiquidType): boolean;
     isValid(): boolean;
+    liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     north(steps?: number): Block | undefined;
     offset(offset: Vector3): Block | undefined;
@@ -823,11 +837,15 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 export class BlockPermutation {
     private constructor();
     readonly "type": BlockType;
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    canContainLiquid(liquidType: LiquidType): boolean;
     getAllStates(): Record<string, boolean | number | string>;
     getItemStack(amount?: number): ItemStack | undefined;
     getState(stateName: string): boolean | number | string | undefined;
     getTags(): string[];
     hasTag(tag: string): boolean;
+    isLiquidBlocking(liquidType: LiquidType): boolean;
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     withState(name: string, value: boolean | number | string): BlockPermutation;
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
@@ -1056,6 +1074,7 @@ export class ContainerSlot {
     isValid(): boolean;
     setCanDestroy(blockIdentifiers?: string[]): void;
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     setItem(itemStack?: ItemStack): void;
     setLore(loreList?: string[]): void;
@@ -1236,6 +1255,7 @@ export class Entity {
     resetProperty(identifier: string): boolean | number | string;
     runCommand(commandString: string): CommandResult;
     runCommandAsync(commandString: string): Promise<CommandResult>;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     setProperty(identifier: string, value: boolean | number | string): void;
@@ -2090,6 +2110,7 @@ export class ItemStack {
     matches(itemName: string, states?: Record<string, boolean | number | string>): boolean;
     setCanDestroy(blockIdentifiers?: string[]): void;
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     setLore(loreList?: string[]): void;
     static createPotion(options: PotionOptions): ItemStack;
@@ -2834,6 +2855,7 @@ export class System {
     runInterval(callback: () => void, tickInterval?: number): number;
     runJob(generator: Generator<void, void, void>): number;
     runTimeout(callback: () => void, tickDelay?: number): number;
+    scriptEvent(id: string, message: string): void;
     waitTicks(ticks: number): Promise<void>;
 }
 
@@ -2951,6 +2973,7 @@ export class World {
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     setAbsoluteTime(absoluteTime: number): void;
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
+    setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     setTimeOfDay(timeOfDay: number | TimeOfDay): void;
     stopMusic(): void;
@@ -3304,11 +3327,13 @@ export interface ItemCustomComponent {
 }
 
 export interface JigsawPlaceOptions {
+    includeEntities?: boolean;
     keepJigsaws?: boolean;
 }
 
 export interface JigsawStructurePlaceOptions {
     ignoreStartHeight?: boolean;
+    includeEntities?: boolean;
     keepJigsaws?: boolean;
 }
 
@@ -3535,6 +3560,11 @@ export class LocationInUnloadedChunkError {
 
 export class LocationOutOfWorldBoundariesError {
     private constructor();
+}
+
+export class NamespaceNameError {
+    private constructor();
+    readonly reason: NamespaceNameErrorReason;
 }
 
 export class PlaceJigsawError {

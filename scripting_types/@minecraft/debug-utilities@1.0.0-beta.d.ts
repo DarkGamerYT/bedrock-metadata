@@ -13,6 +13,17 @@
  * ```
  */
 import * as minecraftcommon from "@minecraft/common";
+export interface handleCounts {
+    handleCounts: Record<string, number>;
+    name: string;
+    packId: string;
+    scriptModuleUUID: string;
+}
+
+export interface PluginStats {
+    plugins: handleCounts[];
+}
+
 export interface RuntimeStats {
     arrayCount: number;
     atomCount: number;
@@ -35,5 +46,6 @@ export interface RuntimeStats {
     stringSize: number;
 }
 
+export function collectPluginStats(): PluginStats;
 export function collectRuntimeStats(): RuntimeStats;
 export function disableWatchdogTimingWarnings(disable: boolean): void;

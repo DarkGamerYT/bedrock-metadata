@@ -329,6 +329,13 @@ export enum HudVisibility {
     Reset = 1,
 }
 
+export enum InputMode {
+    Gamepad = "Gamepad",
+    KeyboardAndMouse = "KeyboardAndMouse",
+    MotionController = "MotionController",
+    Touch = "Touch",
+}
+
 export enum InputPermissionCategory {
     Camera = 1,
     Movement = 2,
@@ -468,6 +475,7 @@ export class Block {
     readonly dimension: Dimension;
     readonly isAir: boolean;
     readonly isLiquid: boolean;
+    readonly isWaterlogged: boolean;
     readonly location: Vector3;
     readonly permutation: BlockPermutation;
     readonly "type": BlockType;
@@ -491,6 +499,7 @@ export class Block {
     offset(offset: Vector3): Block | undefined;
     setPermutation(permutation: BlockPermutation): void;
     setType(blockType: BlockType | string): void;
+    setWaterlogged(isWaterlogged: boolean): void;
     south(steps?: number): Block | undefined;
     west(steps?: number): Block | undefined;
 }
@@ -1597,6 +1606,12 @@ export class ILeverActionAfterEventSignal {
     unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
 }
 
+export class InputInfo {
+    private constructor();
+    readonly lastInputModeUsed: InputMode;
+    readonly touchOnlyAffectsHotbar: boolean;
+}
+
 export class IPlayerJoinAfterEventSignal {
     private constructor();
     subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
@@ -1937,6 +1952,7 @@ export class Player extends Entity {
     private constructor();
     readonly camera: Camera;
     readonly clientSystemInfo: ClientSystemInfo;
+    readonly inputInfo: InputInfo;
     readonly inputPermissions: PlayerInputPermissions;
     readonly isEmoting: boolean;
     readonly isFlying: boolean;
@@ -2056,6 +2072,19 @@ export class PlayerGameModeChangeBeforeEventSignal {
     private constructor();
     subscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): (arg: PlayerGameModeChangeBeforeEvent) => void;
     unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
+}
+
+export class PlayerInputModeChangeAfterEvent {
+    private constructor();
+    readonly newInputModeUsed: InputMode;
+    readonly player: Player;
+    readonly previousInputModeUsed: InputMode;
+}
+
+export class PlayerInputModeChangeAfterEventSignal {
+    private constructor();
+    subscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): (arg: PlayerInputModeChangeAfterEvent) => void;
+    unsubscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): void;
 }
 
 export class PlayerInputPermissionCategoryChangeAfterEvent {
@@ -2510,6 +2539,7 @@ export class WorldAfterEvents {
     readonly playerDimensionChange: PlayerDimensionChangeAfterEventSignal;
     readonly playerEmote: PlayerEmoteAfterEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeAfterEventSignal;
+    readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
     readonly playerInputPermissionCategoryChange: PlayerInputPermissionCategoryChangeAfterEventSignal;
     readonly playerInteractWithBlock: PlayerInteractWithBlockAfterEventSignal;
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
@@ -2977,6 +3007,12 @@ export class EnchantmentTypeUnknownIdError {
 
 export class InvalidContainerSlotError {
     private constructor();
+}
+
+export class InvalidEntityError {
+    private constructor();
+    readonly id: string;
+    readonly "type": string;
 }
 
 export class InvalidIteratorError {
