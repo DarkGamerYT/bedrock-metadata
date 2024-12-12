@@ -2198,7 +2198,7 @@ export class Structure {
     isValid(): boolean;
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
     saveToWorld(): void;
-    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation): void;
+    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
 }
 
 export class StructureManager {

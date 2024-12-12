@@ -894,7 +894,6 @@ export class BlockStateType {
 
 export class BlockType {
     private constructor();
-    readonly canBeWaterlogged: boolean;
     readonly id: string;
 }
 
@@ -2810,7 +2809,7 @@ export class Structure {
     isValid(): boolean;
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
     saveToWorld(): void;
-    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation): void;
+    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
 }
 
 export class StructureManager {
@@ -3568,6 +3567,10 @@ export class NamespaceNameError {
 }
 
 export class PlaceJigsawError {
+    private constructor();
+}
+
+export class ScriptEventMessageSizeError {
     private constructor();
 }
 
