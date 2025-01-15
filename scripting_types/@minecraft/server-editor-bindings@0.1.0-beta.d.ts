@@ -84,6 +84,7 @@ export enum GamePublishSetting {
 }
 
 export enum GraphicsSettingsProperty {
+    NightVision = "NightVision",
     ShowChunkBoundaries = "ShowChunkBoundaries",
     ShowCompass = "ShowCompass",
     ShowInvisibleBlocks = "ShowInvisibleBlocks",
@@ -397,6 +398,7 @@ export class Cursor {
 
 export class CursorPropertiesChangeAfterEvent {
     private constructor();
+    readonly position?: CursorPosition;
     readonly properties: CursorProperties;
 }
 
@@ -980,6 +982,11 @@ export interface ClipboardWriteOptions {
     normalizedOrigin?: minecraftserver.Vector3;
     offset?: minecraftserver.Vector3;
     rotation?: minecraftserver.StructureRotation;
+}
+
+export interface CursorPosition {
+    FaceDirection: number;
+    Position: minecraftserver.Vector3;
 }
 
 export interface CursorProperties {

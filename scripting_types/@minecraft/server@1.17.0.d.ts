@@ -351,6 +351,7 @@ export enum InputPermissionCategory {
 }
 
 export enum ItemComponentTypes {
+    Compostable = "minecraft:compostable",
     Cooldown = "minecraft:cooldown",
     Durability = "minecraft:durability",
     Enchantable = "minecraft:enchantable",
@@ -708,7 +709,8 @@ export class Camera {
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
-            | CameraSetRotOptions,
+            | CameraSetRotOptions
+            | CameraTargetOptions,
     ): void;
 }
 
@@ -1704,6 +1706,11 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
     readonly usedOnBlockPermutation: BlockPermutation;
 }
 
+export class ItemCompostableComponent extends ItemComponent {
+    private constructor();
+    readonly compostingChance: number;
+}
+
 export class ItemCooldownComponent extends ItemComponent {
     private constructor();
     readonly cooldownCategory: string;
@@ -2685,6 +2692,11 @@ export interface CameraSetRotOptions {
     easeOptions?: CameraEaseOptions;
     location?: Vector3;
     rotation: Vector2;
+}
+
+export interface CameraTargetOptions {
+    offsetFromTargetCenter?: Vector3;
+    targetEntity: Entity;
 }
 
 export interface DefinitionModifier {

@@ -13,6 +13,11 @@
  * ```
  */
 import * as minecraftcommon from "@minecraft/common";
+export enum AimAssistTargetMode {
+    Angle = "Angle",
+    Distance = "Distance",
+}
+
 export enum BlockComponentTypes {
     FluidContainer = "minecraft:fluidContainer",
     Inventory = "minecraft:inventory",
@@ -681,6 +686,59 @@ export type ItemComponentTypeMap = {
     "minecraft:potion": ItemPotionComponent;
 }
 
+export class AimAssistCategory {
+    private constructor();
+    readonly defaultBlockPriority: number;
+    readonly defaultEntityPriority: number;
+    readonly identifier: string;
+    getBlockPriorities(): Record<string, number>;
+    getEntityPriorities(): Record<string, number>;
+}
+
+export class AimAssistCategorySettings {
+    defaultBlockPriority: number;
+    defaultEntityPriority: number;
+    readonly identifier: string;
+    constructor(identifier: string);
+    getBlockPriorities(): Record<string, number>;
+    getEntityPriorities(): Record<string, number>;
+    setBlockPriorities(blockPriorities: Record<string, number>): void;
+    setEntityPriorities(entityPriorities: Record<string, number>): void;
+}
+
+export class AimAssistPreset {
+    private constructor();
+    readonly defaultItemSettings?: string;
+    readonly handSettings?: string;
+    readonly identifier: string;
+    getExcludedTargets(): string[];
+    getItemSettings(): Record<string, string>;
+    getLiquidTargetingItems(): string[];
+}
+
+export class AimAssistPresetSettings {
+    defaultItemSettings?: string;
+    handSettings?: string;
+    readonly identifier: string;
+    constructor(identifier: string);
+    getExcludedTargets(): string[] | undefined;
+    getItemSettings(): Record<string, string>;
+    getLiquidTargetingItems(): string[] | undefined;
+    setExcludedTargets(targets?: string[]): void;
+    setItemSettings(itemSettings: Record<string, string>): void;
+    setLiquidTargetingItems(items?: string[]): void;
+}
+
+export class AimAssistRegistry {
+    private constructor();
+    addCategory(category: AimAssistCategorySettings): AimAssistCategory;
+    addPreset(preset: AimAssistPresetSettings): AimAssistPreset;
+    getCategories(): AimAssistCategory[];
+    getCategory(categoryId: string): AimAssistCategory | undefined;
+    getPreset(presetId: string): AimAssistPreset | undefined;
+    getPresets(): AimAssistPreset[];
+}
+
 export class BiomeType {
     private constructor();
     readonly id: string;
@@ -698,6 +756,7 @@ export class Block {
     readonly isAir: boolean;
     readonly isLiquid: boolean;
     readonly isSolid: boolean;
+    readonly isValid: boolean;
     readonly isWaterlogged: boolean;
     readonly location: Vector3;
     readonly permutation: BlockPermutation;
@@ -721,7 +780,6 @@ export class Block {
     getTags(): string[];
     hasTag(tag: string): boolean;
     isLiquidBlocking(liquidType: LiquidType): boolean;
-    isValid(): boolean;
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
@@ -1007,8 +1065,8 @@ export class CommandResult {
 
 export class Component {
     private constructor();
+    readonly isValid: boolean;
     readonly typeId: string;
-    isValid(): boolean;
 }
 
 export class CompoundBlockVolume {
@@ -1036,12 +1094,12 @@ export class CompoundBlockVolume {
 export class Container {
     private constructor();
     readonly emptySlotsCount: number;
+    readonly isValid: boolean;
     readonly size: number;
     addItem(itemStack: ItemStack): ItemStack | undefined;
     clearAll(): void;
     getItem(slot: number): ItemStack | undefined;
     getSlot(slot: number): ContainerSlot;
-    isValid(): boolean;
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     setItem(slot: number, itemStack?: ItemStack): void;
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
@@ -1052,6 +1110,7 @@ export class ContainerSlot {
     private constructor();
     amount: number;
     readonly isStackable: boolean;
+    readonly isValid: boolean;
     keepOnDeath: boolean;
     lockMode: ItemLockMode;
     readonly maxAmount: number;
@@ -1070,7 +1129,6 @@ export class ContainerSlot {
     hasItem(): boolean;
     hasTag(tag: string): boolean;
     isStackableWith(itemStack: ItemStack): boolean;
-    isValid(): boolean;
     setCanDestroy(blockIdentifiers?: string[]): void;
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
@@ -1145,8 +1203,8 @@ export class Effect {
     readonly amplifier: number;
     readonly displayName: string;
     readonly duration: number;
+    readonly isValid: boolean;
     readonly typeId: string;
-    isValid(): boolean;
 }
 
 export class EffectAddAfterEvent {
@@ -1213,6 +1271,7 @@ export class Entity {
     isSneaking: boolean;
     readonly isSprinting: boolean;
     readonly isSwimming: boolean;
+    readonly isValid: boolean;
     readonly location: Vector3;
     nameTag: string;
     readonly scoreboardIdentity?: ScoreboardIdentity;
@@ -1222,7 +1281,7 @@ export class Entity {
     addTag(tag: string): boolean;
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     applyImpulse(vector: Vector3): void;
-    applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+    applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     clearDynamicProperties(): void;
     clearVelocity(): void;
     extinguishFire(useEffects?: boolean): boolean;
@@ -1243,7 +1302,6 @@ export class Entity {
     getViewDirection(): Vector3;
     hasComponent(componentId: string): boolean;
     hasTag(tag: string): boolean;
-    isValid(): boolean;
     kill(): boolean;
     lookAt(targetLocation: Vector3): void;
     matches(options: EntityQueryOptions): boolean;
@@ -2301,6 +2359,7 @@ export class Player extends Entity {
     addExperience(amount: number): number;
     addLevels(amount: number): number;
     eatItem(itemStack: ItemStack): void;
+    getAimAssist(): PlayerAimAssist;
     getGameMode(): GameMode;
     getItemCooldown(cooldownCategory: string): number;
     getSpawnPoint(): DimensionLocation | undefined;
@@ -2318,6 +2377,12 @@ export class Player extends Entity {
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     stopMusic(): void;
+}
+
+export class PlayerAimAssist {
+    private constructor();
+    readonly settings?: PlayerAimAssistSettings;
+    set(settings?: PlayerAimAssistSettings): void;
 }
 
 export class PlayerBreakBlockAfterEvent extends BlockEvent {
@@ -2706,21 +2771,21 @@ export class ScoreboardIdentity {
     private constructor();
     readonly displayName: string;
     readonly id: number;
+    readonly isValid: boolean;
     readonly "type": ScoreboardIdentityType;
     getEntity(): Entity | undefined;
-    isValid(): boolean;
 }
 
 export class ScoreboardObjective {
     private constructor();
     readonly displayName: string;
     readonly id: string;
+    readonly isValid: boolean;
     addScore(participant: Entity | ScoreboardIdentity | string, scoreToAdd: number): number;
     getParticipants(): ScoreboardIdentity[];
     getScore(participant: Entity | ScoreboardIdentity | string): number | undefined;
     getScores(): ScoreboardScoreInfo[];
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
-    isValid(): boolean;
     removeParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     setScore(participant: Entity | ScoreboardIdentity | string, score: number): void;
 }
@@ -2733,10 +2798,10 @@ export class ScoreboardScoreInfo {
 
 export class ScreenDisplay {
     private constructor();
+    readonly isValid: boolean;
     getHiddenHudElements(): HudElement[];
     hideAllExcept(hudElements?: HudElement[]): void;
     isForcedHidden(hudElement: HudElement): boolean;
-    isValid(): boolean;
     resetHudElements(): void;
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
@@ -2803,10 +2868,10 @@ export class StartupEvent {
 export class Structure {
     private constructor();
     readonly id: string;
+    readonly isValid: boolean;
     readonly size: Vector3;
     getBlockPermutation(location: Vector3): BlockPermutation | undefined;
     getIsWaterlogged(location: Vector3): boolean;
-    isValid(): boolean;
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
     saveToWorld(): void;
     setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
@@ -2956,6 +3021,7 @@ export class World {
     broadcastClientMessage(id: string, value: string): void;
     clearDynamicProperties(): void;
     getAbsoluteTime(): number;
+    getAimAssist(): AimAssistRegistry;
     getAllPlayers(): Player[];
     getDay(): number;
     getDefaultSpawnLocation(): Vector3;
@@ -3362,6 +3428,13 @@ export interface PlayAnimationOptions {
     stopExpression?: string;
 }
 
+export interface PlayerAimAssistSettings {
+    distance?: number;
+    presetId: string;
+    targetMode?: AimAssistTargetMode;
+    viewAngle?: Vector2;
+}
+
 export interface PlayerSoundOptions {
     location?: Vector3;
     pitch?: number;
@@ -3567,10 +3640,6 @@ export class NamespaceNameError {
 }
 
 export class PlaceJigsawError {
-    private constructor();
-}
-
-export class ScriptEventMessageSizeError {
     private constructor();
 }
 

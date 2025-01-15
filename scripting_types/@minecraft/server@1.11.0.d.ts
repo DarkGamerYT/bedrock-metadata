@@ -540,7 +540,8 @@ export class Camera {
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
-            | CameraSetRotOptions,
+            | CameraSetRotOptions
+            | CameraTargetOptions,
     ): void;
 }
 
@@ -2217,6 +2218,11 @@ export interface CameraSetRotOptions {
     easeOptions?: CameraEaseOptions;
     location?: Vector3;
     rotation: Vector2;
+}
+
+export interface CameraTargetOptions {
+    offsetFromTargetCenter?: Vector3;
+    targetEntity: Entity;
 }
 
 export interface DefinitionModifier {

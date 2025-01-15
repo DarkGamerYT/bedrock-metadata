@@ -1,0 +1,170 @@
+{
+    "data_items": [
+        {
+            "name": "aqua_affinity",
+            "max_level": 1
+        },
+        {
+            "name": "bane_of_arthropods",
+            "max_level": 5
+        },
+        {
+            "name": "binding",
+            "max_level": 1
+        },
+        {
+            "name": "blast_protection",
+            "max_level": 4
+        },
+        {
+            "name": "breach",
+            "max_level": 4
+        },
+        {
+            "name": "channeling",
+            "max_level": 1
+        },
+        {
+            "name": "density",
+            "max_level": 5
+        },
+        {
+            "name": "depth_strider",
+            "max_level": 3
+        },
+        {
+            "name": "efficiency",
+            "max_level": 5
+        },
+        {
+            "name": "feather_falling",
+            "max_level": 4
+        },
+        {
+            "name": "fire_aspect",
+            "max_level": 2
+        },
+        {
+            "name": "fire_protection",
+            "max_level": 4
+        },
+        {
+            "name": "flame",
+            "max_level": 1
+        },
+        {
+            "name": "fortune",
+            "max_level": 3
+        },
+        {
+            "name": "frost_walker",
+            "max_level": 2
+        },
+        {
+            "name": "impaling",
+            "max_level": 5
+        },
+        {
+            "name": "infinity",
+            "max_level": 1
+        },
+        {
+            "name": "knockback",
+            "max_level": 2
+        },
+        {
+            "name": "looting",
+            "max_level": 3
+        },
+        {
+            "name": "loyalty",
+            "max_level": 3
+        },
+        {
+            "name": "luck_of_the_sea",
+            "max_level": 3
+        },
+        {
+            "name": "lure",
+            "max_level": 3
+        },
+        {
+            "name": "mending",
+            "max_level": 1
+        },
+        {
+            "name": "multishot",
+            "max_level": 1
+        },
+        {
+            "name": "piercing",
+            "max_level": 4
+        },
+        {
+            "name": "power",
+            "max_level": 5
+        },
+        {
+            "name": "projectile_protection",
+            "max_level": 4
+        },
+        {
+            "name": "protection",
+            "max_level": 4
+        },
+        {
+            "name": "punch",
+            "max_level": 2
+        },
+        {
+            "name": "quick_charge",
+            "max_level": 3
+        },
+        {
+            "name": "respiration",
+            "max_level": 3
+        },
+        {
+            "name": "riptide",
+            "max_level": 3
+        },
+        {
+            "name": "sharpness",
+            "max_level": 5
+        },
+        {
+            "name": "silk_touch",
+            "max_level": 1
+        },
+        {
+            "name": "smite",
+            "max_level": 5
+        },
+        {
+            "name": "soul_speed",
+            "max_level": 3
+        },
+        {
+            "name": "swift_sneak",
+            "max_level": 3
+        },
+        {
+            "name": "thorns",
+            "max_level": 3
+        },
+        {
+            "name": "unbreaking",
+            "max_level": 3
+        },
+        {
+            "name": "vanishing",
+            "max_level": 1
+        },
+        {
+            "name": "wind_burst",
+            "max_level": 3
+        }
+    ],
+    "minecraft_version": "1.21.60-preview.27",
+    "name": "enchantments"
+}

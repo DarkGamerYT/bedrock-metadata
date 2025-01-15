@@ -13,6 +13,11 @@
  * ```
  */
 import * as minecraftcommon from "@minecraft/common";
+export enum AimAssistTargetMode {
+    Angle = "Angle",
+    Distance = "Distance",
+}
+
 export enum BlockComponentTypes {
     FluidContainer = "minecraft:fluidContainer",
     Inventory = "minecraft:inventory",
@@ -680,6 +685,72 @@ export type ItemComponentTypeMap = {
     "minecraft:enchantable": ItemEnchantableComponent;
     "minecraft:food": ItemFoodComponent;
     "minecraft:potion": ItemPotionComponent;
+}
+
+export class AimAssistCategory {
+    private constructor();
+    readonly defaultBlockPriority: number;
+    readonly defaultEntityPriority: number;
+    readonly identifier: string;
+    getBlockPriorities(): Record<string, number>;
+    getEntityPriorities(): Record<string, number>;
+}
+
+export class AimAssistCategorySettings {
+    defaultBlockPriority: number;
+    defaultEntityPriority: number;
+    readonly identifier: string;
+    constructor(identifier: string);
+    getBlockPriorities(): Record<string, number>;
+    getEntityPriorities(): Record<string, number>;
+    setBlockPriorities(blockPriorities: Record<string, number>): void;
+    setEntityPriorities(entityPriorities: Record<string, number>): void;
+}
+
+export class AimAssistPreset {
+    private constructor();
+    readonly defaultItemSettings?: string;
+    readonly handSettings?: string;
+    readonly identifier: string;
+    getExcludedTargets(): string[];
+    getItemSettings(): Record<string, string>;
+    getLiquidTargetingItems(): string[];
+}
+
+export class AimAssistPresetSettings {
+    defaultItemSettings?: string;
+    handSettings?: string;
+    readonly identifier: string;
+    constructor(identifier: string);
+    getExcludedTargets(): string[] | undefined;
+    getItemSettings(): Record<string, string>;
+    getLiquidTargetingItems(): string[] | undefined;
+    setExcludedTargets(targets?: string[]): void;
+    setItemSettings(itemSettings: Record<string, string>): void;
+    setLiquidTargetingItems(items?: string[]): void;
+}
+
+export class AimAssistRegistry {
+    private constructor();
+    addCategory(category: AimAssistCategorySettings): AimAssistCategory;
+    addPreset(preset: AimAssistPresetSettings): AimAssistPreset;
+    getCategories(): AimAssistCategory[];
+    getCategory(categoryId: string): AimAssistCategory | undefined;
+    getPreset(presetId: string): AimAssistPreset | undefined;
+    getPresets(): AimAssistPreset[];
+}
+
+export class AsyncPlayerJoinBeforeEvent {
+    private constructor();
+    readonly id: string;
+    disconnect(reason?: string): void;
+    isValid(): boolean;
+}
+
+export class AsyncPlayerJoinBeforeEventSignal {
+    private constructor();
+    subscribe(callback: (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>): (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>;
+    unsubscribe(callback: (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>): void;
 }
 
 export class BiomeType {
@@ -2332,6 +2403,7 @@ export class Player extends Entity {
     addExperience(amount: number): number;
     addLevels(amount: number): number;
     eatItem(itemStack: ItemStack): void;
+    getAimAssist(): PlayerAimAssist;
     getGameMode(): GameMode;
     getItemCooldown(cooldownCategory: string): number;
     getSpawnPoint(): DimensionLocation | undefined;
@@ -2349,6 +2421,12 @@ export class Player extends Entity {
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     stopMusic(): void;
+}
+
+export class PlayerAimAssist {
+    private constructor();
+    readonly settings?: PlayerAimAssistSettings;
+    set(settings?: PlayerAimAssistSettings): void;
 }
 
 export class PlayerBreakBlockAfterEvent extends BlockEvent {
@@ -2970,6 +3048,7 @@ export class World {
     broadcastClientMessage(id: string, value: string): void;
     clearDynamicProperties(): void;
     getAbsoluteTime(): number;
+    getAimAssist(): AimAssistRegistry;
     getAllPlayers(): Player[];
     getDay(): number;
     getDefaultSpawnLocation(): Vector3;
@@ -3046,6 +3125,7 @@ export class WorldAfterEvents {
 
 export class WorldBeforeEvents {
     private constructor();
+    readonly asyncPlayerJoin: AsyncPlayerJoinBeforeEventSignal;
     readonly chatSend: ChatSendBeforeEventSignal;
     readonly effectAdd: EffectAddBeforeEventSignal;
     readonly entityRemove: EntityRemoveBeforeEventSignal;
@@ -3390,6 +3470,13 @@ export interface PlayAnimationOptions {
     stopExpression?: string;
 }
 
+export interface PlayerAimAssistSettings {
+    distance?: number;
+    presetId: string;
+    targetMode?: AimAssistTargetMode;
+    viewAngle?: Vector2;
+}
+
 export interface PlayerSoundOptions {
     location?: Vector3;
     pitch?: number;
@@ -3535,6 +3622,11 @@ export class CustomComponentNameError {
     readonly reason: CustomComponentNameErrorReason;
 }
 
+export class DisconnectedError {
+    private constructor();
+    readonly id: string;
+}
+
 export class EnchantmentLevelOutOfBoundsError {
     private constructor();
 }
@@ -3595,10 +3687,6 @@ export class NamespaceNameError {
 }
 
 export class PlaceJigsawError {
-    private constructor();
-}
-
-export class ScriptEventMessageSizeError {
     private constructor();
 }
 
