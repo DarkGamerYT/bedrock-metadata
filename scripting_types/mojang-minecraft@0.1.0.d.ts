@@ -1161,9 +1161,9 @@ export class Trigger {
 }
 
 export class Vector {
-    x: number;
-    y: number;
-    z: number;
+    readonly x: number;
+    readonly y: number;
+    readonly z: number;
     constructor(x: number, y: number, z: number);
     equals(other: Vector): boolean;
     length(): number;

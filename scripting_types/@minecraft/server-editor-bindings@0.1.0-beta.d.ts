@@ -578,6 +578,7 @@ export class IBlockPaletteItem {
 export class InputService {
     private constructor();
     focusViewport(): void;
+    getKeyBindingProcessingState(contextId: string, bindingId: string): number | undefined;
     registerKeyBinding(
         contextId: string,
         bindingId: string,
@@ -586,8 +587,9 @@ export class InputService {
         info: InputBindingInfo,
     ): void;
     registerMouseBinding(contextId: string, bindingId: string, mouseAction: MouseActionCategory): void;
-    unregisterKeyBinding(controlId: string, bindingId: string): void;
-    unregisterMouseBinding(controlId: string, bindingId: string): void;
+    unregisterKeyBinding(contextId: string, bindingId: string): void;
+    unregisterMouseBinding(contextId: string, bindingId: string): void;
+    updateKeyBindingProcessingState(contextId: string, bindingId: string, state?: number): void;
 }
 
 export class InternalPlayerServiceContext {

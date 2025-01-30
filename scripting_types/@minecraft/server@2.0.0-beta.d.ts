@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @alpha
+ * @beta
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "2.0.0-alpha"
+ *     "version": "2.0.0-beta"
  * }
  * ```
  */
@@ -273,6 +273,39 @@ export enum EntityInitializationCause {
     Transformed = "Transformed",
 }
 
+export enum EntitySpawnCategory {
+    Ambient = "Ambient",
+    Axolotls = "Axolotls",
+    Creature = "Creature",
+    Misc = "Misc",
+    Monster = "Monster",
+    UndergroundWaterCreature = "UndergroundWaterCreature",
+    WaterAmbient = "WaterAmbient",
+    WaterCreature = "WaterCreature",
+}
+
+export enum EntitySpawnReason {
+    Breeding = "Breeding",
+    Bucket = "Bucket",
+    ChunkGeneration = "ChunkGeneration",
+    Command = "Command",
+    Conversion = "Conversion",
+    DimensionTravel = "DimensionTravel",
+    Dispenser = "Dispenser",
+    Event = "Event",
+    Jockey = "Jockey",
+    Load = "Load",
+    MobSummoned = "MobSummoned",
+    Natural = "Natural",
+    Patrol = "Patrol",
+    Reinforcement = "Reinforcement",
+    SpawnEgg = "SpawnEgg",
+    Spawner = "Spawner",
+    Structure = "Structure",
+    TrialSpawner = "TrialSpawner",
+    Triggered = "Triggered",
+}
+
 export enum EquipmentSlot {
     Body = "Body",
     Chest = "Chest",
@@ -335,6 +368,13 @@ export enum GameRule {
     SpawnRadius = "spawnRadius",
     TntExplodes = "tntExplodes",
     TntExplosionDropDecay = "tntExplosionDropDecay",
+}
+
+export enum GraphicsMode {
+    Deferred = "Deferred",
+    Fancy = "Fancy",
+    RayTraced = "RayTraced",
+    Simple = "Simple",
 }
 
 export enum HudElement {
@@ -510,6 +550,15 @@ export enum TimeOfDay {
     Sunrise = 23000,
 }
 
+export enum TintMethod {
+    BirchFoliage = "BirchFoliage",
+    DefaultFoliage = "DefaultFoliage",
+    EvergreenFoliage = "EvergreenFoliage",
+    Grass = "Grass",
+    None = "None",
+    Water = "Water",
+}
+
 export enum WatchdogTerminateReason {
     Hang = "Hang",
     StackOverflow = "StackOverflow",
@@ -524,11 +573,13 @@ export enum WeatherType {
 export type BlockComponentTypeMap = {
     fluidContainer: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
+    map_color: BlockMapColorComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
     "minecraft:fluidContainer": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
+    "minecraft:map_color": BlockMapColorComponent;
     "minecraft:piston": BlockPistonComponent;
     "minecraft:record_player": BlockRecordPlayerComponent;
     "minecraft:sign": BlockSignComponent;
@@ -890,6 +941,14 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     private constructor();
     [Symbol.iterator](): Iterator<Vector3>;
     next(): IteratorResult<Vector3>;
+    isValid(): boolean;
+}
+
+export class BlockMapColorComponent extends BlockComponent {
+    private constructor();
+    color(): RGBA;
+    tintedColor(): RGBA;
+    tintMethod(): TintMethod;
 }
 
 export class BlockPermutation {
@@ -1010,6 +1069,7 @@ export class ButtonPushAfterEventSignal {
 
 export class Camera {
     private constructor();
+    readonly isValid: boolean;
     clear(): void;
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     setCamera(
@@ -1176,13 +1236,14 @@ export class Dimension {
     getPlayers(options?: EntityQueryOptions): Player[];
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
     getWeather(): WeatherType;
+    placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
+    placeFeatureRule(featureRuleName: string, location: Vector3): boolean;
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     runCommand(commandString: string): CommandResult;
-    runCommandAsync(commandString: string): Promise<CommandResult>;
     setBlockPermutation(location: Vector3, permutation: BlockPermutation): void;
     setBlockType(location: Vector3, blockType: BlockType | string): void;
     setWeather(weatherType: WeatherType, duration?: number): void;
-    spawnEntity(identifier: string, location: Vector3, options?: SpawnEntityOptions): Entity;
+    spawnEntity(identifier: EntityType | string, location: Vector3, options?: SpawnEntityOptions): Entity;
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
 }
@@ -1311,7 +1372,6 @@ export class Entity {
     removeTag(tag: string): boolean;
     resetProperty(identifier: string): boolean | number | string;
     runCommand(commandString: string): CommandResult;
-    runCommandAsync(commandString: string): Promise<CommandResult>;
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     setOnFire(seconds: number, useEffects?: boolean): boolean;
@@ -1526,7 +1586,7 @@ export class EntityInventoryComponent extends EntityComponent {
     private constructor();
     readonly additionalSlotsPerStrength: number;
     readonly canBeSiphonedFrom: boolean;
-    readonly container?: Container;
+    readonly container: Container;
     readonly containerType: string;
     readonly inventorySize: number;
     readonly "private": boolean;
@@ -1824,6 +1884,25 @@ export class EntitySpawnAfterEventSignal {
     private constructor();
     subscribe(callback: (arg: EntitySpawnAfterEvent) => void): (arg: EntitySpawnAfterEvent) => void;
     unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
+}
+
+export class EntitySpawnCallbackArgs {
+    private constructor();
+    readonly dimensionLocation: DimensionLocation;
+    readonly spawnReason: EntitySpawnReason;
+    readonly spawnType: EntitySpawnType;
+}
+
+export class EntitySpawnType {
+    private constructor();
+    readonly entityId: string;
+    readonly height: number;
+    readonly isImmuneFire: boolean;
+    readonly isSummonable: boolean;
+    readonly spawnCategory: EntitySpawnCategory;
+    readonly width: number;
+    getSpawnAABB(position: Vector3): BoundingBox;
+    isBlockDangerous(block: Block): boolean;
 }
 
 export class EntityStrengthComponent extends EntityComponent {
@@ -2328,6 +2407,13 @@ export class MolangVariableMap {
     setVector3(variableName: string, vector: Vector3): void;
 }
 
+export class ObstructionCallbackArgs {
+    private constructor();
+    readonly dimension: Dimension;
+    readonly entity: Entity;
+    readonly spawnType: EntitySpawnType;
+}
+
 export class PistonActivateAfterEvent extends BlockEvent {
     private constructor();
     readonly isExpanding: boolean;
@@ -2344,6 +2430,7 @@ export class Player extends Entity {
     private constructor();
     readonly camera: Camera;
     readonly clientSystemInfo: ClientSystemInfo;
+    readonly graphicsMode: GraphicsMode;
     readonly inputInfo: InputInfo;
     readonly inputPermissions: PlayerInputPermissions;
     readonly isEmoting: boolean;
@@ -2853,6 +2940,12 @@ export class ShutdownEvent {
     private constructor();
 }
 
+export class SpawnRulesRegistry {
+    private constructor();
+    registerEntitySpawnCallback(id: string, callback: (arg: EntitySpawnCallbackArgs) => boolean): void;
+    registerObstructionCallback(id: string, callback: (arg: ObstructionCallbackArgs) => boolean): void;
+}
+
 export class StartupBeforeEventSignal {
     private constructor();
     subscribe(callback: (arg: StartupEvent) => void): (arg: StartupEvent) => void;
@@ -2863,6 +2956,7 @@ export class StartupEvent {
     private constructor();
     readonly blockComponentRegistry: BlockComponentRegistry;
     readonly itemComponentRegistry: ItemComponentRegistry;
+    getSpawnRulesRegistry(): SpawnRulesRegistry;
 }
 
 export class Structure {
@@ -2912,6 +3006,7 @@ export class System {
     readonly afterEvents: SystemAfterEvents;
     readonly beforeEvents: SystemBeforeEvents;
     readonly currentTick: number;
+    readonly isEditorWorld: boolean;
     readonly serverSystemInfo: SystemInfo;
     clearJob(jobId: number): void;
     clearRun(runId: number): void;
@@ -2919,7 +3014,7 @@ export class System {
     runInterval(callback: () => void, tickInterval?: number): number;
     runJob(generator: Generator<void, void, void>): number;
     runTimeout(callback: () => void, tickDelay?: number): number;
-    scriptEvent(id: string, message: string): void;
+    sendScriptEvent(id: string, message: string): void;
     waitTicks(ticks: number): Promise<void>;
 }
 
@@ -3643,14 +3738,16 @@ export class PlaceJigsawError {
     private constructor();
 }
 
+export class SpawnRulesInvalidRegistryError {
+    private constructor();
+}
+
 export class UnloadedChunksError {
     private constructor();
 }
 
 export const HudElementsCount = 13;
 export const HudVisibilityCount = 2;
-export const isAlpha = true;
-export const isInternal = true;
 export const MoonPhaseCount = 8;
 export const TicksPerDay = 24000;
 export const TicksPerSecond = 20;

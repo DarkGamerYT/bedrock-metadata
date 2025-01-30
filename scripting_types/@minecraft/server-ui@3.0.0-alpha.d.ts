@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @internal
+ * @alpha
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server-ui",
- *     "version": "1.4.0-internal"
+ *     "version": "3.0.0-alpha"
  * }
  * ```
  */
@@ -95,4 +95,5 @@ export class FormRejectError {
     readonly reason: FormRejectReason;
 }
 
+export const isAlpha = true;
 export const uiManager: UIManager;
