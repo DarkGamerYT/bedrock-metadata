@@ -22,17 +22,37 @@ export enum GameMode {
 export class Block {
     private constructor();
     readonly dimension: Dimension;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly location: Vector3;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly permutation: BlockPermutation;
     readonly x: number;
     readonly y: number;
     readonly z: number;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setPermutation(permutation: BlockPermutation): void;
 }
 
 export class BlockPermutation {
     private constructor();
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
 
@@ -44,23 +64,57 @@ export class CommandResult {
 export class Dimension {
     private constructor();
     readonly id: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getBlock(location: Vector3): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getEntities(options?: EntityQueryOptions): Entity[];
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
+    /**
+     * @throws This function can throw errors.
+     */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @throws This function can throw errors.
+     */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
 
 export class Entity {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly dimension: Dimension;
     readonly id: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly location: Vector3;
     nameTag: string;
     readonly typeId: string;
+    /**
+     * @throws This function can throw errors.
+     */
     getHeadLocation(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getVelocity(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getViewDirection(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
 
@@ -71,7 +125,13 @@ export class MinecraftDimensionTypes {
 // @ts-ignore
 export class Player extends Entity {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly name: string;
+    /**
+     * @throws This function can throw errors.
+     */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
 }
 
@@ -86,9 +146,21 @@ export class System {
 
 export class World {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     getAllPlayers(): Player[];
+    /**
+     * @throws This function can throw errors.
+     */
     getDimension(dimensionId: string): Dimension;
+    /**
+     * @throws This function can throw errors.
+     */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @throws This function can throw errors.
+     */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
 }
 

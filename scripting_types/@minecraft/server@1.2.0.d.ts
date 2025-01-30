@@ -63,11 +63,28 @@ export enum ItemLockMode {
 export class Block {
     private constructor();
     readonly dimension: Dimension;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly location: Vector3;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly permutation: BlockPermutation;
     readonly x: number;
     readonly y: number;
     readonly z: number;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setPermutation(permutation: BlockPermutation): void;
 }
 
@@ -79,12 +96,18 @@ export class BlockComponent extends Component {
 // @ts-ignore
 export class BlockInventoryComponent extends BlockComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly container?: Container;
 }
 
 export class BlockPermutation {
     private constructor();
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
 
@@ -100,57 +123,160 @@ export class Component {
 
 export class Container {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly emptySlotsCount: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly size: number;
+    /**
+     * @throws This function can throw errors.
+     */
     addItem(itemStack: ItemStack): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     clearAll(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     getItem(slot: number): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setItem(slot: number, itemStack?: ItemStack): void;
+    /**
+     * @throws This function can throw errors.
+     */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
+    /**
+     * @throws This function can throw errors.
+     */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
 
 export class Dimension {
     private constructor();
     readonly id: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getBlock(location: Vector3): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getEntities(options?: EntityQueryOptions): Entity[];
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
+    /**
+     * @throws This function can throw errors.
+     */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     */
     runCommand(commandString: string): CommandResult;
+    /**
+     * @throws This function can throw errors.
+     */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
 
 export class Entity {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly dimension: Dimension;
     readonly id: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly location: Vector3;
     nameTag: string;
     readonly typeId: string;
+    /**
+     * @throws This function can throw errors.
+     */
     addTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     applyImpulse(vector: Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
+    /**
+     * @throws This function can throw errors.
+     */
     clearVelocity(): void;
     getComponent(componentId: string): EntityComponent | undefined;
     getComponents(): EntityComponent[];
+    /**
+     * @throws This function can throw errors.
+     */
     getHeadLocation(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getTags(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     getVelocity(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getViewDirection(): Vector3;
     hasComponent(componentId: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     hasTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     kill(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     removeTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link Error}
+     */
     runCommand(commandString: string): CommandResult;
+    /**
+     * @throws This function can throw errors.
+     */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
 
 // @ts-ignore
 export class EntityBaseMovementComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly maxTurn: number;
 }
 
@@ -211,12 +337,30 @@ export class EntityGroundOffsetComponent extends EntityComponent {
 // @ts-ignore
 export class EntityInventoryComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly additionalSlotsPerStrength: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canBeSiphonedFrom: boolean;
     readonly container?: Container;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly containerType: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly inventorySize: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly "private": boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly restrictToOwner: boolean;
 }
 
@@ -288,6 +432,9 @@ export class EntityIsTamedComponent extends EntityComponent {
 // @ts-ignore
 export class EntityItemComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly itemStack: ItemStack;
 }
 
@@ -353,6 +500,9 @@ export class EntitySkinIdComponent extends EntityComponent {
 // @ts-ignore
 export class EntityVariantComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly value: number;
 }
 
@@ -375,7 +525,10 @@ export class ItemStack {
     readonly nameTag?: string;
     readonly "type": ItemType;
     readonly typeId: string;
-    constructor(itemType: ItemType | string, amount?: number);
+    /**
+ * @throws This function can throw errors.
+ */
+constructor(itemType: ItemType | string, amount?: number);
     getComponent(componentId: string): ItemComponent | undefined;
     getComponents(): ItemComponent[];
     hasComponent(componentId: string): boolean;
@@ -394,8 +547,17 @@ export class MinecraftDimensionTypes {
 // @ts-ignore
 export class Player extends Entity {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly name: string;
+    /**
+     * @throws This function can throw errors.
+     */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
 }
 
@@ -410,12 +572,33 @@ export class System {
 
 export class World {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     getAllPlayers(): Player[];
+    /**
+     * @throws This function can throw errors.
+     */
     getDimension(dimensionId: string): Dimension;
+    /**
+     * @throws This function can throw errors.
+     */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @throws This function can throw errors.
+     */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     stopMusic(): void;
 }

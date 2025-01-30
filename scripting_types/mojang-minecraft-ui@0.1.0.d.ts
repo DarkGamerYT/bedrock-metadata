@@ -16,6 +16,9 @@ import * as mojangminecraft from "mojang-minecraft";
 export class ActionFormData {
     body(bodyText: string): ActionFormData;
     button(text: string, iconPath?: string): ActionFormData;
+    /**
+     * @throws This function can throw errors.
+     */
     show(player: mojangminecraft.Player): Promise<ActionFormResponse>;
     title(titleText: string): ActionFormData;
 }
@@ -35,6 +38,9 @@ export class MessageFormData {
     body(bodyText: string): MessageFormData;
     button1(text: string): MessageFormData;
     button2(text: string): MessageFormData;
+    /**
+     * @throws This function can throw errors.
+     */
     show(player: mojangminecraft.Player): Promise<MessageFormResponse>;
     title(titleText: string): MessageFormData;
 }
@@ -48,6 +54,9 @@ export class MessageFormResponse extends FormResponse {
 export class ModalFormData {
     dropdown(label: string, options: string[], defaultValueIndex?: number): ModalFormData;
     icon(iconPath: string): ModalFormData;
+    /**
+     * @throws This function can throw errors.
+     */
     show(player: mojangminecraft.Player): Promise<ModalFormResponse>;
     slider(
         label: string,

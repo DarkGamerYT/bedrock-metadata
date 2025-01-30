@@ -20,6 +20,9 @@ export class CommandResult {
 export class Dimension {
     private constructor();
     readonly id: string;
+    /**
+     * @throws This function can throw errors.
+     */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
 
@@ -27,6 +30,9 @@ export class Entity {
     private constructor();
     readonly id: string;
     readonly typeId: string;
+    /**
+     * @throws This function can throw errors.
+     */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
 
@@ -37,6 +43,9 @@ export class MinecraftDimensionTypes {
 // @ts-ignore
 export class Player extends Entity {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly name: string;
 }
 
@@ -47,7 +56,13 @@ export class System {
 
 export class World {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     getAllPlayers(): Player[];
+    /**
+     * @throws This function can throw errors.
+     */
     getDimension(dimensionId: string): Dimension;
 }
 

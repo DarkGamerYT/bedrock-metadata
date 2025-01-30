@@ -739,10 +739,30 @@ export type ItemComponentTypeMap = {
 
 export class AimAssistCategory {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
     readonly defaultBlockPriority: number;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
     readonly defaultEntityPriority: number;
     readonly identifier: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getBlockPriorities(): Record<string, number>;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getEntityPriorities(): Record<string, number>;
 }
 
@@ -759,11 +779,36 @@ export class AimAssistCategorySettings {
 
 export class AimAssistPreset {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
     readonly defaultItemSettings?: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
     readonly handSettings?: string;
     readonly identifier: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getExcludedTargets(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getItemSettings(): Record<string, string>;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getLiquidTargetingItems(): string[];
 }
 
@@ -782,7 +827,29 @@ export class AimAssistPresetSettings {
 
 export class AimAssistRegistry {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     */
     addCategory(category: AimAssistCategorySettings): AimAssistCategory;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     */
     addPreset(preset: AimAssistPresetSettings): AimAssistPreset;
     getCategories(): AimAssistCategory[];
     getCategory(categoryId: string): AimAssistCategory | undefined;
@@ -793,6 +860,11 @@ export class AimAssistRegistry {
 export class AsyncPlayerJoinBeforeEvent {
     private constructor();
     readonly id: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link DisconnectedError}
+     */
     disconnect(reason?: string): void;
     isValid(): boolean;
 }
@@ -817,43 +889,279 @@ export class BiomeTypes {
 export class Block {
     private constructor();
     readonly dimension: Dimension;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly isAir: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly isLiquid: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly isSolid: boolean;
     readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly isWaterlogged: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly location: Vector3;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly permutation: BlockPermutation;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly "type": BlockType;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     readonly typeId: string;
     readonly x: number;
     readonly y: number;
     readonly z: number;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     above(steps?: number): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     below(steps?: number): Block | undefined;
     bottomCenter(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     canContainLiquid(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     canPlace(blockToPlace: BlockPermutation | BlockType | string, faceToPlaceOn?: Direction): boolean;
     center(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     east(steps?: number): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getComponent(componentId: string): BlockComponent | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getMapColor(): RGBA;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getRedstonePower(): number | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getTags(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     hasTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     isLiquidBlocking(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     north(steps?: number): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     offset(offset: Vector3): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setPermutation(permutation: BlockPermutation): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setType(blockType: BlockType | string): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setWaterlogged(isWaterlogged: boolean): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     south(steps?: number): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     trySetPermutation(permutation: BlockPermutation): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     west(steps?: number): Block | undefined;
 }
 
@@ -907,6 +1215,23 @@ export class BlockComponentRandomTickEvent extends BlockEvent {
 
 export class BlockComponentRegistry {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link BlockCustomComponentAlreadyRegisteredError}
+     *
+     * {@link BlockCustomComponentReloadNewComponentError}
+     *
+     * {@link BlockCustomComponentReloadNewEventError}
+     *
+     * {@link BlockCustomComponentReloadVersionError}
+     *
+     * {@link CustomComponentInvalidRegistryError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
     registerCustomComponent(name: string, customComponent: BlockCustomComponent): void;
 }
 
@@ -951,15 +1276,38 @@ export class BlockFluidContainerComponent extends BlockComponent {
     private constructor();
     fillLevel: number;
     fluidColor: RGBA;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     addDye(dye: ItemType): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getFluidType(): FluidType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     setFluidType(fluidType: FluidType): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     setPotion(itemStack: ItemStack): void;
 }
 
 // @ts-ignore
 export class BlockInventoryComponent extends BlockComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly container?: Container;
 }
 
@@ -967,63 +1315,155 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     private constructor();
     [Symbol.iterator](): Iterator<Vector3>;
     next(): IteratorResult<Vector3>;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
     isValid(): boolean;
 }
 
 // @ts-ignore
 export class BlockMapColorComponent extends BlockComponent {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     color(): RGBA;
     tintedColor(): RGBA;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     tintMethod(): TintMethod;
 }
 
 export class BlockPermutation {
     private constructor();
     readonly "type": BlockType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     canContainLiquid(liquidType: LiquidType): boolean;
     getAllStates(): Record<string, boolean | number | string>;
     getItemStack(amount?: number): ItemStack | undefined;
     getState(stateName: string): boolean | number | string | undefined;
     getTags(): string[];
     hasTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     isLiquidBlocking(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     withState(name: string, value: boolean | number | string): BlockPermutation;
+    /**
+     * @throws This function can throw errors.
+     */
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
 
 // @ts-ignore
 export class BlockPistonComponent extends BlockComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isMoving: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly state: BlockPistonState;
+    /**
+     * @throws This function can throw errors.
+     */
     getAttachedBlocks(): Block[];
+    /**
+     * @throws This function can throw errors.
+     */
     getAttachedBlocksLocations(): Vector3[];
 }
 
 // @ts-ignore
 export class BlockRecordPlayerComponent extends BlockComponent {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     ejectRecord(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     getRecord(): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     isPlaying(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     pauseRecord(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     playRecord(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;
 }
 
 // @ts-ignore
 export class BlockSignComponent extends BlockComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isWaxed: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     getRawText(side?: SignSide): RawText | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getText(side?: SignSide): string | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getTextDyeColor(side?: SignSide): DyeColor | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     setText(message: RawMessage | RawText | string, side?: SignSide): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setTextDyeColor(color?: DyeColor, side?: SignSide): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setWaxed(waxed: boolean): void;
 }
 
@@ -1063,9 +1503,18 @@ export class BlockVolume extends BlockVolumeBase {
 export class BlockVolumeBase {
     private constructor();
     getBlockLocationIterator(): BlockLocationIterator;
+    /**
+     * @throws This function can throw errors.
+     */
     getBoundingBox(): BoundingBox;
     getCapacity(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     getMax(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getMin(): Vector3;
     getSpan(): Vector3;
     isInside(location: Vector3): boolean;
@@ -1102,8 +1551,17 @@ export class ButtonPushAfterEventSignal {
 export class Camera {
     private constructor();
     readonly isValid: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     clear(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setCamera(
         cameraPreset: string,
         setOptions?: 
@@ -1186,47 +1644,199 @@ export class CompoundBlockVolume {
 
 export class Container {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly emptySlotsCount: number;
     readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly size: number;
+    /**
+     * @throws This function can throw errors.
+     */
     addItem(itemStack: ItemStack): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     clearAll(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     getItem(slot: number): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getSlot(slot: number): ContainerSlot;
+    /**
+     * @throws This function can throw errors.
+     */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setItem(slot: number, itemStack?: ItemStack): void;
+    /**
+     * @throws This function can throw errors.
+     */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
+    /**
+     * @throws This function can throw errors.
+     */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
 
 export class ContainerSlot {
     private constructor();
     amount: number;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     readonly isStackable: boolean;
     readonly isValid: boolean;
     keepOnDeath: boolean;
     lockMode: ItemLockMode;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     readonly maxAmount: number;
     nameTag?: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidContainerSlotError}
+     */
     readonly "type": ItemType;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     readonly typeId: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     clearDynamicProperties(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getCanDestroy(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getCanPlaceOn(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getDynamicPropertyIds(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getDynamicPropertyTotalByteCount(): number;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getItem(): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getLore(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getTags(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     hasItem(): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     hasTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     isStackableWith(itemStack: ItemStack): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
+     */
     setCanDestroy(blockIdentifiers?: string[]): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
+     */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
+     */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
+     */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     setItem(itemStack?: ItemStack): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidContainerSlotError}
+     */
     setLore(loreList?: string[]): void;
 }
 
@@ -1248,36 +1858,168 @@ export class DataDrivenEntityTriggerAfterEventSignal {
 
 export class Dimension {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly heightRange: minecraftcommon.NumberRange;
     readonly id: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link UnloadedChunksError}
+     */
     containsBlock(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     *
+     * {@link UnloadedChunksError}
+     */
     fillBlocks(
         volume: BlockVolumeBase | CompoundBlockVolume,
         block: BlockPermutation | BlockType | string,
         options?: BlockFillOptions,
     ): ListBlockVolume;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
     findClosestBiome(pos: Vector3, biomeToFind: BiomeType | string, options?: BiomeSearchOptions): Vector3 | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getBlock(location: Vector3): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link UnloadedChunksError}
+     */
     getBlocks(volume: BlockVolumeBase, filter: BlockFilter, allowUnloadedChunks?: boolean): ListBlockVolume;
+    /**
+     * @throws This function can throw errors.
+     */
     getEntities(options?: EntityQueryOptions): Entity[];
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
+    /**
+     * @throws This function can throw errors.
+     */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
+    /**
+     * @throws This function can throw errors.
+     */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @throws This function can throw errors.
+     */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
     getWeather(): WeatherType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
     placeFeature(featureName: string, location: Vector3, shouldThrow?: boolean): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
     placeFeatureRule(featureRuleName: string, location: Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     */
     runCommand(commandString: string): CommandResult;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setBlockPermutation(location: Vector3, permutation: BlockPermutation): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setBlockType(location: Vector3, blockType: BlockType | string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setWeather(weatherType: WeatherType, duration?: number): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     spawnEntity(identifier: EntityType | string, location: Vector3, options?: SpawnEntityOptions): Entity;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
 }
 
@@ -1294,10 +2036,22 @@ export class DimensionTypes {
 
 export class Effect {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly amplifier: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly displayName: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly duration: number;
     readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly typeId: string;
 }
 
@@ -1344,7 +2098,10 @@ export class EffectTypes {
 export class EnchantmentType {
     readonly id: string;
     readonly maxLevel: number;
-    constructor(enchantmentType: string);
+    /**
+ * @throws This function can throw errors.
+ */
+constructor(enchantmentType: string);
 }
 
 export class EnchantmentTypes {
@@ -1355,99 +2112,317 @@ export class EnchantmentTypes {
 
 export class Entity {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly dimension: Dimension;
     readonly id: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isClimbing: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isFalling: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isInWater: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isOnGround: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isSleeping: boolean;
     isSneaking: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isSprinting: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isSwimming: boolean;
     readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly location: Vector3;
     nameTag: string;
     readonly scoreboardIdentity?: ScoreboardIdentity;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly target?: Entity;
     readonly typeId: string;
+    /**
+     * @throws This function can throw errors.
+     */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     addTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     applyImpulse(vector: Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
+    /**
+     * @throws This function can throw errors.
+     */
     clearDynamicProperties(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     clearVelocity(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     extinguishFire(useEffects?: boolean): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     getComponent(componentId: string): EntityComponent | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     getComponents(): EntityComponent[];
+    /**
+     * @throws This function can throw errors.
+     */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getDynamicPropertyIds(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     getDynamicPropertyTotalByteCount(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     getEffect(effectType: EffectType | string): Effect | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getEffects(): Effect[];
+    /**
+     * @throws This function can throw errors.
+     */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
+    /**
+     * @throws This function can throw errors.
+     */
     getHeadLocation(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getProperty(identifier: string): boolean | number | string | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getRotation(): Vector2;
+    /**
+     * @throws This function can throw errors.
+     */
     getTags(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     getVelocity(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getViewDirection(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     hasComponent(componentId: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     hasTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     kill(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     lookAt(targetLocation: Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     matches(options: EntityQueryOptions): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     remove(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     removeEffect(effectType: EffectType | string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     removeTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
     resetProperty(identifier: string): boolean | number | string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link Error}
+     */
     runCommand(commandString: string): CommandResult;
+    /**
+     * @throws This function can throw errors.
+     */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     setProperty(identifier: string, value: boolean | number | string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setRotation(rotation: Vector2): void;
+    /**
+     * @throws This function can throw errors.
+     */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     triggerEvent(eventName: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
 
 // @ts-ignore
 export class EntityAddRiderComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly entityType: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly spawnEvent: string;
 }
 
 // @ts-ignore
 export class EntityAgeableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly duration: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly growUp: Trigger;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly transformToItem: string;
+    /**
+     * @throws This function can throw errors.
+     */
     getDropItems(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     getFeedItems(): EntityDefinitionFeedItem[];
 }
 
 // @ts-ignore
 export class EntityAttributeComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly currentValue: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly defaultValue: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly effectiveMax: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly effectiveMin: number;
+    /**
+     * @throws This function can throw errors.
+     */
     resetToDefaultValue(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     resetToMaxValue(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     resetToMinValue(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setCurrentValue(value: number): boolean;
 }
 
 // @ts-ignore
 export class EntityBaseMovementComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly maxTurn: number;
 }
 
@@ -1455,16 +2430,49 @@ export class EntityBaseMovementComponent extends EntityComponent {
 export class EntityBreathableComponent extends EntityComponent {
     private constructor();
     airSupply: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly breathesAir: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly breathesLava: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly breathesSolids: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly breathesWater: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canBreathe: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly generatesBubbles: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly inhaleTime: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly suffocateTime: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly totalSupply: number;
+    /**
+     * @throws This function can throw errors.
+     */
     getBreatheBlocks(): BlockPermutation[];
+    /**
+     * @throws This function can throw errors.
+     */
     getNonBreatheBlocks(): BlockPermutation[];
 }
 
@@ -1486,6 +2494,9 @@ export class EntityCanPowerJumpComponent extends EntityComponent {
 // @ts-ignore
 export class EntityColor2Component extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly value: PaletteColor;
 }
 
@@ -1498,6 +2509,11 @@ export class EntityColorComponent extends EntityComponent {
 // @ts-ignore
 export class EntityComponent extends Component {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     readonly entity: Entity;
 }
 
@@ -1525,8 +2541,17 @@ export class EntityDieAfterEventSignal {
 // @ts-ignore
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
+    /**
+     * @throws This function can throw errors.
+     */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
 }
 
@@ -1561,7 +2586,13 @@ export class EntityGroundOffsetComponent extends EntityComponent {
 // @ts-ignore
 export class EntityHealableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly forceUse: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     getFeedItems(): FeedItem[];
 }
 
@@ -1637,12 +2668,35 @@ export class EntityHurtAfterEventSignal {
 // @ts-ignore
 export class EntityInventoryComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly additionalSlotsPerStrength: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canBeSiphonedFrom: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     readonly container: Container;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly containerType: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly inventorySize: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly "private": boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly restrictToOwner: boolean;
 }
 
@@ -1714,6 +2768,9 @@ export class EntityIsTamedComponent extends EntityComponent {
 // @ts-ignore
 export class EntityItemComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly itemStack: ItemStack;
 }
 
@@ -1731,14 +2788,41 @@ export class EntityLavaMovementComponent extends EntityAttributeComponent {
 // @ts-ignore
 export class EntityLeashableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canBeStolen: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly hardDistance: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isLeashed: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly leashHolder?: Entity;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly leashHolderEntityId?: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly maxDistance: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly softDistance: number;
+    /**
+     * @throws This function can throw errors.
+     */
     leashTo(leashHolder: Entity): void;
+    /**
+     * @throws This function can throw errors.
+     */
     unleash(): void;
 }
 
@@ -1787,7 +2871,13 @@ export class EntityMovementGenericComponent extends EntityBaseMovementComponent 
 // @ts-ignore
 export class EntityMovementGlideComponent extends EntityBaseMovementComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly speedWhenTurning: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly startSpeed: number;
 }
 
@@ -1809,7 +2899,13 @@ export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
 // @ts-ignore
 export class EntityMovementSwayComponent extends EntityBaseMovementComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly swayAmplitude: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly swayFrequency: number;
 }
 
@@ -1821,24 +2917,81 @@ export class EntityNavigationClimbComponent extends EntityNavigationComponent {
 // @ts-ignore
 export class EntityNavigationComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly avoidDamageBlocks: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly avoidPortals: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly avoidSun: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly avoidWater: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canBreach: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canBreakDoors: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canFloat: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canJump: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canOpenDoors: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canOpenIronDoors: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canPassDoors: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canPathFromAir: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canPathOverLava: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canPathOverWater: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canSink: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canSwim: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canWalk: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canWalkInLava: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isAmphibious: boolean;
 }
 
@@ -1898,6 +3051,9 @@ export class EntityProjectileComponent extends EntityComponent {
     owner?: Entity;
     shouldBounceOnHit: boolean;
     stopOnHit: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     shoot(velocity: Vector3, options?: ProjectileShootOptions): void;
 }
 
@@ -1936,24 +3092,66 @@ export class EntityRemoveBeforeEventSignal {
 // @ts-ignore
 export class EntityRideableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly controllingSeat: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly crouchingSkipInteract: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly interactText: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly passengerMaxWidth: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly pullInEntities: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly riderCanInteract: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly seatCount: number;
+    /**
+     * @throws This function can throw errors.
+     */
     addRider(rider: Entity): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     ejectRider(rider: Entity): void;
+    /**
+     * @throws This function can throw errors.
+     */
     ejectRiders(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     getFamilyTypes(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     getRiders(): Entity[];
+    /**
+     * @throws This function can throw errors.
+     */
     getSeats(): Seat[];
 }
 
 // @ts-ignore
 export class EntityRidingComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly entityRidingOn: Entity;
 }
 
@@ -2003,29 +3201,71 @@ export class EntitySpawnType {
 // @ts-ignore
 export class EntityStrengthComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly max: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly value: number;
 }
 
 // @ts-ignore
 export class EntityTameableComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly getTameItems: ItemStack[];
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isTamed: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly probability: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly tamedToPlayer?: Player;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly tamedToPlayerId?: string;
+    /**
+     * @throws This function can throw errors.
+     */
     tame(player: Player): boolean;
 }
 
 // @ts-ignore
 export class EntityTameMountComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isTamed: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isTamedToPlayer: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly tamedToPlayer?: Player;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly tamedToPlayerId?: string;
+    /**
+     * @throws This function can throw errors.
+     */
     tame(showParticles: boolean): void;
+    /**
+     * @throws This function can throw errors.
+     */
     tameToPlayer(showParticles: boolean, player: Player): boolean;
 }
 
@@ -2037,7 +3277,13 @@ export class EntityType {
 // @ts-ignore
 export class EntityTypeFamilyComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     getTypeFamilies(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     hasTypeFamily(typeFamily: string): boolean;
 }
 
@@ -2061,6 +3307,9 @@ export class EntityUnderwaterMovementComponent extends EntityAttributeComponent 
 // @ts-ignore
 export class EntityVariantComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly value: number;
 }
 
@@ -2173,9 +3422,33 @@ export class GameRules {
 
 export class InputInfo {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
     readonly lastInputModeUsed: InputMode;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     readonly touchOnlyAffectsHotbar: boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
+     */
     getButtonState(button: InputButton): ButtonState;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     getMovementVector(): Vector2;
 }
 
@@ -2240,6 +3513,23 @@ export class ItemComponentMineBlockEvent {
 
 export class ItemComponentRegistry {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link CustomComponentInvalidRegistryError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link ItemCustomComponentAlreadyRegisteredError}
+     *
+     * {@link ItemCustomComponentReloadNewComponentError}
+     *
+     * {@link ItemCustomComponentReloadNewEventError}
+     *
+     * {@link ItemCustomComponentReloadVersionError}
+     *
+     * {@link NamespaceNameError}
+     */
     registerCustomComponent(name: string, itemCustomComponent: ItemCustomComponent): void;
 }
 
@@ -2259,16 +3549,36 @@ export class ItemComponentUseOnEvent extends ItemUseOnEvent {
 // @ts-ignore
 export class ItemCompostableComponent extends ItemComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
     readonly compostingChance: number;
 }
 
 // @ts-ignore
 export class ItemCooldownComponent extends ItemComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly cooldownCategory: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly cooldownTicks: number;
+    /**
+     * @throws This function can throw errors.
+     */
     getCooldownTicksRemaining(player: Player): number;
+    /**
+     * @throws This function can throw errors.
+     */
     isCooldownCategory(cooldownCategory: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     startCooldown(player: Player): void;
 }
 
@@ -2276,8 +3586,17 @@ export class ItemCooldownComponent extends ItemComponent {
 export class ItemDurabilityComponent extends ItemComponent {
     private constructor();
     damage: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly maxDurability: number;
+    /**
+     * @throws This function can throw errors.
+     */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
+    /**
+     * @throws This function can throw errors.
+     */
     getDamageChanceRange(): minecraftcommon.NumberRange;
 }
 
@@ -2285,37 +3604,118 @@ export class ItemDurabilityComponent extends ItemComponent {
 export class ItemDyeableComponent extends ItemComponent {
     private constructor();
     color?: RGB;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
     readonly defaultColor?: RGB;
 }
 
 // @ts-ignore
 export class ItemEnchantableComponent extends ItemComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly slots: EnchantmentSlot[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentLevelOutOfBoundsError}
+     *
+     * {@link EnchantmentTypeNotCompatibleError}
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     *
+     * {@link Error}
+     */
     addEnchantment(enchantment: Enchantment): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentLevelOutOfBoundsError}
+     *
+     * {@link EnchantmentTypeNotCompatibleError}
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     *
+     * {@link Error}
+     */
     addEnchantments(enchantments: Enchantment[]): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentLevelOutOfBoundsError}
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     */
     canAddEnchantment(enchantment: Enchantment): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     */
     getEnchantment(enchantmentType: EnchantmentType | string): Enchantment | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getEnchantments(): Enchantment[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     */
     hasEnchantment(enchantmentType: EnchantmentType | string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     removeAllEnchantments(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link EnchantmentTypeUnknownIdError}
+     *
+     * {@link Error}
+     */
     removeEnchantment(enchantmentType: EnchantmentType | string): void;
 }
 
 // @ts-ignore
 export class ItemFoodComponent extends ItemComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly canAlwaysEat: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly nutrition: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly saturationModifier: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly usingConvertsTo: string;
 }
 
 // @ts-ignore
 export class ItemPotionComponent extends ItemComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly potionEffectType: PotionEffectType;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly potionLiquidType: PotionLiquidType;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly potionModifierType: PotionModifierType;
 }
 
@@ -2341,7 +3741,10 @@ export class ItemStack {
     nameTag?: string;
     readonly "type": ItemType;
     readonly typeId: string;
-    constructor(itemType: ItemType | string, amount?: number);
+    /**
+ * @throws This function can throw errors.
+ */
+constructor(itemType: ItemType | string, amount?: number);
     clearDynamicProperties(): void;
     clone(): ItemStack;
     getCanDestroy(): string[];
@@ -2357,11 +3760,29 @@ export class ItemStack {
     hasTag(tag: string): boolean;
     isStackableWith(itemStack: ItemStack): boolean;
     matches(itemName: string, states?: Record<string, boolean | number | string>): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     setCanDestroy(blockIdentifiers?: string[]): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setLore(loreList?: string[]): void;
+    /**
+     * @throws This function can throw errors.
+     */
     static createPotion(options: PotionOptions): ItemStack;
 }
 
@@ -2517,10 +3938,25 @@ export class MessageReceiveAfterEvent {
 }
 
 export class MolangVariableMap {
+    /**
+     * @throws This function can throw errors.
+     */
     setColorRGB(variableName: string, color: RGB): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setColorRGBA(variableName: string, color: RGBA): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setFloat(variableName: string, number: number): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setSpeedAndDirection(variableName: string, speed: number, direction: Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setVector3(variableName: string, vector: Vector3): void;
 }
 
@@ -2547,47 +3983,172 @@ export class PistonActivateAfterEventSignal {
 // @ts-ignore
 export class Player extends Entity {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly camera: Camera;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
     readonly clientSystemInfo: ClientSystemInfo;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     readonly graphicsMode: GraphicsMode;
     readonly inputInfo: InputInfo;
     readonly inputPermissions: PlayerInputPermissions;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isEmoting: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isFlying: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isGliding: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isJumping: boolean;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly level: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly name: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly onScreenDisplay: ScreenDisplay;
     selectedSlotIndex: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly totalXpNeededForNextLevel: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly xpEarnedAtCurrentLevel: number;
+    /**
+     * @throws This function can throw errors.
+     */
     addExperience(amount: number): number;
+    /**
+     * @throws This function can throw errors.
+     */
     addLevels(amount: number): number;
+    /**
+     * @throws This function can throw errors.
+     */
     eatItem(itemStack: ItemStack): void;
     getAimAssist(): PlayerAimAssist;
+    /**
+     * @throws This function can throw errors.
+     */
     getGameMode(): GameMode;
+    /**
+     * @throws This function can throw errors.
+     */
     getItemCooldown(cooldownCategory: string): number;
+    /**
+     * @throws This function can throw errors.
+     */
     getSpawnPoint(): DimensionLocation | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getTotalXp(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     isOp(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     postClientMessage(id: string, value: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     resetLevel(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setGameMode(gameMode?: GameMode): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setOp(isOp: boolean): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @throws This function can throw errors.
+     */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
+    /**
+     * @throws This function can throw errors.
+     */
     stopMusic(): void;
 }
 
 export class PlayerAimAssist {
     private constructor();
     readonly settings?: PlayerAimAssistSettings;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link NamespaceNameError}
+     */
     set(settings?: PlayerAimAssistSettings): void;
 }
 
@@ -2645,7 +4206,13 @@ export class PlayerButtonInputAfterEventSignal {
 // @ts-ignore
 export class PlayerCursorInventoryComponent extends EntityComponent {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly item?: ItemStack;
+    /**
+     * @throws This function can throw errors.
+     */
     clear(): void;
 }
 
@@ -2731,7 +4298,15 @@ export class PlayerInputPermissionCategoryChangeAfterEventSignal {
 
 export class PlayerInputPermissions {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }
 
@@ -2967,13 +4542,22 @@ export class ProjectileHitEntityAfterEventSignal {
 
 export class Scoreboard {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     clearObjectiveAtDisplaySlot(displaySlotId: DisplaySlotId): ScoreboardObjective | undefined;
     getObjective(objectiveId: string): ScoreboardObjective | undefined;
     getObjectiveAtDisplaySlot(displaySlotId: DisplaySlotId): ScoreboardObjectiveDisplayOptions | undefined;
     getObjectives(): ScoreboardObjective[];
     getParticipants(): ScoreboardIdentity[];
+    /**
+     * @throws This function can throw errors.
+     */
     removeObjective(objectiveId: ScoreboardObjective | string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     setObjectiveAtDisplaySlot(
         displaySlotId: DisplaySlotId,
         objectiveDisplaySetting: ScoreboardObjectiveDisplayOptions,
@@ -2986,20 +4570,50 @@ export class ScoreboardIdentity {
     readonly id: number;
     readonly isValid: boolean;
     readonly "type": ScoreboardIdentityType;
+    /**
+     * @throws This function can throw errors.
+     */
     getEntity(): Entity | undefined;
 }
 
 export class ScoreboardObjective {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly displayName: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly id: string;
     readonly isValid: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     addScore(participant: Entity | ScoreboardIdentity | string, scoreToAdd: number): number;
+    /**
+     * @throws This function can throw errors.
+     */
     getParticipants(): ScoreboardIdentity[];
+    /**
+     * @throws This function can throw errors.
+     */
     getScore(participant: Entity | ScoreboardIdentity | string): number | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     getScores(): ScoreboardScoreInfo[];
+    /**
+     * @throws This function can throw errors.
+     */
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     removeParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     setScore(participant: Entity | ScoreboardIdentity | string, score: number): void;
 }
 
@@ -3012,13 +4626,37 @@ export class ScoreboardScoreInfo {
 export class ScreenDisplay {
     private constructor();
     readonly isValid: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     getHiddenHudElements(): HudElement[];
+    /**
+     * @throws This function can throw errors.
+     */
     hideAllExcept(hudElements?: HudElement[]): void;
+    /**
+     * @throws This function can throw errors.
+     */
     isForcedHidden(hudElement: HudElement): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     resetHudElements(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
 }
 
@@ -3068,7 +4706,25 @@ export class ShutdownEvent {
 
 export class SpawnRulesRegistry {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     *
+     * {@link SpawnRulesInvalidRegistryError}
+     */
     registerEntitySpawnCallback(id: string, callback: (arg: EntitySpawnCallbackArgs) => boolean): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     *
+     * {@link SpawnRulesInvalidRegistryError}
+     */
     registerObstructionCallback(id: string, callback: (arg: ObstructionCallbackArgs) => boolean): void;
 }
 
@@ -3089,17 +4745,69 @@ export class Structure {
     private constructor();
     readonly id: string;
     readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidStructureError}
+     */
     readonly size: Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
     getBlockPermutation(location: Vector3): BlockPermutation | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
     getIsWaterlogged(location: Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidStructureError}
+     */
     saveToWorld(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
     setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
 }
 
 export class StructureManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     */
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     */
     createFromWorld(
         identifier: string,
         dimension: Dimension,
@@ -3107,10 +4815,29 @@ export class StructureManager {
         to: Vector3,
         options?: StructureCreateOptions,
     ): Structure;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     */
     delete(structure: string | Structure): boolean;
     get(identifier: string): Structure | undefined;
     getWorldStructureIds(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidStructureError}
+     */
     place(structure: string | Structure, dimension: Dimension, location: Vector3, options?: StructurePlaceOptions): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link PlaceJigsawError}
+     */
     placeJigsaw(
         pool: string,
         targetJigsaw: string,
@@ -3119,6 +4846,11 @@ export class StructureManager {
         location: Vector3,
         options?: JigsawPlaceOptions,
     ): BoundingBox;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link PlaceJigsawError}
+     */
     placeJigsawStructure(
         identifier: string,
         dimension: Dimension,
@@ -3140,7 +4872,21 @@ export class System {
     runInterval(callback: () => void, tickInterval?: number): number;
     runJob(generator: Generator<void, void, void>): number;
     runTimeout(callback: () => void, tickDelay?: number): number;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     */
     sendScriptEvent(id: string, message: string): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
     waitTicks(ticks: number): Promise<void>;
 }
 
@@ -3245,24 +4991,61 @@ export class World {
     clearDynamicProperties(): void;
     getAbsoluteTime(): number;
     getAimAssist(): AimAssistRegistry;
+    /**
+     * @throws This function can throw errors.
+     */
     getAllPlayers(): Player[];
     getDay(): number;
     getDefaultSpawnLocation(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getDimension(dimensionId: string): Dimension;
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     getDynamicPropertyIds(): string[];
     getDynamicPropertyTotalByteCount(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     getEntity(id: string): Entity | undefined;
     getMoonPhase(): MoonPhase;
+    /**
+     * @throws This function can throw errors.
+     */
     getPlayers(options?: EntityQueryOptions): Player[];
     getTimeOfDay(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
+    /**
+     * @throws This function can throw errors.
+     */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     setAbsoluteTime(absoluteTime: number): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setDynamicProperties(values: Record<string, boolean | number | string | Vector3>): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setTimeOfDay(timeOfDay: number | TimeOfDay): void;
     stopMusic(): void;
 }

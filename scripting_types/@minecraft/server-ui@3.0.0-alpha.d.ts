@@ -28,6 +28,9 @@ export enum FormRejectReason {
 export class ActionFormData {
     body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
+    /**
+     * @throws This function can throw errors.
+     */
     show(player: minecraftserver.Player): Promise<ActionFormResponse>;
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
 }
@@ -48,6 +51,13 @@ export class MessageFormData {
     body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
     button1(text: minecraftserver.RawMessage | string): MessageFormData;
     button2(text: minecraftserver.RawMessage | string): MessageFormData;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     */
     show(player: minecraftserver.Player): Promise<MessageFormResponse>;
     title(titleText: minecraftserver.RawMessage | string): MessageFormData;
 }
@@ -64,6 +74,9 @@ export class ModalFormData {
         options: (minecraftserver.RawMessage | string)[],
         defaultValueIndex?: number,
     ): ModalFormData;
+    /**
+     * @throws This function can throw errors.
+     */
     show(player: minecraftserver.Player): Promise<ModalFormResponse>;
     slider(
         label: minecraftserver.RawMessage | string,
@@ -90,6 +103,9 @@ export class ModalFormResponse extends FormResponse {
 
 export class UIManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     closeAllForms(player: minecraftserver.Player): void;
 }
 
