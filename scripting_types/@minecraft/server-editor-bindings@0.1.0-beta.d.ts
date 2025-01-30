@@ -655,6 +655,7 @@ export class PrimarySelectionChangedEvent {
     readonly volume?: minecraftserver.CompoundBlockVolume;
 }
 
+// @ts-ignore
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
     addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
@@ -713,6 +714,7 @@ export class SettingsUIElement {
 );
 }
 
+// @ts-ignore
 export class SimpleBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
 }
@@ -842,6 +844,7 @@ export class WidgetComponentBase {
     setStateChangeEvent(eventFunction?: (arg: WidgetComponentStateChangeEventData) => void): void;
 }
 
+// @ts-ignore
 export class WidgetComponentClipboard extends WidgetComponentBase {
     private constructor();
     clipboardMirror: minecraftserver.StructureMirrorAxis;
@@ -853,21 +856,25 @@ export class WidgetComponentClipboard extends WidgetComponentBase {
     showBounds: boolean;
 }
 
+// @ts-ignore
 export class WidgetComponentEntity extends WidgetComponentBase {
     private constructor();
     clickable: boolean;
     playAnimation(animationName: string): void;
 }
 
+// @ts-ignore
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
     activated: boolean;
 }
 
+// @ts-ignore
 export class WidgetComponentGuide extends WidgetComponentBase {
     private constructor();
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();
     readonly primitiveType: PrimitiveType;
@@ -878,6 +885,7 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
             | WidgetComponentRenderPrimitiveTypeLine): void;
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color?: minecraftserver.RGBA;
@@ -890,6 +898,7 @@ export class WidgetComponentRenderPrimitiveTypeBase {
     readonly primitiveType: PrimitiveType;
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color: minecraftserver.RGBA;
@@ -897,6 +906,7 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
     constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color: minecraftserver.RGBA;
@@ -904,6 +914,7 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
     constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRenderPrimitiveTypeBase {
     color: minecraftserver.RGBA;
     end: minecraftserver.Vector3;
@@ -911,6 +922,7 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
     constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
 }
 
+// @ts-ignore
 export class WidgetComponentSpline extends WidgetComponentBase {
     private constructor();
     splineType: SplineType;
@@ -927,6 +939,7 @@ export class WidgetComponentStateChangeEventData {
     readonly widget: Widget;
 }
 
+// @ts-ignore
 export class WidgetComponentText extends WidgetComponentBase {
     private constructor();
     color: minecraftserver.RGBA;
@@ -1115,6 +1128,7 @@ export interface WidgetComponentBaseOptions {
     visible?: boolean;
 }
 
+// @ts-ignore
 export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
     boundsFillColor?: minecraftserver.RGBA;
     boundsOutlineColor?: minecraftserver.RGBA;
@@ -1125,28 +1139,34 @@ export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOpti
     showBounds?: boolean;
 }
 
+// @ts-ignore
 export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions {
     deselectedAnimation?: string;
     isClickable?: boolean;
     selectedAnimation?: string;
 }
 
+// @ts-ignore
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
     enablePlanes?: boolean;
 }
 
+// @ts-ignore
 export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {
 }
 
+// @ts-ignore
 export interface WidgetComponentRenderPrimitiveOptions extends WidgetComponentBaseOptions {
 }
 
+// @ts-ignore
 export interface WidgetComponentSplineOptions extends WidgetComponentBaseOptions {
     controlPoints: Widget[];
     splineType?: SplineType;
 }
 
+// @ts-ignore
 export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
     color?: minecraftserver.RGBA;
 }

@@ -71,10 +71,12 @@ export class Block {
     setPermutation(permutation: BlockPermutation): void;
 }
 
+// @ts-ignore
 export class BlockComponent extends Component {
     private constructor();
 }
 
+// @ts-ignore
 export class BlockInventoryComponent extends BlockComponent {
     private constructor();
     readonly container?: Container;
@@ -146,55 +148,67 @@ export class Entity {
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
 
+// @ts-ignore
 export class EntityBaseMovementComponent extends EntityComponent {
     private constructor();
     readonly maxTurn: number;
 }
 
+// @ts-ignore
 export class EntityCanClimbComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityCanFlyComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityCanPowerJumpComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityColorComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityComponent extends Component {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFireImmuneComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFloatsInLiquidComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFlyingSpeedComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityFrictionModifierComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityGroundOffsetComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityInventoryComponent extends EntityComponent {
     private constructor();
     readonly additionalSlotsPerStrength: number;
@@ -206,120 +220,148 @@ export class EntityInventoryComponent extends EntityComponent {
     readonly restrictToOwner: boolean;
 }
 
+// @ts-ignore
 export class EntityIsBabyComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsChargedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsChestedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsDyeableComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsIgnitedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsIllagerCaptainComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsSaddledComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsShakingComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsShearedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsStackableComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsStunnedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsTamedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityItemComponent extends EntityComponent {
     private constructor();
     readonly itemStack: ItemStack;
 }
 
+// @ts-ignore
 export class EntityMarkVariantComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityMovementAmphibiousComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementBasicComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementGenericComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityPushThroughComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityScaleComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntitySkinIdComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityVariantComponent extends EntityComponent {
     private constructor();
     readonly value: number;
 }
 
+// @ts-ignore
 export class EntityWantsJockeyComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class ItemComponent extends Component {
     private constructor();
 }
@@ -349,6 +391,7 @@ export class MinecraftDimensionTypes {
     private constructor();
 }
 
+// @ts-ignore
 export class Player extends Entity {
     private constructor();
     readonly name: string;
@@ -407,6 +450,7 @@ export interface EntityFilter {
     type?: string;
 }
 
+// @ts-ignore
 export interface EntityQueryOptions extends EntityFilter {
     closest?: number;
     farthest?: number;

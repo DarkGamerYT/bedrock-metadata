@@ -86,6 +86,7 @@ export class SculkSpreader {
     getTotalCharge(): number;
 }
 
+// @ts-ignore
 export class SimulatedPlayer extends minecraftserver.Player {
     private constructor();
     readonly headRotation: minecraftserver.Vector2;

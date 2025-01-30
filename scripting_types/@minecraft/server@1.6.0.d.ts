@@ -191,6 +191,7 @@ export class Block {
     setPermutation(permutation: BlockPermutation): void;
 }
 
+// @ts-ignore
 export class BlockComponent extends Component {
     private constructor();
     readonly block: Block;
@@ -202,6 +203,7 @@ export class BlockEvent {
     readonly dimension: Dimension;
 }
 
+// @ts-ignore
 export class BlockInventoryComponent extends BlockComponent {
     private constructor();
     readonly container?: Container;
@@ -213,11 +215,13 @@ export class BlockPermutation {
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
 
+// @ts-ignore
 export class ButtonPushAfterEvent extends BlockEvent {
     private constructor();
     readonly source: Entity;
 }
 
+// @ts-ignore
 export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
     private constructor();
 }
@@ -344,6 +348,7 @@ export class Entity {
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
 
+// @ts-ignore
 export class EntityAttributeComponent extends EntityComponent {
     private constructor();
     readonly currentValue: number;
@@ -356,28 +361,34 @@ export class EntityAttributeComponent extends EntityComponent {
     setCurrentValue(value: number): boolean;
 }
 
+// @ts-ignore
 export class EntityBaseMovementComponent extends EntityComponent {
     private constructor();
     readonly maxTurn: number;
 }
 
+// @ts-ignore
 export class EntityCanClimbComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityCanFlyComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityCanPowerJumpComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityColorComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityComponent extends Component {
     private constructor();
 }
@@ -397,35 +408,42 @@ export class EntityDieAfterEventSignal {
     unsubscribe(callback: (arg: EntityDieAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
 }
 
+// @ts-ignore
 export class EntityFireImmuneComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFloatsInLiquidComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFlyingSpeedComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityFrictionModifierComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityGroundOffsetComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityHealableComponent extends EntityComponent {
     private constructor();
     readonly forceUse: boolean;
@@ -448,6 +466,7 @@ export class EntityHealthChangedAfterEventSignal {
     unsubscribe(callback: (arg: EntityHealthChangedAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class EntityHealthComponent extends EntityAttributeComponent {
     private constructor();
 }
@@ -499,6 +518,7 @@ export class EntityHurtAfterEventSignal {
     unsubscribe(callback: (arg: EntityHurtAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class EntityInventoryComponent extends EntityComponent {
     private constructor();
     readonly additionalSlotsPerStrength: number;
@@ -510,58 +530,72 @@ export class EntityInventoryComponent extends EntityComponent {
     readonly restrictToOwner: boolean;
 }
 
+// @ts-ignore
 export class EntityIsBabyComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsChargedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsChestedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsDyeableComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsIgnitedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsIllagerCaptainComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsSaddledComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsShakingComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsShearedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsStackableComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsStunnedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsTamedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityItemComponent extends EntityComponent {
     private constructor();
     readonly itemStack: ItemStack;
@@ -578,39 +612,48 @@ export class EntityLoadAfterEventSignal {
     unsubscribe(callback: (arg: EntityLoadAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class EntityMarkVariantComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityMovementAmphibiousComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementBasicComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementGenericComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityPushThroughComponent extends EntityComponent {
     private constructor();
     value: number;
@@ -642,11 +685,13 @@ export class EntityRemoveBeforeEventSignal {
     unsubscribe(callback: (arg: EntityRemoveBeforeEvent) => void): void;
 }
 
+// @ts-ignore
 export class EntityScaleComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntitySkinIdComponent extends EntityComponent {
     private constructor();
     value: number;
@@ -664,11 +709,13 @@ export class EntitySpawnAfterEventSignal {
     unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class EntityVariantComponent extends EntityComponent {
     private constructor();
     readonly value: number;
 }
 
+// @ts-ignore
 export class EntityWantsJockeyComponent extends EntityComponent {
     private constructor();
 }
@@ -731,6 +778,7 @@ export class ItemCompleteUseAfterEventSignal {
     unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class ItemComponent extends Component {
     private constructor();
 }
@@ -843,6 +891,7 @@ export class ItemUseAfterEventSignal {
     unsubscribe(callback: (arg: ItemUseAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class ItemUseBeforeEvent extends ItemUseAfterEvent {
     private constructor();
     cancel: boolean;
@@ -869,6 +918,7 @@ export class ItemUseOnAfterEventSignal {
     unsubscribe(callback: (arg: ItemUseOnAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
     private constructor();
     cancel: boolean;
@@ -880,12 +930,14 @@ export class ItemUseOnBeforeEventSignal {
     unsubscribe(callback: (arg: ItemUseOnBeforeEvent) => void): void;
 }
 
+// @ts-ignore
 export class LeverActionAfterEvent extends BlockEvent {
     private constructor();
     readonly isPowered: boolean;
     readonly player: Player;
 }
 
+// @ts-ignore
 export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
     private constructor();
 }
@@ -902,6 +954,7 @@ export class MolangVariableMap {
     setVector3(variableName: string, vector: Vector3): void;
 }
 
+// @ts-ignore
 export class Player extends Entity {
     private constructor();
     readonly camera: Camera;
@@ -924,6 +977,7 @@ export class Player extends Entity {
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
 }
 
+// @ts-ignore
 export class PlayerBreakBlockAfterEvent extends BlockEvent {
     private constructor();
     readonly brokenBlockPermutation: BlockPermutation;
@@ -941,6 +995,7 @@ export class PlayerBreakBlockAfterEventSignal {
     unsubscribe(callback: (arg: PlayerBreakBlockAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class PlayerBreakBlockBeforeEvent extends BlockEvent {
     private constructor();
     cancel: boolean;
@@ -978,6 +1033,7 @@ export class PlayerJoinAfterEvent {
     readonly playerName: string;
 }
 
+// @ts-ignore
 export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
     private constructor();
 }
@@ -988,10 +1044,12 @@ export class PlayerLeaveAfterEvent {
     readonly playerName: string;
 }
 
+// @ts-ignore
 export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
     private constructor();
 }
 
+// @ts-ignore
 export class PlayerPlaceBlockAfterEvent extends BlockEvent {
     private constructor();
     readonly player: Player;
@@ -1012,10 +1070,12 @@ export class PlayerSpawnAfterEvent {
     player: Player;
 }
 
+// @ts-ignore
 export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
     private constructor();
 }
 
+// @ts-ignore
 export class PressurePlatePopAfterEvent extends BlockEvent {
     private constructor();
     readonly previousRedstonePower: number;
@@ -1028,6 +1088,7 @@ export class PressurePlatePopAfterEventSignal {
     unsubscribe(callback: (arg: PressurePlatePopAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class PressurePlatePushAfterEvent extends BlockEvent {
     private constructor();
     readonly previousRedstonePower: number;
@@ -1159,6 +1220,7 @@ export class SystemAfterEvents {
     readonly scriptEventReceive: ScriptEventCommandMessageAfterEventSignal;
 }
 
+// @ts-ignore
 export class TargetBlockHitAfterEvent extends BlockEvent {
     private constructor();
     readonly hitVector: Vector3;
@@ -1173,6 +1235,7 @@ export class TargetBlockHitAfterEventSignal {
     unsubscribe(callback: (arg: TargetBlockHitAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class TripWireTripAfterEvent extends BlockEvent {
     private constructor();
     readonly isPowered: boolean;
@@ -1276,6 +1339,7 @@ export interface BlockRaycastHit {
     faceLocation: Vector3;
 }
 
+// @ts-ignore
 export interface BlockRaycastOptions extends BlockFilter {
     includeLiquidBlocks?: boolean;
     includePassableBlocks?: boolean;
@@ -1387,6 +1451,7 @@ export interface EntityHitInformation {
     entity?: Entity;
 }
 
+// @ts-ignore
 export interface EntityQueryOptions extends EntityFilter {
     closest?: number;
     farthest?: number;
@@ -1407,6 +1472,7 @@ export interface EntityRaycastHit {
     entity: Entity;
 }
 
+// @ts-ignore
 export interface EntityRaycastOptions extends EntityFilter {
     maxDistance?: number;
 }
@@ -1442,6 +1508,7 @@ export interface RGB {
     red: number;
 }
 
+// @ts-ignore
 export interface RGBA extends RGB {
     alpha: number;
 }

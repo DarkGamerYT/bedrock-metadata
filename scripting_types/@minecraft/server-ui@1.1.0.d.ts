@@ -31,6 +31,7 @@ export class ActionFormData {
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
 }
 
+// @ts-ignore
 export class ActionFormResponse extends FormResponse {
     private constructor();
     readonly selection?: number;
@@ -50,6 +51,7 @@ export class MessageFormData {
     title(titleText: minecraftserver.RawMessage | string): MessageFormData;
 }
 
+// @ts-ignore
 export class MessageFormResponse extends FormResponse {
     private constructor();
     readonly selection?: number;
@@ -78,6 +80,7 @@ export class ModalFormData {
     toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;
 }
 
+// @ts-ignore
 export class ModalFormResponse extends FormResponse {
     private constructor();
     readonly formValues?: (boolean | number | string)[];

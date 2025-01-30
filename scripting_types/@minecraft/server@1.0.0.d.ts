@@ -34,6 +34,7 @@ export class MinecraftDimensionTypes {
     private constructor();
 }
 
+// @ts-ignore
 export class Player extends Entity {
     private constructor();
     readonly name: string;

@@ -68,6 +68,7 @@ export class MinecraftDimensionTypes {
     private constructor();
 }
 
+// @ts-ignore
 export class Player extends Entity {
     private constructor();
     readonly name: string;
@@ -111,6 +112,7 @@ export interface EntityFilter {
     type?: string;
 }
 
+// @ts-ignore
 export interface EntityQueryOptions extends EntityFilter {
     closest?: number;
     farthest?: number;

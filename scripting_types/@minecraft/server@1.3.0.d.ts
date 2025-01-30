@@ -72,6 +72,7 @@ export class Block {
     setPermutation(permutation: BlockPermutation): void;
 }
 
+// @ts-ignore
 export class BlockComponent extends Component {
     private constructor();
     readonly block: Block;
@@ -83,6 +84,7 @@ export class BlockEvent {
     readonly dimension: Dimension;
 }
 
+// @ts-ignore
 export class BlockInventoryComponent extends BlockComponent {
     private constructor();
     readonly container?: Container;
@@ -94,11 +96,13 @@ export class BlockPermutation {
     static resolve(blockName: string, states?: Record<string, boolean | number | string>): BlockPermutation;
 }
 
+// @ts-ignore
 export class ButtonPushAfterEvent extends BlockEvent {
     private constructor();
     readonly source: Entity;
 }
 
+// @ts-ignore
 export class ButtonPushAfterEventSignal extends IButtonPushAfterEventSignal {
     private constructor();
 }
@@ -185,6 +189,7 @@ export class Entity {
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
 
+// @ts-ignore
 export class EntityAttributeComponent extends EntityComponent {
     private constructor();
     readonly currentValue: number;
@@ -197,65 +202,79 @@ export class EntityAttributeComponent extends EntityComponent {
     setCurrentValue(value: number): boolean;
 }
 
+// @ts-ignore
 export class EntityBaseMovementComponent extends EntityComponent {
     private constructor();
     readonly maxTurn: number;
 }
 
+// @ts-ignore
 export class EntityCanClimbComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityCanFlyComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityCanPowerJumpComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityColorComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityComponent extends Component {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFireImmuneComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFloatsInLiquidComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityFlyingSpeedComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityFrictionModifierComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityGroundOffsetComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityHealableComponent extends EntityComponent {
     private constructor();
     readonly forceUse: boolean;
     getFeedItems(): FeedItem[];
 }
 
+// @ts-ignore
 export class EntityHealthComponent extends EntityAttributeComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityInventoryComponent extends EntityComponent {
     private constructor();
     readonly additionalSlotsPerStrength: number;
@@ -267,116 +286,143 @@ export class EntityInventoryComponent extends EntityComponent {
     readonly restrictToOwner: boolean;
 }
 
+// @ts-ignore
 export class EntityIsBabyComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsChargedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsChestedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsDyeableComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsHiddenWhenInvisibleComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsIgnitedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsIllagerCaptainComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsSaddledComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsShakingComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsShearedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsStackableComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsStunnedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityIsTamedComponent extends EntityComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityItemComponent extends EntityComponent {
     private constructor();
     readonly itemStack: ItemStack;
 }
 
+// @ts-ignore
 export class EntityMarkVariantComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityMovementAmphibiousComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementBasicComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementFlyComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementGenericComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementHoverComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementJumpComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityMovementSkipComponent extends EntityBaseMovementComponent {
     private constructor();
 }
 
+// @ts-ignore
 export class EntityPushThroughComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityScaleComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntitySkinIdComponent extends EntityComponent {
     private constructor();
     value: number;
 }
 
+// @ts-ignore
 export class EntityVariantComponent extends EntityComponent {
     private constructor();
     readonly value: number;
 }
 
+// @ts-ignore
 export class EntityWantsJockeyComponent extends EntityComponent {
     private constructor();
 }
@@ -426,6 +472,7 @@ export class IPlayerSpawnAfterEventSignal {
     unsubscribe(callback: (arg: PlayerSpawnAfterEvent) => void): void;
 }
 
+// @ts-ignore
 export class ItemComponent extends Component {
     private constructor();
 }
@@ -451,12 +498,14 @@ export class ItemType {
     readonly id: string;
 }
 
+// @ts-ignore
 export class LeverActionAfterEvent extends BlockEvent {
     private constructor();
     readonly isPowered: boolean;
     readonly player: Player;
 }
 
+// @ts-ignore
 export class LeverActionAfterEventSignal extends ILeverActionAfterEventSignal {
     private constructor();
 }
@@ -465,6 +514,7 @@ export class MinecraftDimensionTypes {
     private constructor();
 }
 
+// @ts-ignore
 export class Player extends Entity {
     private constructor();
     readonly name: string;
@@ -478,6 +528,7 @@ export class PlayerJoinAfterEvent {
     readonly playerName: string;
 }
 
+// @ts-ignore
 export class PlayerJoinAfterEventSignal extends IPlayerJoinAfterEventSignal {
     private constructor();
 }
@@ -488,6 +539,7 @@ export class PlayerLeaveAfterEvent {
     readonly playerName: string;
 }
 
+// @ts-ignore
 export class PlayerLeaveAfterEventSignal extends IPlayerLeaveAfterEventSignal {
     private constructor();
 }
@@ -498,6 +550,7 @@ export class PlayerSpawnAfterEvent {
     player: Player;
 }
 
+// @ts-ignore
 export class PlayerSpawnAfterEventSignal extends IPlayerSpawnAfterEventSignal {
     private constructor();
 }
@@ -567,6 +620,7 @@ export interface EntityFilter {
     type?: string;
 }
 
+// @ts-ignore
 export interface EntityQueryOptions extends EntityFilter {
     closest?: number;
     farthest?: number;
