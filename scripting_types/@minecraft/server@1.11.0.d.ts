@@ -540,7 +540,8 @@ export class Camera {
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
-            | CameraSetRotOptions,
+            | CameraSetRotOptions
+            | CameraTargetOptions,
     ): void;
 }
 
@@ -1961,7 +1962,7 @@ export class Structure {
     isValid(): boolean;
     saveAs(identifier: string, saveMode?: StructureSaveMode): Structure;
     saveToWorld(): void;
-    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation): void;
+    setBlockPermutation(location: Vector3, blockPermutation?: BlockPermutation, waterlogged?: boolean): void;
 }
 
 export class StructureManager {
@@ -2217,6 +2218,11 @@ export interface CameraSetRotOptions {
     easeOptions?: CameraEaseOptions;
     location?: Vector3;
     rotation: Vector2;
+}
+
+export interface CameraTargetOptions {
+    offsetFromTargetCenter?: Vector3;
+    targetEntity: Entity;
 }
 
 export interface DefinitionModifier {

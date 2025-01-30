@@ -1,40 +1,16 @@
 {
     "data_items": [
         {
-            "name": "itemGroup.name.anvil"
-        },
-        {
-            "name": "itemGroup.name.arrow"
-        },
-        {
-            "name": "itemGroup.name.axe"
-        },
-        {
             "name": "itemGroup.name.banner"
-        },
-        {
-            "name": "itemGroup.name.banner_pattern"
         },
         {
             "name": "itemGroup.name.beacon"
         },
         {
-            "name": "itemGroup.name.bed"
-        },
-        {
             "name": "itemGroup.name.bell"
         },
         {
-            "name": "itemGroup.name.boat"
-        },
-        {
-            "name": "itemGroup.name.boots"
-        },
-        {
             "name": "itemGroup.name.brick"
-        },
-        {
-            "name": "itemGroup.name.bundles"
         },
         {
             "name": "itemGroup.name.buttons"
@@ -46,19 +22,7 @@
             "name": "itemGroup.name.camera"
         },
         {
-            "name": "itemGroup.name.candles"
-        },
-        {
-            "name": "itemGroup.name.chemistrytable"
-        },
-        {
             "name": "itemGroup.name.chest"
-        },
-        {
-            "name": "itemGroup.name.chestboat"
-        },
-        {
-            "name": "itemGroup.name.chestplate"
         },
         {
             "name": "itemGroup.name.chiseledBookshelf"
@@ -76,9 +40,6 @@
             "name": "itemGroup.name.composter"
         },
         {
-            "name": "itemGroup.name.compounds"
-        },
-        {
             "name": "itemGroup.name.concrete"
         },
         {
@@ -86,9 +47,6 @@
         },
         {
             "name": "itemGroup.name.constructionMisc"
-        },
-        {
-            "name": "itemGroup.name.cookedFood"
         },
         {
             "name": "itemGroup.name.copper"
@@ -112,16 +70,7 @@
             "name": "itemGroup.name.door"
         },
         {
-            "name": "itemGroup.name.dye"
-        },
-        {
             "name": "itemGroup.name.eggBlocks"
-        },
-        {
-            "name": "itemGroup.name.element"
-        },
-        {
-            "name": "itemGroup.name.enchantedBook"
         },
         {
             "name": "itemGroup.name.enchantingTable"
@@ -137,12 +86,6 @@
         },
         {
             "name": "itemGroup.name.fenceGate"
-        },
-        {
-            "name": "itemGroup.name.firework"
-        },
-        {
-            "name": "itemGroup.name.fireworkStars"
         },
         {
             "name": "itemGroup.name.flower"
@@ -163,9 +106,6 @@
             "name": "itemGroup.name.glowstone"
         },
         {
-            "name": "itemGroup.name.goatHorn"
-        },
-        {
             "name": "itemGroup.name.grass"
         },
         {
@@ -176,18 +116,6 @@
         },
         {
             "name": "itemGroup.name.grindStone"
-        },
-        {
-            "name": "itemGroup.name.hanging_sign"
-        },
-        {
-            "name": "itemGroup.name.helmet"
-        },
-        {
-            "name": "itemGroup.name.hoe"
-        },
-        {
-            "name": "itemGroup.name.horseArmor"
         },
         {
             "name": "itemGroup.name.ice"
@@ -202,25 +130,13 @@
             "name": "itemGroup.name.lectern"
         },
         {
-            "name": "itemGroup.name.leggings"
-        },
-        {
             "name": "itemGroup.name.lights"
-        },
-        {
-            "name": "itemGroup.name.lingeringPotion"
         },
         {
             "name": "itemGroup.name.log"
         },
         {
-            "name": "itemGroup.name.minecart"
-        },
-        {
             "name": "itemGroup.name.miscFood"
-        },
-        {
-            "name": "itemGroup.name.mobEgg"
         },
         {
             "name": "itemGroup.name.monsterStoneEgg"
@@ -238,9 +154,6 @@
             "name": "itemGroup.name.natureMisc"
         },
         {
-            "name": "itemGroup.name.ominousBottle"
-        },
-        {
             "name": "itemGroup.name.ore"
         },
         {
@@ -250,25 +163,13 @@
             "name": "itemGroup.name.permission"
         },
         {
-            "name": "itemGroup.name.pickaxe"
-        },
-        {
             "name": "itemGroup.name.pistons"
         },
         {
             "name": "itemGroup.name.planks"
         },
         {
-            "name": "itemGroup.name.potion"
-        },
-        {
-            "name": "itemGroup.name.potterySherds"
-        },
-        {
             "name": "itemGroup.name.pressurePlate"
-        },
-        {
-            "name": "itemGroup.name.products"
         },
         {
             "name": "itemGroup.name.pumpkins"
@@ -278,12 +179,6 @@
         },
         {
             "name": "itemGroup.name.rail"
-        },
-        {
-            "name": "itemGroup.name.rawFood"
-        },
-        {
-            "name": "itemGroup.name.record"
         },
         {
             "name": "itemGroup.name.redstone"
@@ -304,31 +199,13 @@
             "name": "itemGroup.name.sapling"
         },
         {
-            "name": "itemGroup.name.sculk"
-        },
-        {
-            "name": "itemGroup.name.seed"
-        },
-        {
-            "name": "itemGroup.name.shovel"
-        },
-        {
             "name": "itemGroup.name.shulkerBox"
         },
         {
             "name": "itemGroup.name.sign"
         },
         {
-            "name": "itemGroup.name.skull"
-        },
-        {
             "name": "itemGroup.name.slab"
-        },
-        {
-            "name": "itemGroup.name.smithing_templates"
-        },
-        {
-            "name": "itemGroup.name.splashPotion"
         },
         {
             "name": "itemGroup.name.stainedClay"
@@ -341,9 +218,6 @@
         },
         {
             "name": "itemGroup.name.stoneBrick"
-        },
-        {
-            "name": "itemGroup.name.sword"
         },
         {
             "name": "itemGroup.name.tnt"
@@ -367,6 +241,6 @@
             "name": "itemGroup.name.woolCarpet"
         }
     ],
-    "minecraft_version": "1.21.50-stable",
+    "minecraft_version": "1.21.60-preview.28",
     "name": "item-groups"
 }

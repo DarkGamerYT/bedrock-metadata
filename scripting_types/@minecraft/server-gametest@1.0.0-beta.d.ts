@@ -69,7 +69,10 @@ export class RegistrationBuilder {
     requiredSuccessfulAttempts(attemptCount: number): RegistrationBuilder;
     rotateTest(rotate: boolean): RegistrationBuilder;
     setupTicks(tickCount: number): RegistrationBuilder;
-    structureLocation(structureLocation: minecraftserver.Vector3): RegistrationBuilder;
+    structureLocation(
+        structureLocation: minecraftserver.Vector3,
+        structureDimension?: minecraftserver.DimensionType | string,
+    ): RegistrationBuilder;
     structureName(structureName: string): RegistrationBuilder;
     tag(tag: string): RegistrationBuilder;
 }

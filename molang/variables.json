@@ -1,0 +1,357 @@
+{
+    "data_items": [
+        {
+            "name": "variable.aabb"
+        },
+        {
+            "name": "variable.aabb_dimension"
+        },
+        {
+            "name": "variable.aabb_dimension_x"
+        },
+        {
+            "name": "variable.aabb_dimension_y"
+        },
+        {
+            "name": "variable.agent"
+        },
+        {
+            "name": "variable.animation_frames_128x128"
+        },
+        {
+            "name": "variable.animation_frames_32x32"
+        },
+        {
+            "name": "variable.animation_frames_face"
+        },
+        {
+            "name": "variable.animationamount"
+        },
+        {
+            "name": "variable.animationamountprev"
+        },
+        {
+            "name": "variable.armor_stand"
+        },
+        {
+            "name": "variable.attack_animation_tick"
+        },
+        {
+            "name": "variable.attack_state"
+        },
+        {
+            "name": "variable.attack_time"
+        },
+        {
+            "name": "variable.charge_amount"
+        },
+        {
+            "name": "variable.cloud_lifetime"
+        },
+        {
+            "name": "variable.cloud_radius"
+        },
+        {
+            "name": "variable.color"
+        },
+        {
+            "name": "variable.crossbow_charge"
+        },
+        {
+            "name": "variable.damage_nearby_mobs"
+        },
+        {
+            "name": "variable.data"
+        },
+        {
+            "name": "variable.decortextureindex"
+        },
+        {
+            "name": "variable.direction"
+        },
+        {
+            "name": "variable.direction_vector"
+        },
+        {
+            "name": "variable.direction_x"
+        },
+        {
+            "name": "variable.direction_y"
+        },
+        {
+            "name": "variable.direction_z"
+        },
+        {
+            "name": "variable.gliding_speed_value"
+        },
+        {
+            "name": "variable.glow_alpha"
+        },
+        {
+            "name": "variable.goat_has_left_horn"
+        },
+        {
+            "name": "variable.goat_has_right_horn"
+        },
+        {
+            "name": "variable.has_target"
+        },
+        {
+            "name": "variable.historical_frame_0"
+        },
+        {
+            "name": "variable.historical_frame_1"
+        },
+        {
+            "name": "variable.historical_frame_10"
+        },
+        {
+            "name": "variable.historical_frame_11"
+        },
+        {
+            "name": "variable.historical_frame_12"
+        },
+        {
+            "name": "variable.historical_frame_13"
+        },
+        {
+            "name": "variable.historical_frame_14"
+        },
+        {
+            "name": "variable.historical_frame_15"
+        },
+        {
+            "name": "variable.historical_frame_16"
+        },
+        {
+            "name": "variable.historical_frame_17"
+        },
+        {
+            "name": "variable.historical_frame_18"
+        },
+        {
+            "name": "variable.historical_frame_19"
+        },
+        {
+            "name": "variable.historical_frame_2"
+        },
+        {
+            "name": "variable.historical_frame_20"
+        },
+        {
+            "name": "variable.historical_frame_21"
+        },
+        {
+            "name": "variable.historical_frame_22"
+        },
+        {
+            "name": "variable.historical_frame_23"
+        },
+        {
+            "name": "variable.historical_frame_3"
+        },
+        {
+            "name": "variable.historical_frame_4"
+        },
+        {
+            "name": "variable.historical_frame_5"
+        },
+        {
+            "name": "variable.historical_frame_6"
+        },
+        {
+            "name": "variable.historical_frame_7"
+        },
+        {
+            "name": "variable.historical_frame_8"
+        },
+        {
+            "name": "variable.historical_frame_9"
+        },
+        {
+            "name": "variable.is_blocking"
+        },
+        {
+            "name": "variable.is_bow_and_arrow"
+        },
+        {
+            "name": "variable.is_brandishing_spear"
+        },
+        {
+            "name": "variable.is_first_person"
+        },
+        {
+            "name": "variable.is_holding_left"
+        },
+        {
+            "name": "variable.is_holding_right"
+        },
+        {
+            "name": "variable.is_holding_spyglass"
+        },
+        {
+            "name": "variable.is_horizontal_splitscreen"
+        },
+        {
+            "name": "variable.is_legacy"
+        },
+        {
+            "name": "variable.is_outside_water"
+        },
+        {
+            "name": "variable.is_paperdoll"
+        },
+        {
+            "name": "variable.is_sneaking"
+        },
+        {
+            "name": "variable.is_tooting_goat_horn"
+        },
+        {
+            "name": "variable.is_using_brush"
+        },
+        {
+            "name": "variable.is_using_vr"
+        },
+        {
+            "name": "variable.is_vertical_splitscreen"
+        },
+        {
+            "name": "variable.ischarging"
+        },
+        {
+            "name": "variable.isflashing"
+        },
+        {
+            "name": "variable.isholdingitem"
+        },
+        {
+            "name": "variable.jump_rotation"
+        },
+        {
+            "name": "variable.left_arm_swim_amount"
+        },
+        {
+            "name": "variable.liedownamount"
+        },
+        {
+            "name": "variable.liedownamounttail"
+        },
+        {
+            "name": "variable.lieonplayer"
+        },
+        {
+            "name": "variable.lifetime"
+        },
+        {
+            "name": "variable.map_face_icon"
+        },
+        {
+            "name": "variable.note_color"
+        },
+        {
+            "name": "variable.num_particles"
+        },
+        {
+            "name": "variable.offer_flower_tick"
+        },
+        {
+            "name": "variable.open_mouth"
+        },
+        {
+            "name": "variable.originx"
+        },
+        {
+            "name": "variable.originy"
+        },
+        {
+            "name": "variable.originz"
+        },
+        {
+            "name": "variable.particle_initial_speed"
+        },
+        {
+            "name": "variable.particle_multiplier"
+        },
+        {
+            "name": "variable.particlecount"
+        },
+        {
+            "name": "variable.particlesize"
+        },
+        {
+            "name": "variable.player_arm_height"
+        },
+        {
+            "name": "variable.player_x_rotation"
+        },
+        {
+            "name": "variable.puffedstate"
+        },
+        {
+            "name": "variable.raise_arms"
+        },
+        {
+            "name": "variable.right_arm_swim_amount"
+        },
+        {
+            "name": "variable.runtimeid"
+        },
+        {
+            "name": "variable.sea_level"
+        },
+        {
+            "name": "variable.shake_tail"
+        },
+        {
+            "name": "variable.short_arm_offset_left"
+        },
+        {
+            "name": "variable.short_arm_offset_right"
+        },
+        {
+            "name": "variable.should_bow_head"
+        },
+        {
+            "name": "variable.shulker"
+        },
+        {
+            "name": "variable.squid"
+        },
+        {
+            "name": "variable.stand_anim"
+        },
+        {
+            "name": "variable.state"
+        },
+        {
+            "name": "variable.swim_amount"
+        },
+        {
+            "name": "variable.tropicalfish"
+        },
+        {
+            "name": "variable.use_blinking_animation"
+        },
+        {
+            "name": "variable.use_item_interval_progress"
+        },
+        {
+            "name": "variable.use_item_startup_progress"
+        },
+        {
+            "name": "variable.wing_flap"
+        },
+        {
+            "name": "variable.worldx"
+        },
+        {
+            "name": "variable.worldy"
+        },
+        {
+            "name": "variable.worldz"
+        }
+    ],
+    "minecraft_version": "1.21.60-preview.28",
+    "name": "molang-variables"
+}

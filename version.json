@@ -1,14 +1,14 @@
 {
-    "version": "1.21.50-stable",
-    "is_preview": false,
+    "version": "1.21.60-preview.28",
+    "is_preview": true,
     "platform": "win32",
     "metadata": {
-        "date": "2024-12-03T17:31:53.000Z",
-        "branch": "r/21_u5",
-        "commit_hash": "37da48010fdedb1b893d3a320c89e753f5b23a1b",
+        "date": "2025-01-22T16:57:08.000Z",
+        "branch": "r/21_u6",
+        "commit_hash": "009ef3bc22a389bd76b9cb74ead041bacd0b3671",
         "configuration": "Publish",
-        "build_id": "29566759"
+        "build_id": "30504345"
     },
-    "size_in_bytes": 40277351,
-    "download_url": "https://www.minecraft.net/bedrockdedicatedserver/bin-win/bedrock-server-1.21.50.10.zip"
+    "size_in_bytes": 46314341,
+    "download_url": "https://www.minecraft.net/bedrockdedicatedserver/bin-win-preview/bedrock-server-1.21.60.28.zip"
 }

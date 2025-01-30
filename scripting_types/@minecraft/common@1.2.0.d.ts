@@ -11,6 +11,12 @@
  * }
  * ```
  */
+export enum InvalidArgumentErrorType {
+    Empty = "Empty",
+    Unknown = "Unknown",
+    Unspecified = "Unspecified",
+}
+
 export interface NumberRange {
     max: number;
     min: number;
@@ -30,6 +36,7 @@ export class EngineError {
 export class InvalidArgumentError {
     private constructor();
     readonly index: number;
+    readonly "type": InvalidArgumentErrorType;
 }
 
 export class PropertyOutOfBoundsError {

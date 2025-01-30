@@ -112,7 +112,6 @@ export class Block {
     readonly dimension: Dimension;
     readonly id: string;
     readonly isEmpty: boolean;
-    isWaterlogged: boolean;
     readonly location: BlockLocation;
     readonly permutation: BlockPermutation;
     readonly "type": BlockType;
@@ -224,7 +223,6 @@ export class BlockSnowContainerComponent extends BlockLiquidContainerComponent {
 
 export class BlockType {
     private constructor();
-    readonly canBeWaterlogged: boolean;
     readonly id: string;
     createDefaultBlockPermutation(): BlockPermutation;
 }

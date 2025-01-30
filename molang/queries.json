@@ -1,0 +1,894 @@
+{
+    "data_items": [
+        {
+            "name": "query.above_top_solid"
+        },
+        {
+            "name": "query.actor_count"
+        },
+        {
+            "name": "query.all"
+        },
+        {
+            "name": "query.all_animations_finished"
+        },
+        {
+            "name": "query.all_tags"
+        },
+        {
+            "name": "query.anger_level"
+        },
+        {
+            "name": "query.anim_time"
+        },
+        {
+            "name": "query.any"
+        },
+        {
+            "name": "query.any_animation_finished"
+        },
+        {
+            "name": "query.any_tag"
+        },
+        {
+            "name": "query.approx_eq"
+        },
+        {
+            "name": "query.armor_color_slot"
+        },
+        {
+            "name": "query.armor_damage_slot"
+        },
+        {
+            "name": "query.armor_material_slot"
+        },
+        {
+            "name": "query.armor_texture_slot"
+        },
+        {
+            "name": "query.average_frame_time"
+        },
+        {
+            "name": "query.block_face"
+        },
+        {
+            "name": "query.block_has_all_tags"
+        },
+        {
+            "name": "query.block_has_any_tag"
+        },
+        {
+            "name": "query.block_neighbor_has_all_tags"
+        },
+        {
+            "name": "query.block_neighbor_has_any_tag"
+        },
+        {
+            "name": "query.block_property"
+        },
+        {
+            "name": "query.block_state"
+        },
+        {
+            "name": "query.blocking"
+        },
+        {
+            "name": "query.body_x_rotation"
+        },
+        {
+            "name": "query.body_y_rotation"
+        },
+        {
+            "name": "query.bone_aabb"
+        },
+        {
+            "name": "query.bone_orientation_matrix"
+        },
+        {
+            "name": "query.bone_orientation_trs"
+        },
+        {
+            "name": "query.bone_origin"
+        },
+        {
+            "name": "query.bone_rotation"
+        },
+        {
+            "name": "query.camera_distance_range_lerp"
+        },
+        {
+            "name": "query.camera_rotation"
+        },
+        {
+            "name": "query.can_climb"
+        },
+        {
+            "name": "query.can_damage_nearby_mobs"
+        },
+        {
+            "name": "query.can_dash"
+        },
+        {
+            "name": "query.can_fly"
+        },
+        {
+            "name": "query.can_power_jump"
+        },
+        {
+            "name": "query.can_swim"
+        },
+        {
+            "name": "query.can_walk"
+        },
+        {
+            "name": "query.cape_flap_amount"
+        },
+        {
+            "name": "query.cardinal_block_face_placed_on"
+        },
+        {
+            "name": "query.cardinal_facing"
+        },
+        {
+            "name": "query.cardinal_facing_2d"
+        },
+        {
+            "name": "query.cardinal_player_facing"
+        },
+        {
+            "name": "query.client_max_render_distance"
+        },
+        {
+            "name": "query.client_memory_tier"
+        },
+        {
+            "name": "query.combine_entities"
+        },
+        {
+            "name": "query.cooldown_time"
+        },
+        {
+            "name": "query.cooldown_time_remaining"
+        },
+        {
+            "name": "query.count"
+        },
+        {
+            "name": "query.current_squish_value"
+        },
+        {
+            "name": "query.dash_cooldown_progress"
+        },
+        {
+            "name": "query.day"
+        },
+        {
+            "name": "query.death_ticks"
+        },
+        {
+            "name": "query.debug_output"
+        },
+        {
+            "name": "query.delta_time"
+        },
+        {
+            "name": "query.distance_from_camera"
+        },
+        {
+            "name": "query.effect_emitter_count"
+        },
+        {
+            "name": "query.effect_particle_count"
+        },
+        {
+            "name": "query.equipment_count"
+        },
+        {
+            "name": "query.equipped_item_all_tags"
+        },
+        {
+            "name": "query.equipped_item_any_tag"
+        },
+        {
+            "name": "query.equipped_item_is_attachable"
+        },
+        {
+            "name": "query.eye_target_x_rotation"
+        },
+        {
+            "name": "query.eye_target_y_rotation"
+        },
+        {
+            "name": "query.facing_target_to_range_attack"
+        },
+        {
+            "name": "query.frame_alpha"
+        },
+        {
+            "name": "query.get_actor_info_id"
+        },
+        {
+            "name": "query.get_animation_frame"
+        },
+        {
+            "name": "query.get_default_bone_pivot"
+        },
+        {
+            "name": "query.get_equipped_item_name"
+        },
+        {
+            "name": "query.get_locator_offset"
+        },
+        {
+            "name": "query.get_name"
+        },
+        {
+            "name": "query.get_root_locator_offset"
+        },
+        {
+            "name": "query.ground_speed"
+        },
+        {
+            "name": "query.had_component_group"
+        },
+        {
+            "name": "query.has_any_family"
+        },
+        {
+            "name": "query.has_armor_slot"
+        },
+        {
+            "name": "query.has_biome_tag"
+        },
+        {
+            "name": "query.has_block_property"
+        },
+        {
+            "name": "query.has_block_state"
+        },
+        {
+            "name": "query.has_cape"
+        },
+        {
+            "name": "query.has_collision"
+        },
+        {
+            "name": "query.has_dash_cooldown"
+        },
+        {
+            "name": "query.has_gravity"
+        },
+        {
+            "name": "query.has_head_gear"
+        },
+        {
+            "name": "query.has_owner"
+        },
+        {
+            "name": "query.has_player_rider"
+        },
+        {
+            "name": "query.has_property"
+        },
+        {
+            "name": "query.has_rider"
+        },
+        {
+            "name": "query.has_target"
+        },
+        {
+            "name": "query.head_roll_angle"
+        },
+        {
+            "name": "query.head_x_rotation"
+        },
+        {
+            "name": "query.head_y_rotation"
+        },
+        {
+            "name": "query.health"
+        },
+        {
+            "name": "query.heartbeat_interval"
+        },
+        {
+            "name": "query.heartbeat_phase"
+        },
+        {
+            "name": "query.heightmap"
+        },
+        {
+            "name": "query.hurt_direction"
+        },
+        {
+            "name": "query.hurt_time"
+        },
+        {
+            "name": "query.in_range"
+        },
+        {
+            "name": "query.invulnerable_ticks"
+        },
+        {
+            "name": "query.is_admiring"
+        },
+        {
+            "name": "query.is_alive"
+        },
+        {
+            "name": "query.is_angry"
+        },
+        {
+            "name": "query.is_attached"
+        },
+        {
+            "name": "query.is_attached_to_entity"
+        },
+        {
+            "name": "query.is_avoiding_block"
+        },
+        {
+            "name": "query.is_avoiding_mobs"
+        },
+        {
+            "name": "query.is_baby"
+        },
+        {
+            "name": "query.is_breathing"
+        },
+        {
+            "name": "query.is_bribed"
+        },
+        {
+            "name": "query.is_carrying_block"
+        },
+        {
+            "name": "query.is_casting"
+        },
+        {
+            "name": "query.is_celebrating"
+        },
+        {
+            "name": "query.is_celebrating_special"
+        },
+        {
+            "name": "query.is_charged"
+        },
+        {
+            "name": "query.is_charging"
+        },
+        {
+            "name": "query.is_chested"
+        },
+        {
+            "name": "query.is_cooldown_type"
+        },
+        {
+            "name": "query.is_crawling"
+        },
+        {
+            "name": "query.is_critical"
+        },
+        {
+            "name": "query.is_croaking"
+        },
+        {
+            "name": "query.is_dancing"
+        },
+        {
+            "name": "query.is_delayed_attacking"
+        },
+        {
+            "name": "query.is_digging"
+        },
+        {
+            "name": "query.is_eating"
+        },
+        {
+            "name": "query.is_eating_mob"
+        },
+        {
+            "name": "query.is_elder"
+        },
+        {
+            "name": "query.is_emerging"
+        },
+        {
+            "name": "query.is_emoting"
+        },
+        {
+            "name": "query.is_enchanted"
+        },
+        {
+            "name": "query.is_feeling_happy"
+        },
+        {
+            "name": "query.is_fire_immune"
+        },
+        {
+            "name": "query.is_first_person"
+        },
+        {
+            "name": "query.is_ghost"
+        },
+        {
+            "name": "query.is_gliding"
+        },
+        {
+            "name": "query.is_grazing"
+        },
+        {
+            "name": "query.is_idling"
+        },
+        {
+            "name": "query.is_ignited"
+        },
+        {
+            "name": "query.is_illager_captain"
+        },
+        {
+            "name": "query.is_in_contact_with_water"
+        },
+        {
+            "name": "query.is_in_lava"
+        },
+        {
+            "name": "query.is_in_love"
+        },
+        {
+            "name": "query.is_in_ui"
+        },
+        {
+            "name": "query.is_in_water"
+        },
+        {
+            "name": "query.is_in_water_or_rain"
+        },
+        {
+            "name": "query.is_interested"
+        },
+        {
+            "name": "query.is_invisible"
+        },
+        {
+            "name": "query.is_item_equipped"
+        },
+        {
+            "name": "query.is_item_name_any"
+        },
+        {
+            "name": "query.is_jump_goal_jumping"
+        },
+        {
+            "name": "query.is_jumping"
+        },
+        {
+            "name": "query.is_laying_down"
+        },
+        {
+            "name": "query.is_laying_egg"
+        },
+        {
+            "name": "query.is_leashed"
+        },
+        {
+            "name": "query.is_levitating"
+        },
+        {
+            "name": "query.is_lingering"
+        },
+        {
+            "name": "query.is_local_player"
+        },
+        {
+            "name": "query.is_moving"
+        },
+        {
+            "name": "query.is_name_any"
+        },
+        {
+            "name": "query.is_on_fire"
+        },
+        {
+            "name": "query.is_on_ground"
+        },
+        {
+            "name": "query.is_onfire"
+        },
+        {
+            "name": "query.is_orphaned"
+        },
+        {
+            "name": "query.is_owner_identifier_any"
+        },
+        {
+            "name": "query.is_persona_or_premium_skin"
+        },
+        {
+            "name": "query.is_playing_dead"
+        },
+        {
+            "name": "query.is_powered"
+        },
+        {
+            "name": "query.is_pregnant"
+        },
+        {
+            "name": "query.is_ram_attacking"
+        },
+        {
+            "name": "query.is_resting"
+        },
+        {
+            "name": "query.is_riding"
+        },
+        {
+            "name": "query.is_rising"
+        },
+        {
+            "name": "query.is_roaring"
+        },
+        {
+            "name": "query.is_rolling"
+        },
+        {
+            "name": "query.is_saddled"
+        },
+        {
+            "name": "query.is_scared"
+        },
+        {
+            "name": "query.is_scenting"
+        },
+        {
+            "name": "query.is_searching"
+        },
+        {
+            "name": "query.is_selected_item"
+        },
+        {
+            "name": "query.is_shaking"
+        },
+        {
+            "name": "query.is_shaking_wetness"
+        },
+        {
+            "name": "query.is_sheared"
+        },
+        {
+            "name": "query.is_shield_powered"
+        },
+        {
+            "name": "query.is_silent"
+        },
+        {
+            "name": "query.is_sitting"
+        },
+        {
+            "name": "query.is_sleeping"
+        },
+        {
+            "name": "query.is_sneaking"
+        },
+        {
+            "name": "query.is_sneezing"
+        },
+        {
+            "name": "query.is_sniffing"
+        },
+        {
+            "name": "query.is_sonic_boom"
+        },
+        {
+            "name": "query.is_spectator"
+        },
+        {
+            "name": "query.is_sprinting"
+        },
+        {
+            "name": "query.is_stackable"
+        },
+        {
+            "name": "query.is_stalking"
+        },
+        {
+            "name": "query.is_standing"
+        },
+        {
+            "name": "query.is_stunned"
+        },
+        {
+            "name": "query.is_swimming"
+        },
+        {
+            "name": "query.is_tamed"
+        },
+        {
+            "name": "query.is_transforming"
+        },
+        {
+            "name": "query.is_using_item"
+        },
+        {
+            "name": "query.is_wall_climbing"
+        },
+        {
+            "name": "query.item_in_use_duration"
+        },
+        {
+            "name": "query.item_is_charged"
+        },
+        {
+            "name": "query.item_max_use_duration"
+        },
+        {
+            "name": "query.item_remaining_use_duration"
+        },
+        {
+            "name": "query.item_slot_to_bone_name"
+        },
+        {
+            "name": "query.key_frame_lerp_time"
+        },
+        {
+            "name": "query.last_frame_time"
+        },
+        {
+            "name": "query.last_hit_by_player"
+        },
+        {
+            "name": "query.last_input_mode_is_any"
+        },
+        {
+            "name": "query.lie_amount"
+        },
+        {
+            "name": "query.life_span"
+        },
+        {
+            "name": "query.life_time"
+        },
+        {
+            "name": "query.lod_index"
+        },
+        {
+            "name": "query.log"
+        },
+        {
+            "name": "query.main_hand_item_max_duration"
+        },
+        {
+            "name": "query.main_hand_item_use_duration"
+        },
+        {
+            "name": "query.mark_variant"
+        },
+        {
+            "name": "query.max_durability"
+        },
+        {
+            "name": "query.max_health"
+        },
+        {
+            "name": "query.max_trade_tier"
+        },
+        {
+            "name": "query.maximum_frame_time"
+        },
+        {
+            "name": "query.minimum_frame_time"
+        },
+        {
+            "name": "query.model_scale"
+        },
+        {
+            "name": "query.modified_distance_moved"
+        },
+        {
+            "name": "query.modified_move_speed"
+        },
+        {
+            "name": "query.moon_brightness"
+        },
+        {
+            "name": "query.moon_phase"
+        },
+        {
+            "name": "query.movement_direction"
+        },
+        {
+            "name": "query.noise"
+        },
+        {
+            "name": "query.on_fire_time"
+        },
+        {
+            "name": "query.out_of_control"
+        },
+        {
+            "name": "query.overlay_alpha"
+        },
+        {
+            "name": "query.owner_identifier"
+        },
+        {
+            "name": "query.player_level"
+        },
+        {
+            "name": "query.position"
+        },
+        {
+            "name": "query.position_delta"
+        },
+        {
+            "name": "query.previous_squish_value"
+        },
+        {
+            "name": "query.property"
+        },
+        {
+            "name": "query.relative_block_has_all_tags"
+        },
+        {
+            "name": "query.relative_block_has_any_tag"
+        },
+        {
+            "name": "query.remaining_durability"
+        },
+        {
+            "name": "query.ride_body_x_rotation"
+        },
+        {
+            "name": "query.ride_body_y_rotation"
+        },
+        {
+            "name": "query.ride_head_x_rotation"
+        },
+        {
+            "name": "query.ride_head_y_rotation"
+        },
+        {
+            "name": "query.rider_body_x_rotation"
+        },
+        {
+            "name": "query.rider_body_y_rotation"
+        },
+        {
+            "name": "query.rider_head_x_rotation"
+        },
+        {
+            "name": "query.rider_head_y_rotation"
+        },
+        {
+            "name": "query.roll_counter"
+        },
+        {
+            "name": "query.rotation_to_camera"
+        },
+        {
+            "name": "query.scoreboard"
+        },
+        {
+            "name": "query.server_memory_tier"
+        },
+        {
+            "name": "query.shake_angle"
+        },
+        {
+            "name": "query.shake_time"
+        },
+        {
+            "name": "query.shield_blocking_bob"
+        },
+        {
+            "name": "query.show_bottom"
+        },
+        {
+            "name": "query.sit_amount"
+        },
+        {
+            "name": "query.skin_id"
+        },
+        {
+            "name": "query.sleep_rotation"
+        },
+        {
+            "name": "query.sneeze_counter"
+        },
+        {
+            "name": "query.spellcolor"
+        },
+        {
+            "name": "query.standing_scale"
+        },
+        {
+            "name": "query.state_time"
+        },
+        {
+            "name": "query.structural_integrity"
+        },
+        {
+            "name": "query.surface_particle_color"
+        },
+        {
+            "name": "query.surface_particle_texture_coordinate"
+        },
+        {
+            "name": "query.surface_particle_texture_size"
+        },
+        {
+            "name": "query.swell_amount"
+        },
+        {
+            "name": "query.swelling_dir"
+        },
+        {
+            "name": "query.swim_amount"
+        },
+        {
+            "name": "query.tail_angle"
+        },
+        {
+            "name": "query.target_x_rotation"
+        },
+        {
+            "name": "query.target_y_rotation"
+        },
+        {
+            "name": "query.texture_frame_index"
+        },
+        {
+            "name": "query.time_of_day"
+        },
+        {
+            "name": "query.time_since_last_vibration_detection"
+        },
+        {
+            "name": "query.time_stamp"
+        },
+        {
+            "name": "query.timer_flag_1"
+        },
+        {
+            "name": "query.timer_flag_2"
+        },
+        {
+            "name": "query.timer_flag_3"
+        },
+        {
+            "name": "query.total_emitter_count"
+        },
+        {
+            "name": "query.total_particle_count"
+        },
+        {
+            "name": "query.touch_only_affects_hotbar"
+        },
+        {
+            "name": "query.trade_tier"
+        },
+        {
+            "name": "query.unhappy_counter"
+        },
+        {
+            "name": "query.variant"
+        },
+        {
+            "name": "query.vertical_speed"
+        },
+        {
+            "name": "query.walk_distance"
+        },
+        {
+            "name": "query.wing_flap_position"
+        },
+        {
+            "name": "query.wing_flap_speed"
+        },
+        {
+            "name": "query.yaw_speed"
+        }
+    ],
+    "minecraft_version": "1.21.60-preview.28",
+    "name": "molang-queries"
+}

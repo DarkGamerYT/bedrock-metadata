@@ -65,7 +65,7 @@
                 {
                     "name": "@minecraft/server",
                     "uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
-                    "version": "1.17.0-beta"
+                    "version": "1.18.0-beta"
                 }
             ],
             "versions": [
@@ -205,10 +205,13 @@
                     "name": "2.0.0-alpha"
                 },
                 {
-                    "name": "1.17.0-internal"
+                    "name": "1.18.0-internal"
                 },
                 {
-                    "name": "1.17.0-beta"
+                    "name": "1.18.0-beta"
+                },
+                {
+                    "name": "1.17.0"
                 },
                 {
                     "name": "1.16.0"
@@ -301,6 +304,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.50-stable",
+    "minecraft_version": "1.21.60-preview.28",
     "name": "script-modules"
 }

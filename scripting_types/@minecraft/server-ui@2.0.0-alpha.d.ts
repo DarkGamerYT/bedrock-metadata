@@ -95,4 +95,5 @@ export class FormRejectError {
     readonly reason: FormRejectReason;
 }
 
+export const isAlpha = true;
 export const uiManager: UIManager;
