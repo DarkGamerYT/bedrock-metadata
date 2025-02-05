@@ -19,7 +19,7 @@ export enum AimAssistTargetMode {
 }
 
 export enum BlockComponentTypes {
-    FluidContainer = "minecraft:fluidContainer",
+    FluidContainer = "minecraft:fluid_container",
     Inventory = "minecraft:inventory",
     Piston = "minecraft:piston",
     RecordPlayer = "minecraft:record_player",
@@ -571,13 +571,13 @@ export enum WeatherType {
 }
 
 export type BlockComponentTypeMap = {
-    fluidContainer: BlockFluidContainerComponent;
+    fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
-    "minecraft:fluidContainer": BlockFluidContainerComponent;
+    "minecraft:fluid_container": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
     "minecraft:map_color": BlockMapColorComponent;
     "minecraft:piston": BlockPistonComponent;
@@ -4997,6 +4997,7 @@ export class World {
     getAllPlayers(): Player[];
     getDay(): number;
     getDefaultSpawnLocation(): Vector3;
+    getDifficulty(): Difficulty;
     /**
      * @throws This function can throw errors.
      */
@@ -5035,6 +5036,7 @@ export class World {
      * {@link LocationOutOfWorldBoundariesError}
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
+    setDifficulty(difficulty: Difficulty): void;
     /**
      * @throws This function can throw errors.
      */

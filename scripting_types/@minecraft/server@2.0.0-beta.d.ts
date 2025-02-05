@@ -19,7 +19,7 @@ export enum AimAssistTargetMode {
 }
 
 export enum BlockComponentTypes {
-    FluidContainer = "minecraft:fluidContainer",
+    FluidContainer = "minecraft:fluid_container",
     Inventory = "minecraft:inventory",
     Piston = "minecraft:piston",
     RecordPlayer = "minecraft:record_player",
@@ -271,39 +271,6 @@ export enum EntityInitializationCause {
     Loaded = "Loaded",
     Spawned = "Spawned",
     Transformed = "Transformed",
-}
-
-export enum EntitySpawnCategory {
-    Ambient = "Ambient",
-    Axolotls = "Axolotls",
-    Creature = "Creature",
-    Misc = "Misc",
-    Monster = "Monster",
-    UndergroundWaterCreature = "UndergroundWaterCreature",
-    WaterAmbient = "WaterAmbient",
-    WaterCreature = "WaterCreature",
-}
-
-export enum EntitySpawnReason {
-    Breeding = "Breeding",
-    Bucket = "Bucket",
-    ChunkGeneration = "ChunkGeneration",
-    Command = "Command",
-    Conversion = "Conversion",
-    DimensionTravel = "DimensionTravel",
-    Dispenser = "Dispenser",
-    Event = "Event",
-    Jockey = "Jockey",
-    Load = "Load",
-    MobSummoned = "MobSummoned",
-    Natural = "Natural",
-    Patrol = "Patrol",
-    Reinforcement = "Reinforcement",
-    SpawnEgg = "SpawnEgg",
-    Spawner = "Spawner",
-    Structure = "Structure",
-    TrialSpawner = "TrialSpawner",
-    Triggered = "Triggered",
 }
 
 export enum EquipmentSlot {
@@ -571,13 +538,13 @@ export enum WeatherType {
 }
 
 export type BlockComponentTypeMap = {
-    fluidContainer: BlockFluidContainerComponent;
+    fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
-    "minecraft:fluidContainer": BlockFluidContainerComponent;
+    "minecraft:fluid_container": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
     "minecraft:map_color": BlockMapColorComponent;
     "minecraft:piston": BlockPistonComponent;
@@ -3161,25 +3128,6 @@ export class EntitySpawnAfterEventSignal {
     unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
 }
 
-export class EntitySpawnCallbackArgs {
-    private constructor();
-    readonly dimensionLocation: DimensionLocation;
-    readonly spawnReason: EntitySpawnReason;
-    readonly spawnType: EntitySpawnType;
-}
-
-export class EntitySpawnType {
-    private constructor();
-    readonly entityId: string;
-    readonly height: number;
-    readonly isImmuneFire: boolean;
-    readonly isSummonable: boolean;
-    readonly spawnCategory: EntitySpawnCategory;
-    readonly width: number;
-    getSpawnAABB(position: Vector3): BoundingBox;
-    isBlockDangerous(block: Block): boolean;
-}
-
 // @ts-ignore
 export class EntityStrengthComponent extends EntityComponent {
     private constructor();
@@ -3942,13 +3890,6 @@ export class MolangVariableMap {
     setVector3(variableName: string, vector: Vector3): void;
 }
 
-export class ObstructionCallbackArgs {
-    private constructor();
-    readonly dimension: Dimension;
-    readonly entity: Entity;
-    readonly spawnType: EntitySpawnType;
-}
-
 // @ts-ignore
 export class PistonActivateAfterEvent extends BlockEvent {
     private constructor();
@@ -4686,30 +4627,6 @@ export class ShutdownEvent {
     private constructor();
 }
 
-export class SpawnRulesRegistry {
-    private constructor();
-    /**
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
-     *
-     * {@link SpawnRulesInvalidRegistryError}
-     */
-    registerEntitySpawnCallback(id: string, callback: (arg: EntitySpawnCallbackArgs) => boolean): void;
-    /**
-     * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.InvalidArgumentError}
-     *
-     * {@link NamespaceNameError}
-     *
-     * {@link SpawnRulesInvalidRegistryError}
-     */
-    registerObstructionCallback(id: string, callback: (arg: ObstructionCallbackArgs) => boolean): void;
-}
-
 export class StartupBeforeEventSignal {
     private constructor();
     subscribe(callback: (arg: StartupEvent) => void): (arg: StartupEvent) => void;
@@ -4720,7 +4637,6 @@ export class StartupEvent {
     private constructor();
     readonly blockComponentRegistry: BlockComponentRegistry;
     readonly itemComponentRegistry: ItemComponentRegistry;
-    getSpawnRulesRegistry(): SpawnRulesRegistry;
 }
 
 export class Structure {
@@ -4979,6 +4895,7 @@ export class World {
     getAllPlayers(): Player[];
     getDay(): number;
     getDefaultSpawnLocation(): Vector3;
+    getDifficulty(): Difficulty;
     /**
      * @throws This function can throw errors.
      */
@@ -5017,6 +4934,7 @@ export class World {
      * {@link LocationOutOfWorldBoundariesError}
      */
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
+    setDifficulty(difficulty: Difficulty): void;
     /**
      * @throws This function can throw errors.
      */
@@ -5632,10 +5550,6 @@ export class NamespaceNameError {
 }
 
 export class PlaceJigsawError {
-    private constructor();
-}
-
-export class SpawnRulesInvalidRegistryError {
     private constructor();
 }
 

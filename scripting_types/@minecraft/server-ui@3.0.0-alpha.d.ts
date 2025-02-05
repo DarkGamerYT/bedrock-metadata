@@ -28,6 +28,8 @@ export enum FormRejectReason {
 export class ActionFormData {
     body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
+    header(text: minecraftserver.RawMessage | string): ActionFormData;
+    label(text: minecraftserver.RawMessage | string): ActionFormData;
     /**
      * @throws This function can throw errors.
      */
@@ -74,6 +76,8 @@ export class ModalFormData {
         options: (minecraftserver.RawMessage | string)[],
         defaultValueIndex?: number,
     ): ModalFormData;
+    header(text: minecraftserver.RawMessage | string): ModalFormData;
+    label(text: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @throws This function can throw errors.
      */

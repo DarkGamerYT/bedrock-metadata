@@ -1,14 +1,14 @@
 {
-    "version": "1.21.70-preview.20",
+    "version": "1.21.70-preview.22",
     "is_preview": true,
     "platform": "win32",
     "metadata": {
-        "date": "2025-01-30T16:47:25.000Z",
-        "branch": "preview/hotfix-1.21.70",
-        "commit_hash": "b804e79a081d01ffea299472d006ddbb9c5db104",
+        "date": "2025-02-05T16:35:35.000Z",
+        "branch": "main",
+        "commit_hash": "a6061a81645060a626a6bf95bd2fcc35c27b0f1e",
         "configuration": "Publish",
-        "build_id": "30719681"
+        "build_id": "30852502"
     },
-    "size_in_bytes": 46807965,
-    "download_url": "https://www.minecraft.net/bedrockdedicatedserver/bin-win-preview/bedrock-server-1.21.70.20.zip"
+    "size_in_bytes": 47036362,
+    "download_url": "https://www.minecraft.net/bedrockdedicatedserver/bin-win-preview/bedrock-server-1.21.70.22.zip"
 }
