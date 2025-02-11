@@ -13,6 +13,7 @@
  */
 import * as minecraftcommon from "@minecraft/common";
 import * as mojangminecraft from "mojang-minecraft";
+// @ts-ignore
 export class SimulatedPlayer extends mojangminecraft.Player {
     private constructor();
 }

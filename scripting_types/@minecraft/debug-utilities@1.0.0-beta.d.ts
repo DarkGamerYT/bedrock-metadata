@@ -48,4 +48,7 @@ export interface RuntimeStats {
 
 export function collectPluginStats(): PluginStats;
 export function collectRuntimeStats(): RuntimeStats;
+/**
+ * @throws This function can throw errors.
+ */
 export function disableWatchdogTimingWarnings(disable: boolean): void;

@@ -30,6 +30,9 @@ export class ServerVariables {
     get(name: string): any | undefined;
 }
 
+/**
+ * @throws This function can throw errors.
+ */
 export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
 export const secrets: ServerSecrets;
 export const variables: ServerVariables;

@@ -265,9 +265,24 @@ export enum WidgetMouseButtonActionType {
 }
 
 export class BlockPalette {
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     */
     getItem(index: number): IBlockPaletteItem;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     */
     removeItemAt(index: number): void;
     removeItems(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     */
     setItem(blockPaletteItem: IBlockPaletteItem, index: number): void;
 }
 
@@ -276,18 +291,39 @@ export class BlockPaletteManager {
     addOrReplacePalette(paletteId: string, palette: BlockPalette): void;
     getPalette(paletteId: string): BlockPalette | undefined;
     getPaletteIdList(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     getPaletteItem(paletteId: string, index: number): IBlockPaletteItem;
     getPrimaryPalette(): BlockPalette;
+    /**
+     * @throws This function can throw errors.
+     */
     getSelectedBlockType(): minecraftserver.BlockType;
     getSelectedItem(): IBlockPaletteItem;
+    /**
+     * @throws This function can throw errors.
+     */
     removePalette(paletteId: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setPaletteItem(paletteId: string, index: number, item: IBlockPaletteItem): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setPrimaryPalette(paletteId: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setSelectedItem(item: IBlockPaletteItem): void;
 }
 
 export class BlockUtilities {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     fillVolume(
         volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | Selection,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
@@ -300,17 +336,42 @@ export class BrushShapeManager {
     readonly activeBrushVolume?: minecraftserver.CompoundBlockVolume;
     readonly brushShapeList: BrushShape[];
     activateBrushTool(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     beginPainting(onComplete: (arg: PaintCompletionState) => void): void;
     deactivateBrushTool(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     endPainting(cancelled: boolean): void;
     getBrushShapeOffset(): minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getSettingsUIElements(brushName: string): SettingsUIElement[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     registerBrushShape(
         name: string,
         icon: string,
         rebuild: () => minecraftserver.CompoundBlockVolume,
         getSettingsUIElements: () => SettingsUIElement[],
     ): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     setBrushMask(mask: BlockMaskList): void;
     setBrushShape(shape: minecraftserver.Vector3[] | minecraftserver.CompoundBlockVolume): void;
     setBrushShapeOffset(offset: minecraftserver.Vector3): void;
@@ -318,9 +379,24 @@ export class BrushShapeManager {
     setFlattenHeight(flattenHeight: number): void;
     setFlattenRadius(flattenRadius: number): void;
     setTerrainStrength(terrainStrength: number): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
     switchBrushPaintMode(paintMode: PaintMode): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     switchBrushShape(name: string): minecraftserver.CompoundBlockVolume;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     uiSettingValueChanged(elementName: string, newValue: boolean | number | string | minecraftserver.Vector3): boolean;
 }
 
@@ -339,23 +415,58 @@ export class ClipboardChangeAfterEventSignal {
 export class ClipboardItem {
     private constructor();
     readonly id: string;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isEmpty: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     clear(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     getPredictedWriteAsCompoundBlockVolume(
         location: minecraftserver.Vector3,
         options?: ClipboardWriteOptions,
     ): minecraftserver.CompoundBlockVolume;
+    /**
+     * @throws This function can throw errors.
+     */
     getPredictedWriteAsSelection(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): Selection;
+    /**
+     * @throws This function can throw errors.
+     */
     getSize(): minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     readFromSelection(selection: Selection): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     readFromStructure(structure: EditorStructure): void;
+    /**
+     * @throws This function can throw errors.
+     */
     readFromWorld(from: minecraftserver.Vector3, to: minecraftserver.Vector3): void;
+    /**
+     * @throws This function can throw errors.
+     */
     writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
 }
 
 export class ClipboardManager {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly clipboard: ClipboardItem;
+    /**
+     * @throws This function can throw errors.
+     */
     create(): ClipboardItem;
 }
 
@@ -384,15 +495,47 @@ export class CurrentThemeColorChangeAfterEventSignal {
 
 export class Cursor {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly faceDirection: number;
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isVisible: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     getPosition(): minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     getProperties(): CursorProperties;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getRay(): CursorRay;
+    /**
+     * @throws This function can throw errors.
+     */
     hide(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     moveBy(offset: minecraftserver.Vector3): minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     resetToDefaultState(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setProperties(properties: CursorProperties): void;
+    /**
+     * @throws This function can throw errors.
+     */
     show(): void;
 }
 
@@ -423,15 +566,33 @@ export class DataStoreActionBarContainer {
     getItemProperty(id: string, property: string): boolean | number | string | undefined;
     hasItemPayload(id: string): boolean;
     hasItemProperty(id: string, property: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     registerItem(id: string, payload: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     unregisterItem(id: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     updateRegisteredItem(id: string, payload: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     updateRegisteredItemProperty(id: string, payload: string, property: string): void;
 }
 
 export class DataStoreActionContainer {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     bindActionToControl(controlId: string, actionPayload: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     removeActionFromControl(controlId: string, actionPayload?: string): void;
 }
 
@@ -442,12 +603,21 @@ export class DataStoreAfterEvents {
 
 export class DataStoreMenuContainer {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     createItem(id: string, payload: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     destroyItem(id: string): void;
     getPayload(id: string): string;
     getProperty(id: string, property: string): boolean | number | string | undefined;
     hasPayload(id: string): boolean;
     hasProperty(id: string, property: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     updateItem(id: string, payload: string): void;
 }
 
@@ -471,10 +641,25 @@ export class DataStoreModalToolContainer {
     getToolProperty(id: string, property: string): boolean | number | string | undefined;
     hasToolPayload(id: string): boolean;
     hasToolProperty(id: string, property: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     registerTool(id: string, payload: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     unregisterTool(id: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     updateRegisteredTool(id: string, payload: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     updateRegisteredToolProperty(id: string, payload: string, property: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     updateSelectedTool(toolId?: string): void;
 }
 
@@ -492,9 +677,25 @@ export class DataStorePayloadAfterEventSignal {
 
 export class DataTransferManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getRegisteredAccessors(): DataTransferCollectionNameData[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     requestData(collectionUniqueId: string): Promise<DataTransferRequestResponse>;
+    /**
+     * @throws This function can throw errors.
+     */
     sendData(collectionUniqueId: string, jsonData: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     sendDataToClipboard(jsonData: string): void;
 }
 
@@ -507,18 +708,44 @@ export class DataTransferRequestResponse {
 
 export class EditorStructureManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     createFromClipboardItem(item: ClipboardItem, structureName: string): EditorStructure;
+    /**
+     * @throws This function can throw errors.
+     */
     getExistingTags(): string[];
+    /**
+     * @throws This function can throw errors.
+     */
     loadStructure(location: string, id: string): EditorStructure;
+    /**
+     * @throws This function can throw errors.
+     */
     saveStructure(structure: EditorStructure): void;
+    /**
+     * @throws This function can throw errors.
+     */
     searchStructures(options?: EditorStructureSearchOptions): EditorStructure[];
 }
 
 export class ExportManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     beginExportProject(options: GameOptions): Promise<ExportResult>;
+    /**
+     * @throws This function can throw errors.
+     */
     canExportProject(): boolean;
     getGameOptions(useDefault?: boolean): GameOptions;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getGameVersion(): string;
 }
 
@@ -563,7 +790,13 @@ export class GraphicsSettings {
     private constructor();
     get(property: GraphicsSettingsProperty): boolean | number | string | undefined;
     getAll(): Record<string, boolean | number | string>;
+    /**
+     * @throws This function can throw errors.
+     */
     set(property: GraphicsSettingsProperty, value: boolean | number | string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setAll(properties: Record<string, boolean | number | string>): void;
 }
 
@@ -572,12 +805,23 @@ export class IBlockPaletteItem {
     getBlock(): minecraftserver.BlockType | undefined;
     getDisplayName(): string | undefined;
     getType(): BlockPaletteItemType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
 }
 
 export class InputService {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     focusViewport(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     registerKeyBinding(
         contextId: string,
         bindingId: string,
@@ -585,8 +829,17 @@ export class InputService {
         modifier: InputModifier,
         info: InputBindingInfo,
     ): void;
+    /**
+     * @throws This function can throw errors.
+     */
     registerMouseBinding(contextId: string, bindingId: string, mouseAction: MouseActionCategory): void;
+    /**
+     * @throws This function can throw errors.
+     */
     unregisterKeyBinding(controlId: string, bindingId: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     unregisterMouseBinding(controlId: string, bindingId: string): void;
 }
 
@@ -600,22 +853,52 @@ export class InternalPlayerServiceContext {
 
 export class Logger {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     debug(message: string, properties?: LogProperties): void;
+    /**
+     * @throws This function can throw errors.
+     */
     error(message: string, properties?: LogProperties): void;
+    /**
+     * @throws This function can throw errors.
+     */
     info(message: string, properties?: LogProperties): void;
+    /**
+     * @throws This function can throw errors.
+     */
     warning(message: string, properties?: LogProperties): void;
 }
 
 export class MinecraftEditor {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly log: Logger;
     readonly simulation: SimulationState;
 }
 
 export class MinecraftEditorInternal {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     fireTelemetryEvent(player: minecraftserver.Player, source: string, eventName: string, metadata: string): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getMapColorUnsafe(player: minecraftserver.Player, coordinate: minecraftserver.Vector3): minecraftserver.RGBA;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getPlayerServices(player: minecraftserver.Player): InternalPlayerServiceContext;
     registerExtension(
         extensionName: string,
@@ -638,7 +921,13 @@ export class ModeChangeAfterEventSignal {
 
 export class PlaytestManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
     beginPlaytest(options: GameOptions): Promise<PlaytestSessionResult>;
+    /**
+     * @throws This function can throw errors.
+     */
     getPlaytestSessionAvailability(): PlaytestSessionResult;
 }
 
@@ -653,30 +942,79 @@ export class PrimarySelectionChangedEvent {
     readonly volume?: minecraftserver.CompoundBlockVolume;
 }
 
+// @ts-ignore
 export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
     getBlocks(): WeightedBlock[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
+     */
     removeBlockAt(index: number): void;
 }
 
 export class Selection {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly isEmpty: boolean;
     visible: boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     clear(): void;
     getBlockLocationIterator(): minecraftserver.BlockLocationIterator;
+    /**
+     * @throws This function can throw errors.
+     */
     getBoundingBox(): minecraftserver.BoundingBox;
+    /**
+     * @throws This function can throw errors.
+     */
     getFillColor(): minecraftserver.RGBA;
+    /**
+     * @throws This function can throw errors.
+     */
     getOutlineColor(): minecraftserver.RGBA;
     getVolumeOrigin(): minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     moveBy(delta: minecraftserver.Vector3): minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     */
     moveTo(location: minecraftserver.Vector3): minecraftserver.Vector3;
     peekLastVolume(forceRelativity?: minecraftserver.CompoundBlockVolumePositionRelativity): minecraftserver.CompoundBlockVolumeItem | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
     popVolume(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     pushVolume(item: minecraftserver.CompoundBlockVolumeItem): void;
+    /**
+     * @throws This function can throw errors.
+     */
     set(other: minecraftserver.CompoundBlockVolume | Selection): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setFillColor(color: minecraftserver.RGBA): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setOutlineColor(color: minecraftserver.RGBA): void;
 }
 
@@ -687,7 +1025,13 @@ export class SelectionEventAfterEvent {
 
 export class SelectionManager {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
     readonly selection: Selection;
+    /**
+     * @throws This function can throw errors.
+     */
     create(): Selection;
 }
 
@@ -711,6 +1055,7 @@ export class SettingsUIElement {
 );
 }
 
+// @ts-ignore
 export class SimpleBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
 }
@@ -718,6 +1063,9 @@ export class SimpleBlockPaletteItem extends IBlockPaletteItem {
 export class SimulationState {
     private constructor();
     isPaused(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     setPaused(isPaused: boolean): void;
 }
 
@@ -725,57 +1073,163 @@ export class SpeedSettings {
     private constructor();
     get(property: SpeedSettingsProperty): number | undefined;
     getAll(): Record<string, number>;
+    /**
+     * @throws This function can throw errors.
+     */
     set(property: SpeedSettingsProperty, value: number): void;
+    /**
+     * @throws This function can throw errors.
+     */
     setAll(properties: Record<string, number>): void;
 }
 
 export class ThemeSettings {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     addNewTheme(id: string, name?: string, sourceThemeId?: string): void;
     canThemeBeModified(id: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
     getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
     getThemeIdList(): string[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     getThemeName(id: string): string;
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     setCurrentTheme(id: string): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     setThemeName(id: string, name: string): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
 }
 
 export class TickingAreaManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     isTickingAreaActive(areaIdentifier: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     purgeTickingAreas(areaIdentifier: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     releaseTickingArea(areaIdentifier: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     requestTickingArea(areaIdentifier: string, from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
 }
 
 export class TransactionManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     addUserDefinedOperation(
         transactionHandlerId: UserDefinedTransactionHandlerId,
         operationData: string,
         operationName?: string,
     ): void;
+    /**
+     * @throws This function can throw errors.
+     */
     commitOpenTransaction(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     commitTrackedChanges(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     createUserDefinedTransactionHandler(
         undoClosure: (arg: string) => void,
         redoClosure: (arg: string) => void,
     ): UserDefinedTransactionHandlerId;
+    /**
+     * @throws This function can throw errors.
+     */
     discardOpenTransaction(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     discardTrackedChanges(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     openTransaction(name: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     redo(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     redoSize(): number;
+    /**
+     * @throws This function can throw errors.
+     */
     trackBlockChangeArea(from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     trackBlockChangeCompoundBlockVolume(compoundBlockVolume: minecraftserver.CompoundBlockVolume): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     trackBlockChangeList(locations: minecraftserver.Vector3[]): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     trackBlockChangeSelection(selection: Selection): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
     undo(): void;
+    /**
+     * @throws This function can throw errors.
+     */
     undoSize(): number;
 }
 
@@ -790,24 +1244,64 @@ export class Widget {
     collisionRadius: number;
     location: minecraftserver.Vector3;
     lockPositionToSurface: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidWidgetError}
+     */
     readonly selectable: boolean;
     selected: boolean;
     showBoundingBox: boolean;
     showCollisionRadius: boolean;
     snapToBlockLocation: boolean;
     visible: boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     addClipboardComponent(
         componentName: string,
         clipboardItem?: ClipboardItem,
         options?: WidgetComponentClipboardOptions,
     ): WidgetComponentClipboard;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     addEntityComponent(
         componentName: string,
         actorNameId: string,
         options?: WidgetComponentEntityOptions,
     ): WidgetComponentEntity;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     addRenderPrimitiveComponent(
         componentName: string,
         primitiveType: 
@@ -817,29 +1311,109 @@ export class Widget {
             | WidgetComponentRenderPrimitiveTypeLine,
         options?: WidgetComponentRenderPrimitiveOptions,
     ): WidgetComponentRenderPrimitive;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     *
+     * {@link InvalidWidgetGroupError}
+     */
     delete(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
     deleteComponent(componentOrName: string | WidgetComponentBase): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     */
     getComponent(componentName: string): WidgetComponentBase;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetError}
+     */
     getComponents(): WidgetComponentBase[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetError}
+     */
     setStateChangeEvent(eventFunction?: (arg: WidgetStateChangeEventData) => void): void;
 }
 
 export class WidgetComponentBase {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
     readonly componentType: WidgetComponentType;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
     readonly location: minecraftserver.Vector3;
     lockToSurface: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
     readonly name: string;
     offset: minecraftserver.Vector3;
     readonly valid: boolean;
     visible: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
     readonly widget: Widget;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
     delete(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
     setStateChangeEvent(eventFunction?: (arg: WidgetComponentStateChangeEventData) => void): void;
 }
 
+// @ts-ignore
 export class WidgetComponentClipboard extends WidgetComponentBase {
     private constructor();
     clipboardMirror: minecraftserver.StructureMirrorAxis;
@@ -851,24 +1425,47 @@ export class WidgetComponentClipboard extends WidgetComponentBase {
     showBounds: boolean;
 }
 
+// @ts-ignore
 export class WidgetComponentEntity extends WidgetComponentBase {
     private constructor();
     clickable: boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     */
     playAnimation(animationName: string): void;
 }
 
+// @ts-ignore
 export class WidgetComponentGizmo extends WidgetComponentBase {
     private constructor();
     activated: boolean;
 }
 
+// @ts-ignore
 export class WidgetComponentGuide extends WidgetComponentBase {
     private constructor();
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
     readonly primitiveType: PrimitiveType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
     setPrimitive(primitive: 
             | WidgetComponentRenderPrimitiveTypeAxialSphere
             | WidgetComponentRenderPrimitiveTypeBox
@@ -876,6 +1473,7 @@ export class WidgetComponentRenderPrimitive extends WidgetComponentBase {
             | WidgetComponentRenderPrimitiveTypeLine): void;
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color?: minecraftserver.RGBA;
@@ -888,6 +1486,7 @@ export class WidgetComponentRenderPrimitiveTypeBase {
     readonly primitiveType: PrimitiveType;
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color: minecraftserver.RGBA;
@@ -895,6 +1494,7 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
     constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRenderPrimitiveTypeBase {
     center: minecraftserver.Vector3;
     color: minecraftserver.RGBA;
@@ -902,6 +1502,7 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
     constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
 }
 
+// @ts-ignore
 export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRenderPrimitiveTypeBase {
     color: minecraftserver.RGBA;
     end: minecraftserver.Vector3;
@@ -909,11 +1510,37 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
     constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
 }
 
+// @ts-ignore
 export class WidgetComponentSpline extends WidgetComponentBase {
     private constructor();
     splineType: SplineType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
     getControlPoints(): Widget[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
     getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetComponentError}
+     *
+     * {@link InvalidWidgetError}
+     */
     setControlPoints(widgetList: Widget[]): void;
 }
 
@@ -925,6 +1552,7 @@ export class WidgetComponentStateChangeEventData {
     readonly widget: Widget;
 }
 
+// @ts-ignore
 export class WidgetComponentText extends WidgetComponentBase {
     private constructor();
     color: minecraftserver.RGBA;
@@ -933,19 +1561,60 @@ export class WidgetComponentText extends WidgetComponentBase {
 
 export class WidgetGroup {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
+     */
     readonly selectedWidgetCount: number;
     visible: boolean;
     visibleBounds: boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
+     */
     createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
     delete(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetError}
+     *
+     * {@link InvalidWidgetGroupError}
+     */
     deleteWidget(widgetToDelete: Widget): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
+     */
     deselectAllWidgets(): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidWidgetGroupError}
+     */
     selectAllWidgets(): void;
 }
 
 export class WidgetManager {
     private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link InvalidWidgetGroupError}
+     */
     deleteGroup(groupToDelete: WidgetGroup): void;
 }
 
@@ -1113,6 +1782,7 @@ export interface WidgetComponentBaseOptions {
     visible?: boolean;
 }
 
+// @ts-ignore
 export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
     boundsFillColor?: minecraftserver.RGBA;
     boundsOutlineColor?: minecraftserver.RGBA;
@@ -1123,28 +1793,34 @@ export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOpti
     showBounds?: boolean;
 }
 
+// @ts-ignore
 export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions {
     deselectedAnimation?: string;
     isClickable?: boolean;
     selectedAnimation?: string;
 }
 
+// @ts-ignore
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
     enablePlanes?: boolean;
 }
 
+// @ts-ignore
 export interface WidgetComponentGuideOptions extends WidgetComponentBaseOptions {
 }
 
+// @ts-ignore
 export interface WidgetComponentRenderPrimitiveOptions extends WidgetComponentBaseOptions {
 }
 
+// @ts-ignore
 export interface WidgetComponentSplineOptions extends WidgetComponentBaseOptions {
     controlPoints: Widget[];
     splineType?: SplineType;
 }
 
+// @ts-ignore
 export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
     color?: minecraftserver.RGBA;
 }
