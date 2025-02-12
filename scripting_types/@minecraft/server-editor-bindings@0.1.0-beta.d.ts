@@ -36,6 +36,14 @@ export enum BrushShapeType {
     WeightedSphere = "WeightedSphere",
 }
 
+export enum ContiguousSelectionType {
+    SameBlock = 0,
+    SameBlockAndStates = 1,
+    SolidBlocks = 2,
+    AllBlocks = 3,
+    Custom = 4,
+}
+
 export enum CursorControlMode {
     Keyboard = 0,
     Mouse = 1,
@@ -328,6 +336,22 @@ export class BlockUtilities {
         volume: minecraftserver.BlockVolumeBase | minecraftserver.CompoundBlockVolume | Selection,
         block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
     ): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
+    /**
+     * @throws This function can throw errors.
+     */
+    quickExtrude(properties?: QuickExtrudeProperties): void;
 }
 
 export class BrushShapeManager {
@@ -1658,6 +1682,17 @@ export interface ClipboardWriteOptions {
     rotation?: minecraftserver.StructureRotation;
 }
 
+export interface ContiguousSelectionProperties {
+    checkForAdjacentFace?: boolean;
+    contiguousSelectionBlockList?: string[];
+    contiguousSelectionType?: ContiguousSelectionType;
+    fullSelectionToleranceLevel?: number;
+    isFace?: boolean;
+    selectionDirection?: number;
+    size?: number;
+    startingLocation?: minecraftserver.Vector3;
+}
+
 export interface CursorPosition {
     FaceDirection: number;
     Position: minecraftserver.Vector3;
@@ -1766,6 +1801,17 @@ export interface ProjectExportOptions {
     exportType: ProjectExportType;
     gameMode?: minecraftserver.GameMode;
     initialTimOfDay?: number;
+}
+
+export interface QuickExtrudeProperties {
+    checkForAdjacentFace?: boolean;
+    contiguousSelectionBlockList?: string[];
+    contiguousSelectionType?: ContiguousSelectionType;
+    isShrink?: boolean;
+    layerCount?: number;
+    selectionDirection?: number;
+    size?: number;
+    startingLocation?: minecraftserver.Vector3;
 }
 
 export interface SettingsUIElementOptions {

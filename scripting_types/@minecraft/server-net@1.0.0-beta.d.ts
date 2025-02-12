@@ -312,5 +312,15 @@ export interface PacketEventOptions {
     monitoredPacketIds?: PacketId[];
 }
 
+export class InternalHttpRequestError {
+    private constructor();
+    readonly code: number;
+    readonly message: string;
+}
+
+export class MalformedHttpRequestError {
+    private constructor();
+}
+
 export const beforeEvents: NetworkBeforeEvents;
 export const http: HttpClient;
