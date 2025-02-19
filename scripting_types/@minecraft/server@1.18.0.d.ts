@@ -374,6 +374,10 @@ export enum ItemLockMode {
     slot = "slot",
 }
 
+export enum LiquidType {
+    Water = "Water",
+}
+
 export enum MemoryTier {
     SuperLow = 0,
     Low = 1,
@@ -561,6 +565,26 @@ export class Block {
      */
     below(steps?: number): Block | undefined;
     bottomCenter(): Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    canContainLiquid(liquidType: LiquidType): boolean;
     center(): Vector3;
     /**
      * @throws This function can throw errors.
@@ -610,7 +634,37 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     hasTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    isLiquidBlocking(liquidType: LiquidType): boolean;
     isValid(): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    liquidCanFlowFromDirection(liquidType: LiquidType, flowDirection: Direction): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     /**
      * @throws This function can throw errors.
      *
@@ -836,11 +890,35 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 export class BlockPermutation {
     private constructor();
     readonly "type": BlockType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    canContainLiquid(liquidType: LiquidType): boolean;
     getAllStates(): Record<string, boolean | number | string>;
     getItemStack(amount?: number): ItemStack | undefined;
     getState(stateName: string): boolean | number | string | undefined;
     getTags(): string[];
     hasTag(tag: string): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    isLiquidBlocking(liquidType: LiquidType): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
      * @throws This function can throw errors.
@@ -1013,6 +1091,7 @@ export class Camera {
         cameraPreset: string,
         setOptions?: 
             | CameraDefaultOptions
+            | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
@@ -3349,6 +3428,16 @@ export class Player extends Entity {
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @throws This function can throw errors.
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
@@ -4262,6 +4351,11 @@ export interface CameraFadeTimeOptions {
     fadeInTime: number;
     fadeOutTime: number;
     holdTime: number;
+}
+
+export interface CameraFixedBoomOptions {
+    entityOffset?: Vector3;
+    viewOffset?: Vector2;
 }
 
 export interface CameraSetFacingOptions {

@@ -377,6 +377,7 @@ export class Camera {
         cameraPreset: string,
         setOptions?: 
             | CameraDefaultOptions
+            | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
@@ -2129,6 +2130,11 @@ export interface CameraFadeTimeOptions {
     fadeInTime: number;
     fadeOutTime: number;
     holdTime: number;
+}
+
+export interface CameraFixedBoomOptions {
+    entityOffset?: Vector3;
+    viewOffset?: Vector2;
 }
 
 export interface CameraSetFacingOptions {

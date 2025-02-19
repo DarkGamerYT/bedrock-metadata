@@ -176,6 +176,13 @@ export enum ProjectExportType {
     WorldTemplate = 2,
 }
 
+export enum RealmsServiceStatus {
+    Fetching = 0,
+    Idle = 1,
+    Exporting = 2,
+    Uploading = 3,
+}
+
 export enum SpeedSettingsProperty {
     FlySpeedMultiplier = "FlySpeedMultiplier",
 }
@@ -877,6 +884,7 @@ export class InternalPlayerServiceContext {
     readonly dataStore: DataStore;
     readonly dataTransfer: DataTransferManager;
     readonly input: InputService;
+    readonly realmsService: realmsService;
     readonly tickingArea: TickingAreaManager;
 }
 
@@ -989,6 +997,24 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * {@link Error}
      */
     removeBlockAt(index: number): void;
+}
+
+export class realmsService {
+    private constructor();
+    /**
+     * @throws This function can throw errors.
+     */
+    beginUploadToRealms(realmsWorldId: string, slotId: number, gameOptions: GameOptions): Promise<boolean>;
+    canUploadWorld(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    getRealmWorldlist(): Promise<EditorRealmsWorld[]>;
+    getServiceStatus(): RealmsServiceStatus;
+    /**
+     * @throws This function can throw errors.
+     */
+    getSlots(worldId: string): Promise<EditorRealmsWorldSlot[]>;
 }
 
 export class Selection {
@@ -1717,6 +1743,16 @@ export interface CursorRay {
 export interface DataTransferCollectionNameData {
     nameStringId: string;
     uniqueId: string;
+}
+
+export interface EditorRealmsWorld {
+    id: string;
+    name: string;
+}
+
+export interface EditorRealmsWorldSlot {
+    id: number;
+    name: string;
 }
 
 export interface EditorStructure {

@@ -553,6 +553,7 @@ export enum TimeOfDay {
 export enum TintMethod {
     BirchFoliage = "BirchFoliage",
     DefaultFoliage = "DefaultFoliage",
+    DryFoliage = "DryFoliage",
     EvergreenFoliage = "EvergreenFoliage",
     Grass = "Grass",
     None = "None",
@@ -4049,6 +4050,10 @@ export class Player extends Entity {
     /**
      * @throws This function can throw errors.
      */
+    clearPropertyOverridesForEntity(targetEntity: Entity): void;
+    /**
+     * @throws This function can throw errors.
+     */
     eatItem(itemStack: ItemStack): void;
     getAimAssist(): PlayerAimAssist;
     /**
@@ -4090,6 +4095,10 @@ export class Player extends Entity {
     /**
      * @throws This function can throw errors.
      */
+    removePropertyOverrideForEntity(targetEntity: Entity, identifier: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     resetLevel(): void;
     /**
      * @throws This function can throw errors.
@@ -4103,6 +4112,10 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     setOp(isOp: boolean): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    setPropertyOverrideForEntity(targetEntity: Entity, identifier: string, value: boolean | number | string): void;
     /**
      * @throws This function can throw errors.
      *
