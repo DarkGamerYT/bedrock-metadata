@@ -1004,6 +1004,10 @@ export class realmsService {
     /**
      * @throws This function can throw errors.
      */
+    beginDownloadFromRealms(realmsWorldId: string, slotId: number): Promise<string>;
+    /**
+     * @throws This function can throw errors.
+     */
     beginUploadToRealms(realmsWorldId: string, slotId: number, gameOptions: GameOptions): Promise<boolean>;
     canUploadWorld(): boolean;
     /**
@@ -1015,6 +1019,7 @@ export class realmsService {
      * @throws This function can throw errors.
      */
     getSlots(worldId: string): Promise<EditorRealmsWorldSlot[]>;
+    isRealmsServiceAvailable(): boolean;
 }
 
 export class Selection {

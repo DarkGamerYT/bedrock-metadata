@@ -539,12 +539,14 @@ export enum WeatherType {
 }
 
 export type BlockComponentTypeMap = {
+    destruction_particles: BlockDestructionParticlesComponent;
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
+    "minecraft:destruction_particles": BlockDestructionParticlesComponent;
     "minecraft:fluid_container": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
     "minecraft:map_color": BlockMapColorComponent;
@@ -1202,6 +1204,23 @@ export class BlockComponentTickEvent extends BlockEvent {
     private constructor();
 }
 
+// @ts-ignore
+export class BlockDestructionParticlesComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
+    readonly texture: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link Error}
+     */
+    readonly tintMethod: TintMethod;
+}
+
 export class BlockEvent {
     private constructor();
     readonly block: Block;
@@ -1277,18 +1296,18 @@ export class BlockLocationIterator implements Iterable<Vector3> {
 export class BlockMapColorComponent extends BlockComponent {
     private constructor();
     /**
-     * @throws This function can throw errors.
+     * @throws This property can throw errors.
      *
      * {@link Error}
      */
-    color(): RGBA;
-    tintedColor(): RGBA;
+    readonly color: RGBA;
+    readonly tintedColor: RGBA;
     /**
-     * @throws This function can throw errors.
+     * @throws This property can throw errors.
      *
      * {@link Error}
      */
-    tintMethod(): TintMethod;
+    readonly tintMethod: TintMethod;
 }
 
 export class BlockPermutation {
@@ -3108,7 +3127,10 @@ export class EntityRidingComponent extends EntityComponent {
 // @ts-ignore
 export class EntityScaleComponent extends EntityComponent {
     private constructor();
-    value: number;
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly value: number;
 }
 
 // @ts-ignore
@@ -3803,34 +3825,6 @@ export class ItemUseBeforeEventSignal {
     private constructor();
     subscribe(callback: (arg: ItemUseBeforeEvent) => void): (arg: ItemUseBeforeEvent) => void;
     unsubscribe(callback: (arg: ItemUseBeforeEvent) => void): void;
-}
-
-export class ItemUseOnAfterEvent {
-    private constructor();
-    readonly block: Block;
-    readonly blockFace: Direction;
-    readonly faceLocation: Vector3;
-    readonly isFirstEvent: boolean;
-    readonly itemStack: ItemStack;
-    readonly source: Player;
-}
-
-export class ItemUseOnAfterEventSignal {
-    private constructor();
-    subscribe(callback: (arg: ItemUseOnAfterEvent) => void): (arg: ItemUseOnAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemUseOnAfterEvent) => void): void;
-}
-
-// @ts-ignore
-export class ItemUseOnBeforeEvent extends ItemUseOnAfterEvent {
-    private constructor();
-    cancel: boolean;
-}
-
-export class ItemUseOnBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: ItemUseOnBeforeEvent) => void): (arg: ItemUseOnBeforeEvent) => void;
-    unsubscribe(callback: (arg: ItemUseOnBeforeEvent) => void): void;
 }
 
 export class ItemUseOnEvent {
@@ -4987,7 +4981,6 @@ export class WorldAfterEvents {
     readonly itemStopUse: ItemStopUseAfterEventSignal;
     readonly itemStopUseOn: ItemStopUseOnAfterEventSignal;
     readonly itemUse: ItemUseAfterEventSignal;
-    readonly itemUseOn: ItemUseOnAfterEventSignal;
     readonly leverAction: LeverActionAfterEventSignal;
     readonly messageReceive: ServerMessageAfterEventSignal;
     readonly pistonActivate: PistonActivateAfterEventSignal;
@@ -5021,7 +5014,6 @@ export class WorldBeforeEvents {
     readonly entityRemove: EntityRemoveBeforeEventSignal;
     readonly explosion: ExplosionBeforeEventSignal;
     readonly itemUse: ItemUseBeforeEventSignal;
-    readonly itemUseOn: ItemUseOnBeforeEventSignal;
     readonly playerBreakBlock: PlayerBreakBlockBeforeEventSignal;
     readonly playerGameModeChange: PlayerGameModeChangeBeforeEventSignal;
     readonly playerInteractWithBlock: PlayerInteractWithBlockBeforeEventSignal;
