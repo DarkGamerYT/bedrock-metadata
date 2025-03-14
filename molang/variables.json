@@ -13,6 +13,12 @@
             "name": "variable.aabb_dimension_y"
         },
         {
+            "name": "variable.acceleration"
+        },
+        {
+            "name": "variable.actor"
+        },
+        {
             "name": "variable.agent"
         },
         {
@@ -41,6 +47,9 @@
         },
         {
             "name": "variable.attack_time"
+        },
+        {
+            "name": "variable.bob_animation"
         },
         {
             "name": "variable.charge_amount"
@@ -82,6 +91,45 @@
             "name": "variable.direction_z"
         },
         {
+            "name": "variable.emitter_age"
+        },
+        {
+            "name": "variable.emitter_intensity"
+        },
+        {
+            "name": "variable.emitter_lifetime"
+        },
+        {
+            "name": "variable.emitter_radius"
+        },
+        {
+            "name": "variable.emitter_random_1"
+        },
+        {
+            "name": "variable.emitter_random_2"
+        },
+        {
+            "name": "variable.emitter_random_3"
+        },
+        {
+            "name": "variable.emitter_random_4"
+        },
+        {
+            "name": "variable.emitter_texture_coordinate"
+        },
+        {
+            "name": "variable.emitter_texture_size"
+        },
+        {
+            "name": "variable.emittertexturecoord"
+        },
+        {
+            "name": "variable.emittertexturesize"
+        },
+        {
+            "name": "variable.entity_scale"
+        },
+        {
             "name": "variable.gliding_speed_value"
         },
         {
@@ -94,7 +142,13 @@
             "name": "variable.goat_has_right_horn"
         },
         {
+            "name": "variable.ground_particle_initial_speed"
+        },
+        {
             "name": "variable.has_target"
+        },
+        {
+            "name": "variable.has_trim"
         },
         {
             "name": "variable.historical_frame_0"
@@ -178,6 +232,9 @@
             "name": "variable.is_brandishing_spear"
         },
         {
+            "name": "variable.is_enchanted"
+        },
+        {
             "name": "variable.is_first_person"
         },
         {
@@ -200,6 +257,9 @@
         },
         {
             "name": "variable.is_paperdoll"
+        },
+        {
+            "name": "variable.is_patterned"
         },
         {
             "name": "variable.is_sneaking"
@@ -247,6 +307,9 @@
             "name": "variable.map_face_icon"
         },
         {
+            "name": "variable.max_lifetime"
+        },
+        {
             "name": "variable.note_color"
         },
         {
@@ -268,10 +331,28 @@
             "name": "variable.originz"
         },
         {
+            "name": "variable.particle_age"
+        },
+        {
             "name": "variable.particle_initial_speed"
         },
         {
+            "name": "variable.particle_lifetime"
+        },
+        {
             "name": "variable.particle_multiplier"
+        },
+        {
+            "name": "variable.particle_random_1"
+        },
+        {
+            "name": "variable.particle_random_2"
+        },
+        {
+            "name": "variable.particle_random_3"
+        },
+        {
+            "name": "variable.particle_random_4"
         },
         {
             "name": "variable.particlecount"
@@ -283,16 +364,28 @@
             "name": "variable.player_arm_height"
         },
         {
+            "name": "variable.player_count"
+        },
+        {
             "name": "variable.player_x_rotation"
         },
         {
             "name": "variable.puffedstate"
         },
         {
+            "name": "variable.rail_offset"
+        },
+        {
+            "name": "variable.rail_rotation"
+        },
+        {
             "name": "variable.raise_arms"
         },
         {
             "name": "variable.right_arm_swim_amount"
+        },
+        {
+            "name": "variable.rotation"
         },
         {
             "name": "variable.runtimeid"
@@ -313,7 +406,19 @@
             "name": "variable.should_bow_head"
         },
         {
+            "name": "variable.should_look_at_target_ui"
+        },
+        {
             "name": "variable.shulker"
+        },
+        {
+            "name": "variable.size_modifier"
+        },
+        {
+            "name": "variable.speed_modifier"
+        },
+        {
+            "name": "variable.splash_range"
         },
         {
             "name": "variable.squid"
@@ -325,7 +430,22 @@
             "name": "variable.state"
         },
         {
+            "name": "variable.surface_particle_texture_coordinate"
+        },
+        {
+            "name": "variable.surface_particle_texture_size"
+        },
+        {
+            "name": "variable.surface_particle_tint"
+        },
+        {
             "name": "variable.swim_amount"
+        },
+        {
+            "name": "variable.texture_coord"
+        },
+        {
+            "name": "variable.trim_path"
         },
         {
             "name": "variable.tropicalfish"
@@ -338,6 +458,12 @@
         },
         {
             "name": "variable.use_item_startup_progress"
+        },
+        {
+            "name": "variable.velocity"
+        },
+        {
+            "name": "variable.velocity_scalar"
         },
         {
             "name": "variable.wing_flap"

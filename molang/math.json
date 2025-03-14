@@ -1,0 +1,96 @@
+{
+    "data_items": [
+        {
+            "name": "math.abs"
+        },
+        {
+            "name": "math.acos"
+        },
+        {
+            "name": "math.asin"
+        },
+        {
+            "name": "math.atan"
+        },
+        {
+            "name": "math.atan2"
+        },
+        {
+            "name": "math.ceil"
+        },
+        {
+            "name": "math.clamp"
+        },
+        {
+            "name": "math.copy_sign"
+        },
+        {
+            "name": "math.cos"
+        },
+        {
+            "name": "math.die_roll"
+        },
+        {
+            "name": "math.die_roll_integer"
+        },
+        {
+            "name": "math.exp"
+        },
+        {
+            "name": "math.floor"
+        },
+        {
+            "name": "math.hermite_blend"
+        },
+        {
+            "name": "math.lerp"
+        },
+        {
+            "name": "math.lerprotate"
+        },
+        {
+            "name": "math.ln"
+        },
+        {
+            "name": "math.max"
+        },
+        {
+            "name": "math.min"
+        },
+        {
+            "name": "math.min_angle"
+        },
+        {
+            "name": "math.mod"
+        },
+        {
+            "name": "math.pi"
+        },
+        {
+            "name": "math.pow"
+        },
+        {
+            "name": "math.random"
+        },
+        {
+            "name": "math.random_integer"
+        },
+        {
+            "name": "math.round"
+        },
+        {
+            "name": "math.sign"
+        },
+        {
+            "name": "math.sin"
+        },
+        {
+            "name": "math.sqrt"
+        },
+        {
+            "name": "math.trunc"
+        }
+    ],
+    "minecraft_version": "1.21.80-preview.20",
+    "name": "molang-math"
+}

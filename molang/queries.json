@@ -496,6 +496,9 @@
             "name": "query.is_on_ground"
         },
         {
+            "name": "query.is_on_screen"
+        },
+        {
             "name": "query.is_onfire"
         },
         {
