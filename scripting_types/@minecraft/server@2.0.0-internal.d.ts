@@ -571,6 +571,10 @@ export enum WeatherType {
     Thunder = "Thunder",
 }
 
+export type BlockComponentReturnType<T extends string> = T extends keyof BlockComponentTypeMap
+    ? BlockComponentTypeMap[T]
+    : BlockComponent;
+
 export type BlockComponentTypeMap = {
     destruction_particles: BlockDestructionParticlesComponent;
     fluid_container: BlockFluidContainerComponent;
@@ -587,6 +591,10 @@ export type BlockComponentTypeMap = {
     "minecraft:record_player": BlockRecordPlayerComponent;
     "minecraft:sign": BlockSignComponent;
 }
+
+export type EntityComponentReturnType<T extends string> = T extends keyof EntityComponentTypeMap
+    ? EntityComponentTypeMap[T]
+    : EntityComponent;
 
 export type EntityComponentTypeMap = {
     addrider: EntityAddRiderComponent;
@@ -722,6 +730,10 @@ export type EntityComponentTypeMap = {
     "minecraft:variant": EntityVariantComponent;
     "minecraft:wants_jockey": EntityWantsJockeyComponent;
 }
+
+export type ItemComponentReturnType<T extends string> = T extends keyof ItemComponentTypeMap
+    ? ItemComponentTypeMap[T]
+    : ItemComponent;
 
 export type ItemComponentTypeMap = {
     compostable: ItemCompostableComponent;
@@ -1019,7 +1031,7 @@ export class Block {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
-    getComponent(componentId: string): BlockComponent | undefined;
+    getComponent<T extends string>(componentId: T): BlockComponentReturnType<T> | undefined;
     /**
      * @throws This function can throw errors.
      *
@@ -2219,7 +2231,7 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      */
-    getComponent(componentId: string): EntityComponent | undefined;
+    getComponent<T extends string>(componentId: T): EntityComponentReturnType<T> | undefined;
     /**
      * @throws This function can throw errors.
      *
@@ -3780,7 +3792,7 @@ constructor(itemType: ItemType | string, amount?: number);
     clone(): ItemStack;
     getCanDestroy(): string[];
     getCanPlaceOn(): string[];
-    getComponent(componentId: string): ItemComponent | undefined;
+    getComponent<T extends string>(componentId: T): ItemComponentReturnType<T> | undefined;
     getComponents(): ItemComponent[];
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     getDynamicPropertyIds(): string[];
