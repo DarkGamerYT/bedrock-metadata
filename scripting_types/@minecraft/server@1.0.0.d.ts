@@ -66,5 +66,15 @@ export class World {
     getDimension(dimensionId: string): Dimension;
 }
 
+export class InvalidEntityError {
+    private constructor();
+    readonly id: string;
+    readonly "type": string;
+}
+
+export class RawMessageError {
+    private constructor();
+}
+
 export const system: System;
 export const world: World;

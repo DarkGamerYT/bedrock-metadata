@@ -885,6 +885,7 @@ export class Camera {
         cameraPreset: string,
         setOptions?: 
             | CameraDefaultOptions
+            | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
             | CameraSetPosOptions
@@ -1791,9 +1792,6 @@ export class EntityInventoryComponent extends EntityComponent {
      * @throws This property can throw errors.
      */
     readonly canBeSiphonedFrom: boolean;
-    /**
-     * @throws This property can throw errors.
-     */
     readonly container?: Container;
     /**
      * @throws This property can throw errors.
@@ -3071,6 +3069,10 @@ export class Player extends Entity {
     resetLevel(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
@@ -3479,35 +3481,59 @@ export class ScreenDisplay {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getHiddenHudElements(): HudElement[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     hideAllExcept(hudElements?: HudElement[]): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     isForcedHidden(hudElement: HudElement): boolean;
     isValid(): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     resetHudElements(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     setActionBar(text: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     updateSubtitle(subtitle: (RawMessage | string)[] | RawMessage | string): void;
 }
@@ -3931,6 +3957,11 @@ export interface CameraFadeTimeOptions {
     holdTime: number;
 }
 
+export interface CameraFixedBoomOptions {
+    entityOffset?: Vector3;
+    viewOffset?: Vector2;
+}
+
 export interface CameraSetFacingOptions {
     easeOptions?: CameraEaseOptions;
     facingEntity: Entity;
@@ -4284,6 +4315,12 @@ export class InvalidContainerSlotError {
     private constructor();
 }
 
+export class InvalidEntityError {
+    private constructor();
+    readonly id: string;
+    readonly "type": string;
+}
+
 export class InvalidStructureError {
     private constructor();
 }
@@ -4309,6 +4346,10 @@ export class LocationInUnloadedChunkError {
 }
 
 export class LocationOutOfWorldBoundariesError {
+    private constructor();
+}
+
+export class RawMessageError {
     private constructor();
 }
 

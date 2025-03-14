@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @alpha
+ * @beta
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server-ui",
- *     "version": "2.0.0-alpha"
+ *     "version": "2.0.0-beta"
  * }
  * ```
  */
@@ -28,8 +28,17 @@ export enum FormRejectReason {
 export class ActionFormData {
     body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
+    divider(): ActionFormData;
+    header(text: minecraftserver.RawMessage | string): ActionFormData;
+    label(text: minecraftserver.RawMessage | string): ActionFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     *
+     * {@link minecraftserver.RawMessageError}
      */
     show(player: minecraftserver.Player): Promise<ActionFormResponse>;
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
@@ -57,6 +66,8 @@ export class MessageFormData {
      * {@link minecraftcommon.EngineError}
      *
      * {@link minecraftserver.InvalidEntityError}
+     *
+     * {@link minecraftserver.RawMessageError}
      */
     show(player: minecraftserver.Player): Promise<MessageFormResponse>;
     title(titleText: minecraftserver.RawMessage | string): MessageFormData;
@@ -69,30 +80,38 @@ export class MessageFormResponse extends FormResponse {
 }
 
 export class ModalFormData {
+    divider(): ModalFormData;
     dropdown(
         label: minecraftserver.RawMessage | string,
-        options: (minecraftserver.RawMessage | string)[],
-        defaultValueIndex?: number,
+        items: (minecraftserver.RawMessage | string)[],
+        dropdownOptions?: ModalFormDataDropdownOptions,
     ): ModalFormData;
+    header(text: minecraftserver.RawMessage | string): ModalFormData;
+    label(text: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     *
+     * {@link minecraftserver.RawMessageError}
      */
     show(player: minecraftserver.Player): Promise<ModalFormResponse>;
     slider(
         label: minecraftserver.RawMessage | string,
         minimumValue: number,
         maximumValue: number,
-        valueStep: number,
-        defaultValue?: number,
+        sliderOptions?: ModalFormDataSliderOptions,
     ): ModalFormData;
     submitButton(submitButtonText: minecraftserver.RawMessage | string): ModalFormData;
     textField(
         label: minecraftserver.RawMessage | string,
         placeholderText: minecraftserver.RawMessage | string,
-        defaultValue?: minecraftserver.RawMessage | string,
+        textFieldOptions?: ModalFormDataTextFieldOptions,
     ): ModalFormData;
     title(titleText: minecraftserver.RawMessage | string): ModalFormData;
-    toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;
+    toggle(label: minecraftserver.RawMessage | string, toggleOptions?: ModalFormDataToggleOptions): ModalFormData;
 }
 
 // @ts-ignore
@@ -109,10 +128,30 @@ export class UIManager {
     closeAllForms(player: minecraftserver.Player): void;
 }
 
+export interface ModalFormDataDropdownOptions {
+    defaultValueIndex?: number;
+    tooltip?: minecraftserver.RawMessage | string;
+}
+
+export interface ModalFormDataSliderOptions {
+    defaultValue?: number;
+    tooltip?: minecraftserver.RawMessage | string;
+    valueStep?: number;
+}
+
+export interface ModalFormDataTextFieldOptions {
+    defaultValue?: string;
+    tooltip?: minecraftserver.RawMessage | string;
+}
+
+export interface ModalFormDataToggleOptions {
+    defaultValue?: boolean;
+    tooltip?: minecraftserver.RawMessage | string;
+}
+
 export class FormRejectError {
     private constructor();
     readonly reason: FormRejectReason;
 }
 
-export const isAlpha = true;
 export const uiManager: UIManager;

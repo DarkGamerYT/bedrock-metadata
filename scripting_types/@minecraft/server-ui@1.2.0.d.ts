@@ -29,6 +29,12 @@ export class ActionFormData {
     button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     *
+     * {@link minecraftserver.RawMessageError}
      */
     show(player: minecraftserver.Player): Promise<ActionFormResponse>;
     title(titleText: minecraftserver.RawMessage | string): ActionFormData;
@@ -71,6 +77,12 @@ export class ModalFormData {
     ): ModalFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     *
+     * {@link minecraftserver.RawMessageError}
      */
     show(player: minecraftserver.Player): Promise<ModalFormResponse>;
     slider(

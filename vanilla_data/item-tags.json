@@ -463,6 +463,20 @@
             ]
         },
         {
+            "name": "minecraft:egg",
+            "items": [
+                {
+                    "name": "minecraft:blue_egg"
+                },
+                {
+                    "name": "minecraft:brown_egg"
+                },
+                {
+                    "name": "minecraft:egg"
+                }
+            ]
+        },
+        {
             "name": "minecraft:golden_tier",
             "items": [
                 {
@@ -2412,6 +2426,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.60-stable",
+    "minecraft_version": "1.21.80-preview.20",
     "name": "item-tags"
 }

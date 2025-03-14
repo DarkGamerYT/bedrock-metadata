@@ -345,9 +345,6 @@ export class EntityInventoryComponent extends EntityComponent {
      * @throws This property can throw errors.
      */
     readonly canBeSiphonedFrom: boolean;
-    /**
-     * @throws This property can throw errors.
-     */
     readonly container?: Container;
     /**
      * @throws This property can throw errors.
@@ -560,6 +557,10 @@ export class Player extends Entity {
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
 }
@@ -692,11 +693,21 @@ export class CommandError {
     private constructor();
 }
 
+export class InvalidEntityError {
+    private constructor();
+    readonly id: string;
+    readonly "type": string;
+}
+
 export class LocationInUnloadedChunkError {
     private constructor();
 }
 
 export class LocationOutOfWorldBoundariesError {
+    private constructor();
+}
+
+export class RawMessageError {
     private constructor();
 }
 

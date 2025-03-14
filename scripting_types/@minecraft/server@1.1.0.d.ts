@@ -131,6 +131,10 @@ export class Player extends Entity {
     readonly name: string;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link RawMessageError}
      */
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
 }
@@ -219,11 +223,21 @@ export interface Vector3 {
     z: number;
 }
 
+export class InvalidEntityError {
+    private constructor();
+    readonly id: string;
+    readonly "type": string;
+}
+
 export class LocationInUnloadedChunkError {
     private constructor();
 }
 
 export class LocationOutOfWorldBoundariesError {
+    private constructor();
+}
+
+export class RawMessageError {
     private constructor();
 }
 

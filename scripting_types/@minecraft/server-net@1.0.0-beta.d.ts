@@ -112,8 +112,6 @@ export enum PacketId {
     LevelEventGenericPacket = "LevelEventGenericPacket",
     LevelEventPacket = "LevelEventPacket",
     LevelSoundEventPacket = "LevelSoundEventPacket",
-    LevelSoundEventPacketV1 = "LevelSoundEventPacketV1",
-    LevelSoundEventPacketV2 = "LevelSoundEventPacketV2",
     LoginPacket = "LoginPacket",
     MapCreateLockedCopyPacket = "MapCreateLockedCopyPacket",
     MapInfoRequestPacket = "MapInfoRequestPacket",
@@ -146,9 +144,11 @@ export enum PacketId {
     PlayerHotbarPacket = "PlayerHotbarPacket",
     PlayerInputPacket = "PlayerInputPacket",
     PlayerListPacket = "PlayerListPacket",
+    PlayerLocationPacket = "PlayerLocationPacket",
     PlayerSkinPacket = "PlayerSkinPacket",
     PlayerStartItemCooldownPacket = "PlayerStartItemCooldownPacket",
     PlayerToggleCrafterSlotRequestPacket = "PlayerToggleCrafterSlotRequestPacket",
+    PlayerUpdateEntityOverridesPacket = "PlayerUpdateEntityOverridesPacket",
     PlaySoundPacket = "PlaySoundPacket",
     PlayStatusPacket = "PlayStatusPacket",
     PositionTrackingDBClientRequestPacket = "PositionTrackingDBClientRequestPacket",
@@ -188,6 +188,7 @@ export enum PacketId {
     SetHudPacket = "SetHudPacket",
     SetLastHurtByPacket = "SetLastHurtByPacket",
     SetLocalPlayerAsInitializedPacket = "SetLocalPlayerAsInitializedPacket",
+    SetMovementAuthorityPacket = "SetMovementAuthorityPacket",
     SetPlayerGameTypePacket = "SetPlayerGameTypePacket",
     SetPlayerInventoryOptionsPacket = "SetPlayerInventoryOptionsPacket",
     SetScoreboardIdentityPacket = "SetScoreboardIdentityPacket",
@@ -225,6 +226,7 @@ export enum PacketId {
     UpdateBlockPacket = "UpdateBlockPacket",
     UpdateBlockSyncedPacket = "UpdateBlockSyncedPacket",
     UpdateClientInputLocksPacket = "UpdateClientInputLocksPacket",
+    UpdateClientOptions = "UpdateClientOptions",
     UpdateEquipPacket = "UpdateEquipPacket",
     UpdatePlayerGameTypePacket = "UpdatePlayerGameTypePacket",
     UpdateSoftEnumPacket = "UpdateSoftEnumPacket",
@@ -309,6 +311,16 @@ export class PacketSendBeforeEventSignal {
 export interface PacketEventOptions {
     ignoredPacketIds?: PacketId[];
     monitoredPacketIds?: PacketId[];
+}
+
+export class InternalHttpRequestError {
+    private constructor();
+    readonly code: number;
+    readonly message: string;
+}
+
+export class MalformedHttpRequestError {
+    private constructor();
 }
 
 export const beforeEvents: NetworkBeforeEvents;
