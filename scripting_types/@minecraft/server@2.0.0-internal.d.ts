@@ -2872,7 +2872,10 @@ export class EntityLoadAfterEventSignal {
 // @ts-ignore
 export class EntityMarkVariantComponent extends EntityComponent {
     private constructor();
-    value: number;
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly value: number;
 }
 
 // @ts-ignore

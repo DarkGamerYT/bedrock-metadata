@@ -3552,6 +3552,10 @@ export class Player extends Entity {
     /**
      * @throws This function can throw errors.
      */
+    clearPropertyOverridesForEntity(targetEntity: Entity): void;
+    /**
+     * @throws This function can throw errors.
+     */
     getGameMode(): GameMode;
     /**
      * @throws This function can throw errors.
@@ -3580,6 +3584,10 @@ export class Player extends Entity {
     /**
      * @throws This function can throw errors.
      */
+    removePropertyOverrideForEntity(targetEntity: Entity, identifier: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     resetLevel(): void;
     /**
      * @throws This function can throw errors.
@@ -3593,6 +3601,10 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     setGameMode(gameMode?: GameMode): void;
+    /**
+     * @throws This function can throw errors.
+     */
+    setPropertyOverrideForEntity(targetEntity: Entity, identifier: string, value: boolean | number | string): void;
     /**
      * @throws This function can throw errors.
      *

@@ -646,6 +646,9 @@
             "name": "query.last_input_mode_is_any"
         },
         {
+            "name": "query.leashed_entity_count"
+        },
+        {
             "name": "query.lie_amount"
         },
         {
@@ -895,6 +898,6 @@
             "name": "query.yaw_speed"
         }
     ],
-    "minecraft_version": "1.21.80-preview.20",
+    "minecraft_version": "1.21.80-preview.21",
     "name": "molang-queries"
 }

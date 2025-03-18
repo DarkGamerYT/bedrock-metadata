@@ -68,6 +68,15 @@ export enum EditorMode {
     Tool = "Tool",
 }
 
+export enum EditorRealmsServiceAvailability {
+    NotLoggedIn = 0,
+    NoRealmsSubscription = 1,
+    DedicatedServer = 2,
+    NotServerHost = 3,
+    Success = 4,
+    Unknown = 5,
+}
+
 export enum EntityOperationType {
     Create = 0,
     Delete = 1,
@@ -384,10 +393,30 @@ export class BlockUtilities {
      * {@link Error}
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
+    getMaxWorldLocation(): minecraftserver.Vector3;
+    getMinWorldLocation(): minecraftserver.Vector3;
+    isLocationInWorld(locationOrVolumeOrBounds: 
+            | minecraftserver.BlockVolumeBase
+            | minecraftserver.BoundingBox
+            | RelativeVolumeListBlockVolume
+            | minecraftserver.Vector3): boolean;
     /**
      * @throws This function can throw errors.
      */
     quickExtrude(properties?: QuickExtrudeProperties): void;
+    shrinkWrapVolume(volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): RelativeVolumeListBlockVolume;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link Error}
+     */
+    trimVolumeToFitContents(
+        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        retainMarqueeAfterTrimming: boolean,
+        ignoreLiquid: boolean,
+        ignoreNoCollision: boolean,
+        blockMask?: BlockMaskList,
+    ): RelativeVolumeListBlockVolume;
 }
 
 export class BrushShapeManager {
@@ -723,6 +752,13 @@ export class DataTransferRequestResponse {
     readonly schema: string;
 }
 
+export class EditorConstants {
+    private constructor();
+    readonly maxSelectionSize: minecraftserver.Vector3;
+    readonly maxStructureOffset: minecraftserver.Vector3;
+    readonly minStructureOffset: minecraftserver.Vector3;
+}
+
 export class EditorStructureManager {
     private constructor();
     /**
@@ -896,6 +932,7 @@ export class Logger {
 
 export class MinecraftEditor {
     private constructor();
+    readonly constants: EditorConstants;
     /**
      * @throws This property can throw errors.
      */
@@ -994,7 +1031,7 @@ export class realmsService {
      * @throws This function can throw errors.
      */
     getSlots(worldId: string): Promise<EditorRealmsWorldSlot[]>;
-    isRealmsServiceAvailable(): boolean;
+    isRealmsServiceAvailable(): EditorRealmsServiceAvailability;
 }
 
 // @ts-ignore
@@ -1877,20 +1914,29 @@ export interface GameOptions {
     bonusChest?: boolean;
     cheats?: boolean;
     commandBlockEnabled?: boolean;
+    commandBlockOutput?: boolean;
     daylightCycle?: DaylightCycle;
     difficulty?: minecraftserver.Difficulty;
     dimensionId?: string;
     disableWeather?: boolean;
+    drowningDamage?: boolean;
     educationEdition?: boolean;
     entitiesDropLoot?: boolean;
     exportType?: ProjectExportType;
+    fallDamage?: boolean;
+    fireDamage?: boolean;
     fireSpreads?: boolean;
+    freezeDamage?: boolean;
     friendlyFire?: boolean;
+    functionCommandLimit?: number;
     gameMode?: minecraftserver.GameMode;
     hardcore?: boolean;
     immediateRespawn?: boolean;
+    insomnia?: boolean;
     keepInventory?: boolean;
     lanVisibility?: boolean;
+    limitedCrafting?: boolean;
+    maxCommandChainLength?: number;
     mobGriefing?: boolean;
     mobLoot?: boolean;
     mobSpawning?: boolean;
@@ -1902,8 +1948,12 @@ export interface GameOptions {
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
     respawnRadius?: number;
+    sendCommandFeedback?: boolean;
+    showBorderEffect?: boolean;
     showCoordinates?: boolean;
     showDaysPlayed?: boolean;
+    showDeathMessage?: boolean;
+    showItemTags?: boolean;
     simulationDistance?: number;
     sleepSkipPercent?: number;
     spawnPosition?: minecraftserver.Vector3;
