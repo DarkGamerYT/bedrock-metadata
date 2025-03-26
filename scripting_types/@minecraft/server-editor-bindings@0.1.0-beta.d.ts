@@ -194,6 +194,16 @@ export enum RealmsServiceStatus {
     Uploading = 3,
 }
 
+export enum RealmsWorldUploadResult {
+    Unknown = 0,
+    Success = 1,
+    ExportWorldFailure = 2,
+    UploadWorldFailure = 3,
+    EditorSystemFailure = 4,
+    WorldUploadBusy = 5,
+    WorldNameNonCompliant = 6,
+}
+
 export enum SelectionVolumeEventType {
     Set = 1,
     Add = 2,
@@ -1020,7 +1030,7 @@ export class realmsService {
     /**
      * @throws This function can throw errors.
      */
-    beginUploadToRealms(realmsWorldId: string, slotId: number, gameOptions: GameOptions): Promise<boolean>;
+    beginUploadToRealms(realmsWorldId: string, slotId: number, gameOptions: GameOptions): Promise<RealmsWorldUploadResult>;
     canUploadWorld(): boolean;
     /**
      * @throws This function can throw errors.

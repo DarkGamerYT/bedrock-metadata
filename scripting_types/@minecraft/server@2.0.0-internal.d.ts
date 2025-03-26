@@ -54,6 +54,38 @@ export enum CompoundBlockVolumePositionRelativity {
     Absolute = 1,
 }
 
+export enum CustomCommandErrorReason {
+    AlreadyRegistered = "AlreadyRegistered",
+    ParameterLimit = "ParameterLimit",
+    RegistryInvalid = "RegistryInvalid",
+    RegistryReadOnly = "RegistryReadOnly",
+}
+
+export enum CustomCommandParamType {
+    Boolean = 0,
+    Integer = 1,
+    Float = 2,
+    String = 3,
+    EntitySelector = 4,
+    PlayerSelector = 5,
+    Position = 6,
+    BlockType = 7,
+    ItemType = 8,
+}
+
+export enum CustomCommandPermissionLevel {
+    Any = 0,
+    GameDirectors = 1,
+    Admin = 2,
+    Host = 3,
+    Owner = 4,
+}
+
+export enum CustomCommandStatus {
+    Success = 0,
+    Failure = 1,
+}
+
 export enum CustomComponentNameErrorReason {
     NoNamespace = 1,
     DisallowedNamespace = 2,
@@ -939,6 +971,14 @@ export class Block {
     readonly isWaterlogged: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly localizationKey: string;
+    /**
+     * @throws This property can throw errors.
      */
     readonly location: Vector3;
     /**
@@ -1695,6 +1735,30 @@ export class Container {
     clearAll(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    contains(itemStack: ItemStack): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    find(itemStack: ItemStack): number;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstEmptySlot(): number;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstItem(): number;
+    /**
+     * @throws This function can throw errors.
      */
     getItem(slot: number): ItemStack | undefined;
     /**
@@ -1705,6 +1769,12 @@ export class Container {
      * @throws This function can throw errors.
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    reverseFind(itemStack: ItemStack): number;
     /**
      * @throws This function can throw errors.
      */
@@ -1870,6 +1940,20 @@ export class ContainerSlot {
      * {@link InvalidContainerSlotError}
      */
     setLore(loreList?: string[]): void;
+}
+
+export class CustomCommandRegistry {
+    private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link CustomCommandError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerCommand(customCommand: CustomCommand, callback: () => CustomCommandResult): void;
 }
 
 export class DataDrivenEntityTriggerAfterEvent {
@@ -2179,6 +2263,12 @@ export class Entity {
      */
     readonly isSwimming: boolean;
     readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly localizationKey: string;
     /**
      * @throws This property can throw errors.
      */
@@ -3205,7 +3295,10 @@ export class EntityScaleComponent extends EntityComponent {
 // @ts-ignore
 export class EntitySkinIdComponent extends EntityComponent {
     private constructor();
-    value: number;
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly value: number;
 }
 
 export class EntitySpawnAfterEvent {
@@ -3782,6 +3875,12 @@ export class ItemStack {
     amount: number;
     readonly isStackable: boolean;
     keepOnDeath: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    readonly localizationKey: string;
     lockMode: ItemLockMode;
     readonly maxAmount: number;
     nameTag?: string;
@@ -4795,6 +4894,7 @@ export class StartupBeforeEventSignal {
 export class StartupEvent {
     private constructor();
     readonly blockComponentRegistry: BlockComponentRegistry;
+    readonly customCommandRegistry: CustomCommandRegistry;
     readonly itemComponentRegistry: ItemComponentRegistry;
     getSpawnRulesRegistry(): SpawnRulesRegistry;
 }
@@ -5305,6 +5405,24 @@ export interface CompoundBlockVolumeItem {
     volume: BlockVolume;
 }
 
+export interface CustomCommand {
+    description: string;
+    mandatoryParameters?: CustomCommandParameter[];
+    name: string;
+    optionalParameters?: CustomCommandParameter[];
+    permissionLevel: CustomCommandPermissionLevel;
+}
+
+export interface CustomCommandParameter {
+    name: string;
+    type: CustomCommandParamType;
+}
+
+export interface CustomCommandResult {
+    message?: string;
+    status: CustomCommandStatus;
+}
+
 export interface DefinitionModifier {
     addedComponentGroups: string[];
     removedComponentGroups: string[];
@@ -5640,6 +5758,11 @@ export class CommandError {
     private constructor();
 }
 
+export class CustomCommandError {
+    private constructor();
+    readonly reason: CustomCommandErrorReason;
+}
+
 export class CustomComponentInvalidRegistryError {
     private constructor();
 }
@@ -5663,6 +5786,10 @@ export class EnchantmentTypeNotCompatibleError {
 }
 
 export class EnchantmentTypeUnknownIdError {
+    private constructor();
+}
+
+export class InvalidContainerError {
     private constructor();
 }
 
