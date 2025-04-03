@@ -44,6 +44,14 @@ export enum ButtonState {
     Released = "Released",
 }
 
+export enum CommandPermissionLevel {
+    Any = 0,
+    GameDirectors = 1,
+    Admin = 2,
+    Host = 3,
+    Owner = 4,
+}
+
 export enum CompoundBlockVolumeAction {
     Add = 0,
     Subtract = 1,
@@ -68,17 +76,16 @@ export enum CustomCommandParamType {
     String = 3,
     EntitySelector = 4,
     PlayerSelector = 5,
-    Position = 6,
+    Location = 6,
     BlockType = 7,
     ItemType = 8,
 }
 
-export enum CustomCommandPermissionLevel {
-    Any = 0,
-    GameDirectors = 1,
-    Admin = 2,
-    Host = 3,
-    Owner = 4,
+export enum CustomCommandSource {
+    Block = "Block",
+    Entity = "Entity",
+    NPCDialogue = "NPCDialogue",
+    Server = "Server",
 }
 
 export enum CustomCommandStatus {
@@ -92,10 +99,10 @@ export enum CustomComponentNameErrorReason {
 }
 
 export enum Difficulty {
-    Peaceful = 0,
-    Easy = 1,
-    Normal = 2,
-    Hard = 3,
+    Easy = "Easy",
+    Hard = "Hard",
+    Normal = "Normal",
+    Peaceful = "Peaceful",
 }
 
 export enum Direction {
@@ -381,6 +388,7 @@ export enum GameRule {
     FreezeDamage = "freezeDamage",
     FunctionCommandLimit = "functionCommandLimit",
     KeepInventory = "keepInventory",
+    LocatorBar = "locatorBar",
     MaxCommandChainLength = "maxCommandChainLength",
     MobGriefing = "mobGriefing",
     NaturalRegeneration = "naturalRegeneration",
@@ -904,24 +912,6 @@ export class AimAssistRegistry {
     getPresets(): AimAssistPreset[];
 }
 
-export class AsyncPlayerJoinBeforeEvent {
-    private constructor();
-    readonly id: string;
-    /**
-     * @throws This function can throw errors.
-     *
-     * {@link DisconnectedError}
-     */
-    disconnect(reason?: string): void;
-    isValid(): boolean;
-}
-
-export class AsyncPlayerJoinBeforeEventSignal {
-    private constructor();
-    subscribe(callback: (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>): (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>;
-    unsubscribe(callback: (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>): void;
-}
-
 export class BiomeType {
     private constructor();
     readonly id: string;
@@ -1218,6 +1208,21 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     west(steps?: number): Block | undefined;
+}
+
+export class BlockBoundingBoxUtils {
+    private constructor();
+    static createValid(min: Vector3, max: Vector3): BlockBoundingBox;
+    static dilate(box: BlockBoundingBox, size: Vector3): BlockBoundingBox;
+    static equals(box: BlockBoundingBox, other: BlockBoundingBox): boolean;
+    static expand(box: BlockBoundingBox, other: BlockBoundingBox): BlockBoundingBox;
+    static getCenter(box: BlockBoundingBox): Vector3;
+    static getIntersection(box: BlockBoundingBox, other: BlockBoundingBox): BlockBoundingBox | undefined;
+    static getSpan(box: BlockBoundingBox): Vector3;
+    static intersects(box: BlockBoundingBox, other: BlockBoundingBox): boolean;
+    static isInside(box: BlockBoundingBox, pos: Vector3): boolean;
+    static isValid(box: BlockBoundingBox): boolean;
+    static translate(box: BlockBoundingBox, delta: Vector3): BlockBoundingBox;
 }
 
 // @ts-ignore
@@ -1578,7 +1583,7 @@ export class BlockVolumeBase {
     /**
      * @throws This function can throw errors.
      */
-    getBoundingBox(): BoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     getCapacity(): number;
     /**
      * @throws This function can throw errors.
@@ -1591,21 +1596,6 @@ export class BlockVolumeBase {
     getSpan(): Vector3;
     isInside(location: Vector3): boolean;
     translate(delta: Vector3): void;
-}
-
-export class BoundingBoxUtils {
-    private constructor();
-    static createValid(min: Vector3, max: Vector3): BoundingBox;
-    static dilate(box: BoundingBox, size: Vector3): BoundingBox;
-    static equals(box: BoundingBox, other: BoundingBox): boolean;
-    static expand(box: BoundingBox, other: BoundingBox): BoundingBox;
-    static getCenter(box: BoundingBox): Vector3;
-    static getIntersection(box: BoundingBox, other: BoundingBox): BoundingBox | undefined;
-    static getSpan(box: BoundingBox): Vector3;
-    static intersects(box: BoundingBox, other: BoundingBox): boolean;
-    static isInside(box: BoundingBox, pos: Vector3): boolean;
-    static isValid(box: BoundingBox): boolean;
-    static translate(box: BoundingBox, delta: Vector3): BoundingBox;
 }
 
 // @ts-ignore
@@ -1700,7 +1690,7 @@ export class CompoundBlockVolume {
     constructor(origin?: Vector3);
     clear(): void;
     getBlockLocationIterator(): BlockLocationIterator;
-    getBoundingBox(): BoundingBox;
+    getBoundingBox(): BlockBoundingBox;
     getMax(): Vector3;
     getMin(): Vector3;
     getOrigin(): Vector3;
@@ -1942,6 +1932,14 @@ export class ContainerSlot {
     setLore(loreList?: string[]): void;
 }
 
+export class CustomCommandOrigin {
+    private constructor();
+    readonly initiator?: Entity;
+    readonly sourceBlock?: Block;
+    readonly sourceEntity?: Entity;
+    readonly sourceType: CustomCommandSource;
+}
+
 export class CustomCommandRegistry {
     private constructor();
     /**
@@ -1954,6 +1952,11 @@ export class CustomCommandRegistry {
      * {@link NamespaceNameError}
      */
     registerCommand(customCommand: CustomCommand, callback: () => CustomCommandResult): void;
+}
+
+export class CustomComponentParameters {
+    private constructor();
+    readonly params: unknown;
 }
 
 export class DataDrivenEntityTriggerAfterEvent {
@@ -2696,7 +2699,10 @@ export class EntityFlyingSpeedComponent extends EntityComponent {
 // @ts-ignore
 export class EntityFrictionModifierComponent extends EntityComponent {
     private constructor();
-    value: number;
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly value: number;
 }
 
 // @ts-ignore
@@ -3328,7 +3334,7 @@ export class EntitySpawnType {
     readonly isSummonable: boolean;
     readonly spawnCategory: EntitySpawnCategory;
     readonly width: number;
-    getSpawnAABB(position: Vector3): BoundingBox;
+    getSpawnAABB(position: Vector3): BlockBoundingBox;
     isBlockDangerous(block: Block): boolean;
 }
 
@@ -3533,6 +3539,7 @@ export class GameRules {
     freezeDamage: boolean;
     functionCommandLimit: number;
     keepInventory: boolean;
+    locatorBar: boolean;
     maxCommandChainLength: number;
     mobGriefing: boolean;
     naturalRegeneration: boolean;
@@ -5003,7 +5010,7 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawPlaceOptions,
-    ): BoundingBox;
+    ): BlockBoundingBox;
     /**
      * @throws This function can throw errors.
      *
@@ -5014,7 +5021,7 @@ export class StructureManager {
         dimension: Dimension,
         location: Vector3,
         options?: JigsawStructurePlaceOptions,
-    ): BoundingBox;
+    ): BlockBoundingBox;
 }
 
 export class System {
@@ -5262,7 +5269,6 @@ export class WorldAfterEvents {
 
 export class WorldBeforeEvents {
     private constructor();
-    readonly asyncPlayerJoin: AsyncPlayerJoinBeforeEventSignal;
     readonly chatSend: ChatSendBeforeEventSignal;
     readonly effectAdd: EffectAddBeforeEventSignal;
     readonly entityRemove: EntityRemoveBeforeEventSignal;
@@ -5291,16 +5297,21 @@ export interface BiomeSearchOptions {
     boundingSize?: Vector3;
 }
 
+export interface BlockBoundingBox {
+    max: Vector3;
+    min: Vector3;
+}
+
 export interface BlockCustomComponent {
-    beforeOnPlayerPlace?: (arg: BlockComponentPlayerPlaceBeforeEvent) => void;
-    onEntityFallOn?: (arg: BlockComponentEntityFallOnEvent) => void;
-    onPlace?: (arg: BlockComponentOnPlaceEvent) => void;
-    onPlayerDestroy?: (arg: BlockComponentPlayerDestroyEvent) => void;
-    onPlayerInteract?: (arg: BlockComponentPlayerInteractEvent) => void;
-    onRandomTick?: (arg: BlockComponentRandomTickEvent) => void;
-    onStepOff?: (arg: BlockComponentStepOffEvent) => void;
-    onStepOn?: (arg: BlockComponentStepOnEvent) => void;
-    onTick?: (arg: BlockComponentTickEvent) => void;
+    beforeOnPlayerPlace?: (arg: BlockComponentPlayerPlaceBeforeEvent, CustomComponentParameters) => void;
+    onEntityFallOn?: (arg: BlockComponentEntityFallOnEvent, CustomComponentParameters) => void;
+    onPlace?: (arg: BlockComponentOnPlaceEvent, CustomComponentParameters) => void;
+    onPlayerDestroy?: (arg: BlockComponentPlayerDestroyEvent, CustomComponentParameters) => void;
+    onPlayerInteract?: (arg: BlockComponentPlayerInteractEvent, CustomComponentParameters) => void;
+    onRandomTick?: (arg: BlockComponentRandomTickEvent, CustomComponentParameters) => void;
+    onStepOff?: (arg: BlockComponentStepOffEvent, CustomComponentParameters) => void;
+    onStepOn?: (arg: BlockComponentStepOnEvent, CustomComponentParameters) => void;
+    onTick?: (arg: BlockComponentTickEvent, CustomComponentParameters) => void;
 }
 
 export interface BlockEventOptions {
@@ -5339,11 +5350,6 @@ export interface BlockRaycastOptions extends BlockFilter {
     includeLiquidBlocks?: boolean;
     includePassableBlocks?: boolean;
     maxDistance?: number;
-}
-
-export interface BoundingBox {
-    max: Vector3;
-    min: Vector3;
 }
 
 export interface CameraDefaultOptions {
@@ -5410,7 +5416,7 @@ export interface CustomCommand {
     mandatoryParameters?: CustomCommandParameter[];
     name: string;
     optionalParameters?: CustomCommandParameter[];
-    permissionLevel: CustomCommandPermissionLevel;
+    permissionLevel: CommandPermissionLevel;
 }
 
 export interface CustomCommandParameter {
@@ -5568,13 +5574,13 @@ export interface InputEventOptions {
 }
 
 export interface ItemCustomComponent {
-    onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent) => void;
-    onCompleteUse?: (arg: ItemComponentCompleteUseEvent) => void;
-    onConsume?: (arg: ItemComponentConsumeEvent) => void;
-    onHitEntity?: (arg: ItemComponentHitEntityEvent) => void;
-    onMineBlock?: (arg: ItemComponentMineBlockEvent) => void;
-    onUse?: (arg: ItemComponentUseEvent) => void;
-    onUseOn?: (arg: ItemComponentUseOnEvent) => void;
+    onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent, CustomComponentParameters) => void;
+    onCompleteUse?: (arg: ItemComponentCompleteUseEvent, CustomComponentParameters) => void;
+    onConsume?: (arg: ItemComponentConsumeEvent, CustomComponentParameters) => void;
+    onHitEntity?: (arg: ItemComponentHitEntityEvent, CustomComponentParameters) => void;
+    onMineBlock?: (arg: ItemComponentMineBlockEvent, CustomComponentParameters) => void;
+    onUse?: (arg: ItemComponentUseEvent, CustomComponentParameters) => void;
+    onUseOn?: (arg: ItemComponentUseOnEvent, CustomComponentParameters) => void;
 }
 
 export interface JigsawPlaceOptions {
@@ -5770,11 +5776,6 @@ export class CustomComponentInvalidRegistryError {
 export class CustomComponentNameError {
     private constructor();
     readonly reason: CustomComponentNameErrorReason;
-}
-
-export class DisconnectedError {
-    private constructor();
-    readonly id: string;
 }
 
 export class EnchantmentLevelOutOfBoundsError {

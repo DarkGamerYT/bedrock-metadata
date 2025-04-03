@@ -420,7 +420,7 @@ export class Dimension {
     /**
      * @throws This function can throw errors.
      */
-    runCommand(commandString: string): any;
+    runCommand(commandString: string): unknown;
     /**
      * @throws This function can throw errors.
      */
@@ -542,7 +542,7 @@ export class Entity {
     /**
      * @throws This function can throw errors.
      */
-    runCommand(commandString: string): any;
+    runCommand(commandString: string): unknown;
     /**
      * @throws This function can throw errors.
      */

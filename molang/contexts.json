@@ -7,21 +7,9 @@
             "name": "context.cardinal_block_face_placed_on"
         },
         {
-            "name": "context.is_first_person"
-        },
-        {
-            "name": "context.item_slot"
-        },
-        {
             "name": "context.other"
-        },
-        {
-            "name": "context.owning_entity"
-        },
-        {
-            "name": "context.player_offhand_arm_height"
         }
     ],
-    "minecraft_version": "1.21.80-preview.22",
+    "minecraft_version": "1.21.80-preview.25",
     "name": "molang-contexts"
 }

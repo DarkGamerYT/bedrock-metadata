@@ -238,6 +238,9 @@
             "name": "query.has_any_family"
         },
         {
+            "name": "query.has_any_leashed_entity_of_type"
+        },
+        {
             "name": "query.has_armor_slot"
         },
         {
@@ -494,9 +497,6 @@
         },
         {
             "name": "query.is_on_ground"
-        },
-        {
-            "name": "query.is_on_screen"
         },
         {
             "name": "query.is_onfire"
@@ -898,6 +898,6 @@
             "name": "query.yaw_speed"
         }
     ],
-    "minecraft_version": "1.21.80-preview.22",
+    "minecraft_version": "1.21.80-preview.25",
     "name": "molang-queries"
 }

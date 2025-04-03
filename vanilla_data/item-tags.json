@@ -558,6 +558,59 @@
             ]
         },
         {
+            "name": "minecraft:harness",
+            "items": [
+                {
+                    "name": "minecraft:black_harness"
+                },
+                {
+                    "name": "minecraft:blue_harness"
+                },
+                {
+                    "name": "minecraft:brown_harness"
+                },
+                {
+                    "name": "minecraft:cyan_harness"
+                },
+                {
+                    "name": "minecraft:gray_harness"
+                },
+                {
+                    "name": "minecraft:green_harness"
+                },
+                {
+                    "name": "minecraft:light_blue_harness"
+                },
+                {
+                    "name": "minecraft:light_gray_harness"
+                },
+                {
+                    "name": "minecraft:lime_harness"
+                },
+                {
+                    "name": "minecraft:magenta_harness"
+                },
+                {
+                    "name": "minecraft:orange_harness"
+                },
+                {
+                    "name": "minecraft:pink_harness"
+                },
+                {
+                    "name": "minecraft:purple_harness"
+                },
+                {
+                    "name": "minecraft:red_harness"
+                },
+                {
+                    "name": "minecraft:white_harness"
+                },
+                {
+                    "name": "minecraft:yellow_harness"
+                }
+            ]
+        },
+        {
             "name": "minecraft:horse_armor",
             "items": [
                 {
@@ -1746,6 +1799,9 @@
                     "name": "minecraft:guardian_spawn_egg"
                 },
                 {
+                    "name": "minecraft:happy_ghast_spawn_egg"
+                },
+                {
                     "name": "minecraft:hoglin_spawn_egg"
                 },
                 {
@@ -2426,6 +2482,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.80-preview.22",
+    "minecraft_version": "1.21.80-preview.25",
     "name": "item-tags"
 }

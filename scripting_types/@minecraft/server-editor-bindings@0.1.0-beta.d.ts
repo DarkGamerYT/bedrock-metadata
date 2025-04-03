@@ -397,17 +397,18 @@ export class BlockUtilities {
      * {@link Error}
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
+    getDimensionLocationBoundingBox(): minecraftserver.BlockBoundingBox;
+    getDimensionMaxLocation(): minecraftserver.Vector3;
+    getDimensionMinLocation(): minecraftserver.Vector3;
     /**
      * @throws This function can throw errors.
      *
      * {@link Error}
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
-    getMaxWorldLocation(): minecraftserver.Vector3;
-    getMinWorldLocation(): minecraftserver.Vector3;
-    isLocationInWorld(locationOrVolumeOrBounds: 
+    isLocationInsideCurrentDimensionBounds(locationOrVolumeOrBounds: 
+            | minecraftserver.BlockBoundingBox
             | minecraftserver.BlockVolumeBase
-            | minecraftserver.BoundingBox
             | RelativeVolumeListBlockVolume
             | minecraftserver.Vector3): boolean;
     /**
@@ -1108,7 +1109,7 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      *
      * {@link Error}
      */
-    getBoundingBox(): minecraftserver.BoundingBox;
+    getBoundingBox(): minecraftserver.BlockBoundingBox;
     moveTo(location: minecraftserver.Vector3): void;
     remove(volume: 
             | minecraftserver.Vector3[]
