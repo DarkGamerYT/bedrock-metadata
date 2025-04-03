@@ -898,6 +898,6 @@
             "name": "query.yaw_speed"
         }
     ],
-    "minecraft_version": "1.21.80-preview.25",
+    "minecraft_version": "1.21.80-preview.26",
     "name": "molang-queries"
 }
