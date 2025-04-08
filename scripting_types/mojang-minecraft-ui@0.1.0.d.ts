@@ -18,6 +18,8 @@ export class ActionFormData {
     button(text: string, iconPath?: string): ActionFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     show(player: mojangminecraft.Player): Promise<ActionFormResponse>;
     title(titleText: string): ActionFormData;
@@ -40,6 +42,8 @@ export class MessageFormData {
     button2(text: string): MessageFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     show(player: mojangminecraft.Player): Promise<MessageFormResponse>;
     title(titleText: string): MessageFormData;
@@ -56,6 +60,8 @@ export class ModalFormData {
     icon(iconPath: string): ModalFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     show(player: mojangminecraft.Player): Promise<ModalFormResponse>;
     slider(

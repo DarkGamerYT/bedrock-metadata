@@ -66,13 +66,15 @@ export class World {
     getDimension(dimensionId: string): Dimension;
 }
 
-export class InvalidEntityError {
+// @ts-ignore
+export class InvalidEntityError extends Error {
     private constructor();
     readonly id: string;
     readonly "type": string;
 }
 
-export class RawMessageError {
+// @ts-ignore
+export class RawMessageError extends Error {
     private constructor();
 }
 

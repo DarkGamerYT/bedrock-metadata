@@ -276,10 +276,10 @@ export class NetworkBeforeEvents {
 export class PacketReceiveBeforeEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: PacketReceivedBeforeEvent) => void,
+        callback: (arg0: PacketReceivedBeforeEvent) => void,
         options?: PacketEventOptions,
-    ): (arg: PacketReceivedBeforeEvent) => void;
-    unsubscribe(callback: (arg: PacketReceivedBeforeEvent) => void): void;
+    ): (arg0: PacketReceivedBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PacketReceivedBeforeEvent) => void): void;
 }
 
 export class PacketReceivedBeforeEvent {
@@ -300,10 +300,10 @@ export class PacketSendBeforeEvent {
 export class PacketSendBeforeEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: PacketSendBeforeEvent) => void,
+        callback: (arg0: PacketSendBeforeEvent) => void,
         options?: PacketEventOptions,
-    ): (arg: PacketSendBeforeEvent) => void;
-    unsubscribe(callback: (arg: PacketSendBeforeEvent) => void): void;
+    ): (arg0: PacketSendBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PacketSendBeforeEvent) => void): void;
 }
 
 export interface PacketEventOptions {
@@ -311,13 +311,15 @@ export interface PacketEventOptions {
     monitoredPacketIds?: PacketId[];
 }
 
-export class InternalHttpRequestError {
+// @ts-ignore
+export class InternalHttpRequestError extends Error {
     private constructor();
     readonly code: number;
     readonly message: string;
 }
 
-export class MalformedHttpRequestError {
+// @ts-ignore
+export class MalformedHttpRequestError extends Error {
     private constructor();
 }
 

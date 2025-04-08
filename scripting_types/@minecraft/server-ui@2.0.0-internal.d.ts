@@ -34,6 +34,8 @@ export class ActionFormData {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link minecraftserver.InvalidEntityError}
@@ -63,6 +65,8 @@ export class MessageFormData {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link minecraftserver.InvalidEntityError}
@@ -90,6 +94,8 @@ export class ModalFormData {
     label(text: minecraftserver.RawMessage | string): ModalFormData;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -124,6 +130,8 @@ export class UIManager {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     closeAllForms(player: minecraftserver.Player): void;
 }
@@ -149,7 +157,8 @@ export interface ModalFormDataToggleOptions {
     tooltip?: minecraftserver.RawMessage | string;
 }
 
-export class FormRejectError {
+// @ts-ignore
+export class FormRejectError extends Error {
     private constructor();
     readonly reason: FormRejectReason;
 }

@@ -834,6 +834,8 @@ export class AimAssistRegistry {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link Error}
@@ -845,6 +847,8 @@ export class AimAssistRegistry {
     addCategory(category: AimAssistCategorySettings): AimAssistCategory;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -1108,6 +1112,8 @@ export class Block {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -1115,6 +1121,8 @@ export class Block {
     setPermutation(permutation: BlockPermutation): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -1125,6 +1133,8 @@ export class Block {
     setType(blockType: BlockType | string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -1143,6 +1153,8 @@ export class Block {
     south(steps?: number): Block | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -1227,6 +1239,8 @@ export class BlockComponentRegistry {
     /**
      * @throws This function can throw errors.
      *
+     * This function can be called in early-execution mode.
+     *
      * {@link BlockCustomComponentAlreadyRegisteredError}
      *
      * {@link BlockCustomComponentReloadNewComponentError}
@@ -1294,8 +1308,8 @@ export class BlockExplodeAfterEvent extends BlockEvent {
 
 export class BlockExplodeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: BlockExplodeAfterEvent) => void): (arg: BlockExplodeAfterEvent) => void;
-    unsubscribe(callback: (arg: BlockExplodeAfterEvent) => void): void;
+    subscribe(callback: (arg0: BlockExplodeAfterEvent) => void): (arg0: BlockExplodeAfterEvent) => void;
+    unsubscribe(callback: (arg0: BlockExplodeAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -1305,18 +1319,26 @@ export class BlockFluidContainerComponent extends BlockComponent {
     fluidColor: RGBA;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addDye(dye: ItemType): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     getFluidType(): FluidType;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setFluidType(fluidType: FluidType): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setPotion(itemStack: ItemStack): void;
 }
@@ -1417,6 +1439,8 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     ejectRecord(): void;
     /**
@@ -1429,14 +1453,20 @@ export class BlockRecordPlayerComponent extends BlockComponent {
     isPlaying(): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     pauseRecord(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     playRecord(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setRecord(recordItemType?: ItemType | string, startPlaying?: boolean): void;
 }
@@ -1462,14 +1492,20 @@ export class BlockSignComponent extends BlockComponent {
     getTextDyeColor(side?: SignSide): DyeColor | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setText(message: RawMessage | RawText | string, side?: SignSide): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setTextDyeColor(color?: DyeColor, side?: SignSide): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setWaxed(waxed: boolean): void;
 }
@@ -1536,8 +1572,8 @@ export class ButtonPushAfterEvent extends BlockEvent {
 
 export class ButtonPushAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ButtonPushAfterEvent) => void): (arg: ButtonPushAfterEvent) => void;
-    unsubscribe(callback: (arg: ButtonPushAfterEvent) => void): void;
+    subscribe(callback: (arg0: ButtonPushAfterEvent) => void): (arg0: ButtonPushAfterEvent) => void;
+    unsubscribe(callback: (arg0: ButtonPushAfterEvent) => void): void;
 }
 
 export class Camera {
@@ -1545,14 +1581,20 @@ export class Camera {
     readonly isValid: boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     clear(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     fade(fadeCameraOptions?: CameraFadeOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setCamera(
         cameraPreset: string,
@@ -1576,8 +1618,8 @@ export class ChatSendAfterEvent {
 
 export class ChatSendAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ChatSendAfterEvent) => void): (arg: ChatSendAfterEvent) => void;
-    unsubscribe(callback: (arg: ChatSendAfterEvent) => void): void;
+    subscribe(callback: (arg0: ChatSendAfterEvent) => void): (arg0: ChatSendAfterEvent) => void;
+    unsubscribe(callback: (arg0: ChatSendAfterEvent) => void): void;
 }
 
 export class ChatSendBeforeEvent {
@@ -1590,8 +1632,8 @@ export class ChatSendBeforeEvent {
 
 export class ChatSendBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: ChatSendBeforeEvent) => void): (arg: ChatSendBeforeEvent) => void;
-    unsubscribe(callback: (arg: ChatSendBeforeEvent) => void): void;
+    subscribe(callback: (arg0: ChatSendBeforeEvent) => void): (arg0: ChatSendBeforeEvent) => void;
+    unsubscribe(callback: (arg0: ChatSendBeforeEvent) => void): void;
 }
 
 // @ts-ignore
@@ -1647,10 +1689,14 @@ export class Container {
     readonly size: number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     clearAll(): void;
     /**
@@ -1687,6 +1733,8 @@ export class Container {
     getSlot(slot: number): ContainerSlot;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
@@ -1697,14 +1745,20 @@ export class Container {
     reverseFind(itemStack: ItemStack): number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
@@ -1817,6 +1871,8 @@ export class ContainerSlot {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link Error}
      *
      * {@link InvalidContainerSlotError}
@@ -1824,6 +1880,8 @@ export class ContainerSlot {
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -1849,11 +1907,15 @@ export class ContainerSlot {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link InvalidContainerSlotError}
      */
     setItem(itemStack?: ItemStack): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -1875,15 +1937,26 @@ export class CustomCommandRegistry {
     /**
      * @throws This function can throw errors.
      *
+     * This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     *
      * {@link CustomCommandError}
      *
      * {@link minecraftcommon.EngineError}
      *
      * {@link NamespaceNameError}
      */
-    registerCommand(customCommand: CustomCommand, callback: () => CustomCommandResult): void;
+    registerCommand(
+        customCommand: CustomCommand,
+        callback: (origin: CustomCommandOrigin, ...args: any[]) => CustomCommandResult | undefined,
+    ): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link CustomCommandError}
      *
@@ -1909,10 +1982,10 @@ export class DataDrivenEntityTriggerAfterEvent {
 export class DataDrivenEntityTriggerAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: DataDrivenEntityTriggerAfterEvent) => void,
+        callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void,
         options?: EntityDataDrivenTriggerEventOptions,
-    ): (arg: DataDrivenEntityTriggerAfterEvent) => void;
-    unsubscribe(callback: (arg: DataDrivenEntityTriggerAfterEvent) => void): void;
+    ): (arg0: DataDrivenEntityTriggerAfterEvent) => void;
+    unsubscribe(callback: (arg0: DataDrivenEntityTriggerAfterEvent) => void): void;
 }
 
 export class Dimension {
@@ -1933,6 +2006,8 @@ export class Dimension {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -1940,6 +2015,8 @@ export class Dimension {
     createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -1954,6 +2031,8 @@ export class Dimension {
     ): ListBlockVolume;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -1970,10 +2049,14 @@ export class Dimension {
     getBlock(location: Vector3): Block | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
@@ -2003,11 +2086,15 @@ export class Dimension {
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
     getWeather(): WeatherType;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -2019,6 +2106,8 @@ export class Dimension {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
@@ -2026,16 +2115,22 @@ export class Dimension {
     placeFeatureRule(featureRuleName: string, location: Vector3): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link CommandError}
      */
     runCommand(commandString: string): CommandResult;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -2044,6 +2139,8 @@ export class Dimension {
     setBlockPermutation(location: Vector3, permutation: BlockPermutation): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -2054,10 +2151,14 @@ export class Dimension {
     setBlockType(location: Vector3, blockType: BlockType | string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setWeather(weatherType: WeatherType, duration?: number): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -2071,6 +2172,8 @@ export class Dimension {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -2078,6 +2181,8 @@ export class Dimension {
     spawnItem(itemStack: ItemStack, location: Vector3): Entity;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -2127,10 +2232,10 @@ export class EffectAddAfterEvent {
 export class EffectAddAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: EffectAddAfterEvent) => void,
+        callback: (arg0: EffectAddAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EffectAddAfterEvent) => void;
-    unsubscribe(callback: (arg: EffectAddAfterEvent) => void): void;
+    ): (arg0: EffectAddAfterEvent) => void;
+    unsubscribe(callback: (arg0: EffectAddAfterEvent) => void): void;
 }
 
 export class EffectAddBeforeEvent {
@@ -2143,8 +2248,8 @@ export class EffectAddBeforeEvent {
 
 export class EffectAddBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: EffectAddBeforeEvent) => void): (arg: EffectAddBeforeEvent) => void;
-    unsubscribe(callback: (arg: EffectAddBeforeEvent) => void): void;
+    subscribe(callback: (arg0: EffectAddBeforeEvent) => void): (arg0: EffectAddBeforeEvent) => void;
+    unsubscribe(callback: (arg0: EffectAddBeforeEvent) => void): void;
 }
 
 export class EffectType {
@@ -2229,22 +2334,32 @@ export class Entity {
     readonly typeId: string;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addTag(tag: string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     applyImpulse(vector: Vector3): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     applyKnockback(horizontalForce: VectorXZ, verticalStrength: number): void;
     /**
@@ -2253,10 +2368,14 @@ export class Entity {
     clearDynamicProperties(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     clearVelocity(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
@@ -2335,10 +2454,14 @@ export class Entity {
     hasTag(tag: string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     kill(): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     lookAt(targetLocation: Vector3): void;
     /**
@@ -2347,22 +2470,32 @@ export class Entity {
     matches(options: EntityQueryOptions): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     remove(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     removeEffect(effectType: EffectType | string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     removeTag(tag: string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -2371,6 +2504,8 @@ export class Entity {
     resetProperty(identifier: string): boolean | number | string;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link CommandError}
      *
@@ -2387,26 +2522,38 @@ export class Entity {
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setProperty(identifier: string, value: boolean | number | string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setRotation(rotation: Vector2): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     triggerEvent(eventName: string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
@@ -2470,18 +2617,26 @@ export class EntityAttributeComponent extends EntityComponent {
     readonly effectiveMin: number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     resetToDefaultValue(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     resetToMaxValue(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     resetToMinValue(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setCurrentValue(value: number): boolean;
 }
@@ -2601,10 +2756,10 @@ export class EntityDieAfterEvent {
 export class EntityDieAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: EntityDieAfterEvent) => void,
+        callback: (arg0: EntityDieAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityDieAfterEvent) => void;
-    unsubscribe(callback: (arg: EntityDieAfterEvent) => void): void;
+    ): (arg0: EntityDieAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntityDieAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -2620,6 +2775,8 @@ export class EntityEquippableComponent extends EntityComponent {
     getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
 }
@@ -2672,10 +2829,10 @@ export class EntityHealthChangedAfterEvent {
 export class EntityHealthChangedAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: EntityHealthChangedAfterEvent) => void,
+        callback: (arg0: EntityHealthChangedAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHealthChangedAfterEvent) => void;
-    unsubscribe(callback: (arg: EntityHealthChangedAfterEvent) => void): void;
+    ): (arg0: EntityHealthChangedAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntityHealthChangedAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -2694,10 +2851,10 @@ export class EntityHitBlockAfterEvent {
 export class EntityHitBlockAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: EntityHitBlockAfterEvent) => void,
+        callback: (arg0: EntityHitBlockAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHitBlockAfterEvent) => void;
-    unsubscribe(callback: (arg: EntityHitBlockAfterEvent) => void): void;
+    ): (arg0: EntityHitBlockAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntityHitBlockAfterEvent) => void): void;
 }
 
 export class EntityHitEntityAfterEvent {
@@ -2709,10 +2866,10 @@ export class EntityHitEntityAfterEvent {
 export class EntityHitEntityAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: EntityHitEntityAfterEvent) => void,
+        callback: (arg0: EntityHitEntityAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHitEntityAfterEvent) => void;
-    unsubscribe(callback: (arg: EntityHitEntityAfterEvent) => void): void;
+    ): (arg0: EntityHitEntityAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntityHitEntityAfterEvent) => void): void;
 }
 
 export class EntityHurtAfterEvent {
@@ -2725,10 +2882,10 @@ export class EntityHurtAfterEvent {
 export class EntityHurtAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: EntityHurtAfterEvent) => void,
+        callback: (arg0: EntityHurtAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityHurtAfterEvent) => void;
-    unsubscribe(callback: (arg: EntityHurtAfterEvent) => void): void;
+    ): (arg0: EntityHurtAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntityHurtAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -2884,10 +3041,14 @@ export class EntityLeashableComponent extends EntityComponent {
     readonly softDistance: number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     leashTo(leashHolder: Entity): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     unleash(): void;
 }
@@ -2899,8 +3060,8 @@ export class EntityLoadAfterEvent {
 
 export class EntityLoadAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: EntityLoadAfterEvent) => void): (arg: EntityLoadAfterEvent) => void;
-    unsubscribe(callback: (arg: EntityLoadAfterEvent) => void): void;
+    subscribe(callback: (arg0: EntityLoadAfterEvent) => void): (arg0: EntityLoadAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntityLoadAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -3122,6 +3283,8 @@ export class EntityProjectileComponent extends EntityComponent {
     stopOnHit: boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     shoot(velocity: Vector3, options?: ProjectileShootOptions): void;
 }
@@ -3144,10 +3307,10 @@ export class EntityRemoveAfterEvent {
 export class EntityRemoveAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: EntityRemoveAfterEvent) => void,
+        callback: (arg0: EntityRemoveAfterEvent) => void,
         options?: EntityEventOptions,
-    ): (arg: EntityRemoveAfterEvent) => void;
-    unsubscribe(callback: (arg: EntityRemoveAfterEvent) => void): void;
+    ): (arg0: EntityRemoveAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntityRemoveAfterEvent) => void): void;
 }
 
 export class EntityRemoveBeforeEvent {
@@ -3157,8 +3320,8 @@ export class EntityRemoveBeforeEvent {
 
 export class EntityRemoveBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: EntityRemoveBeforeEvent) => void): (arg: EntityRemoveBeforeEvent) => void;
-    unsubscribe(callback: (arg: EntityRemoveBeforeEvent) => void): void;
+    subscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): (arg0: EntityRemoveBeforeEvent) => void;
+    unsubscribe(callback: (arg0: EntityRemoveBeforeEvent) => void): void;
 }
 
 // @ts-ignore
@@ -3194,14 +3357,20 @@ export class EntityRideableComponent extends EntityComponent {
     readonly seatCount: number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addRider(rider: Entity): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     ejectRider(rider: Entity): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     ejectRiders(): void;
     /**
@@ -3253,8 +3422,8 @@ export class EntitySpawnAfterEvent {
 
 export class EntitySpawnAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: EntitySpawnAfterEvent) => void): (arg: EntitySpawnAfterEvent) => void;
-    unsubscribe(callback: (arg: EntitySpawnAfterEvent) => void): void;
+    subscribe(callback: (arg0: EntitySpawnAfterEvent) => void): (arg0: EntitySpawnAfterEvent) => void;
+    unsubscribe(callback: (arg0: EntitySpawnAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -3295,6 +3464,8 @@ export class EntityTameableComponent extends EntityComponent {
     readonly tamedToPlayerId?: string;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     tame(player: Player): boolean;
 }
@@ -3320,10 +3491,14 @@ export class EntityTameMountComponent extends EntityComponent {
     readonly tamedToPlayerId?: string;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     tame(showParticles: boolean): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     tameToPlayer(showParticles: boolean, player: Player): boolean;
 }
@@ -3386,8 +3561,8 @@ export class ExplosionAfterEvent {
 
 export class ExplosionAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ExplosionAfterEvent) => void): (arg: ExplosionAfterEvent) => void;
-    unsubscribe(callback: (arg: ExplosionAfterEvent) => void): void;
+    subscribe(callback: (arg0: ExplosionAfterEvent) => void): (arg0: ExplosionAfterEvent) => void;
+    unsubscribe(callback: (arg0: ExplosionAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -3399,8 +3574,8 @@ export class ExplosionBeforeEvent extends ExplosionAfterEvent {
 
 export class ExplosionBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: ExplosionBeforeEvent) => void): (arg: ExplosionBeforeEvent) => void;
-    unsubscribe(callback: (arg: ExplosionBeforeEvent) => void): void;
+    subscribe(callback: (arg0: ExplosionBeforeEvent) => void): (arg0: ExplosionBeforeEvent) => void;
+    unsubscribe(callback: (arg0: ExplosionBeforeEvent) => void): void;
 }
 
 export class FeedItem {
@@ -3434,8 +3609,8 @@ export class GameRuleChangeAfterEvent {
 
 export class GameRuleChangeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: GameRuleChangeAfterEvent) => void): (arg: GameRuleChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: GameRuleChangeAfterEvent) => void): void;
+    subscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): (arg0: GameRuleChangeAfterEvent) => void;
+    unsubscribe(callback: (arg0: GameRuleChangeAfterEvent) => void): void;
 }
 
 export class GameRules {
@@ -3521,8 +3696,8 @@ export class ItemCompleteUseAfterEvent {
 
 export class ItemCompleteUseAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): (arg: ItemCompleteUseAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemCompleteUseAfterEvent) => void): void;
+    subscribe(callback: (arg0: ItemCompleteUseAfterEvent) => void): (arg0: ItemCompleteUseAfterEvent) => void;
+    unsubscribe(callback: (arg0: ItemCompleteUseAfterEvent) => void): void;
 }
 
 export class ItemCompleteUseEvent {
@@ -3576,6 +3751,8 @@ export class ItemComponentRegistry {
     /**
      * @throws This function can throw errors.
      *
+     * This function can be called in early-execution mode.
+     *
      * {@link CustomComponentInvalidRegistryError}
      *
      * {@link minecraftcommon.EngineError}
@@ -3628,14 +3805,20 @@ export class ItemCooldownComponent extends ItemComponent {
     readonly cooldownTicks: number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     getCooldownTicksRemaining(player: Player): number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     isCooldownCategory(cooldownCategory: string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     startCooldown(player: Player): void;
 }
@@ -3655,10 +3838,14 @@ export class ItemDurabilityComponent extends ItemComponent {
     readonly maxDurability: number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     getDamageChance(unbreakingEnchantmentLevel?: number): number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     getDamageChanceRange(): minecraftcommon.NumberRange;
 }
@@ -3683,6 +3870,8 @@ export class ItemEnchantableComponent extends ItemComponent {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link EnchantmentLevelOutOfBoundsError}
      *
      * {@link EnchantmentTypeNotCompatibleError}
@@ -3694,6 +3883,8 @@ export class ItemEnchantableComponent extends ItemComponent {
     addEnchantment(enchantment: Enchantment): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link EnchantmentLevelOutOfBoundsError}
      *
@@ -3730,10 +3921,14 @@ export class ItemEnchantableComponent extends ItemComponent {
     hasEnchantment(enchantmentType: EnchantmentType | string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     removeAllEnchantments(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link EnchantmentTypeUnknownIdError}
      *
@@ -3789,8 +3984,8 @@ export class ItemReleaseUseAfterEvent {
 
 export class ItemReleaseUseAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): (arg: ItemReleaseUseAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemReleaseUseAfterEvent) => void): void;
+    subscribe(callback: (arg0: ItemReleaseUseAfterEvent) => void): (arg0: ItemReleaseUseAfterEvent) => void;
+    unsubscribe(callback: (arg0: ItemReleaseUseAfterEvent) => void): void;
 }
 
 export class ItemStack {
@@ -3829,10 +4024,14 @@ constructor(itemType: ItemType | string, amount?: number);
     matches(itemName: string, states?: Record<string, boolean | number | string>): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setCanDestroy(blockIdentifiers?: string[]): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
@@ -3845,10 +4044,14 @@ constructor(itemType: ItemType | string, amount?: number);
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setLore(loreList?: string[]): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     static createPotion(options: PotionOptions): ItemStack;
 }
@@ -3862,8 +4065,8 @@ export class ItemStartUseAfterEvent {
 
 export class ItemStartUseAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemStartUseAfterEvent) => void): (arg: ItemStartUseAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemStartUseAfterEvent) => void): void;
+    subscribe(callback: (arg0: ItemStartUseAfterEvent) => void): (arg0: ItemStartUseAfterEvent) => void;
+    unsubscribe(callback: (arg0: ItemStartUseAfterEvent) => void): void;
 }
 
 export class ItemStartUseOnAfterEvent {
@@ -3876,8 +4079,8 @@ export class ItemStartUseOnAfterEvent {
 
 export class ItemStartUseOnAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemStartUseOnAfterEvent) => void): (arg: ItemStartUseOnAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemStartUseOnAfterEvent) => void): void;
+    subscribe(callback: (arg0: ItemStartUseOnAfterEvent) => void): (arg0: ItemStartUseOnAfterEvent) => void;
+    unsubscribe(callback: (arg0: ItemStartUseOnAfterEvent) => void): void;
 }
 
 export class ItemStopUseAfterEvent {
@@ -3889,8 +4092,8 @@ export class ItemStopUseAfterEvent {
 
 export class ItemStopUseAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemStopUseAfterEvent) => void): (arg: ItemStopUseAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemStopUseAfterEvent) => void): void;
+    subscribe(callback: (arg0: ItemStopUseAfterEvent) => void): (arg0: ItemStopUseAfterEvent) => void;
+    unsubscribe(callback: (arg0: ItemStopUseAfterEvent) => void): void;
 }
 
 export class ItemStopUseOnAfterEvent {
@@ -3902,8 +4105,8 @@ export class ItemStopUseOnAfterEvent {
 
 export class ItemStopUseOnAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemStopUseOnAfterEvent) => void): (arg: ItemStopUseOnAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemStopUseOnAfterEvent) => void): void;
+    subscribe(callback: (arg0: ItemStopUseOnAfterEvent) => void): (arg0: ItemStopUseOnAfterEvent) => void;
+    unsubscribe(callback: (arg0: ItemStopUseOnAfterEvent) => void): void;
 }
 
 export class ItemType {
@@ -3925,8 +4128,8 @@ export class ItemUseAfterEvent {
 
 export class ItemUseAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemUseAfterEvent) => void): (arg: ItemUseAfterEvent) => void;
-    unsubscribe(callback: (arg: ItemUseAfterEvent) => void): void;
+    subscribe(callback: (arg0: ItemUseAfterEvent) => void): (arg0: ItemUseAfterEvent) => void;
+    unsubscribe(callback: (arg0: ItemUseAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -3937,8 +4140,8 @@ export class ItemUseBeforeEvent extends ItemUseAfterEvent {
 
 export class ItemUseBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: ItemUseBeforeEvent) => void): (arg: ItemUseBeforeEvent) => void;
-    unsubscribe(callback: (arg: ItemUseBeforeEvent) => void): void;
+    subscribe(callback: (arg0: ItemUseBeforeEvent) => void): (arg0: ItemUseBeforeEvent) => void;
+    unsubscribe(callback: (arg0: ItemUseBeforeEvent) => void): void;
 }
 
 export class ItemUseOnEvent {
@@ -3958,8 +4161,8 @@ export class LeverActionAfterEvent extends BlockEvent {
 
 export class LeverActionAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: LeverActionAfterEvent) => void): (arg: LeverActionAfterEvent) => void;
-    unsubscribe(callback: (arg: LeverActionAfterEvent) => void): void;
+    subscribe(callback: (arg0: LeverActionAfterEvent) => void): (arg0: LeverActionAfterEvent) => void;
+    unsubscribe(callback: (arg0: LeverActionAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -4008,8 +4211,8 @@ export class PistonActivateAfterEvent extends BlockEvent {
 
 export class PistonActivateAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PistonActivateAfterEvent) => void): (arg: PistonActivateAfterEvent) => void;
-    unsubscribe(callback: (arg: PistonActivateAfterEvent) => void): void;
+    subscribe(callback: (arg0: PistonActivateAfterEvent) => void): (arg0: PistonActivateAfterEvent) => void;
+    unsubscribe(callback: (arg0: PistonActivateAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -4070,18 +4273,26 @@ export class Player extends Entity {
     readonly xpEarnedAtCurrentLevel: number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addExperience(amount: number): number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addLevels(amount: number): number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     clearPropertyOverridesForEntity(targetEntity: Entity): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     eatItem(itemStack: ItemStack): void;
     getAimAssist(): PlayerAimAssist;
@@ -4107,26 +4318,38 @@ export class Player extends Entity {
     isOp(): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     playSound(soundId: string, soundOptions?: PlayerSoundOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     postClientMessage(id: string, value: string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     removePropertyOverrideForEntity(targetEntity: Entity, identifier: string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     resetLevel(): void;
     /**
@@ -4139,18 +4362,26 @@ export class Player extends Entity {
     sendMessage(message: (RawMessage | string)[] | RawMessage | string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setGameMode(gameMode?: GameMode): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setOp(isOp: boolean): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setPropertyOverrideForEntity(targetEntity: Entity, identifier: string, value: boolean | number | string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -4159,6 +4390,8 @@ export class Player extends Entity {
     setSpawnPoint(spawnPoint?: DimensionLocation): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -4169,10 +4402,14 @@ export class Player extends Entity {
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     startItemCooldown(cooldownCategory: string, tickDuration: number): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     stopMusic(): void;
 }
@@ -4182,6 +4419,8 @@ export class PlayerAimAssist {
     readonly settings?: PlayerAimAssistSettings;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
@@ -4210,10 +4449,10 @@ export class PlayerBreakBlockAfterEvent extends BlockEvent {
 export class PlayerBreakBlockAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: PlayerBreakBlockAfterEvent) => void,
+        callback: (arg0: PlayerBreakBlockAfterEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerBreakBlockAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerBreakBlockAfterEvent) => void): void;
+    ): (arg0: PlayerBreakBlockAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerBreakBlockAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -4227,10 +4466,10 @@ export class PlayerBreakBlockBeforeEvent extends BlockEvent {
 export class PlayerBreakBlockBeforeEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: PlayerBreakBlockBeforeEvent) => void,
+        callback: (arg0: PlayerBreakBlockBeforeEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerBreakBlockBeforeEvent) => void;
-    unsubscribe(callback: (arg: PlayerBreakBlockBeforeEvent) => void): void;
+    ): (arg0: PlayerBreakBlockBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PlayerBreakBlockBeforeEvent) => void): void;
 }
 
 export class PlayerButtonInputAfterEvent {
@@ -4243,10 +4482,10 @@ export class PlayerButtonInputAfterEvent {
 export class PlayerButtonInputAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: PlayerButtonInputAfterEvent) => void,
+        callback: (arg0: PlayerButtonInputAfterEvent) => void,
         options?: InputEventOptions,
-    ): (arg: PlayerButtonInputAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerButtonInputAfterEvent) => void): void;
+    ): (arg0: PlayerButtonInputAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerButtonInputAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -4258,6 +4497,8 @@ export class PlayerCursorInventoryComponent extends EntityComponent {
     readonly item?: ItemStack;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     clear(): void;
 }
@@ -4273,8 +4514,8 @@ export class PlayerDimensionChangeAfterEvent {
 
 export class PlayerDimensionChangeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): (arg: PlayerDimensionChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerDimensionChangeAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerDimensionChangeAfterEvent) => void): (arg0: PlayerDimensionChangeAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerDimensionChangeAfterEvent) => void): void;
 }
 
 export class PlayerEmoteAfterEvent {
@@ -4285,8 +4526,8 @@ export class PlayerEmoteAfterEvent {
 
 export class PlayerEmoteAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerEmoteAfterEvent) => void): (arg: PlayerEmoteAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerEmoteAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerEmoteAfterEvent) => void): (arg0: PlayerEmoteAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerEmoteAfterEvent) => void): void;
 }
 
 export class PlayerGameModeChangeAfterEvent {
@@ -4298,8 +4539,8 @@ export class PlayerGameModeChangeAfterEvent {
 
 export class PlayerGameModeChangeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): (arg: PlayerGameModeChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerGameModeChangeAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): (arg0: PlayerGameModeChangeAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerGameModeChangeAfterEvent) => void): void;
 }
 
 export class PlayerGameModeChangeBeforeEvent {
@@ -4312,8 +4553,8 @@ export class PlayerGameModeChangeBeforeEvent {
 
 export class PlayerGameModeChangeBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): (arg: PlayerGameModeChangeBeforeEvent) => void;
-    unsubscribe(callback: (arg: PlayerGameModeChangeBeforeEvent) => void): void;
+    subscribe(callback: (arg0: PlayerGameModeChangeBeforeEvent) => void): (arg0: PlayerGameModeChangeBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PlayerGameModeChangeBeforeEvent) => void): void;
 }
 
 export class PlayerInputModeChangeAfterEvent {
@@ -4325,8 +4566,8 @@ export class PlayerInputModeChangeAfterEvent {
 
 export class PlayerInputModeChangeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): (arg: PlayerInputModeChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerInputModeChangeAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerInputModeChangeAfterEvent) => void): (arg0: PlayerInputModeChangeAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerInputModeChangeAfterEvent) => void): void;
 }
 
 export class PlayerInputPermissionCategoryChangeAfterEvent {
@@ -4338,18 +4579,22 @@ export class PlayerInputPermissionCategoryChangeAfterEvent {
 
 export class PlayerInputPermissionCategoryChangeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void): (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerInputPermissionCategoryChangeAfterEvent) => void): (arg0: PlayerInputPermissionCategoryChangeAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerInputPermissionCategoryChangeAfterEvent) => void): void;
 }
 
 export class PlayerInputPermissions {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
 }
@@ -4367,8 +4612,8 @@ export class PlayerInteractWithBlockAfterEvent {
 
 export class PlayerInteractWithBlockAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerInteractWithBlockAfterEvent) => void): (arg: PlayerInteractWithBlockAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerInteractWithBlockAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerInteractWithBlockAfterEvent) => void): (arg0: PlayerInteractWithBlockAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerInteractWithBlockAfterEvent) => void): void;
 }
 
 export class PlayerInteractWithBlockBeforeEvent {
@@ -4384,8 +4629,8 @@ export class PlayerInteractWithBlockBeforeEvent {
 
 export class PlayerInteractWithBlockBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerInteractWithBlockBeforeEvent) => void): (arg: PlayerInteractWithBlockBeforeEvent) => void;
-    unsubscribe(callback: (arg: PlayerInteractWithBlockBeforeEvent) => void): void;
+    subscribe(callback: (arg0: PlayerInteractWithBlockBeforeEvent) => void): (arg0: PlayerInteractWithBlockBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PlayerInteractWithBlockBeforeEvent) => void): void;
 }
 
 export class PlayerInteractWithEntityAfterEvent {
@@ -4398,8 +4643,8 @@ export class PlayerInteractWithEntityAfterEvent {
 
 export class PlayerInteractWithEntityAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerInteractWithEntityAfterEvent) => void): (arg: PlayerInteractWithEntityAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerInteractWithEntityAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerInteractWithEntityAfterEvent) => void): (arg0: PlayerInteractWithEntityAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerInteractWithEntityAfterEvent) => void): void;
 }
 
 export class PlayerInteractWithEntityBeforeEvent {
@@ -4412,8 +4657,8 @@ export class PlayerInteractWithEntityBeforeEvent {
 
 export class PlayerInteractWithEntityBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): (arg: PlayerInteractWithEntityBeforeEvent) => void;
-    unsubscribe(callback: (arg: PlayerInteractWithEntityBeforeEvent) => void): void;
+    subscribe(callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void): (arg0: PlayerInteractWithEntityBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void): void;
 }
 
 export class PlayerIterator implements Iterable<Player> {
@@ -4430,8 +4675,8 @@ export class PlayerJoinAfterEvent {
 
 export class PlayerJoinAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerJoinAfterEvent) => void): (arg: PlayerJoinAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerJoinAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerJoinAfterEvent) => void): (arg0: PlayerJoinAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerJoinAfterEvent) => void): void;
 }
 
 export class PlayerLeaveAfterEvent {
@@ -4442,8 +4687,8 @@ export class PlayerLeaveAfterEvent {
 
 export class PlayerLeaveAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerLeaveAfterEvent) => void): (arg: PlayerLeaveAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerLeaveAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): (arg0: PlayerLeaveAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerLeaveAfterEvent) => void): void;
 }
 
 export class PlayerLeaveBeforeEvent {
@@ -4453,8 +4698,8 @@ export class PlayerLeaveBeforeEvent {
 
 export class PlayerLeaveBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): (arg: PlayerLeaveBeforeEvent) => void;
-    unsubscribe(callback: (arg: PlayerLeaveBeforeEvent) => void): void;
+    subscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): (arg0: PlayerLeaveBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PlayerLeaveBeforeEvent) => void): void;
 }
 
 // @ts-ignore
@@ -4466,10 +4711,10 @@ export class PlayerPlaceBlockAfterEvent extends BlockEvent {
 export class PlayerPlaceBlockAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: PlayerPlaceBlockAfterEvent) => void,
+        callback: (arg0: PlayerPlaceBlockAfterEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerPlaceBlockAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerPlaceBlockAfterEvent) => void): void;
+    ): (arg0: PlayerPlaceBlockAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerPlaceBlockAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -4485,10 +4730,10 @@ export class PlayerPlaceBlockBeforeEvent extends BlockEvent {
 export class PlayerPlaceBlockBeforeEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: PlayerPlaceBlockBeforeEvent) => void,
+        callback: (arg0: PlayerPlaceBlockBeforeEvent) => void,
         options?: BlockEventOptions,
-    ): (arg: PlayerPlaceBlockBeforeEvent) => void;
-    unsubscribe(callback: (arg: PlayerPlaceBlockBeforeEvent) => void): void;
+    ): (arg0: PlayerPlaceBlockBeforeEvent) => void;
+    unsubscribe(callback: (arg0: PlayerPlaceBlockBeforeEvent) => void): void;
 }
 
 export class PlayerSpawnAfterEvent {
@@ -4499,8 +4744,8 @@ export class PlayerSpawnAfterEvent {
 
 export class PlayerSpawnAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PlayerSpawnAfterEvent) => void): (arg: PlayerSpawnAfterEvent) => void;
-    unsubscribe(callback: (arg: PlayerSpawnAfterEvent) => void): void;
+    subscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): (arg0: PlayerSpawnAfterEvent) => void;
+    unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
 }
 
 export class PotionEffectType {
@@ -4534,8 +4779,8 @@ export class PressurePlatePopAfterEvent extends BlockEvent {
 
 export class PressurePlatePopAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PressurePlatePopAfterEvent) => void): (arg: PressurePlatePopAfterEvent) => void;
-    unsubscribe(callback: (arg: PressurePlatePopAfterEvent) => void): void;
+    subscribe(callback: (arg0: PressurePlatePopAfterEvent) => void): (arg0: PressurePlatePopAfterEvent) => void;
+    unsubscribe(callback: (arg0: PressurePlatePopAfterEvent) => void): void;
 }
 
 // @ts-ignore
@@ -4548,8 +4793,8 @@ export class PressurePlatePushAfterEvent extends BlockEvent {
 
 export class PressurePlatePushAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: PressurePlatePushAfterEvent) => void): (arg: PressurePlatePushAfterEvent) => void;
-    unsubscribe(callback: (arg: PressurePlatePushAfterEvent) => void): void;
+    subscribe(callback: (arg0: PressurePlatePushAfterEvent) => void): (arg0: PressurePlatePushAfterEvent) => void;
+    unsubscribe(callback: (arg0: PressurePlatePushAfterEvent) => void): void;
 }
 
 export class ProjectileHitBlockAfterEvent {
@@ -4564,8 +4809,8 @@ export class ProjectileHitBlockAfterEvent {
 
 export class ProjectileHitBlockAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): (arg: ProjectileHitBlockAfterEvent) => void;
-    unsubscribe(callback: (arg: ProjectileHitBlockAfterEvent) => void): void;
+    subscribe(callback: (arg0: ProjectileHitBlockAfterEvent) => void): (arg0: ProjectileHitBlockAfterEvent) => void;
+    unsubscribe(callback: (arg0: ProjectileHitBlockAfterEvent) => void): void;
 }
 
 export class ProjectileHitEntityAfterEvent {
@@ -4580,14 +4825,16 @@ export class ProjectileHitEntityAfterEvent {
 
 export class ProjectileHitEntityAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): (arg: ProjectileHitEntityAfterEvent) => void;
-    unsubscribe(callback: (arg: ProjectileHitEntityAfterEvent) => void): void;
+    subscribe(callback: (arg0: ProjectileHitEntityAfterEvent) => void): (arg0: ProjectileHitEntityAfterEvent) => void;
+    unsubscribe(callback: (arg0: ProjectileHitEntityAfterEvent) => void): void;
 }
 
 export class Scoreboard {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addObjective(objectiveId: string, displayName?: string): ScoreboardObjective;
     clearObjectiveAtDisplaySlot(displaySlotId: DisplaySlotId): ScoreboardObjective | undefined;
@@ -4597,10 +4844,14 @@ export class Scoreboard {
     getParticipants(): ScoreboardIdentity[];
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     removeObjective(objectiveId: ScoreboardObjective | string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setObjectiveAtDisplaySlot(
         displaySlotId: DisplaySlotId,
@@ -4633,6 +4884,8 @@ export class ScoreboardObjective {
     readonly isValid: boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     addScore(participant: Entity | ScoreboardIdentity | string, scoreToAdd: number): number;
     /**
@@ -4653,10 +4906,14 @@ export class ScoreboardObjective {
     hasParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     removeParticipant(participant: Entity | ScoreboardIdentity | string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setScore(participant: Entity | ScoreboardIdentity | string, score: number): void;
 }
@@ -4673,11 +4930,15 @@ export class ScreenDisplay {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link InvalidEntityError}
      */
     getHiddenHudElements(): HudElement[];
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link InvalidEntityError}
      */
@@ -4685,17 +4946,23 @@ export class ScreenDisplay {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link InvalidEntityError}
      */
     isForcedHidden(hudElement: HudElement): boolean;
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link InvalidEntityError}
      */
     resetHudElementsVisibility(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link InvalidEntityError}
      *
@@ -4705,11 +4972,15 @@ export class ScreenDisplay {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link InvalidEntityError}
      */
     setHudVisibility(visible: HudVisibility, hudElements?: HudElement[]): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
@@ -4720,6 +4991,8 @@ export class ScreenDisplay {
     setTitle(title: (RawMessage | string)[] | RawMessage | string, options?: TitleDisplayOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link InvalidEntityError}
      *
@@ -4741,10 +5014,10 @@ export class ScriptEventCommandMessageAfterEvent {
 export class ScriptEventCommandMessageAfterEventSignal {
     private constructor();
     subscribe(
-        callback: (arg: ScriptEventCommandMessageAfterEvent) => void,
+        callback: (arg0: ScriptEventCommandMessageAfterEvent) => void,
         options?: ScriptEventMessageFilterOptions,
-    ): (arg: ScriptEventCommandMessageAfterEvent) => void;
-    unsubscribe(callback: (arg: ScriptEventCommandMessageAfterEvent) => void): void;
+    ): (arg0: ScriptEventCommandMessageAfterEvent) => void;
+    unsubscribe(callback: (arg0: ScriptEventCommandMessageAfterEvent) => void): void;
 }
 
 export class Seat {
@@ -4758,14 +5031,14 @@ export class Seat {
 
 export class ServerMessageAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: MessageReceiveAfterEvent) => void): (arg: MessageReceiveAfterEvent) => void;
-    unsubscribe(callback: (arg: MessageReceiveAfterEvent) => void): void;
+    subscribe(callback: (arg0: MessageReceiveAfterEvent) => void): (arg0: MessageReceiveAfterEvent) => void;
+    unsubscribe(callback: (arg0: MessageReceiveAfterEvent) => void): void;
 }
 
 export class ShutdownBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: ShutdownEvent) => void): (arg: ShutdownEvent) => void;
-    unsubscribe(callback: (arg: ShutdownEvent) => void): void;
+    subscribe(callback: (arg0: ShutdownEvent) => void): (arg0: ShutdownEvent) => void;
+    unsubscribe(callback: (arg0: ShutdownEvent) => void): void;
 }
 
 export class ShutdownEvent {
@@ -4774,8 +5047,8 @@ export class ShutdownEvent {
 
 export class StartupBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: StartupEvent) => void): (arg: StartupEvent) => void;
-    unsubscribe(callback: (arg: StartupEvent) => void): void;
+    subscribe(callback: (arg0: StartupEvent) => void): (arg0: StartupEvent) => void;
+    unsubscribe(callback: (arg0: StartupEvent) => void): void;
 }
 
 export class StartupEvent {
@@ -4814,6 +5087,8 @@ export class Structure {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link minecraftcommon.InvalidArgumentError}
@@ -4824,11 +5099,15 @@ export class Structure {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link InvalidStructureError}
      */
     saveToWorld(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
@@ -4842,6 +5121,8 @@ export class StructureManager {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link minecraftcommon.InvalidArgumentError}
@@ -4849,6 +5130,8 @@ export class StructureManager {
     createEmpty(identifier: string, size: Vector3, saveMode?: StructureSaveMode): Structure;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      */
@@ -4862,6 +5145,8 @@ export class StructureManager {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.InvalidArgumentError}
      */
     delete(structure: string | Structure): boolean;
@@ -4869,6 +5154,8 @@ export class StructureManager {
     getWorldStructureIds(): string[];
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
@@ -4879,6 +5166,8 @@ export class StructureManager {
     place(structure: string | Structure, dimension: Dimension, location: Vector3, options?: StructurePlaceOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link PlaceJigsawError}
      */
@@ -4892,6 +5181,8 @@ export class StructureManager {
     ): BlockBoundingBox;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link PlaceJigsawError}
      */
@@ -4919,6 +5210,8 @@ export class System {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link minecraftcommon.EngineError}
      *
      * {@link minecraftcommon.InvalidArgumentError}
@@ -4928,6 +5221,8 @@ export class System {
     sendScriptEvent(id: string, message: string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can be called in early-execution mode.
      *
      * {@link minecraftcommon.EngineError}
      */
@@ -4962,8 +5257,8 @@ export class TargetBlockHitAfterEvent extends BlockEvent {
 
 export class TargetBlockHitAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: TargetBlockHitAfterEvent) => void): (arg: TargetBlockHitAfterEvent) => void;
-    unsubscribe(callback: (arg: TargetBlockHitAfterEvent) => void): void;
+    subscribe(callback: (arg0: TargetBlockHitAfterEvent) => void): (arg0: TargetBlockHitAfterEvent) => void;
+    unsubscribe(callback: (arg0: TargetBlockHitAfterEvent) => void): void;
 }
 
 export class Trigger {
@@ -4980,8 +5275,8 @@ export class TripWireTripAfterEvent extends BlockEvent {
 
 export class TripWireTripAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: TripWireTripAfterEvent) => void): (arg: TripWireTripAfterEvent) => void;
-    unsubscribe(callback: (arg: TripWireTripAfterEvent) => void): void;
+    subscribe(callback: (arg0: TripWireTripAfterEvent) => void): (arg0: TripWireTripAfterEvent) => void;
+    unsubscribe(callback: (arg0: TripWireTripAfterEvent) => void): void;
 }
 
 export class WatchdogTerminateBeforeEvent {
@@ -4992,8 +5287,8 @@ export class WatchdogTerminateBeforeEvent {
 
 export class WatchdogTerminateBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): (arg: WatchdogTerminateBeforeEvent) => void;
-    unsubscribe(callback: (arg: WatchdogTerminateBeforeEvent) => void): void;
+    subscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): (arg0: WatchdogTerminateBeforeEvent) => void;
+    unsubscribe(callback: (arg0: WatchdogTerminateBeforeEvent) => void): void;
 }
 
 export class WeatherChangeAfterEvent {
@@ -5005,8 +5300,8 @@ export class WeatherChangeAfterEvent {
 
 export class WeatherChangeAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: WeatherChangeAfterEvent) => void): (arg: WeatherChangeAfterEvent) => void;
-    unsubscribe(callback: (arg: WeatherChangeAfterEvent) => void): void;
+    subscribe(callback: (arg0: WeatherChangeAfterEvent) => void): (arg0: WeatherChangeAfterEvent) => void;
+    unsubscribe(callback: (arg0: WeatherChangeAfterEvent) => void): void;
 }
 
 export class WeatherChangeBeforeEvent {
@@ -5019,8 +5314,8 @@ export class WeatherChangeBeforeEvent {
 
 export class WeatherChangeBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: WeatherChangeBeforeEvent) => void): (arg: WeatherChangeBeforeEvent) => void;
-    unsubscribe(callback: (arg: WeatherChangeBeforeEvent) => void): void;
+    subscribe(callback: (arg0: WeatherChangeBeforeEvent) => void): (arg0: WeatherChangeBeforeEvent) => void;
+    unsubscribe(callback: (arg0: WeatherChangeBeforeEvent) => void): void;
 }
 
 export class World {
@@ -5061,10 +5356,14 @@ export class World {
     getTimeOfDay(): number;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -5074,6 +5373,8 @@ export class World {
     setAbsoluteTime(absoluteTime: number): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link Error}
      *
@@ -5091,6 +5392,8 @@ export class World {
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can't be called in read-only mode.
      */
     setTimeOfDay(timeOfDay: number | TimeOfDay): void;
     stopMusic(): void;
@@ -5168,8 +5471,8 @@ export class WorldLoadAfterEvent {
 
 export class WorldLoadAfterEventSignal {
     private constructor();
-    subscribe(callback: (arg: WorldLoadAfterEvent) => void): (arg: WorldLoadAfterEvent) => void;
-    unsubscribe(callback: (arg: WorldLoadAfterEvent) => void): void;
+    subscribe(callback: (arg0: WorldLoadAfterEvent) => void): (arg0: WorldLoadAfterEvent) => void;
+    unsubscribe(callback: (arg0: WorldLoadAfterEvent) => void): void;
 }
 
 export interface BiomeSearchOptions {
@@ -5182,15 +5485,15 @@ export interface BlockBoundingBox {
 }
 
 export interface BlockCustomComponent {
-    beforeOnPlayerPlace?: (arg: BlockComponentPlayerPlaceBeforeEvent, CustomComponentParameters) => void;
-    onEntityFallOn?: (arg: BlockComponentEntityFallOnEvent, CustomComponentParameters) => void;
-    onPlace?: (arg: BlockComponentOnPlaceEvent, CustomComponentParameters) => void;
-    onPlayerDestroy?: (arg: BlockComponentPlayerDestroyEvent, CustomComponentParameters) => void;
-    onPlayerInteract?: (arg: BlockComponentPlayerInteractEvent, CustomComponentParameters) => void;
-    onRandomTick?: (arg: BlockComponentRandomTickEvent, CustomComponentParameters) => void;
-    onStepOff?: (arg: BlockComponentStepOffEvent, CustomComponentParameters) => void;
-    onStepOn?: (arg: BlockComponentStepOnEvent, CustomComponentParameters) => void;
-    onTick?: (arg: BlockComponentTickEvent, CustomComponentParameters) => void;
+    beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
+    onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
+    onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
+    onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent, arg1: CustomComponentParameters) => void;
+    onPlayerInteract?: (arg0: BlockComponentPlayerInteractEvent, arg1: CustomComponentParameters) => void;
+    onRandomTick?: (arg0: BlockComponentRandomTickEvent, arg1: CustomComponentParameters) => void;
+    onStepOff?: (arg0: BlockComponentStepOffEvent, arg1: CustomComponentParameters) => void;
+    onStepOn?: (arg0: BlockComponentStepOnEvent, arg1: CustomComponentParameters) => void;
+    onTick?: (arg0: BlockComponentTickEvent, arg1: CustomComponentParameters) => void;
 }
 
 export interface BlockEventOptions {
@@ -5453,13 +5756,13 @@ export interface InputEventOptions {
 }
 
 export interface ItemCustomComponent {
-    onBeforeDurabilityDamage?: (arg: ItemComponentBeforeDurabilityDamageEvent, CustomComponentParameters) => void;
-    onCompleteUse?: (arg: ItemComponentCompleteUseEvent, CustomComponentParameters) => void;
-    onConsume?: (arg: ItemComponentConsumeEvent, CustomComponentParameters) => void;
-    onHitEntity?: (arg: ItemComponentHitEntityEvent, CustomComponentParameters) => void;
-    onMineBlock?: (arg: ItemComponentMineBlockEvent, CustomComponentParameters) => void;
-    onUse?: (arg: ItemComponentUseEvent, CustomComponentParameters) => void;
-    onUseOn?: (arg: ItemComponentUseOnEvent, CustomComponentParameters) => void;
+    onBeforeDurabilityDamage?: (arg0: ItemComponentBeforeDurabilityDamageEvent, arg1: CustomComponentParameters) => void;
+    onCompleteUse?: (arg0: ItemComponentCompleteUseEvent, arg1: CustomComponentParameters) => void;
+    onConsume?: (arg0: ItemComponentConsumeEvent, arg1: CustomComponentParameters) => void;
+    onHitEntity?: (arg0: ItemComponentHitEntityEvent, arg1: CustomComponentParameters) => void;
+    onMineBlock?: (arg0: ItemComponentMineBlockEvent, arg1: CustomComponentParameters) => void;
+    onUse?: (arg0: ItemComponentUseEvent, arg1: CustomComponentParameters) => void;
+    onUseOn?: (arg0: ItemComponentUseOnEvent, arg1: CustomComponentParameters) => void;
 }
 
 export interface JigsawPlaceOptions {
@@ -5624,112 +5927,138 @@ export interface WorldSoundOptions {
     volume?: number;
 }
 
-export class BlockCustomComponentAlreadyRegisteredError {
+// @ts-ignore
+export class BlockCustomComponentAlreadyRegisteredError extends Error {
     private constructor();
 }
 
-export class BlockCustomComponentReloadNewComponentError {
+// @ts-ignore
+export class BlockCustomComponentReloadNewComponentError extends Error {
     private constructor();
 }
 
-export class BlockCustomComponentReloadNewEventError {
+// @ts-ignore
+export class BlockCustomComponentReloadNewEventError extends Error {
     private constructor();
 }
 
-export class BlockCustomComponentReloadVersionError {
+// @ts-ignore
+export class BlockCustomComponentReloadVersionError extends Error {
     private constructor();
 }
 
-export class CommandError {
+// @ts-ignore
+export class CommandError extends Error {
     private constructor();
 }
 
-export class CustomCommandError {
+// @ts-ignore
+export class CustomCommandError extends Error {
     private constructor();
     readonly reason: CustomCommandErrorReason;
 }
 
-export class CustomComponentInvalidRegistryError {
+// @ts-ignore
+export class CustomComponentInvalidRegistryError extends Error {
     private constructor();
 }
 
-export class CustomComponentNameError {
+// @ts-ignore
+export class CustomComponentNameError extends Error {
     private constructor();
     readonly reason: CustomComponentNameErrorReason;
 }
 
-export class EnchantmentLevelOutOfBoundsError {
+// @ts-ignore
+export class EnchantmentLevelOutOfBoundsError extends Error {
     private constructor();
 }
 
-export class EnchantmentTypeNotCompatibleError {
+// @ts-ignore
+export class EnchantmentTypeNotCompatibleError extends Error {
     private constructor();
 }
 
-export class EnchantmentTypeUnknownIdError {
+// @ts-ignore
+export class EnchantmentTypeUnknownIdError extends Error {
     private constructor();
 }
 
-export class InvalidContainerError {
+// @ts-ignore
+export class InvalidContainerError extends Error {
     private constructor();
 }
 
-export class InvalidContainerSlotError {
+// @ts-ignore
+export class InvalidContainerSlotError extends Error {
     private constructor();
 }
 
-export class InvalidEntityError {
+// @ts-ignore
+export class InvalidEntityError extends Error {
     private constructor();
     readonly id: string;
     readonly "type": string;
 }
 
-export class InvalidIteratorError {
+// @ts-ignore
+export class InvalidIteratorError extends Error {
     private constructor();
 }
 
-export class InvalidStructureError {
+// @ts-ignore
+export class InvalidStructureError extends Error {
     private constructor();
 }
 
-export class ItemCustomComponentAlreadyRegisteredError {
+// @ts-ignore
+export class ItemCustomComponentAlreadyRegisteredError extends Error {
     private constructor();
 }
 
-export class ItemCustomComponentReloadNewComponentError {
+// @ts-ignore
+export class ItemCustomComponentReloadNewComponentError extends Error {
     private constructor();
 }
 
-export class ItemCustomComponentReloadNewEventError {
+// @ts-ignore
+export class ItemCustomComponentReloadNewEventError extends Error {
     private constructor();
 }
 
-export class ItemCustomComponentReloadVersionError {
+// @ts-ignore
+export class ItemCustomComponentReloadVersionError extends Error {
     private constructor();
 }
 
-export class LocationInUnloadedChunkError {
+// @ts-ignore
+export class LocationInUnloadedChunkError extends Error {
     private constructor();
 }
 
-export class LocationOutOfWorldBoundariesError {
+// @ts-ignore
+export class LocationOutOfWorldBoundariesError extends Error {
     private constructor();
 }
 
-export class NamespaceNameError {
+// @ts-ignore
+export class NamespaceNameError extends Error {
     private constructor();
     readonly reason: NamespaceNameErrorReason;
 }
 
-export class PlaceJigsawError {
+// @ts-ignore
+export class PlaceJigsawError extends Error {
     private constructor();
 }
 
-export class RawMessageError {
+// @ts-ignore
+export class RawMessageError extends Error {
     private constructor();
 }
 
-export class UnloadedChunksError {
+// @ts-ignore
+export class UnloadedChunksError extends Error {
     private constructor();
 }
 

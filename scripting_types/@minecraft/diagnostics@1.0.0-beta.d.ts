@@ -25,11 +25,19 @@ export class Sentry {
     /**
      * @throws This function can throw errors.
      *
+     * This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     *
      * {@link SentryUninitializedError}
      */
     addBreadcrumb(level: SentryBreadcrumbLevel, message: string, category?: string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link SentryUninitializedError}
      */
@@ -37,11 +45,19 @@ export class Sentry {
     /**
      * @throws This function can throw errors.
      *
+     * This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     *
      * {@link SentryUninitializedError}
      */
     getTags(): Record<string, string>;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
@@ -50,6 +66,10 @@ export class Sentry {
     init(options: SentryOptions): void;
     /**
      * @throws This function can throw errors.
+     *
+     * This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
      *
      * {@link SentryUninitializedError}
      */
@@ -60,11 +80,13 @@ export interface SentryOptions {
     dsn: string;
 }
 
-export class SentryAlreadyInitializedError {
+// @ts-ignore
+export class SentryAlreadyInitializedError extends Error {
     private constructor();
 }
 
-export class SentryUninitializedError {
+// @ts-ignore
+export class SentryUninitializedError extends Error {
     private constructor();
 }
 

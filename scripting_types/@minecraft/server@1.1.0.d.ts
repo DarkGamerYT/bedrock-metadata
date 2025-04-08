@@ -40,6 +40,8 @@ export class Block {
     /**
      * @throws This function can throw errors.
      *
+     * This function can't be called in read-only mode.
+     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -223,21 +225,25 @@ export interface Vector3 {
     z: number;
 }
 
-export class InvalidEntityError {
+// @ts-ignore
+export class InvalidEntityError extends Error {
     private constructor();
     readonly id: string;
     readonly "type": string;
 }
 
-export class LocationInUnloadedChunkError {
+// @ts-ignore
+export class LocationInUnloadedChunkError extends Error {
     private constructor();
 }
 
-export class LocationOutOfWorldBoundariesError {
+// @ts-ignore
+export class LocationOutOfWorldBoundariesError extends Error {
     private constructor();
 }
 
-export class RawMessageError {
+// @ts-ignore
+export class RawMessageError extends Error {
     private constructor();
 }
 

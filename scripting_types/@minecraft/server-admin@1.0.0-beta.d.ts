@@ -34,8 +34,8 @@ export class AsyncPlayerJoinBeforeEvent {
 
 export class AsyncPlayerJoinBeforeEventSignal {
     private constructor();
-    subscribe(callback: (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>): (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>;
-    unsubscribe(callback: (arg: AsyncPlayerJoinBeforeEvent) => Promise<void>): boolean;
+    subscribe(callback: (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>): (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>;
+    unsubscribe(callback: (arg0: AsyncPlayerJoinBeforeEvent) => Promise<void>): boolean;
 }
 
 export class SecretString {
@@ -54,13 +54,16 @@ export class ServerVariables {
     get(name: string): unknown | undefined;
 }
 
-export class DisconnectedError {
+// @ts-ignore
+export class DisconnectedError extends Error {
     private constructor();
     readonly id: string;
 }
 
 /**
  * @throws This function can throw errors.
+ *
+ * This function can't be called in read-only mode.
  */
 export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
 export const beforeEvents: AdminBeforeEvents;
