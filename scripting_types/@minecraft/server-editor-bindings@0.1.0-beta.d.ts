@@ -251,6 +251,7 @@ export enum ThemeSettingsColorKey {
     DropDown3 = "DropDown3",
     ElementBorder = "ElementBorder",
     Error = "Error",
+    FocusErrorOutline = "FocusErrorOutline",
     FocusOutline = "FocusOutline",
     HeaderBackground = "HeaderBackground",
     HotbarOutline = "HotbarOutline",
@@ -393,8 +394,6 @@ export class BlockUtilities {
     ): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
     getDimensionLocationBoundingBox(): minecraftserver.BlockBoundingBox;
@@ -402,8 +401,6 @@ export class BlockUtilities {
     getDimensionMinLocation(): minecraftserver.Vector3;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
     isLocationInsideCurrentDimensionBounds(locationOrVolumeOrBounds: 
@@ -418,8 +415,6 @@ export class BlockUtilities {
     shrinkWrapVolume(volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): RelativeVolumeListBlockVolume;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     trimVolumeToFitContents(
         volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
@@ -436,22 +431,16 @@ export class BrushShapeManager {
     activateBrushTool(): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     beginPainting(onComplete: (arg: PaintCompletionState) => void): void;
     deactivateBrushTool(): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     endPainting(cancelled: boolean): void;
     getBrushShapeOffset(): minecraftserver.Vector3;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setBrushMask(mask: BlockMaskList): void;
     setBrushShape(shape: minecraftserver.Vector3[] | RelativeVolumeListBlockVolume): void;
@@ -462,8 +451,6 @@ export class BrushShapeManager {
     setTerrainStrength(terrainStrength: number): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     singlePaint(onComplete: (arg: PaintCompletionState) => void): void;
     switchBrushPaintMode(paintMode: PaintMode): void;
@@ -492,8 +479,6 @@ export class ClipboardItem {
     clear(): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getPredictedWriteVolume(
         location: minecraftserver.Vector3,
@@ -509,8 +494,6 @@ export class ClipboardItem {
     readFromWorld(source: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
 }
@@ -570,8 +553,6 @@ export class Cursor {
     getProperties(): CursorProperties;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getRay(): CursorRay;
     /**
@@ -736,14 +717,10 @@ export class DataTransferManager {
     private constructor();
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getRegisteredAccessors(): DataTransferCollectionNameData[];
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     requestData(collectionUniqueId: string): Promise<DataTransferRequestResponse>;
     /**
@@ -807,8 +784,6 @@ export class ExportManager {
     getGameOptions(useDefault?: boolean): GameOptions;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getGameVersion(): string;
 }
@@ -871,8 +846,6 @@ export class IBlockPaletteItem {
     getType(): BlockPaletteItemType;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
 }
@@ -955,20 +928,14 @@ export class MinecraftEditorInternal {
     private constructor();
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     fireTelemetryEvent(player: minecraftserver.Player, source: string, eventName: string, metadata: string): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getMapColorUnsafe(player: minecraftserver.Player, coordinate: minecraftserver.Vector3): minecraftserver.RGBA;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getPlayerServices(player: minecraftserver.Player): InternalPlayerServiceContext;
     registerExtension(
@@ -1007,17 +974,11 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
     constructor(displayName?: string);
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
     getBlocks(): WeightedBlock[];
     /**
      * @throws This function can throw errors.
-     *
-     * {@link minecraftcommon.ArgumentOutOfBoundsError}
-     *
-     * {@link Error}
      */
     removeBlockAt(index: number): void;
 }
@@ -1106,8 +1067,6 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     get(): RelativeVolumeListBlockVolume;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getBoundingBox(): minecraftserver.BlockBoundingBox;
     moveTo(location: minecraftserver.Vector3): void;
@@ -1181,15 +1140,11 @@ export class ThemeSettings {
     private constructor();
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addNewTheme(id: string, name?: string, sourceThemeId?: string): void;
     canThemeBeModified(id: string): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
@@ -1197,27 +1152,19 @@ export class ThemeSettings {
     getThemeIdList(): string[];
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getThemeName(id: string): string;
     resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setCurrentTheme(id: string): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setThemeName(id: string, name: string): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
 }
@@ -1226,26 +1173,18 @@ export class TickingAreaManager {
     private constructor();
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isTickingAreaActive(areaIdentifier: string): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     purgeTickingAreas(areaIdentifier: string): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     releaseTickingArea(areaIdentifier: string): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     requestTickingArea(areaIdentifier: string, from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
 }
@@ -1254,8 +1193,6 @@ export class TransactionManager {
     private constructor();
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
     /**
@@ -1354,10 +1291,6 @@ export class Widget {
     readonly widgetName: string;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addBoundingBox(
         componentName: string,
@@ -1366,10 +1299,6 @@ export class Widget {
     ): WidgetComponentBoundingBox;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addClipboardComponent(
         componentName: string,
@@ -1378,10 +1307,6 @@ export class Widget {
     ): WidgetComponentClipboard;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addEntityComponent(
         componentName: string,
@@ -1390,26 +1315,14 @@ export class Widget {
     ): WidgetComponentEntity;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addGuideComponent(componentName: string, options?: WidgetComponentGuideOptions): WidgetComponentGuide;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addRenderPrimitiveComponent(
         componentName: string,
@@ -1422,26 +1335,14 @@ export class Widget {
     ): WidgetComponentRenderPrimitive;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addSplineComponent(componentName: string, options?: WidgetComponentSplineOptions): WidgetComponentSpline;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addTextComponent(componentName: string, label: string, options?: WidgetComponentTextOptions): WidgetComponentText;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     addVolumeOutline(
         componentName: string,
@@ -1450,30 +1351,14 @@ export class Widget {
     ): WidgetComponentVolumeOutline;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     delete(): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
      */
     deleteComponent(componentOrName: string | WidgetComponentBase): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
      */
     getComponent(componentName: string): WidgetComponentBase;
     /**
@@ -1700,12 +1585,6 @@ export class WidgetComponentSpline extends WidgetComponentBase {
     getControlPoints(): Widget[];
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetComponentError}
-     *
-     * {@link InvalidWidgetError}
      */
     getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
     /**
@@ -1775,21 +1654,11 @@ export class WidgetGroup {
     visibleBounds: boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
     delete(): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetError}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     deleteWidget(widgetToDelete: Widget): void;
     /**
@@ -1810,16 +1679,10 @@ export class WidgetManager {
     private constructor();
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     createGroup(options?: WidgetGroupCreateOptions): WidgetGroup;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
-     *
-     * {@link InvalidWidgetGroupError}
      */
     deleteGroup(groupToDelete: WidgetGroup): void;
 }

@@ -1026,26 +1026,18 @@ export class BlockFluidContainerComponent extends BlockComponent {
     fluidColor: RGBA;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addDye(dye: ItemType): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getFluidType(): FluidType;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setFluidType(fluidType: FluidType): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setPotion(itemStack: ItemStack): void;
 }
@@ -1070,14 +1062,10 @@ export class BlockPermutation {
     readonly "type": BlockType;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     getAllStates(): Record<string, boolean | number | string>;
@@ -1087,14 +1075,10 @@ export class BlockPermutation {
     hasTag(tag: string): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
@@ -1633,6 +1617,8 @@ export class Dimension {
     /**
      * @throws This function can throw errors.
      *
+     * {@link Error}
+     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -1915,7 +1901,7 @@ export class Entity {
      *
      * {@link CommandError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -3133,8 +3119,6 @@ export class ItemCompostableComponent extends ItemComponent {
     private constructor();
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly compostingChance: number;
 }
@@ -3523,8 +3507,6 @@ export class Player extends Entity {
     readonly camera: Camera;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
     readonly inputInfo: InputInfo;
@@ -3808,8 +3790,6 @@ export class PlayerInputPermissions {
     movementEnabled: boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
@@ -4262,6 +4242,30 @@ export class StructureManager {
      * {@link InvalidStructureError}
      */
     place(structure: string | Structure, dimension: Dimension, location: Vector3, options?: StructurePlaceOptions): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link PlaceJigsawError}
+     */
+    placeJigsaw(
+        pool: string,
+        targetJigsaw: string,
+        maxDepth: number,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawPlaceOptions,
+    ): BlockBoundingBox;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link PlaceJigsawError}
+     */
+    placeJigsawStructure(
+        identifier: string,
+        dimension: Dimension,
+        location: Vector3,
+        options?: JigsawStructurePlaceOptions,
+    ): BlockBoundingBox;
 }
 
 export class System {
@@ -4782,6 +4786,17 @@ export interface ItemCustomComponent {
     onUseOn?: (arg: ItemComponentUseOnEvent) => void;
 }
 
+export interface JigsawPlaceOptions {
+    includeEntities?: boolean;
+    keepJigsaws?: boolean;
+}
+
+export interface JigsawStructurePlaceOptions {
+    ignoreStartHeight?: boolean;
+    includeEntities?: boolean;
+    keepJigsaws?: boolean;
+}
+
 export interface LessThanComparison {
     lessThan: number;
 }
@@ -5000,6 +5015,10 @@ export class LocationOutOfWorldBoundariesError {
 export class NamespaceNameError {
     private constructor();
     readonly reason: NamespaceNameErrorReason;
+}
+
+export class PlaceJigsawError {
+    private constructor();
 }
 
 export class RawMessageError {

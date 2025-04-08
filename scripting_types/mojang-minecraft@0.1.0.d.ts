@@ -217,7 +217,7 @@ export class BlockLocation {
 export class BlockPermutation {
     private constructor();
     readonly "type": BlockType;
-    getAllProperties(): IBlockProperty[];
+    getAllProperties(): (IBlockProperty | undefined)[];
     /**
      * @throws This function can throw errors.
      */

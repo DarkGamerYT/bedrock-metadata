@@ -779,26 +779,18 @@ export class BlockFluidContainerComponent extends BlockComponent {
     fluidColor: RGBA;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addDye(dye: ItemType): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getFluidType(): FluidType;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setFluidType(fluidType: FluidType): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setPotion(itemStack: ItemStack): void;
 }
@@ -1344,6 +1336,8 @@ export class Dimension {
     /**
      * @throws This function can throw errors.
      *
+     * {@link Error}
+     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -1626,7 +1620,7 @@ export class Entity {
      *
      * {@link CommandError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -2830,8 +2824,6 @@ export class ItemCompostableComponent extends ItemComponent {
     private constructor();
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly compostingChance: number;
 }
@@ -3220,8 +3212,6 @@ export class Player extends Entity {
     readonly camera: Camera;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
     readonly inputInfo: InputInfo;
@@ -3467,8 +3457,6 @@ export class PlayerInputPermissions {
     movementEnabled: boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**

@@ -117,7 +117,7 @@ export class ModalFormData {
 // @ts-ignore
 export class ModalFormResponse extends FormResponse {
     private constructor();
-    readonly formValues?: (boolean | number | string)[];
+    readonly formValues?: (boolean | number | string | undefined)[];
 }
 
 export class UIManager {

@@ -64,6 +64,8 @@ export enum CompoundBlockVolumePositionRelativity {
 
 export enum CustomCommandErrorReason {
     AlreadyRegistered = "AlreadyRegistered",
+    EnumDependencyMissing = "EnumDependencyMissing",
+    NamespaceMismatch = "NamespaceMismatch",
     ParameterLimit = "ParameterLimit",
     RegistryInvalid = "RegistryInvalid",
     RegistryReadOnly = "RegistryReadOnly",
@@ -79,6 +81,7 @@ export enum CustomCommandParamType {
     Location = 6,
     BlockType = 7,
     ItemType = 8,
+    Enum = 9,
 }
 
 export enum CustomCommandSource {
@@ -211,7 +214,6 @@ export enum EntityComponentTypes {
     FloatsInLiquid = "minecraft:floats_in_liquid",
     FlyingSpeed = "minecraft:flying_speed",
     FrictionModifier = "minecraft:friction_modifier",
-    GroundOffset = "minecraft:ground_offset",
     Healable = "minecraft:healable",
     Health = "minecraft:health",
     Inventory = "minecraft:inventory",
@@ -651,7 +653,6 @@ export type EntityComponentTypeMap = {
     floats_in_liquid: EntityFloatsInLiquidComponent;
     flying_speed: EntityFlyingSpeedComponent;
     friction_modifier: EntityFrictionModifierComponent;
-    ground_offset: EntityGroundOffsetComponent;
     healable: EntityHealableComponent;
     health: EntityHealthComponent;
     inventory: EntityInventoryComponent;
@@ -717,7 +718,6 @@ export type EntityComponentTypeMap = {
     "minecraft:floats_in_liquid": EntityFloatsInLiquidComponent;
     "minecraft:flying_speed": EntityFlyingSpeedComponent;
     "minecraft:friction_modifier": EntityFrictionModifierComponent;
-    "minecraft:ground_offset": EntityGroundOffsetComponent;
     "minecraft:healable": EntityHealableComponent;
     "minecraft:health": EntityHealthComponent;
     "minecraft:inventory": EntityInventoryComponent;
@@ -796,27 +796,19 @@ export class AimAssistCategory {
     private constructor();
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly defaultBlockPriority: number;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly defaultEntityPriority: number;
     readonly identifier: string;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getBlockPriorities(): Record<string, number>;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getEntityPriorities(): Record<string, number>;
 }
@@ -836,33 +828,23 @@ export class AimAssistPreset {
     private constructor();
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly defaultItemSettings?: string;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly handSettings?: string;
     readonly identifier: string;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getExcludedTargets(): string[];
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getItemSettings(): Record<string, string>;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getLiquidTargetingItems(): string[];
 }
@@ -1313,18 +1295,19 @@ export class BlockComponentTickEvent extends BlockEvent {
 }
 
 // @ts-ignore
+export class BlockCustomComponentInstance extends BlockComponent {
+    private constructor();
+}
+
+// @ts-ignore
 export class BlockDestructionParticlesComponent extends BlockComponent {
     private constructor();
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly texture: string;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly tintMethod: TintMethod;
 }
@@ -1355,26 +1338,18 @@ export class BlockFluidContainerComponent extends BlockComponent {
     fluidColor: RGBA;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     addDye(dye: ItemType): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     getFluidType(): FluidType;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setFluidType(fluidType: FluidType): void;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     setPotion(itemStack: ItemStack): void;
 }
@@ -1405,15 +1380,11 @@ export class BlockMapColorComponent extends BlockComponent {
     private constructor();
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly color: RGBA;
     readonly tintedColor: RGBA;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly tintMethod: TintMethod;
 }
@@ -1423,14 +1394,10 @@ export class BlockPermutation {
     readonly "type": BlockType;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canBeDestroyedByLiquidSpread(liquidType: LiquidType): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     canContainLiquid(liquidType: LiquidType): boolean;
     getAllStates(): Record<string, boolean | number | string>;
@@ -1440,14 +1407,10 @@ export class BlockPermutation {
     hasTag(tag: string): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isLiquidBlocking(liquidType: LiquidType): boolean;
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     liquidSpreadCausesSpawn(liquidType: LiquidType): boolean;
     matches(blockName: string, states?: Record<string, boolean | number | string>): boolean;
@@ -1952,6 +1915,16 @@ export class CustomCommandRegistry {
      * {@link NamespaceNameError}
      */
     registerCommand(customCommand: CustomCommand, callback: () => CustomCommandResult): void;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link CustomCommandError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerEnum(name: string, values: string[]): void;
 }
 
 export class CustomComponentParameters {
@@ -2118,6 +2091,10 @@ export class Dimension {
     setWeather(weatherType: WeatherType, duration?: number): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -2430,7 +2407,7 @@ export class Entity {
      *
      * {@link CommandError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
@@ -2703,12 +2680,6 @@ export class EntityFrictionModifierComponent extends EntityComponent {
      * @throws This property can throw errors.
      */
     readonly value: number;
-}
-
-// @ts-ignore
-export class EntityGroundOffsetComponent extends EntityComponent {
-    private constructor();
-    value: number;
 }
 
 // @ts-ignore
@@ -3692,8 +3663,6 @@ export class ItemCompostableComponent extends ItemComponent {
     private constructor();
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly compostingChance: number;
 }
@@ -3752,8 +3721,6 @@ export class ItemDyeableComponent extends ItemComponent {
     color?: RGB;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly defaultColor?: RGB;
 }
@@ -4113,8 +4080,6 @@ export class Player extends Entity {
     readonly camera: Camera;
     /**
      * @throws This property can throw errors.
-     *
-     * {@link Error}
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
@@ -4440,8 +4405,6 @@ export class PlayerInputPermissions {
     private constructor();
     /**
      * @throws This function can throw errors.
-     *
-     * {@link Error}
      */
     isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
     /**
@@ -5688,6 +5651,7 @@ export interface ScriptEventMessageFilterOptions {
 export interface SpawnEntityOptions {
     initialPersistence?: boolean;
     initialRotation?: number;
+    spawnEvent?: string;
 }
 
 export interface StructureCreateOptions {

@@ -57,6 +57,7 @@ export enum PacketId {
     ChangeMobPropertyPacket = "ChangeMobPropertyPacket",
     ChunkRadiusUpdatedPacket = "ChunkRadiusUpdatedPacket",
     ClientboundCloseFormPacket = "ClientboundCloseFormPacket",
+    ClientboundControlSchemeSetPacket = "ClientboundControlSchemeSetPacket",
     ClientboundDebugRendererPacket = "ClientboundDebugRendererPacket",
     ClientboundMapItemDataPacket = "ClientboundMapItemDataPacket",
     ClientCacheBlobStatusPacket = "ClientCacheBlobStatusPacket",
@@ -293,7 +294,7 @@ export class PacketSendBeforeEvent {
     private constructor();
     cancel: boolean;
     readonly packetId: PacketId;
-    readonly recipients: minecraftserver.Player[];
+    readonly recipients: (minecraftserver.Player | undefined)[];
 }
 
 export class PacketSendBeforeEventSignal {

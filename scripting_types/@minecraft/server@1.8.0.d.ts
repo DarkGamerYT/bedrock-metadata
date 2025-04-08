@@ -503,6 +503,8 @@ export class Dimension {
     /**
      * @throws This function can throw errors.
      *
+     * {@link Error}
+     *
      * {@link LocationInUnloadedChunkError}
      *
      * {@link LocationOutOfWorldBoundariesError}
@@ -745,7 +747,7 @@ export class Entity {
      *
      * {@link CommandError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
      */
     runCommand(commandString: string): CommandResult;
     /**
