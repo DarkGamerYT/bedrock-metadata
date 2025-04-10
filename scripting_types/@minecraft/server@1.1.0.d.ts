@@ -38,9 +38,9 @@ export class Block {
     readonly y: number;
     readonly z: number;
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -100,6 +100,9 @@ export class Entity {
      * @throws This property can throw errors.
      */
     readonly location: Vector3;
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
     nameTag: string;
     readonly typeId: string;
     /**
@@ -143,10 +146,25 @@ export class Player extends Entity {
 
 export class System {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly currentTick: number;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     */
     clearRun(runId: number): void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     */
     run(callback: () => void): number;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     */
     runInterval(callback: () => void, tickInterval?: number): number;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     */
     runTimeout(callback: () => void, tickDelay?: number): number;
 }
 
@@ -228,7 +246,13 @@ export interface Vector3 {
 // @ts-ignore
 export class InvalidEntityError extends Error {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly id: string;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly "type": string;
 }
 

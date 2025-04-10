@@ -14,14 +14,23 @@
 import * as minecraftcommon from "@minecraft/common";
 import * as mojangminecraft from "mojang-minecraft";
 export class ActionFormData {
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     body(bodyText: string): ActionFormData;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     button(text: string, iconPath?: string): ActionFormData;
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      */
     show(player: mojangminecraft.Player): Promise<ActionFormResponse>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     title(titleText: string): ActionFormData;
 }
 
@@ -37,15 +46,27 @@ export class FormResponse {
 }
 
 export class MessageFormData {
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     body(bodyText: string): MessageFormData;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     button1(text: string): MessageFormData;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     button2(text: string): MessageFormData;
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      */
     show(player: mojangminecraft.Player): Promise<MessageFormResponse>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     title(titleText: string): MessageFormData;
 }
 
@@ -56,14 +77,23 @@ export class MessageFormResponse extends FormResponse {
 }
 
 export class ModalFormData {
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     dropdown(label: string, options: string[], defaultValueIndex?: number): ModalFormData;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     icon(iconPath: string): ModalFormData;
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      */
     show(player: mojangminecraft.Player): Promise<ModalFormResponse>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     slider(
         label: string,
         minimumValue: number,
@@ -71,8 +101,17 @@ export class ModalFormData {
         valueStep: number,
         defaultValue?: number,
     ): ModalFormData;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     textField(label: string, placeholderText: string, defaultValue?: string): ModalFormData;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     title(titleText: string): ModalFormData;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     toggle(label: string, defaultValue?: boolean): ModalFormData;
 }
 

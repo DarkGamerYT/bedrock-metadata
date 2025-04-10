@@ -14,8 +14,17 @@
 // @ts-ignore
 export class ArgumentOutOfBoundsError extends Error {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly maxValue: number;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly minValue: number;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly value: number;
 }
 
@@ -27,5 +36,8 @@ export class EngineError extends Error {
 // @ts-ignore
 export class InvalidArgumentError extends Error {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly index: number;
 }

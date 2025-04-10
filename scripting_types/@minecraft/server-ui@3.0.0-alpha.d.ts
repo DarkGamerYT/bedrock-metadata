@@ -32,9 +32,9 @@ export class ActionFormData {
     header(text: minecraftserver.RawMessage | string): ActionFormData;
     label(text: minecraftserver.RawMessage | string): ActionFormData;
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -63,9 +63,9 @@ export class MessageFormData {
     button1(text: minecraftserver.RawMessage | string): MessageFormData;
     button2(text: minecraftserver.RawMessage | string): MessageFormData;
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -93,9 +93,9 @@ export class ModalFormData {
     header(text: minecraftserver.RawMessage | string): ModalFormData;
     label(text: minecraftserver.RawMessage | string): ModalFormData;
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
      *
@@ -129,9 +129,9 @@ export class ModalFormResponse extends FormResponse {
 export class UIManager {
     private constructor();
     /**
-     * @throws This function can throw errors.
+     * @remarks This function can't be called in read-only mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
      */
     closeAllForms(player: minecraftserver.Player): void;
 }
@@ -160,6 +160,9 @@ export interface ModalFormDataToggleOptions {
 // @ts-ignore
 export class FormRejectError extends Error {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly reason: FormRejectReason;
 }
 

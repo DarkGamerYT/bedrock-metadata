@@ -23,41 +23,41 @@ export enum SentryBreadcrumbLevel {
 export class Sentry {
     private constructor();
     /**
-     * @throws This function can throw errors.
-     *
-     * This function can be called in early-execution mode.
+     * @remarks This function can be called in early-execution mode.
      *
      * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
      *
      * {@link SentryUninitializedError}
      */
     addBreadcrumb(level: SentryBreadcrumbLevel, message: string, category?: string): void;
     /**
-     * @throws This function can throw errors.
-     *
-     * This function can be called in early-execution mode.
+     * @remarks This function can be called in early-execution mode.
      *
      * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
      *
      * {@link SentryUninitializedError}
      */
     addTag(name: string, value: string): void;
     /**
-     * @throws This function can throw errors.
-     *
-     * This function can be called in early-execution mode.
+     * @remarks This function can be called in early-execution mode.
      *
      * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
      *
      * {@link SentryUninitializedError}
      */
     getTags(): Record<string, string>;
     /**
-     * @throws This function can throw errors.
-     *
-     * This function can be called in early-execution mode.
+     * @remarks This function can be called in early-execution mode.
      *
      * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
@@ -65,11 +65,11 @@ export class Sentry {
      */
     init(options: SentryOptions): void;
     /**
-     * @throws This function can throw errors.
-     *
-     * This function can be called in early-execution mode.
+     * @remarks This function can be called in early-execution mode.
      *
      * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
      *
      * {@link SentryUninitializedError}
      */

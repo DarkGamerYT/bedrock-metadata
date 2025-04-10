@@ -45,25 +45,38 @@ export class SecretString {
 export class ServerSecrets {
     private constructor();
     readonly names: string[];
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
     get(name: string): SecretString | undefined;
 }
 
 export class ServerVariables {
     private constructor();
     readonly names: string[];
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
     get(name: string): unknown | undefined;
 }
 
 // @ts-ignore
 export class DisconnectedError extends Error {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly id: string;
 }
 
 /**
- * @throws This function can throw errors.
+ * @remarks This function can't be called in read-only mode.
  *
- * This function can't be called in read-only mode.
+ * @throws This function can throw errors.
  */
 export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
 export const beforeEvents: AdminBeforeEvents;

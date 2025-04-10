@@ -51,6 +51,9 @@ export class Player extends Entity {
 
 export class System {
     private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     */
     run(callback: () => void): number;
 }
 
@@ -69,7 +72,13 @@ export class World {
 // @ts-ignore
 export class InvalidEntityError extends Error {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly id: string;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly "type": string;
 }
 
