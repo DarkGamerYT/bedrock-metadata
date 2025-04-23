@@ -8,7 +8,7 @@
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "2.0.0-beta"
+ *     "version": "2.1.0-beta"
  * }
  * ```
  */
@@ -332,10 +332,10 @@ export enum FluidType {
 }
 
 export enum GameMode {
-    adventure = "adventure",
-    creative = "creative",
-    spectator = "spectator",
-    survival = "survival",
+    Adventure = "Adventure",
+    Creative = "Creative",
+    Spectator = "Spectator",
+    Survival = "Survival",
 }
 
 export enum GameRule {
@@ -505,6 +505,11 @@ export enum PlatformType {
     Console = "Console",
     Desktop = "Desktop",
     Mobile = "Mobile",
+}
+
+export enum PlayerInventoryType {
+    Hotbar = "Hotbar",
+    Inventory = "Inventory",
 }
 
 export enum ScoreboardIdentityType {
@@ -1272,9 +1277,9 @@ export class BlockComponentOnPlaceEvent extends BlockEvent {
 }
 
 // @ts-ignore
-export class BlockComponentPlayerDestroyEvent extends BlockEvent {
+export class BlockComponentPlayerBreakEvent extends BlockEvent {
     private constructor();
-    readonly destroyedBlockPermutation: BlockPermutation;
+    readonly brokenBlockPermutation: BlockPermutation;
     readonly player?: Player;
 }
 
@@ -1344,6 +1349,7 @@ export class BlockComponentTickEvent extends BlockEvent {
 // @ts-ignore
 export class BlockCustomComponentInstance extends BlockComponent {
     private constructor();
+    readonly customComponentParameters: CustomComponentParameters;
 }
 
 // @ts-ignore
@@ -1864,19 +1870,25 @@ export class Container {
      *
      * {@link InvalidContainerError}
      */
-    find(itemStack: ItemStack): number;
+    find(itemStack: ItemStack): number | undefined;
     /**
      * @throws This function can throw errors.
      *
      * {@link InvalidContainerError}
      */
-    firstEmptySlot(): number;
+    findLast(itemStack: ItemStack): number | undefined;
     /**
      * @throws This function can throw errors.
      *
      * {@link InvalidContainerError}
      */
-    firstItem(): number;
+    firstEmptySlot(): number | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstItem(): number | undefined;
     /**
      * @throws This function can throw errors.
      */
@@ -1891,12 +1903,6 @@ export class Container {
      * @throws This function can throw errors.
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
-    /**
-     * @throws This function can throw errors.
-     *
-     * {@link InvalidContainerError}
-     */
-    reverseFind(itemStack: ItemStack): number;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2368,6 +2374,14 @@ export class Dimension {
      * {@link LocationOutOfWorldBoundariesError}
      */
     spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
+    stopAllSounds(): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
+    stopSound(soundId: string): void;
 }
 
 export class DimensionType {
@@ -3273,12 +3287,6 @@ export class EntityItemComponent extends EntityComponent {
     readonly itemStack: ItemStack;
 }
 
-export class EntityIterator implements Iterable<Entity> {
-    private constructor();
-    [Symbol.iterator](): Iterator<Entity>;
-    next(): IteratorResult<Entity>;
-}
-
 // @ts-ignore
 export class EntityLavaMovementComponent extends EntityAttributeComponent {
     private constructor();
@@ -3894,12 +3902,6 @@ export class EntityTypeFamilyComponent extends EntityComponent {
     hasTypeFamily(typeFamily: string): boolean;
 }
 
-export class EntityTypeIterator implements Iterable<EntityType> {
-    private constructor();
-    [Symbol.iterator](): Iterator<EntityType>;
-    next(): IteratorResult<EntityType>;
-}
-
 export class EntityTypes {
     private constructor();
     static get(identifier: string): EntityType | undefined;
@@ -3984,10 +3986,6 @@ export class FeedItemEffect {
     readonly chance: number;
     readonly duration: number;
     readonly name: string;
-}
-
-export class FilterGroup {
-    private constructor();
 }
 
 export class FluidContainer {
@@ -4353,6 +4351,7 @@ export class ItemCooldownComponent extends ItemComponent {
 // @ts-ignore
 export class ItemCustomComponentInstance extends ItemComponent {
     private constructor();
+    readonly customComponentParameters: CustomComponentParameters;
 }
 
 // @ts-ignore
@@ -5054,8 +5053,24 @@ export class Player extends Entity {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopAllSounds(): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
      */
     stopMusic(): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    stopSound(soundId: string): void;
 }
 
 export class PlayerAimAssist {
@@ -5271,6 +5286,33 @@ export class PlayerGameModeChangeBeforeEventSignal {
     unsubscribe(callback: (arg0: PlayerGameModeChangeBeforeEvent) => void): void;
 }
 
+export class PlayerHotbarSelectedSlotChangeAfterEvent {
+    private constructor();
+    readonly itemStack?: ItemStack;
+    readonly newSlotSelected: number;
+    readonly player: Player;
+    readonly previousSlotSelected: number;
+}
+
+export class PlayerHotbarSelectedSlotChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    subscribe(
+        callback: (arg0: PlayerHotbarSelectedSlotChangeAfterEvent) => void,
+        options?: HotbarEventOptions,
+    ): (arg0: PlayerHotbarSelectedSlotChangeAfterEvent) => void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    unsubscribe(callback: (arg0: PlayerHotbarSelectedSlotChangeAfterEvent) => void): void;
+}
+
 export class PlayerInputModeChangeAfterEvent {
     private constructor();
     readonly newInputModeUsed: InputMode;
@@ -5435,10 +5477,32 @@ export class PlayerInteractWithEntityBeforeEventSignal {
     unsubscribe(callback: (arg0: PlayerInteractWithEntityBeforeEvent) => void): void;
 }
 
-export class PlayerIterator implements Iterable<Player> {
+export class PlayerInventoryItemChangeAfterEvent {
     private constructor();
-    [Symbol.iterator](): Iterator<Player>;
-    next(): IteratorResult<Player>;
+    readonly beforeItemStack?: ItemStack;
+    readonly inventoryType: PlayerInventoryType;
+    readonly itemStack?: ItemStack;
+    readonly player: Player;
+    readonly slot: number;
+}
+
+export class PlayerInventoryItemChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    subscribe(
+        callback: (arg0: PlayerInventoryItemChangeAfterEvent) => void,
+        options?: InventoryItemEventOptions,
+    ): (arg0: PlayerInventoryItemChangeAfterEvent) => void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    unsubscribe(callback: (arg0: PlayerInventoryItemChangeAfterEvent) => void): void;
 }
 
 export class PlayerJoinAfterEvent {
@@ -5537,7 +5601,7 @@ export class PlayerPlaceBlockBeforeEvent extends BlockEvent {
     cancel: boolean;
     readonly face: Direction;
     readonly faceLocation: Vector3;
-    readonly permutationBeingPlaced: BlockPermutation;
+    readonly permutationToPlace: BlockPermutation;
     readonly player: Player;
 }
 
@@ -6581,6 +6645,10 @@ export class WorldAfterEvents {
     /**
      * @remarks This property can be read in early-execution mode.
      */
+    readonly playerHotbarSelectedSlotChange: PlayerHotbarSelectedSlotChangeAfterEventSignal;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly playerInputModeChange: PlayerInputModeChangeAfterEventSignal;
     /**
      * @remarks This property can be read in early-execution mode.
@@ -6594,6 +6662,10 @@ export class WorldAfterEvents {
      * @remarks This property can be read in early-execution mode.
      */
     readonly playerInteractWithEntity: PlayerInteractWithEntityAfterEventSignal;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly playerInventoryItemChange: PlayerInventoryItemChangeAfterEventSignal;
     /**
      * @remarks This property can be read in early-execution mode.
      */
@@ -6729,7 +6801,7 @@ export interface BlockCustomComponent {
     beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
     onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
-    onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent, arg1: CustomComponentParameters) => void;
+    onPlayerBreak?: (arg0: BlockComponentPlayerBreakEvent, arg1: CustomComponentParameters) => void;
     onPlayerInteract?: (arg0: BlockComponentPlayerInteractEvent, arg1: CustomComponentParameters) => void;
     onRandomTick?: (arg0: BlockComponentRandomTickEvent, arg1: CustomComponentParameters) => void;
     onStepOff?: (arg0: BlockComponentStepOffEvent, arg1: CustomComponentParameters) => void;
@@ -6991,9 +7063,23 @@ export interface GreaterThanOrEqualsComparison {
     greaterThanOrEquals: number;
 }
 
+export interface HotbarEventOptions {
+    allowedSlots?: number[];
+}
+
 export interface InputEventOptions {
     buttons?: InputButton[];
     state?: ButtonState;
+}
+
+export interface InventoryItemEventOptions {
+    allowedSlots?: number[];
+    excludeItems?: string[];
+    excludeTags?: string[];
+    ignoreQuantityChange?: boolean;
+    includeItems?: string[];
+    includeTags?: string[];
+    inventoryType?: PlayerInventoryType;
 }
 
 export interface ItemCustomComponent {

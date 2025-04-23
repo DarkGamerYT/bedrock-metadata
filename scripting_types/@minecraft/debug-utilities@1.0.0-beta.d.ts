@@ -13,6 +13,62 @@
  * ```
  */
 import * as minecraftcommon from "@minecraft/common";
+import * as minecraftserver from "@minecraft/server";
+// @ts-ignore
+export class DebugArrow extends DebugLine {
+    headLength: number;
+    headRadius: number;
+    headSegments: number;
+    constructor(location: minecraftserver.Vector3, endLocation: minecraftserver.Vector3);
+}
+
+// @ts-ignore
+export class DebugBox extends DebugShape {
+    bound: minecraftserver.Vector3;
+    constructor(location: minecraftserver.Vector3);
+}
+
+// @ts-ignore
+export class DebugCircle extends DebugShape {
+    constructor(location: minecraftserver.Vector3);
+}
+
+export class DebugDrawer {
+    private constructor();
+    addShape(shape: DebugShape): void;
+    removeAll(): void;
+    removeShape(shape: DebugShape): void;
+}
+
+// @ts-ignore
+export class DebugLine extends DebugShape {
+    endLocation: minecraftserver.Vector3;
+    constructor(location: minecraftserver.Vector3, endLocation: minecraftserver.Vector3);
+}
+
+export class DebugShape {
+    private constructor();
+    color: minecraftserver.RGB;
+    readonly hasDuration: boolean;
+    location: minecraftserver.Vector3;
+    rotation: minecraftserver.Vector3;
+    scale: number;
+    timeLeft?: number;
+    readonly totalTimeLeft?: number;
+    remove(): void;
+}
+
+// @ts-ignore
+export class DebugSphere extends DebugShape {
+    constructor(location: minecraftserver.Vector3);
+}
+
+// @ts-ignore
+export class DebugText extends DebugShape {
+    text: string;
+    constructor(location: minecraftserver.Vector3, text: string);
+}
+
 export interface HandleCounts {
     handleCounts: Record<string, number>;
     name: string;
@@ -52,3 +108,4 @@ export function collectRuntimeStats(): RuntimeStats;
  * @throws This function can throw errors.
  */
 export function disableWatchdogTimingWarnings(disable: boolean): void;
+export const debugDrawer: DebugDrawer;

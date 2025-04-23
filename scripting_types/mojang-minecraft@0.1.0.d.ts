@@ -958,10 +958,6 @@ export class EntityHealableComponent extends IEntityComponent {
     /**
      * @throws This property can throw errors.
      */
-    readonly filters: FilterGroup;
-    /**
-     * @throws This property can throw errors.
-     */
     readonly forceUse: boolean;
     /**
      * @throws This property can throw errors.
@@ -1661,10 +1657,6 @@ export class FeedItemEffect {
     readonly chance: number;
     readonly duration: number;
     readonly name: string;
-}
-
-export class FilterGroup {
-    private constructor();
 }
 
 export class FluidContainer {

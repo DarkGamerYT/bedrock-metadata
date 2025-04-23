@@ -325,6 +325,14 @@ export enum WidgetMouseButtonActionType {
     Drag = 2,
 }
 
+export enum WorldGeneratorType {
+    Flat = "Flat",
+    Nether = "Nether",
+    Overworld = "Overworld",
+    TheEnd = "TheEnd",
+    Void = "Void",
+}
+
 export class BlockPalette {
     /**
      * @throws This function can throw errors.
@@ -1220,10 +1228,12 @@ export class MinecraftEditor {
      */
     readonly log: Logger;
     readonly simulation: SimulationState;
+    readonly worldGeneratorType?: WorldGeneratorType;
 }
 
 export class MinecraftEditorInternal {
     private constructor();
+    readonly isNewLevel: boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2472,6 +2482,7 @@ export interface GameOptions {
     keepInventory?: boolean;
     lanVisibility?: boolean;
     limitedCrafting?: boolean;
+    locatorBar?: boolean;
     maxCommandChainLength?: number;
     mobGriefing?: boolean;
     mobLoot?: boolean;
