@@ -482,6 +482,11 @@ export enum ItemLockMode {
     slot = "slot",
 }
 
+export enum LiquidSettings {
+    ApplyWaterlogging = "ApplyWaterlogging",
+    IgnoreWaterlogging = "IgnoreWaterlogging",
+}
+
 export enum LiquidType {
     Water = "Water",
 }
@@ -543,6 +548,13 @@ export enum PlatformType {
 export enum PlayerInventoryType {
     Hotbar = "Hotbar",
     Inventory = "Inventory",
+}
+
+export enum PlayerPermissionLevel {
+    Visitor = 0,
+    Member = 1,
+    Operator = 2,
+    Custom = 3,
 }
 
 export enum ScoreboardIdentityType {
@@ -2525,9 +2537,9 @@ export class EnchantmentType {
     readonly id: string;
     readonly maxLevel: number;
     /**
- * @throws This function can throw errors.
- */
-constructor(enchantmentType: string);
+     * @throws This function can throw errors.
+     */
+    constructor(enchantmentType: string);
 }
 
 export class EnchantmentTypes {
@@ -4610,9 +4622,9 @@ export class ItemStack {
     readonly "type": ItemType;
     readonly typeId: string;
     /**
- * @throws This function can throw errors.
- */
-constructor(itemType: ItemType | string, amount?: number);
+     * @throws This function can throw errors.
+     */
+    constructor(itemType: ItemType | string, amount?: number);
     clearDynamicProperties(): void;
     clone(): ItemStack;
     /**
@@ -4926,6 +4938,10 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    commandPermissionLevel: CommandPermissionLevel;
+    /**
      * @throws This property can throw errors.
      *
      * {@link InvalidEntityError}
@@ -4961,6 +4977,12 @@ export class Player extends Entity {
      * @throws This property can throw errors.
      */
     readonly onScreenDisplay: ScreenDisplay;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -5015,10 +5037,6 @@ export class Player extends Entity {
      */
     getTotalXp(): number;
     /**
-     * @throws This function can throw errors.
-     */
-    isOp(): boolean;
-    /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
@@ -5068,12 +5086,6 @@ export class Player extends Entity {
      * @throws This function can throw errors.
      */
     setGameMode(gameMode?: GameMode): void;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    setOp(isOp: boolean): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -6895,7 +6907,10 @@ export interface BlockBoundingBox {
 }
 
 export interface BlockCustomComponent {
-    beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
+    beforeOnPlayerPlace?: (
+        arg0: BlockComponentPlayerPlaceBeforeEvent,
+        arg1: CustomComponentParameters,
+    ) => void;
     onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
     onPlayerBreak?: (arg0: BlockComponentPlayerBreakEvent, arg1: CustomComponentParameters) => void;
@@ -7004,6 +7019,7 @@ export interface CompoundBlockVolumeItem {
 }
 
 export interface CustomCommand {
+    cheatsRequired?: boolean;
     description: string;
     mandatoryParameters?: CustomCommandParameter[];
     name: string;
@@ -7195,12 +7211,14 @@ export interface ItemCustomComponent {
 export interface JigsawPlaceOptions {
     includeEntities?: boolean;
     keepJigsaws?: boolean;
+    liquidSettings?: LiquidSettings;
 }
 
 export interface JigsawStructurePlaceOptions {
     ignoreStartHeight?: boolean;
     includeEntities?: boolean;
     keepJigsaws?: boolean;
+    liquidSettings?: LiquidSettings;
 }
 
 export interface LessThanComparison {

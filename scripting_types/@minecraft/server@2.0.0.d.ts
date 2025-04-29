@@ -496,6 +496,16 @@ export enum TimeOfDay {
     Sunrise = 23000,
 }
 
+export enum TintMethod {
+    BirchFoliage = "BirchFoliage",
+    DefaultFoliage = "DefaultFoliage",
+    DryFoliage = "DryFoliage",
+    EvergreenFoliage = "EvergreenFoliage",
+    Grass = "Grass",
+    None = "None",
+    Water = "Water",
+}
+
 export enum WeatherType {
     Clear = "Clear",
     Rain = "Rain",
@@ -509,11 +519,13 @@ export type BlockComponentReturnType<T extends string> = T extends keyof BlockCo
 export type BlockComponentTypeMap = {
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
+    map_color: BlockMapColorComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
     "minecraft:fluid_container": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
+    "minecraft:map_color": BlockMapColorComponent;
     "minecraft:piston": BlockPistonComponent;
     "minecraft:record_player": BlockRecordPlayerComponent;
     "minecraft:sign": BlockSignComponent;
@@ -1098,6 +1110,20 @@ export class BlockLocationIterator implements Iterable<Vector3> {
     next(): IteratorResult<Vector3>;
 }
 
+// @ts-ignore
+export class BlockMapColorComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly color: RGBA;
+    readonly tintedColor: RGBA;
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly tintMethod: TintMethod;
+}
+
 export class BlockPermutation {
     private constructor();
     readonly "type": BlockType;
@@ -1304,6 +1330,7 @@ export class ButtonPushAfterEventSignal {
 
 export class Camera {
     private constructor();
+    readonly isValid: boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1893,9 +1920,9 @@ export class EnchantmentType {
     readonly id: string;
     readonly maxLevel: number;
     /**
- * @throws This function can throw errors.
- */
-constructor(enchantmentType: string);
+     * @throws This function can throw errors.
+     */
+    constructor(enchantmentType: string);
 }
 
 export class EnchantmentTypes {
@@ -3880,9 +3907,9 @@ export class ItemStack {
     readonly "type": ItemType;
     readonly typeId: string;
     /**
- * @throws This function can throw errors.
- */
-constructor(itemType: ItemType | string, amount?: number);
+     * @throws This function can throw errors.
+     */
+    constructor(itemType: ItemType | string, amount?: number);
     clearDynamicProperties(): void;
     clone(): ItemStack;
     /**
@@ -5852,7 +5879,10 @@ export interface BlockBoundingBox {
 }
 
 export interface BlockCustomComponent {
-    beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
+    beforeOnPlayerPlace?: (
+        arg0: BlockComponentPlayerPlaceBeforeEvent,
+        arg1: CustomComponentParameters,
+    ) => void;
     onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
     onPlayerBreak?: (arg0: BlockComponentPlayerBreakEvent, arg1: CustomComponentParameters) => void;
@@ -6396,6 +6426,7 @@ export class UnloadedChunksError extends Error {
 export const HudElementsCount = 13;
 export const HudVisibilityCount = 2;
 export const MoonPhaseCount = 8;
+export const TicksPerDay = 24000;
 export const TicksPerSecond = 20;
 export const system: System;
 export const world: World;

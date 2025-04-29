@@ -151,13 +151,6 @@ export enum Plane {
     YZ = 4,
 }
 
-export enum PlayerPermissionLevel {
-    Visitor = 0,
-    Member = 1,
-    Operator = 2,
-    Custom = 3,
-}
-
 export enum PlaytestSessionResult {
     OK = 0,
     InvalidSessionHandle = 1,
@@ -958,7 +951,15 @@ export class DataTransferManager {
     /**
      * @throws This function can throw errors.
      */
+    closeSession(collectionUniqueId: string): void;
+    /**
+     * @throws This function can throw errors.
+     */
     getRegisteredAccessors(): DataTransferCollectionNameData[];
+    /**
+     * @throws This function can throw errors.
+     */
+    openSession(collectionUniqueId: string): void;
     /**
      * @throws This function can throw errors.
      */
@@ -2490,7 +2491,7 @@ export interface GameOptions {
     multiplayerGame?: boolean;
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
-    playerPermissions?: PlayerPermissionLevel;
+    playerPermissions?: minecraftserver.PlayerPermissionLevel;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
