@@ -1066,9 +1066,9 @@ export class ItemStack {
     readonly "type": ItemType;
     readonly typeId: string;
     /**
- * @throws This function can throw errors.
- */
-constructor(itemType: ItemType | string, amount?: number);
+     * @throws This function can throw errors.
+     */
+    constructor(itemType: ItemType | string, amount?: number);
     getComponent(componentId: string): ItemComponent | undefined;
     getComponents(): ItemComponent[];
     getLore(): string[];

@@ -2511,9 +2511,9 @@ export class EnchantmentType {
     readonly id: string;
     readonly maxLevel: number;
     /**
- * @throws This function can throw errors.
- */
-constructor(enchantmentType: string);
+     * @throws This function can throw errors.
+     */
+    constructor(enchantmentType: string);
 }
 
 export class EnchantmentTypes {
@@ -4611,9 +4611,9 @@ export class ItemStack {
     readonly "type": ItemType;
     readonly typeId: string;
     /**
- * @throws This function can throw errors.
- */
-constructor(itemType: ItemType | string, amount?: number);
+     * @throws This function can throw errors.
+     */
+    constructor(itemType: ItemType | string, amount?: number);
     clearDynamicProperties(): void;
     clone(): ItemStack;
     /**
@@ -6823,7 +6823,10 @@ export interface BlockBoundingBox {
 }
 
 export interface BlockCustomComponent {
-    beforeOnPlayerPlace?: (arg0: BlockComponentPlayerPlaceBeforeEvent, arg1: CustomComponentParameters) => void;
+    beforeOnPlayerPlace?: (
+        arg0: BlockComponentPlayerPlaceBeforeEvent,
+        arg1: CustomComponentParameters,
+    ) => void;
     onEntityFallOn?: (arg0: BlockComponentEntityFallOnEvent, arg1: CustomComponentParameters) => void;
     onPlace?: (arg0: BlockComponentOnPlaceEvent, arg1: CustomComponentParameters) => void;
     onPlayerDestroy?: (arg0: BlockComponentPlayerDestroyEvent, arg1: CustomComponentParameters) => void;

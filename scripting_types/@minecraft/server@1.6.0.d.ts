@@ -1394,9 +1394,9 @@ export class ItemStack {
     readonly "type": ItemType;
     readonly typeId: string;
     /**
- * @throws This function can throw errors.
- */
-constructor(itemType: ItemType | string, amount?: number);
+     * @throws This function can throw errors.
+     */
+    constructor(itemType: ItemType | string, amount?: number);
     clone(): ItemStack;
     /**
      * @remarks This function can't be called in read-only mode.

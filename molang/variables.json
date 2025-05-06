@@ -352,6 +352,6 @@
             "name": "variable.worldz"
         }
     ],
-    "minecraft_version": "1.21.80-preview.28",
+    "minecraft_version": "1.21.80-stable",
     "name": "molang-variables"
 }

@@ -1862,9 +1862,9 @@ export class ItemStack {
      */
     nameTag?: string;
     /**
- * @throws This function can throw errors.
- */
-constructor(itemType: ItemType | string, amount?: number, data?: number);
+     * @throws This function can throw errors.
+     */
+    constructor(itemType: ItemType | string, amount?: number, data?: number);
     getComponent(componentId: string): ItemComponent | undefined;
     getComponents(): ItemComponent[];
     getLore(): string[];

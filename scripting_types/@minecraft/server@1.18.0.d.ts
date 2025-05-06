@@ -1839,9 +1839,9 @@ export class EnchantmentType {
     readonly id: string;
     readonly maxLevel: number;
     /**
- * @throws This function can throw errors.
- */
-constructor(enchantmentType: string);
+     * @throws This function can throw errors.
+     */
+    constructor(enchantmentType: string);
 }
 
 export class EnchantmentTypes {
@@ -3860,9 +3860,9 @@ export class ItemStack {
     readonly "type": ItemType;
     readonly typeId: string;
     /**
- * @throws This function can throw errors.
- */
-constructor(itemType: ItemType | string, amount?: number);
+     * @throws This function can throw errors.
+     */
+    constructor(itemType: ItemType | string, amount?: number);
     clearDynamicProperties(): void;
     clone(): ItemStack;
     /**
