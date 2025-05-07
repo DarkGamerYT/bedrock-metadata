@@ -1351,7 +1351,6 @@ export class Camera {
     setCamera(
         cameraPreset: string,
         setOptions?: 
-            | CameraDefaultOptions
             | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
@@ -1359,6 +1358,12 @@ export class Camera {
             | CameraSetRotOptions
             | CameraTargetOptions,
     ): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
 }
 
 // @ts-ignore
@@ -1394,6 +1399,10 @@ export class Container {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
@@ -1414,24 +1423,40 @@ export class Container {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
@@ -1586,6 +1611,8 @@ export class ContainerSlot {
      *
      * @throws This function can throw errors.
      *
+     * {@link ContainerRulesError}
+     *
      * {@link InvalidContainerSlotError}
      */
     setItem(itemStack?: ItemStack): void;
@@ -1681,6 +1708,18 @@ export class Dimension {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getBlock(location: Vector3): Block | undefined;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
      * @throws This function can throw errors.
      */
@@ -5931,10 +5970,6 @@ export interface BlockRaycastOptions extends BlockFilter {
     maxDistance?: number;
 }
 
-export interface CameraDefaultOptions {
-    easeOptions: CameraEaseOptions;
-}
-
 export interface CameraEaseOptions {
     easeTime?: number;
     easeType?: EasingType;
@@ -6173,7 +6208,7 @@ export interface PlayAnimationOptions {
     blendOutTime?: number;
     controller?: string;
     nextState?: string;
-    players?: string[];
+    players?: Player[];
     stopExpression?: string;
 }
 
@@ -6309,6 +6344,11 @@ export class BlockCustomComponentReloadVersionError extends Error {
 
 // @ts-ignore
 export class CommandError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
+export class ContainerRulesError extends Error {
     private constructor();
 }
 

@@ -415,6 +415,10 @@ export class BlockUtilities {
     ): void;
     /**
      * @remarks This function can't be called in read-only mode.
+     */
+    findObscuredBlocksWithinVolume(volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): RelativeVolumeListBlockVolume;
+    /**
+     * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
@@ -746,6 +750,7 @@ export class DataStore {
     readonly afterEvents: DataStoreAfterEvents;
     readonly menuContainer: DataStoreMenuContainer;
     readonly modalToolContainer: DataStoreModalToolContainer;
+    readonly paneContainer: DataStorePaneContainer;
 }
 
 export class DataStoreActionBarContainer {
@@ -922,6 +927,22 @@ export class DataStoreModalToolContainer {
      * @throws This function can throw errors.
      */
     updateSelectedTool(toolId?: string): void;
+}
+
+export class DataStorePaneContainer {
+    private constructor();
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    createPane(id: string): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    destroyPane(id: string): void;
 }
 
 export class DataStorePayloadAfterEvent {

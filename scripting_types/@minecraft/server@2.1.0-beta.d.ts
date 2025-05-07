@@ -62,6 +62,14 @@ export enum CompoundBlockVolumePositionRelativity {
     Absolute = 1,
 }
 
+export enum ContainerRulesErrorReason {
+    BannedItem = "BannedItem",
+    NestedStorageItem = "NestedStorageItem",
+    NotAllowedItem = "NotAllowedItem",
+    OverWeightLimit = "OverWeightLimit",
+    ZeroWeightItem = "ZeroWeightItem",
+}
+
 export enum CustomCommandErrorReason {
     AlreadyRegistered = "AlreadyRegistered",
     EnumDependencyMissing = "EnumDependencyMissing",
@@ -72,16 +80,17 @@ export enum CustomCommandErrorReason {
 }
 
 export enum CustomCommandParamType {
-    Boolean = 0,
-    Integer = 1,
-    Float = 2,
-    String = 3,
-    EntitySelector = 4,
-    PlayerSelector = 5,
-    Location = 6,
-    BlockType = 7,
-    ItemType = 8,
-    Enum = 9,
+    BlockType = "BlockType",
+    Boolean = "Boolean",
+    EntitySelector = "EntitySelector",
+    EntityType = "EntityType",
+    Enum = "Enum",
+    Float = "Float",
+    Integer = "Integer",
+    ItemType = "ItemType",
+    Location = "Location",
+    PlayerSelector = "PlayerSelector",
+    String = "String",
 }
 
 export enum CustomCommandSource {
@@ -440,6 +449,7 @@ export enum ItemComponentTypes {
     Dyeable = "minecraft:dyeable",
     Enchantable = "minecraft:enchantable",
     Food = "minecraft:food",
+    Inventory = "minecraft:inventory",
     Potion = "minecraft:potion",
 }
 
@@ -766,6 +776,7 @@ export type ItemComponentTypeMap = {
     dyeable: ItemDyeableComponent;
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
+    inventory: ItemInventoryComponent;
     potion: ItemPotionComponent;
     "minecraft:compostable": ItemCompostableComponent;
     "minecraft:cooldown": ItemCooldownComponent;
@@ -773,6 +784,7 @@ export type ItemComponentTypeMap = {
     "minecraft:dyeable": ItemDyeableComponent;
     "minecraft:enchantable": ItemEnchantableComponent;
     "minecraft:food": ItemFoodComponent;
+    "minecraft:inventory": ItemInventoryComponent;
     "minecraft:potion": ItemPotionComponent;
 }
 
@@ -1709,7 +1721,6 @@ export class Camera {
     setCamera(
         cameraPreset: string,
         setOptions?: 
-            | CameraDefaultOptions
             | CameraFixedBoomOptions
             | CameraSetFacingOptions
             | CameraSetLocationOptions
@@ -1717,6 +1728,12 @@ export class Camera {
             | CameraSetRotOptions
             | CameraTargetOptions,
     ): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
 }
 
 export class ChatSendAfterEvent {
@@ -1850,6 +1867,7 @@ export class CompoundBlockVolume {
 
 export class Container {
     private constructor();
+    readonly containerRules?: ContainerRules;
     /**
      * @throws This property can throw errors.
      */
@@ -1860,9 +1878,19 @@ export class Container {
      */
     readonly size: number;
     /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    readonly weight: number;
+    /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
@@ -1913,24 +1941,40 @@ export class Container {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
@@ -2092,6 +2136,8 @@ export class ContainerSlot {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -4503,6 +4549,17 @@ export class ItemFoodComponent extends ItemComponent {
 }
 
 // @ts-ignore
+export class ItemInventoryComponent extends ItemComponent {
+    private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    readonly container: Container;
+}
+
+// @ts-ignore
 export class ItemPotionComponent extends ItemComponent {
     private constructor();
     /**
@@ -4569,6 +4626,7 @@ export class ItemStack {
     nameTag?: string;
     readonly "type": ItemType;
     readonly typeId: string;
+    readonly weight: number;
     /**
      * @throws This function can throw errors.
      */
@@ -6862,10 +6920,6 @@ export interface BlockRaycastOptions extends BlockFilter {
     maxDistance?: number;
 }
 
-export interface CameraDefaultOptions {
-    easeOptions: CameraEaseOptions;
-}
-
 export interface CameraEaseOptions {
     easeTime?: number;
     easeType?: EasingType;
@@ -6919,6 +6973,13 @@ export interface CompoundBlockVolumeItem {
     action?: CompoundBlockVolumeAction;
     locationRelativity?: CompoundBlockVolumePositionRelativity;
     volume: BlockVolume;
+}
+
+export interface ContainerRules {
+    allowedItems: string[];
+    allowNestedStorageItems: boolean;
+    bannedItems: string[];
+    weightLimit?: number;
 }
 
 export interface CustomCommand {
@@ -7146,7 +7207,7 @@ export interface PlayAnimationOptions {
     blendOutTime?: number;
     controller?: string;
     nextState?: string;
-    players?: string[];
+    players?: Player[];
     stopExpression?: string;
 }
 
@@ -7298,6 +7359,15 @@ export class BlockCustomComponentReloadVersionError extends Error {
 // @ts-ignore
 export class CommandError extends Error {
     private constructor();
+}
+
+// @ts-ignore
+export class ContainerRulesError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly reason: ContainerRulesErrorReason;
 }
 
 // @ts-ignore

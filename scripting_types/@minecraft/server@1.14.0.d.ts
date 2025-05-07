@@ -953,6 +953,10 @@ export class Container {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     addItem(itemStack: ItemStack): ItemStack | undefined;
     /**
@@ -974,24 +978,40 @@ export class Container {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     moveItem(fromSlot: number, toSlot: number, toContainer: Container): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     setItem(slot: number, itemStack?: ItemStack): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     swapItems(slot: number, otherSlot: number, otherContainer: Container): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
+     *
+     * {@link Error}
      */
     transferItem(fromSlot: number, toContainer: Container): ItemStack | undefined;
 }
@@ -1145,6 +1165,8 @@ export class ContainerSlot {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link ContainerRulesError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -5501,6 +5523,11 @@ export class BlockCustomComponentReloadVersionError extends Error {
 
 // @ts-ignore
 export class CommandError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
+export class ContainerRulesError extends Error {
     private constructor();
 }
 
