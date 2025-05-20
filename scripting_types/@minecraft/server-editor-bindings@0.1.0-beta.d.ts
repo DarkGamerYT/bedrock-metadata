@@ -102,6 +102,7 @@ export enum GamePublishSetting {
 }
 
 export enum GraphicsSettingsProperty {
+    GraphicsMode = "GraphicsMode",
     NightVision = "NightVision",
     ShowChunkBoundaries = "ShowChunkBoundaries",
     ShowCompass = "ShowCompass",
@@ -500,6 +501,10 @@ export class BrushShapeManager {
      * @remarks This function can't be called in read-only mode.
      */
     getBrushShapeOffset(): minecraftserver.Vector3;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
+    isBrushPaintBusy(): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1692,6 +1697,12 @@ export class TransactionManager {
      * @throws This function can throw errors.
      */
     discardTrackedChanges(): number;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    isBusy(): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *

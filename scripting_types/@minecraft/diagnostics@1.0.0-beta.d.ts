@@ -13,6 +13,7 @@
  * ```
  */
 import * as minecraftcommon from "@minecraft/common";
+import * as minecraftserveradmin from "@minecraft/server-admin";
 export enum SentryBreadcrumbLevel {
     debug = "debug",
     error = "error",
@@ -77,7 +78,10 @@ export class Sentry {
 }
 
 export interface SentryOptions {
-    dsn: string;
+    debug?: boolean;
+    dsn: minecraftserveradmin.SecretString | string;
+    maxBreadcrumbs?: number;
+    sampleRate?: number;
 }
 
 // @ts-ignore

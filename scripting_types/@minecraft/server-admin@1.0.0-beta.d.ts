@@ -64,6 +64,15 @@ export class ServerVariables {
     get(name: string): unknown | undefined;
 }
 
+export interface TransferPlayerIpPortOptions {
+    hostname: string;
+    port: number;
+}
+
+export interface TransferPlayerNetherNetOptions {
+    netherNetId: string;
+}
+
 // @ts-ignore
 export class DisconnectedError extends Error {
     private constructor();
@@ -78,7 +87,10 @@ export class DisconnectedError extends Error {
  *
  * @throws This function can throw errors.
  */
-export function transferPlayer(player: minecraftserver.Player, host: string, port: number): void;
+export function transferPlayer(
+    player: minecraftserver.Player,
+    options: TransferPlayerIpPortOptions | TransferPlayerNetherNetOptions,
+): void;
 export const beforeEvents: AdminBeforeEvents;
 export const secrets: ServerSecrets;
 export const variables: ServerVariables;

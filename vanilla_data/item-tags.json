@@ -1523,6 +1523,9 @@
                     "name": "minecraft:music_disc_strad"
                 },
                 {
+                    "name": "minecraft:music_disc_tears"
+                },
+                {
                     "name": "minecraft:music_disc_wait"
                 },
                 {
@@ -2482,6 +2485,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.90-preview.23",
+    "minecraft_version": "1.21.90-preview.26",
     "name": "item-tags"
 }

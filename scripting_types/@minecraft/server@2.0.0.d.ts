@@ -1363,7 +1363,7 @@ export class Camera {
      *
      * @throws This function can throw errors.
      */
-    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
+    setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
 }
 
 // @ts-ignore
@@ -2321,6 +2321,10 @@ export class EntityAttributeComponent extends EntityComponent {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     setCurrentValue(value: number): boolean;
 }
@@ -5970,11 +5974,6 @@ export interface BlockRaycastOptions extends BlockFilter {
     maxDistance?: number;
 }
 
-export interface CameraEaseOptions {
-    easeTime?: number;
-    easeType?: EasingType;
-}
-
 export interface CameraFadeOptions {
     fadeColor?: RGB;
     fadeTime?: CameraFadeTimeOptions;
@@ -5992,24 +5991,24 @@ export interface CameraFixedBoomOptions {
 }
 
 export interface CameraSetFacingOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     facingEntity: Entity;
     location?: Vector3;
 }
 
 export interface CameraSetLocationOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     location: Vector3;
 }
 
 export interface CameraSetPosOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     facingLocation: Vector3;
     location?: Vector3;
 }
 
 export interface CameraSetRotOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     location?: Vector3;
     rotation: Vector2;
 }
@@ -6029,6 +6028,11 @@ export interface DimensionLocation {
     x: number;
     y: number;
     z: number;
+}
+
+export interface EaseOptions {
+    easeTime?: number;
+    easeType?: EasingType;
 }
 
 export interface Enchantment {

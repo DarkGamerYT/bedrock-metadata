@@ -219,12 +219,14 @@ export enum EntityComponentTypes {
     Color2 = "minecraft:color2",
     CursorInventory = "minecraft:cursor_inventory",
     Equippable = "minecraft:equippable",
+    Exhaustion = "minecraft:player.exhaustion",
     FireImmune = "minecraft:fire_immune",
     FloatsInLiquid = "minecraft:floats_in_liquid",
     FlyingSpeed = "minecraft:flying_speed",
     FrictionModifier = "minecraft:friction_modifier",
     Healable = "minecraft:healable",
     Health = "minecraft:health",
+    Hunger = "minecraft:player.hunger",
     Inventory = "minecraft:inventory",
     IsBaby = "minecraft:is_baby",
     IsCharged = "minecraft:is_charged",
@@ -265,6 +267,7 @@ export enum EntityComponentTypes {
     PushThrough = "minecraft:push_through",
     Rideable = "minecraft:rideable",
     Riding = "minecraft:riding",
+    Saturation = "minecraft:player.saturation",
     Scale = "minecraft:scale",
     SkinId = "minecraft:skin_id",
     Strength = "minecraft:strength",
@@ -520,6 +523,13 @@ export enum MoonPhase {
     WaxingGibbous = 7,
 }
 
+export enum MovementType {
+    Immovable = "Immovable",
+    Popped = "Popped",
+    Push = "Push",
+    PushPull = "PushPull",
+}
+
 export enum NamespaceNameErrorReason {
     DisallowedNamespace = "DisallowedNamespace",
     NoNamespace = "NoNamespace",
@@ -583,6 +593,11 @@ export enum ScriptEventSource {
 export enum SignSide {
     Back = "Back",
     Front = "Front",
+}
+
+export enum StickyType {
+    None = "None",
+    Same = "Same",
 }
 
 export enum StructureAnimationMode {
@@ -649,6 +664,7 @@ export type BlockComponentTypeMap = {
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
+    movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
@@ -656,6 +672,7 @@ export type BlockComponentTypeMap = {
     "minecraft:fluid_container": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
     "minecraft:map_color": BlockMapColorComponent;
+    "minecraft:movable": BlockMovableComponent;
     "minecraft:piston": BlockPistonComponent;
     "minecraft:record_player": BlockRecordPlayerComponent;
     "minecraft:sign": BlockSignComponent;
@@ -718,6 +735,9 @@ export type EntityComponentTypeMap = {
     "navigation.walk": EntityNavigationWalkComponent;
     npc: EntityNpcComponent;
     onfire: EntityOnFireComponent;
+    "player.exhaustion": EntityExhaustionComponent;
+    "player.hunger": EntityHungerComponent;
+    "player.saturation": EntitySaturationComponent;
     projectile: EntityProjectileComponent;
     push_through: EntityPushThroughComponent;
     rideable: EntityRideableComponent;
@@ -783,6 +803,9 @@ export type EntityComponentTypeMap = {
     "minecraft:navigation.walk": EntityNavigationWalkComponent;
     "minecraft:npc": EntityNpcComponent;
     "minecraft:onfire": EntityOnFireComponent;
+    "minecraft:player.exhaustion": EntityExhaustionComponent;
+    "minecraft:player.hunger": EntityHungerComponent;
+    "minecraft:player.saturation": EntitySaturationComponent;
     "minecraft:projectile": EntityProjectileComponent;
     "minecraft:push_through": EntityPushThroughComponent;
     "minecraft:rideable": EntityRideableComponent;
@@ -1523,6 +1546,27 @@ export class BlockMapColorComponent extends BlockComponent {
     readonly tintMethod: TintMethod;
 }
 
+// @ts-ignore
+export class BlockMovableComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly movementType: MovementType;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly stickyType: StickyType;
+}
+
 export class BlockPermutation {
     private constructor();
     readonly "type": BlockType;
@@ -1766,7 +1810,7 @@ export class Camera {
      *
      * @throws This function can throw errors.
      */
-    setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void;
+    setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
 }
 
 export class ChatSendAfterEvent {
@@ -2268,6 +2312,7 @@ export class Dimension {
      */
     readonly heightRange: minecraftcommon.NumberRange;
     readonly id: string;
+    readonly localizationKey: string;
     /**
      * @throws This function can throw errors.
      *
@@ -2959,6 +3004,10 @@ export class EntityAttributeComponent extends EntityComponent {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     setCurrentValue(value: number): boolean;
 }
@@ -3104,6 +3153,18 @@ export class EntityDieAfterEventSignal {
 export class EntityEquippableComponent extends EntityComponent {
     private constructor();
     /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly totalArmor: number;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly totalToughness: number;
+    /**
      * @throws This function can throw errors.
      */
     getEquipment(equipmentSlot: EquipmentSlot): ItemStack | undefined;
@@ -3117,6 +3178,11 @@ export class EntityEquippableComponent extends EntityComponent {
      * @throws This function can throw errors.
      */
     setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): boolean;
+}
+
+// @ts-ignore
+export class EntityExhaustionComponent extends EntityAttributeComponent {
+    private constructor();
 }
 
 // @ts-ignore
@@ -3241,6 +3307,11 @@ export class EntityHitEntityAfterEventSignal {
      * This function can't be called in read-only mode.
      */
     unsubscribe(callback: (arg0: EntityHitEntityAfterEvent) => void): void;
+}
+
+// @ts-ignore
+export class EntityHungerComponent extends EntityAttributeComponent {
+    private constructor();
 }
 
 export class EntityHurtAfterEvent {
@@ -3853,6 +3924,11 @@ export class EntityRidingComponent extends EntityComponent {
      * @throws This property can throw errors.
      */
     readonly entityRidingOn: Entity;
+}
+
+// @ts-ignore
+export class EntitySaturationComponent extends EntityAttributeComponent {
+    private constructor();
 }
 
 // @ts-ignore
@@ -7017,11 +7093,6 @@ export interface BlockRaycastOptions extends BlockFilter {
     maxDistance?: number;
 }
 
-export interface CameraEaseOptions {
-    easeTime?: number;
-    easeType?: EasingType;
-}
-
 export interface CameraFadeOptions {
     fadeColor?: RGB;
     fadeTime?: CameraFadeTimeOptions;
@@ -7039,24 +7110,24 @@ export interface CameraFixedBoomOptions {
 }
 
 export interface CameraSetFacingOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     facingEntity: Entity;
     location?: Vector3;
 }
 
 export interface CameraSetLocationOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     location: Vector3;
 }
 
 export interface CameraSetPosOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     facingLocation: Vector3;
     location?: Vector3;
 }
 
 export interface CameraSetRotOptions {
-    easeOptions?: CameraEaseOptions;
+    easeOptions?: EaseOptions;
     location?: Vector3;
     rotation: Vector2;
 }
@@ -7109,6 +7180,11 @@ export interface DimensionLocation {
     x: number;
     y: number;
     z: number;
+}
+
+export interface EaseOptions {
+    easeTime?: number;
+    easeType?: EasingType;
 }
 
 export interface Enchantment {

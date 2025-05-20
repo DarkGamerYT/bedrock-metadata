@@ -65,6 +65,15 @@
                                     "version": "1.0.0"
                                 }
                             ]
+                        },
+                        {
+                            "name": "@minecraft/server-admin",
+                            "uuid": "53d7f2bf-bf9c-49c4-ad1f-7c803d947920",
+                            "versions": [
+                                {
+                                    "version": "1.0.0-beta"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -887,6 +896,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.90-preview.23",
+    "minecraft_version": "1.21.90-preview.26",
     "name": "script-modules"
 }

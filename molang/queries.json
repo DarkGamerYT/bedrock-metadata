@@ -529,6 +529,9 @@
             "name": "query.is_riding"
         },
         {
+            "name": "query.is_riding_any_entity_of_type"
+        },
+        {
             "name": "query.is_rising"
         },
         {
@@ -898,6 +901,6 @@
             "name": "query.yaw_speed"
         }
     ],
-    "minecraft_version": "1.21.90-preview.23",
+    "minecraft_version": "1.21.90-preview.26",
     "name": "molang-queries"
 }
