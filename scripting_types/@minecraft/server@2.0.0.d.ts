@@ -376,6 +376,7 @@ export enum ItemComponentTypes {
     Compostable = "minecraft:compostable",
     Cooldown = "minecraft:cooldown",
     Durability = "minecraft:durability",
+    Dyeable = "minecraft:dyeable",
     Enchantable = "minecraft:enchantable",
     Food = "minecraft:food",
 }
@@ -407,6 +408,13 @@ export enum MoonPhase {
     WaxingCrescent = 5,
     LastQuarter = 6,
     WaxingGibbous = 7,
+}
+
+export enum MovementType {
+    Immovable = "Immovable",
+    Popped = "Popped",
+    Push = "Push",
+    PushPull = "PushPull",
 }
 
 export enum NamespaceNameErrorReason {
@@ -460,6 +468,11 @@ export enum ScriptEventSource {
 export enum SignSide {
     Back = "Back",
     Front = "Front",
+}
+
+export enum StickyType {
+    None = "None",
+    Same = "Same",
 }
 
 export enum StructureAnimationMode {
@@ -520,12 +533,14 @@ export type BlockComponentTypeMap = {
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
+    movable: BlockMovableComponent;
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
     "minecraft:fluid_container": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
     "minecraft:map_color": BlockMapColorComponent;
+    "minecraft:movable": BlockMovableComponent;
     "minecraft:piston": BlockPistonComponent;
     "minecraft:record_player": BlockRecordPlayerComponent;
     "minecraft:sign": BlockSignComponent;
@@ -674,11 +689,13 @@ export type ItemComponentTypeMap = {
     compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
     durability: ItemDurabilityComponent;
+    dyeable: ItemDyeableComponent;
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
     "minecraft:compostable": ItemCompostableComponent;
     "minecraft:cooldown": ItemCooldownComponent;
     "minecraft:durability": ItemDurabilityComponent;
+    "minecraft:dyeable": ItemDyeableComponent;
     "minecraft:enchantable": ItemEnchantableComponent;
     "minecraft:food": ItemFoodComponent;
 }
@@ -1124,6 +1141,27 @@ export class BlockMapColorComponent extends BlockComponent {
     readonly tintMethod: TintMethod;
 }
 
+// @ts-ignore
+export class BlockMovableComponent extends BlockComponent {
+    private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly movementType: MovementType;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly stickyType: StickyType;
+}
+
 export class BlockPermutation {
     private constructor();
     readonly "type": BlockType;
@@ -1241,7 +1279,7 @@ export class BlockSignComponent extends BlockComponent {
      *
      * @throws This function can throw errors.
      */
-    setText(message: RawMessage | RawText | string, side?: SignSide): void;
+    setText(message: RawMessage | string, side?: SignSide): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1621,7 +1659,7 @@ export class ContainerSlot {
      *
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -2042,6 +2080,10 @@ export class Entity {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -3808,6 +3850,19 @@ export class ItemDurabilityComponent extends ItemComponent {
 }
 
 // @ts-ignore
+export class ItemDyeableComponent extends ItemComponent {
+    private constructor();
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    color?: RGB;
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly defaultColor?: RGB;
+}
+
+// @ts-ignore
 export class ItemEnchantableComponent extends ItemComponent {
     private constructor();
     /**
@@ -3994,6 +4049,8 @@ export class ItemStack {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setLore(loreList?: string[]): void;
 }

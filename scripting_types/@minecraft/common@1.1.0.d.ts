@@ -22,15 +22,19 @@ export class ArgumentOutOfBoundsError extends Error {
     /**
      * @remarks This property can be read in early-execution mode.
      */
-    readonly maxValue: number;
+    readonly index: number;
     /**
      * @remarks This property can be read in early-execution mode.
      */
-    readonly minValue: number;
+    readonly maxValue?: number;
     /**
      * @remarks This property can be read in early-execution mode.
      */
-    readonly value: number;
+    readonly minValue?: number;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly value?: number;
 }
 
 // @ts-ignore

@@ -627,6 +627,10 @@ export class Entity {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -1587,6 +1591,8 @@ export class ItemStack {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setLore(loreList?: string[]): void;
 }

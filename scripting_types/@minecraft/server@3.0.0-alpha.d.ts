@@ -1651,7 +1651,7 @@ export class BlockSignComponent extends BlockComponent {
      *
      * @throws This function can throw errors.
      */
-    setText(message: RawMessage | RawText | string, side?: SignSide): void;
+    setText(message: RawMessage | string, side?: SignSide): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2191,7 +2191,7 @@ export class ContainerSlot {
      *
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -2688,6 +2688,10 @@ export class Entity {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -4752,6 +4756,8 @@ export class ItemStack {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setLore(loreList?: string[]): void;
     /**
@@ -7505,6 +7511,15 @@ export class InvalidEntityError extends Error {
      * @remarks This property can be read in early-execution mode.
      */
     readonly "type": string;
+}
+
+// @ts-ignore
+export class InvalidItemStackError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly itemType: ItemType;
 }
 
 // @ts-ignore

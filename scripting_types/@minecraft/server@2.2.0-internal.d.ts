@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @beta
+ * @internal
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "2.1.0-beta"
+ *     "version": "2.2.0-internal"
  * }
  * ```
  */
@@ -324,6 +324,39 @@ export enum EntityInitializationCause {
     Loaded = "Loaded",
     Spawned = "Spawned",
     Transformed = "Transformed",
+}
+
+export enum EntitySpawnCategory {
+    Ambient = "Ambient",
+    Axolotls = "Axolotls",
+    Creature = "Creature",
+    Misc = "Misc",
+    Monster = "Monster",
+    UndergroundWaterCreature = "UndergroundWaterCreature",
+    WaterAmbient = "WaterAmbient",
+    WaterCreature = "WaterCreature",
+}
+
+export enum EntitySpawnReason {
+    Breeding = "Breeding",
+    Bucket = "Bucket",
+    ChunkGeneration = "ChunkGeneration",
+    Command = "Command",
+    Conversion = "Conversion",
+    DimensionTravel = "DimensionTravel",
+    Dispenser = "Dispenser",
+    Event = "Event",
+    Jockey = "Jockey",
+    Load = "Load",
+    MobSummoned = "MobSummoned",
+    Natural = "Natural",
+    Patrol = "Patrol",
+    Reinforcement = "Reinforcement",
+    SpawnEgg = "SpawnEgg",
+    Spawner = "Spawner",
+    Structure = "Structure",
+    TrialSpawner = "TrialSpawner",
+    Triggered = "Triggered",
 }
 
 export enum EquipmentSlot {
@@ -1651,7 +1684,7 @@ export class BlockSignComponent extends BlockComponent {
      *
      * @throws This function can throw errors.
      */
-    setText(message: RawMessage | RawText | string, side?: SignSide): void;
+    setText(message: RawMessage | string, side?: SignSide): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2191,7 +2224,7 @@ export class ContainerSlot {
      *
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
      */
@@ -2688,6 +2721,10 @@ export class Entity {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -3941,6 +3978,25 @@ export class EntitySpawnAfterEventSignal {
     unsubscribe(callback: (arg0: EntitySpawnAfterEvent) => void): void;
 }
 
+export class EntitySpawnCallbackArgs {
+    private constructor();
+    readonly dimensionLocation: DimensionLocation;
+    readonly spawnReason: EntitySpawnReason;
+    readonly spawnType: EntitySpawnType;
+}
+
+export class EntitySpawnType {
+    private constructor();
+    readonly entityId: string;
+    readonly height: number;
+    readonly isImmuneFire: boolean;
+    readonly isSummonable: boolean;
+    readonly spawnCategory: EntitySpawnCategory;
+    readonly width: number;
+    getSpawnAABB(position: Vector3): BlockBoundingBox;
+    isBlockDangerous(block: Block): boolean;
+}
+
 // @ts-ignore
 export class EntityStrengthComponent extends EntityComponent {
     private constructor();
@@ -4752,6 +4808,8 @@ export class ItemStack {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setLore(loreList?: string[]): void;
     /**
@@ -4976,6 +5034,13 @@ export class MolangVariableMap {
      * @throws This function can throw errors.
      */
     setVector3(variableName: string, vector: Vector3): void;
+}
+
+export class ObstructionCallbackArgs {
+    private constructor();
+    readonly dimension: Dimension;
+    readonly entity: Entity;
+    readonly spawnType: EntitySpawnType;
 }
 
 // @ts-ignore
@@ -6174,6 +6239,38 @@ export class ShutdownEvent {
     private constructor();
 }
 
+export class SpawnRulesRegistry {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     *
+     * {@link SpawnRulesInvalidRegistryError}
+     */
+    registerEntitySpawnCallback(id: string, callback: (arg0: EntitySpawnCallbackArgs) => boolean): void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link NamespaceNameError}
+     *
+     * {@link SpawnRulesInvalidRegistryError}
+     */
+    registerObstructionCallback(id: string, callback: (arg0: ObstructionCallbackArgs) => boolean): void;
+}
+
 export class StartupBeforeEventSignal {
     private constructor();
     /**
@@ -6204,6 +6301,12 @@ export class StartupEvent {
      * @remarks This property can be read in early-execution mode.
      */
     readonly itemComponentRegistry: ItemComponentRegistry;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    getSpawnRulesRegistry(): SpawnRulesRegistry;
 }
 
 export class Structure {
@@ -7508,6 +7611,15 @@ export class InvalidEntityError extends Error {
 }
 
 // @ts-ignore
+export class InvalidItemStackError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly itemType: ItemType;
+}
+
+// @ts-ignore
 export class InvalidIteratorError extends Error {
     private constructor();
 }
@@ -7567,12 +7679,18 @@ export class RawMessageError extends Error {
 }
 
 // @ts-ignore
+export class SpawnRulesInvalidRegistryError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
 export class UnloadedChunksError extends Error {
     private constructor();
 }
 
 export const HudElementsCount = 13;
 export const HudVisibilityCount = 2;
+export const isInternal = true;
 export const MoonPhaseCount = 8;
 export const TicksPerDay = 24000;
 export const TicksPerSecond = 20;
