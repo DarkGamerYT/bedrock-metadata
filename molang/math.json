@@ -91,6 +91,6 @@
             "name": "math.trunc"
         }
     ],
-    "minecraft_version": "1.21.100-preview.20",
+    "minecraft_version": "1.21.100-preview.21",
     "name": "molang-math"
 }

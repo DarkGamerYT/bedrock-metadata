@@ -660,7 +660,6 @@ export type BlockComponentReturnType<T extends string> = T extends keyof BlockCo
     : BlockComponent;
 
 export type BlockComponentTypeMap = {
-    destruction_particles: BlockDestructionParticlesComponent;
     fluid_container: BlockFluidContainerComponent;
     inventory: BlockInventoryComponent;
     map_color: BlockMapColorComponent;
@@ -668,7 +667,6 @@ export type BlockComponentTypeMap = {
     piston: BlockPistonComponent;
     record_player: BlockRecordPlayerComponent;
     sign: BlockSignComponent;
-    "minecraft:destruction_particles": BlockDestructionParticlesComponent;
     "minecraft:fluid_container": BlockFluidContainerComponent;
     "minecraft:inventory": BlockInventoryComponent;
     "minecraft:map_color": BlockMapColorComponent;
@@ -1430,19 +1428,6 @@ export class BlockComponentTickEvent extends BlockEvent {
 export class BlockCustomComponentInstance extends BlockComponent {
     private constructor();
     readonly customComponentParameters: CustomComponentParameters;
-}
-
-// @ts-ignore
-export class BlockDestructionParticlesComponent extends BlockComponent {
-    private constructor();
-    /**
-     * @throws This property can throw errors.
-     */
-    readonly texture: string;
-    /**
-     * @throws This property can throw errors.
-     */
-    readonly tintMethod: TintMethod;
 }
 
 export class BlockEvent {

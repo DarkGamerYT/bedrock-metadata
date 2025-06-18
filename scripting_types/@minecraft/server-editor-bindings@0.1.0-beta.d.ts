@@ -183,6 +183,13 @@ export enum SplineType {
     Hermite = 1,
 }
 
+export enum StructureSource {
+    BehaviorPack = 0,
+    EditorProject = 1,
+    File = 2,
+    Level = 3,
+}
+
 export enum ThemeSettingsColorKey {
     Caret = "Caret",
     Confirm1 = "Confirm1",
@@ -738,8 +745,70 @@ export class EditorConstants {
     readonly minStructureOffset: minecraftserver.Vector3;
 }
 
+export class EditorStructure {
+    private constructor();
+    readonly id: string;
+    readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly size: minecraftserver.Vector3;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    getBlockPermutation(location: minecraftserver.Vector3): minecraftserver.BlockPermutation | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    getIsWaterlogged(location: minecraftserver.Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    getTags(): string[];
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    setBlockPermutation(
+        location: minecraftserver.Vector3,
+        blockPermutation: minecraftserver.BlockPermutation,
+        waterlogged?: boolean,
+    ): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    setTags(tags: string[]): void;
+}
+
 export class EditorStructureManager {
     private constructor();
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    createEmpty(id: string, size: minecraftserver.Vector3): EditorStructure;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -751,19 +820,19 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
+    deleteStructure(id: string): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
     getExistingTags(): string[];
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    loadStructure(location: string, id: string): EditorStructure;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    saveStructure(structure: EditorStructure): void;
+    getOrCreateStructure(id: string): EditorStructure;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2017,16 +2086,10 @@ export interface CursorRay {
     start: minecraftserver.Vector3;
 }
 
-export interface EditorStructure {
-    storageLocation: string;
-    structure: minecraftserver.Structure;
-    tags: string[];
-}
-
 export interface EditorStructureSearchOptions {
-    excludeTags?: string[];
+    displayName?: string;
     idPattern?: string;
-    includeLocation?: string[];
+    includeSources?: StructureSource[];
     includeTags?: string[];
 }
 

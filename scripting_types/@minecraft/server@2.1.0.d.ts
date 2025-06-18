@@ -38,6 +38,49 @@ export enum ButtonState {
     Released = "Released",
 }
 
+export enum CommandPermissionLevel {
+    Any = 0,
+    GameDirectors = 1,
+    Admin = 2,
+    Host = 3,
+    Owner = 4,
+}
+
+export enum CustomCommandErrorReason {
+    AlreadyRegistered = "AlreadyRegistered",
+    EnumDependencyMissing = "EnumDependencyMissing",
+    NamespaceMismatch = "NamespaceMismatch",
+    ParameterLimit = "ParameterLimit",
+    RegistryInvalid = "RegistryInvalid",
+    RegistryReadOnly = "RegistryReadOnly",
+}
+
+export enum CustomCommandParamType {
+    BlockType = "BlockType",
+    Boolean = "Boolean",
+    EntitySelector = "EntitySelector",
+    EntityType = "EntityType",
+    Enum = "Enum",
+    Float = "Float",
+    Integer = "Integer",
+    ItemType = "ItemType",
+    Location = "Location",
+    PlayerSelector = "PlayerSelector",
+    String = "String",
+}
+
+export enum CustomCommandSource {
+    Block = "Block",
+    Entity = "Entity",
+    NPCDialogue = "NPCDialogue",
+    Server = "Server",
+}
+
+export enum CustomCommandStatus {
+    Success = 0,
+    Failure = 1,
+}
+
 export enum CustomComponentNameErrorReason {
     NoNamespace = 1,
     DisallowedNamespace = 2,
@@ -457,6 +500,13 @@ export enum PlayerInventoryType {
     Inventory = "Inventory",
 }
 
+export enum PlayerPermissionLevel {
+    Visitor = 0,
+    Member = 1,
+    Operator = 2,
+    Custom = 3,
+}
+
 export enum ScoreboardIdentityType {
     Entity = "Entity",
     FakePlayer = "FakePlayer",
@@ -733,6 +783,14 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     readonly isWaterlogged: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
+    readonly localizationKey: string;
     /**
      * @throws This property can throw errors.
      */
@@ -1456,6 +1514,36 @@ export class Container {
     clearAll(): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    contains(itemStack: ItemStack): boolean;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    find(itemStack: ItemStack): number | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    findLast(itemStack: ItemStack): number | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstEmptySlot(): number | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerError}
+     */
+    firstItem(): number | undefined;
+    /**
+     * @throws This function can throw errors.
      */
     getItem(slot: number): ItemStack | undefined;
     /**
@@ -1671,6 +1759,49 @@ export class ContainerSlot {
     setLore(loreList?: string[]): void;
 }
 
+export class CustomCommandOrigin {
+    private constructor();
+    readonly initiator?: Entity;
+    readonly sourceBlock?: Block;
+    readonly sourceEntity?: Entity;
+    readonly sourceType: CustomCommandSource;
+}
+
+export class CustomCommandRegistry {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link CustomCommandError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerCommand(
+        customCommand: CustomCommand,
+        callback: (origin: CustomCommandOrigin, ...args: any[]) => CustomCommandResult | undefined,
+    ): void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link CustomCommandError}
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link NamespaceNameError}
+     */
+    registerEnum(name: string, values: string[]): void;
+}
+
 export class CustomComponentParameters {
     private constructor();
     readonly params: unknown;
@@ -1709,6 +1840,7 @@ export class Dimension {
      */
     readonly heightRange: minecraftcommon.NumberRange;
     readonly id: string;
+    readonly localizationKey: string;
     /**
      * @throws This function can throw errors.
      *
@@ -2053,6 +2185,12 @@ export class Entity {
      */
     readonly isSwimming: boolean;
     readonly isValid: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly localizationKey: string;
     /**
      * @throws This property can throw errors.
      */
@@ -3999,6 +4137,12 @@ export class ItemStack {
      */
     keepOnDeath: boolean;
     /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    readonly localizationKey: string;
+    /**
      * @remarks This property can't be edited in read-only mode.
      */
     lockMode: ItemLockMode;
@@ -4304,6 +4448,10 @@ export class Player extends Entity {
      */
     readonly clientSystemInfo: ClientSystemInfo;
     /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    commandPermissionLevel: CommandPermissionLevel;
+    /**
      * @throws This property can throw errors.
      *
      * {@link InvalidEntityError}
@@ -4339,6 +4487,12 @@ export class Player extends Entity {
      * @throws This property can throw errors.
      */
     readonly onScreenDisplay: ScreenDisplay;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    readonly playerPermissionLevel: PlayerPermissionLevel;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -5361,6 +5515,10 @@ export class StartupEvent {
     /**
      * @remarks This property can be read in early-execution mode.
      */
+    readonly customCommandRegistry: CustomCommandRegistry;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly itemComponentRegistry: ItemComponentRegistry;
 }
 
@@ -6143,6 +6301,25 @@ export interface CameraTargetOptions {
     targetEntity: Entity;
 }
 
+export interface CustomCommand {
+    cheatsRequired?: boolean;
+    description: string;
+    mandatoryParameters?: CustomCommandParameter[];
+    name: string;
+    optionalParameters?: CustomCommandParameter[];
+    permissionLevel: CommandPermissionLevel;
+}
+
+export interface CustomCommandParameter {
+    name: string;
+    type: CustomCommandParamType;
+}
+
+export interface CustomCommandResult {
+    message?: string;
+    status: CustomCommandStatus;
+}
+
 export interface DefinitionModifier {
     addedComponentGroups: string[];
     removedComponentGroups: string[];
@@ -6496,6 +6673,15 @@ export class ContainerRulesError extends Error {
 }
 
 // @ts-ignore
+export class CustomCommandError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly reason: CustomCommandErrorReason;
+}
+
+// @ts-ignore
 export class CustomComponentInvalidRegistryError extends Error {
     private constructor();
 }
@@ -6521,6 +6707,11 @@ export class EnchantmentTypeNotCompatibleError extends Error {
 
 // @ts-ignore
 export class EnchantmentTypeUnknownIdError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
+export class InvalidContainerError extends Error {
     private constructor();
 }
 

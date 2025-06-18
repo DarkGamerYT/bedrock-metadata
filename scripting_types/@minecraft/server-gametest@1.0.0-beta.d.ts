@@ -772,6 +772,14 @@ export class Test {
      *
      * {@link GameTestError}
      */
+    runOnFinish(callback: () => void): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     */
     setBlockPermutation(blockData: minecraftserver.BlockPermutation, blockLocation: minecraftserver.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
