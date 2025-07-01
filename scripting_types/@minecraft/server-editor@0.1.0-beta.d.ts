@@ -14,4 +14,4 @@
  */
 import * as minecraftcommon from "@minecraft/common";
 import * as minecraftservereditorbindings from "@minecraft/server-editor-bindings";
-import * as minecraftservereditorinternalbindings from "@minecraft/server-editor-internal-bindings";
+import * as minecraftservereditorprivatebindings from "@minecraft/server-editor-private-bindings";

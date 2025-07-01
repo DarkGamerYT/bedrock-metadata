@@ -33,11 +33,6 @@ export class ArgumentOutOfBoundsError extends Error {
 }
 
 // @ts-ignore
-export class EngineError extends Error {
-    private constructor();
-}
-
-// @ts-ignore
 export class InvalidArgumentError extends Error {
     private constructor();
     /**

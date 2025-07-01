@@ -148,7 +148,7 @@ export interface ModalFormDataSliderOptions {
 }
 
 export interface ModalFormDataTextFieldOptions {
-    defaultValue?: string;
+    defaultValue?: minecraftserver.RawMessage | string;
     tooltip?: minecraftserver.RawMessage | string;
 }
 

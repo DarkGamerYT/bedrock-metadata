@@ -189,6 +189,38 @@
             ]
         },
         {
+            "name": "minecraft:copper_tier",
+            "items": [
+                {
+                    "name": "minecraft:copper_axe"
+                },
+                {
+                    "name": "minecraft:copper_boots"
+                },
+                {
+                    "name": "minecraft:copper_chestplate"
+                },
+                {
+                    "name": "minecraft:copper_helmet"
+                },
+                {
+                    "name": "minecraft:copper_hoe"
+                },
+                {
+                    "name": "minecraft:copper_leggings"
+                },
+                {
+                    "name": "minecraft:copper_pickaxe"
+                },
+                {
+                    "name": "minecraft:copper_shovel"
+                },
+                {
+                    "name": "minecraft:copper_sword"
+                }
+            ]
+        },
+        {
             "name": "minecraft:crimson_stems",
             "items": [
                 {
@@ -320,6 +352,18 @@
         {
             "name": "minecraft:digger",
             "items": [
+                {
+                    "name": "minecraft:copper_axe"
+                },
+                {
+                    "name": "minecraft:copper_hoe"
+                },
+                {
+                    "name": "minecraft:copper_pickaxe"
+                },
+                {
+                    "name": "minecraft:copper_shovel"
+                },
                 {
                     "name": "minecraft:diamond_axe"
                 },
@@ -675,6 +719,18 @@
                     "name": "minecraft:chainmail_leggings"
                 },
                 {
+                    "name": "minecraft:copper_boots"
+                },
+                {
+                    "name": "minecraft:copper_chestplate"
+                },
+                {
+                    "name": "minecraft:copper_helmet"
+                },
+                {
+                    "name": "minecraft:copper_leggings"
+                },
+                {
                     "name": "minecraft:diamond_boots"
                 },
                 {
@@ -745,6 +801,9 @@
         {
             "name": "minecraft:is_axe",
             "items": [
+                {
+                    "name": "minecraft:copper_axe"
+                },
                 {
                     "name": "minecraft:diamond_axe"
                 },
@@ -910,6 +969,9 @@
             "name": "minecraft:is_hoe",
             "items": [
                 {
+                    "name": "minecraft:copper_hoe"
+                },
+                {
                     "name": "minecraft:diamond_hoe"
                 },
                 {
@@ -994,6 +1056,9 @@
             "name": "minecraft:is_pickaxe",
             "items": [
                 {
+                    "name": "minecraft:copper_pickaxe"
+                },
+                {
                     "name": "minecraft:diamond_pickaxe"
                 },
                 {
@@ -1025,6 +1090,9 @@
             "name": "minecraft:is_shovel",
             "items": [
                 {
+                    "name": "minecraft:copper_shovel"
+                },
+                {
                     "name": "minecraft:diamond_shovel"
                 },
                 {
@@ -1047,6 +1115,9 @@
         {
             "name": "minecraft:is_sword",
             "items": [
+                {
+                    "name": "minecraft:copper_sword"
+                },
                 {
                     "name": "minecraft:diamond_sword"
                 },
@@ -1073,6 +1144,21 @@
         {
             "name": "minecraft:is_tool",
             "items": [
+                {
+                    "name": "minecraft:copper_axe"
+                },
+                {
+                    "name": "minecraft:copper_hoe"
+                },
+                {
+                    "name": "minecraft:copper_pickaxe"
+                },
+                {
+                    "name": "minecraft:copper_shovel"
+                },
+                {
+                    "name": "minecraft:copper_sword"
+                },
                 {
                     "name": "minecraft:diamond_axe"
                 },
@@ -1499,6 +1585,9 @@
                     "name": "minecraft:music_disc_far"
                 },
                 {
+                    "name": "minecraft:music_disc_lava_chicken"
+                },
+                {
                     "name": "minecraft:music_disc_mall"
                 },
                 {
@@ -1749,6 +1838,9 @@
                 },
                 {
                     "name": "minecraft:cod_spawn_egg"
+                },
+                {
+                    "name": "minecraft:copper_golem_spawn_egg"
                 },
                 {
                     "name": "minecraft:cow_spawn_egg"
@@ -2188,6 +2280,18 @@
                     "name": "minecraft:chainmail_leggings"
                 },
                 {
+                    "name": "minecraft:copper_boots"
+                },
+                {
+                    "name": "minecraft:copper_chestplate"
+                },
+                {
+                    "name": "minecraft:copper_helmet"
+                },
+                {
+                    "name": "minecraft:copper_leggings"
+                },
+                {
                     "name": "minecraft:diamond_boots"
                 },
                 {
@@ -2485,6 +2589,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.100-preview.21",
+    "minecraft_version": "1.21.100-preview.23",
     "name": "item-tags"
 }

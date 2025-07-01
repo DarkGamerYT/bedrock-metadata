@@ -7,7 +7,7 @@
  * Manifest Details
  * ```json
  * {
- *     "module_name": "@minecraft/server-editor-internal-bindings",
+ *     "module_name": "@minecraft/server-editor-private-bindings",
  *     "version": "0.1.0-internal"
  * }
  * ```

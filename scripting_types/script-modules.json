@@ -141,7 +141,7 @@
             ]
         },
         {
-            "name": "@minecraft/server-editor-internal-bindings",
+            "name": "@minecraft/server-editor-private-bindings",
             "uuid": "01966f08-5f48-7146-a3e3-d820a53d30e9",
             "versions": [
                 {
@@ -204,7 +204,7 @@
                             ]
                         },
                         {
-                            "name": "@minecraft/server-editor-internal-bindings",
+                            "name": "@minecraft/server-editor-private-bindings",
                             "uuid": "01966f08-5f48-7146-a3e3-d820a53d30e9",
                             "versions": [
                                 {
@@ -563,7 +563,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -577,7 +577,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -591,7 +591,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -605,7 +605,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -619,7 +619,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -633,7 +633,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -647,7 +647,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -661,7 +661,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -675,7 +675,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -689,7 +689,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -703,7 +703,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -717,7 +717,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -731,7 +731,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -745,7 +745,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -759,7 +759,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -773,7 +773,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -787,7 +787,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -801,7 +801,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.1.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -815,7 +815,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.0.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -829,7 +829,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.0.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -843,7 +843,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.0.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -857,7 +857,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.0.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -871,7 +871,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.0.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -885,7 +885,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.0.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -899,7 +899,7 @@
                             "uuid": "77ec12b4-1b2b-4c98-8d34-d1cd63f849d5",
                             "versions": [
                                 {
-                                    "version": "1.0.0"
+                                    "version": "1.2.0"
                                 }
                             ]
                         }
@@ -957,6 +957,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.100-preview.21",
+    "minecraft_version": "1.21.100-preview.23",
     "name": "script-modules"
 }

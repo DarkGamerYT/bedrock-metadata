@@ -76,11 +76,19 @@ export class Dimension {
     getBlock(location: Vector3): Block | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -93,11 +101,17 @@ export class Entity {
     private constructor();
     /**
      * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
      */
     readonly dimension: Dimension;
     readonly id: string;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly location: Vector3;
     /**
@@ -107,18 +121,28 @@ export class Entity {
     readonly typeId: string;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getHeadLocation(): Vector3;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getVelocity(): Vector3;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getViewDirection(): Vector3;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link InvalidEntityError}
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
@@ -172,6 +196,10 @@ export class World {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
@@ -180,6 +208,10 @@ export class World {
     getDimension(dimensionId: string): Dimension;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
@@ -241,6 +273,11 @@ export interface Vector3 {
     x: number;
     y: number;
     z: number;
+}
+
+// @ts-ignore
+export class CommandError extends Error {
+    private constructor();
 }
 
 // @ts-ignore

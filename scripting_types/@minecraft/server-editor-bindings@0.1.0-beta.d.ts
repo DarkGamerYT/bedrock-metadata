@@ -14,6 +14,11 @@
  */
 import * as minecraftcommon from "@minecraft/common";
 import * as minecraftserver from "@minecraft/server";
+export enum AudioSettingsProperty {
+    AreSoundsMuted = "AreSoundsMuted",
+    IsMusicMuted = "IsMusicMuted",
+}
+
 export enum Axis {
     None = 0,
     X = 1,
@@ -107,6 +112,12 @@ export enum InputModifier {
     Control = 4,
     Shift = 8,
     Any = 15,
+}
+
+export enum LogChannel {
+    Message = 1,
+    Toast = 2,
+    All = 3,
 }
 
 export enum MouseActionCategory {
@@ -299,6 +310,24 @@ export enum WorldGeneratorType {
     Overworld = "Overworld",
     TheEnd = "TheEnd",
     Void = "Void",
+}
+
+export class AudioSettings {
+    private constructor();
+    get(property: AudioSettingsProperty): boolean | number | undefined;
+    getAll(): Record<string, boolean | number>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    set(property: AudioSettingsProperty, value: boolean | number): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setAll(properties: Record<string, boolean | number>): void;
 }
 
 export class BlockPalette {
@@ -1196,6 +1225,7 @@ export class SelectionManager {
 
 export class SettingsManager {
     private constructor();
+    readonly audio: AudioSettings;
     readonly graphics: GraphicsSettings;
     readonly speed: SpeedSettings;
     readonly theme: ThemeSettings;
@@ -2157,7 +2187,9 @@ export interface GameOptions {
 }
 
 export interface LogProperties {
+    channelMask?: LogChannel;
     player?: minecraftserver.Player;
+    subMessage?: string;
     tags?: string[];
 }
 

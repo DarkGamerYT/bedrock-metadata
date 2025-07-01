@@ -991,9 +991,11 @@ export class ContainerSlot {
     /**
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidContainerSlotError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -1075,21 +1077,39 @@ export class Dimension {
     getBlockFromRay(location: Vector3, direction: Vector3, options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getEntities(options?: EntityQueryOptions): Entity[];
     getEntitiesAtBlockLocation(location: Vector3): Entity[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
@@ -1115,7 +1135,11 @@ export class Dimension {
      *
      * @throws This function can throw errors.
      *
-     * {@link Error}
+     * {@link EntitySpawnError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      *
      * {@link LocationInUnloadedChunkError}
      *
@@ -1266,27 +1290,41 @@ export class Entity {
     private constructor();
     /**
      * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
      */
     readonly dimension: Dimension;
     readonly id: string;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isClimbing: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isFalling: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isInWater: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isOnGround: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isSleeping: boolean;
     /**
@@ -1295,14 +1333,20 @@ export class Entity {
     isSneaking: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isSprinting: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly isSwimming: boolean;
     /**
      * @throws This property can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     readonly location: Vector3;
     /**
@@ -1315,18 +1359,34 @@ export class Entity {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): Effect | undefined;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     addTag(tag: string): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions | EntityApplyDamageOptions): boolean;
     /**
@@ -1336,88 +1396,138 @@ export class Entity {
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
-     * {@link Error}
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     applyImpulse(vector: Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     clearDynamicProperties(): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     clearVelocity(): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     extinguishFire(useEffects?: boolean): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
     getComponent(componentId: string): EntityComponent | undefined;
     getComponents(): EntityComponent[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getDynamicProperty(identifier: string): boolean | number | string | Vector3 | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getDynamicPropertyIds(): string[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getDynamicPropertyTotalByteCount(): number;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     getEffect(effectType: EffectType | string): Effect | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getEffects(): Effect[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     getEntitiesFromViewDirection(options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getHeadLocation(): Vector3;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getProperty(identifier: string): boolean | number | string | undefined;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getRotation(): Vector2;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getTags(): string[];
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getVelocity(): Vector3;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     getViewDirection(): Vector3;
     hasComponent(componentId: string): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     hasTag(tag: string): boolean;
     isValid(): boolean;
@@ -1425,34 +1535,54 @@ export class Entity {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     kill(): boolean;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     matches(options: EntityQueryOptions): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     playAnimation(animationName: string, options?: PlayAnimationOptions): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     remove(): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     removeEffect(effectType: EffectType | string): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     removeTag(tag: string): boolean;
     /**
@@ -1463,6 +1593,8 @@ export class Entity {
      * {@link minecraftcommon.EngineError}
      *
      * {@link Error}
+     *
+     * {@link InvalidEntityError}
      */
     resetProperty(identifier: string): boolean | number | string;
     /**
@@ -1477,46 +1609,76 @@ export class Entity {
     runCommand(commandString: string): CommandResult;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link InvalidEntityError}
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link InvalidEntityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     setOnFire(seconds: number, useEffects?: boolean): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     setProperty(identifier: string, value: boolean | number | string): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
      */
     setRotation(rotation: Vector2): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     teleport(location: Vector3, teleportOptions?: TeleportOptions): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link InvalidEntityError}
      */
     triggerEvent(eventName: string): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     tryTeleport(location: Vector3, teleportOptions?: TeleportOptions): boolean;
 }
@@ -2960,6 +3122,10 @@ export class ItemStack {
     setCanPlaceOn(blockIdentifiers?: string[]): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -4257,6 +4423,10 @@ export class World {
     getAbsoluteTime(): number;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     getDay(): number;
@@ -4275,6 +4445,10 @@ export class World {
     getMoonPhase(): MoonPhase;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     getTimeOfDay(): number;
@@ -4282,18 +4456,24 @@ export class World {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     playMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     playSound(soundId: string, location: Vector3, soundOptions?: WorldSoundOptions): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.PropertyOutOfBoundsError}
      */
     queueMusic(trackId: string, musicOptions?: MusicOptions): void;
     /**
@@ -4316,6 +4496,8 @@ export class World {
     setDefaultSpawnLocation(spawnLocation: Vector3): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.ArgumentOutOfBoundsError}
      */
     setDynamicProperty(identifier: string, value?: boolean | number | string | Vector3): void;
     /**
@@ -4856,6 +5038,11 @@ export class EnchantmentTypeNotCompatibleError extends Error {
 
 // @ts-ignore
 export class EnchantmentTypeUnknownIdError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
+export class EntitySpawnError extends Error {
     private constructor();
 }
 

@@ -68,11 +68,11 @@ export class PropertyOutOfBoundsError extends Error {
     /**
      * @remarks This property can be read in early-execution mode.
      */
-    readonly maxValue: number;
+    readonly maxValue?: number;
     /**
      * @remarks This property can be read in early-execution mode.
      */
-    readonly minValue: number;
+    readonly minValue?: number;
     /**
      * @remarks This property can be read in early-execution mode.
      */
@@ -81,5 +81,10 @@ export class PropertyOutOfBoundsError extends Error {
 
 // @ts-ignore
 export class RuntimeConditionError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
+export class UnsupportedFunctionalityError extends Error {
     private constructor();
 }

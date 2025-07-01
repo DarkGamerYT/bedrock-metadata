@@ -32,6 +32,10 @@ export class Entity {
     readonly typeId: string;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link InvalidEntityError}
      */
     runCommandAsync(commandString: string): Promise<CommandResult>;
 }
@@ -61,12 +65,21 @@ export class World {
     private constructor();
     /**
      * @throws This function can throw errors.
+     *
+     * {@link CommandError}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
      */
     getAllPlayers(): Player[];
     /**
      * @throws This function can throw errors.
      */
     getDimension(dimensionId: string): Dimension;
+}
+
+// @ts-ignore
+export class CommandError extends Error {
+    private constructor();
 }
 
 // @ts-ignore
