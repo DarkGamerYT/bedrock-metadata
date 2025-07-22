@@ -14,6 +14,11 @@
  */
 import * as minecraftcommon from "@minecraft/common";
 import * as minecraftserver from "@minecraft/server";
+export enum GameTestCompletedErrorReason {
+    Cleanup = "Cleanup",
+    Done = "Done",
+}
+
 export enum GameTestErrorType {
     Assert = "Assert",
     AssertAtPosition = "AssertAtPosition",
@@ -31,6 +36,39 @@ export enum LookDuration {
     Continuous = "Continuous",
     Instant = "Instant",
     UntilMove = "UntilMove",
+}
+
+export enum PersonaArmSize {
+    Slim = "Slim",
+    Wide = "Wide",
+}
+
+export enum PersonaPieceType {
+    Arms = "Arms",
+    Back = "Back",
+    Body = "Body",
+    Bottom = "Bottom",
+    Capes = "Capes",
+    Dress = "Dress",
+    Eyes = "Eyes",
+    FaceAccessory = "FaceAccessory",
+    FacialHair = "FacialHair",
+    Feet = "Feet",
+    Hair = "Hair",
+    Hands = "Hands",
+    Head = "Head",
+    HighPants = "HighPants",
+    Hood = "Hood",
+    LeftArm = "LeftArm",
+    LeftLeg = "LeftLeg",
+    Legs = "Legs",
+    Mouth = "Mouth",
+    Outerwear = "Outerwear",
+    RightArm = "RightArm",
+    RightLeg = "RightLeg",
+    Skeleton = "Skeleton",
+    Skin = "Skin",
+    Top = "Top",
 }
 
 export class FenceConnectivity {
@@ -235,6 +273,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     breakBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
@@ -283,12 +325,20 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     interactWithBlock(blockLocation: minecraftserver.Vector3, direction?: minecraftserver.Direction): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     interactWithEntity(entity: minecraftserver.Entity): boolean;
     /**
@@ -301,6 +351,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     lookAtBlock(blockLocation: minecraftserver.Vector3, duration?: LookDuration): void;
     /**
@@ -337,30 +391,52 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link Error}
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     moveToLocation(location: minecraftserver.Vector3, options?: MoveToOptions): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToBlock(blockLocation: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToEntity(entity: minecraftserver.Entity, speed?: number): NavigationResult;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToLocation(location: minecraftserver.Vector3, speed?: number): NavigationResult;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     navigateToLocations(locations: minecraftserver.Vector3[], speed?: number): void;
     /**
@@ -387,6 +463,14 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @throws This function can throw errors.
      */
     setItem(itemStack: minecraftserver.ItemStack, slot: number, selectSlot?: boolean): boolean;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     */
+    setSkin(options: PlayerSkinData): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -463,6 +547,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     useItemInSlotOnBlock(
         slot: number,
@@ -474,6 +562,10 @@ export class SimulatedPlayer extends minecraftserver.Player {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
      */
     useItemOnBlock(
         itemStack: minecraftserver.ItemStack,
@@ -492,11 +584,15 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assert(condition: boolean, message: string): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -508,11 +604,15 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertBlockState(blockLocation: minecraftserver.Vector3, callback: (arg0: minecraftserver.Block) => boolean): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -520,17 +620,23 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertContainerContains(itemStack: minecraftserver.ItemStack, blockLocation: minecraftserver.Vector3): void;
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertContainerEmpty(blockLocation: minecraftserver.Vector3): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -545,6 +651,8 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertEntityHasComponent(
@@ -556,6 +664,8 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertEntityInstancePresent(
@@ -566,11 +676,15 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertEntityInstancePresentInArea(entity: minecraftserver.Entity, isPresent?: boolean): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -583,11 +697,15 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -599,17 +717,23 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertEntityTouching(entityTypeIdentifier: string, location: minecraftserver.Vector3, isTouching?: boolean): void;
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertIsWaterlogged(blockLocation: minecraftserver.Vector3, isWaterlogged?: boolean): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -622,6 +746,8 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertItemEntityPresent(
@@ -633,6 +759,8 @@ export class Test {
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     assertRedstonePower(blockLocation: minecraftserver.Vector3, power: number): void;
@@ -640,6 +768,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -657,11 +787,15 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     getBlock(blockLocation: minecraftserver.Vector3): minecraftserver.Block;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -671,6 +805,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     getFenceConnectivity(blockLocation: minecraftserver.Vector3): FenceConnectivity;
@@ -679,18 +815,39 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     getSculkSpreader(blockLocation: minecraftserver.Vector3): SculkSpreader | undefined;
-    getTestDirection(): minecraftserver.Direction;
     /**
-     * @remarks This function can't be called in read-only mode.
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      */
-    idle(tickDelay: number): Promise<void>;
+    getTestDirection(): minecraftserver.Direction;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
+     */
+    idle(tickDelay: number): Promise<void>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
+    isCleaningUp(): boolean;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
+    isCompleted(): boolean;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -700,6 +857,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     onPlayerJump(mob: minecraftserver.Entity, jumpAmount: number): void;
@@ -707,6 +866,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -716,6 +877,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     print(text: string): void;
@@ -723,6 +886,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -732,11 +897,15 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     pulseRedstone(blockLocation: minecraftserver.Vector3, duration: number): void;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -746,17 +915,25 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     relativeLocation(worldLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      */
     removeSimulatedPlayer(simulatedPlayer: SimulatedPlayer): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -765,6 +942,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -786,6 +965,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     runOnFinish(callback: () => void): void;
@@ -793,6 +974,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -802,6 +985,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     setBlockType(blockType: minecraftserver.BlockType | string, blockLocation: minecraftserver.Vector3): void;
@@ -809,6 +994,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -818,6 +1005,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     setTntFuse(entity: minecraftserver.Entity, fuseLength: number): void;
@@ -825,6 +1014,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -834,6 +1025,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     spawnAtLocation(entityTypeIdentifier: string, location: minecraftserver.Vector3): minecraftserver.Entity;
@@ -842,6 +1035,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     spawnItem(itemStack: minecraftserver.ItemStack, location: minecraftserver.Vector3): minecraftserver.Entity;
@@ -849,6 +1044,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -862,6 +1059,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     spawnWithoutBehaviors(entityTypeIdentifier: string, blockLocation: minecraftserver.Vector3): minecraftserver.Entity;
@@ -869,6 +1068,8 @@ export class Test {
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -881,6 +1082,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     spreadFromFaceTowardDirection(
@@ -890,6 +1093,10 @@ export class Test {
     ): void;
     /**
      * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      */
     startSequence(): GameTestSequence;
     /**
@@ -927,6 +1134,8 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     succeedWhenBlockPresent(
@@ -960,17 +1169,25 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     triggerInternalBlockEvent(blockLocation: minecraftserver.Vector3, event: string, eventParameters?: number[]): void;
     /**
      * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      */
     until(callback: () => void): Promise<void>;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -980,17 +1197,23 @@ export class Test {
      *
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     walkToLocation(mob: minecraftserver.Entity, location: minecraftserver.Vector3, speedModifier?: number): void;
     /**
      * @throws This function can throw errors.
      *
+     * {@link GameTestCompletedError}
+     *
      * {@link GameTestError}
      */
     worldBlockLocation(relativeBlockLocation: minecraftserver.Vector3): minecraftserver.Vector3;
     /**
      * @throws This function can throw errors.
+     *
+     * {@link GameTestCompletedError}
      *
      * {@link GameTestError}
      */
@@ -1006,6 +1229,29 @@ export interface GameTestErrorContext {
 export interface MoveToOptions {
     faceTarget?: boolean;
     speed?: number;
+}
+
+export interface PlayerPersonaPiece {
+    id: string;
+    isDefaultPiece?: boolean;
+    packId: string;
+    productId: string;
+    type: PersonaPieceType;
+}
+
+export interface PlayerSkinData {
+    armSize?: PersonaArmSize;
+    personaPieces?: PlayerPersonaPiece[];
+    skinColor?: minecraftserver.RGB;
+}
+
+// @ts-ignore
+export class GameTestCompletedError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly reason: GameTestCompletedErrorReason;
 }
 
 // @ts-ignore
@@ -1026,6 +1272,16 @@ export class GameTestError extends Error {
 }
 
 /**
+ * @remarks This function can't be called in read-only mode.
+ *
+ * @throws This function can throw errors.
+ *
+ * {@link minecraftcommon.InvalidArgumentError}
+ *
+ * {@link minecraftserver.InvalidEntityError}
+ */
+export function getPlayerSkin(player: minecraftserver.Player): PlayerSkinData;
+/**
  * @remarks This function can be called in early-execution mode.
  *
  * This function can't be called in read-only mode.
@@ -1045,3 +1301,15 @@ export function registerAsync(
     testName: string,
     testFunction: (arg0: Test) => Promise<void>,
 ): RegistrationBuilder;
+/**
+ * @remarks This function can't be called in read-only mode.
+ *
+ * @throws This function can throw errors.
+ *
+ * {@link minecraftcommon.EngineError}
+ */
+export function spawnSimulatedPlayer(
+    location: minecraftserver.DimensionLocation,
+    name: string,
+    gameMode?: minecraftserver.GameMode,
+): SimulatedPlayer;

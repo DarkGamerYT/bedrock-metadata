@@ -625,8 +625,6 @@ export class Entity {
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -645,8 +643,6 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     clearVelocity(): void;
     /**

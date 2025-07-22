@@ -8,7 +8,7 @@
  * ```json
  * {
  *     "module_name": "@minecraft/server",
- *     "version": "2.2.0-beta"
+ *     "version": "2.3.0-beta"
  * }
  * ```
  */
@@ -2390,6 +2390,16 @@ export class Dimension {
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getLightLevel(location: Vector3): number;
+    /**
      * @throws This function can throw errors.
      *
      * {@link CommandError}
@@ -2397,6 +2407,16 @@ export class Dimension {
      * {@link minecraftcommon.InvalidArgumentError}
      */
     getPlayers(options?: EntityQueryOptions): Player[];
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getSkyLightLevel(location: Vector3): number;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -5299,6 +5319,28 @@ export class MolangVariableMap {
     setVector3(variableName: string, vector: Vector3): void;
 }
 
+export class PackSettingChangeAfterEvent {
+    private constructor();
+    readonly settingName: string;
+    readonly settingValue: boolean | number;
+}
+
+export class PackSettingChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    subscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): (arg0: PackSettingChangeAfterEvent) => void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    unsubscribe(callback: (arg0: PackSettingChangeAfterEvent) => void): void;
+}
+
 // @ts-ignore
 export class PistonActivateAfterEvent extends BlockEvent {
     private constructor();
@@ -6716,8 +6758,6 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -6934,6 +6974,10 @@ export class World {
     getLootTableManager(): LootTableManager;
     getMoonPhase(): MoonPhase;
     /**
+     * @remarks This function can be called in early-execution mode.
+     */
+    getPackSettings(): Record<string, boolean | number>;
+    /**
      * @throws This function can throw errors.
      *
      * {@link CommandError}
@@ -7102,6 +7146,10 @@ export class WorldAfterEvents {
      * @remarks This property can be read in early-execution mode.
      */
     readonly messageReceive: ServerMessageAfterEventSignal;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly packSettingChange: PackSettingChangeAfterEventSignal;
     /**
      * @remarks This property can be read in early-execution mode.
      */

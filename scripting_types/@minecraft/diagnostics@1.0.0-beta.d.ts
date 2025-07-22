@@ -14,9 +14,10 @@
  */
 import * as minecraftcommon from "@minecraft/common";
 import * as minecraftserveradmin from "@minecraft/server-admin";
-export enum SentryBreadcrumbLevel {
+export enum SentryEventLevel {
     debug = "debug",
     error = "error",
+    fatal = "fatal",
     info = "info",
     warning = "warning",
 }
@@ -26,17 +27,13 @@ export class Sentry {
     /**
      * @remarks This function can be called in early-execution mode.
      *
-     * This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      *
      * {@link SentryUninitializedError}
      */
-    addBreadcrumb(level: SentryBreadcrumbLevel, message: string, category?: string): void;
+    addBreadcrumb(level: SentryEventLevel, message: string, category?: string): void;
     /**
      * @remarks This function can be called in early-execution mode.
-     *
-     * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      *
@@ -46,7 +43,13 @@ export class Sentry {
     /**
      * @remarks This function can be called in early-execution mode.
      *
-     * This function can't be called in read-only mode.
+     * @throws This function can throw errors.
+     *
+     * {@link SentryUninitializedError}
+     */
+    captureException(exception: error, captureContext?: SentryCaptureContext): void;
+    /**
+     * @remarks This function can be called in early-execution mode.
      *
      * @throws This function can throw errors.
      *
@@ -55,8 +58,6 @@ export class Sentry {
     getTags(): Record<string, string>;
     /**
      * @remarks This function can be called in early-execution mode.
-     *
-     * This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      *
@@ -68,13 +69,17 @@ export class Sentry {
     /**
      * @remarks This function can be called in early-execution mode.
      *
-     * This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      *
      * {@link SentryUninitializedError}
      */
     removeTag(name: string): void;
+}
+
+export interface SentryCaptureContext {
+    extraData?: Record<string, boolean | number | string>;
+    level?: SentryEventLevel;
+    tags?: Record<string, string>;
 }
 
 export interface SentryOptions {

@@ -439,6 +439,9 @@
                     "name": "minecraft:acacia_pressure_plate"
                 },
                 {
+                    "name": "minecraft:acacia_shelf"
+                },
+                {
                     "name": "minecraft:acacia_slab"
                 },
                 {
@@ -499,6 +502,9 @@
                     "name": "minecraft:bamboo_pressure_plate"
                 },
                 {
+                    "name": "minecraft:bamboo_shelf"
+                },
+                {
                     "name": "minecraft:bamboo_slab"
                 },
                 {
@@ -551,6 +557,9 @@
                 },
                 {
                     "name": "minecraft:birch_pressure_plate"
+                },
+                {
+                    "name": "minecraft:birch_shelf"
                 },
                 {
                     "name": "minecraft:birch_slab"
@@ -617,6 +626,9 @@
                 },
                 {
                     "name": "minecraft:cherry_pressure_plate"
+                },
+                {
+                    "name": "minecraft:cherry_shelf"
                 },
                 {
                     "name": "minecraft:cherry_slab"
@@ -688,6 +700,9 @@
                     "name": "minecraft:crimson_pressure_plate"
                 },
                 {
+                    "name": "minecraft:crimson_shelf"
+                },
+                {
                     "name": "minecraft:crimson_slab"
                 },
                 {
@@ -731,6 +746,9 @@
                 },
                 {
                     "name": "minecraft:dark_oak_pressure_plate"
+                },
+                {
+                    "name": "minecraft:dark_oak_shelf"
                 },
                 {
                     "name": "minecraft:dark_oak_slab"
@@ -796,6 +814,9 @@
                     "name": "minecraft:jungle_pressure_plate"
                 },
                 {
+                    "name": "minecraft:jungle_shelf"
+                },
+                {
                     "name": "minecraft:jungle_slab"
                 },
                 {
@@ -856,6 +877,9 @@
                     "name": "minecraft:mangrove_roots"
                 },
                 {
+                    "name": "minecraft:mangrove_shelf"
+                },
+                {
                     "name": "minecraft:mangrove_slab"
                 },
                 {
@@ -898,6 +922,9 @@
                     "name": "minecraft:oak_planks"
                 },
                 {
+                    "name": "minecraft:oak_shelf"
+                },
+                {
                     "name": "minecraft:oak_slab"
                 },
                 {
@@ -932,6 +959,9 @@
                 },
                 {
                     "name": "minecraft:pale_oak_pressure_plate"
+                },
+                {
+                    "name": "minecraft:pale_oak_shelf"
                 },
                 {
                     "name": "minecraft:pale_oak_slab"
@@ -992,6 +1022,9 @@
                 },
                 {
                     "name": "minecraft:spruce_pressure_plate"
+                },
+                {
+                    "name": "minecraft:spruce_shelf"
                 },
                 {
                     "name": "minecraft:spruce_slab"
@@ -1127,6 +1160,9 @@
                 },
                 {
                     "name": "minecraft:warped_pressure_plate"
+                },
+                {
+                    "name": "minecraft:warped_shelf"
                 },
                 {
                     "name": "minecraft:warped_slab"
@@ -1478,6 +1514,9 @@
                     "name": "minecraft:copper_door"
                 },
                 {
+                    "name": "minecraft:copper_golem_statue"
+                },
+                {
                     "name": "minecraft:copper_grate"
                 },
                 {
@@ -1728,6 +1767,9 @@
                 },
                 {
                     "name": "minecraft:exposed_copper_door"
+                },
+                {
+                    "name": "minecraft:exposed_copper_golem_statue"
                 },
                 {
                     "name": "minecraft:exposed_copper_grate"
@@ -2076,6 +2118,9 @@
                 },
                 {
                     "name": "minecraft:oxidized_copper_door"
+                },
+                {
+                    "name": "minecraft:oxidized_copper_golem_statue"
                 },
                 {
                     "name": "minecraft:oxidized_copper_grate"
@@ -2555,6 +2600,9 @@
                     "name": "minecraft:waxed_copper_door"
                 },
                 {
+                    "name": "minecraft:waxed_copper_golem_statue"
+                },
+                {
                     "name": "minecraft:waxed_copper_grate"
                 },
                 {
@@ -2586,6 +2634,9 @@
                 },
                 {
                     "name": "minecraft:waxed_exposed_copper_door"
+                },
+                {
+                    "name": "minecraft:waxed_exposed_copper_golem_statue"
                 },
                 {
                     "name": "minecraft:waxed_exposed_copper_grate"
@@ -2621,6 +2672,9 @@
                     "name": "minecraft:waxed_oxidized_copper_door"
                 },
                 {
+                    "name": "minecraft:waxed_oxidized_copper_golem_statue"
+                },
+                {
                     "name": "minecraft:waxed_oxidized_copper_grate"
                 },
                 {
@@ -2654,6 +2708,9 @@
                     "name": "minecraft:waxed_weathered_copper_door"
                 },
                 {
+                    "name": "minecraft:waxed_weathered_copper_golem_statue"
+                },
+                {
                     "name": "minecraft:waxed_weathered_copper_grate"
                 },
                 {
@@ -2685,6 +2742,9 @@
                 },
                 {
                     "name": "minecraft:weathered_copper_door"
+                },
+                {
+                    "name": "minecraft:weathered_copper_golem_statue"
                 },
                 {
                     "name": "minecraft:weathered_copper_grate"
@@ -3149,7 +3209,19 @@
             "name": "not_feature_replaceable",
             "items": [
                 {
+                    "name": "minecraft:acacia_shelf"
+                },
+                {
+                    "name": "minecraft:bamboo_shelf"
+                },
+                {
                     "name": "minecraft:bedrock"
+                },
+                {
+                    "name": "minecraft:birch_shelf"
+                },
+                {
+                    "name": "minecraft:cherry_shelf"
                 },
                 {
                     "name": "minecraft:chest"
@@ -3161,22 +3233,46 @@
                     "name": "minecraft:copper_chest"
                 },
                 {
+                    "name": "minecraft:crimson_shelf"
+                },
+                {
+                    "name": "minecraft:dark_oak_shelf"
+                },
+                {
                     "name": "minecraft:end_portal_frame"
                 },
                 {
                     "name": "minecraft:exposed_copper_chest"
                 },
                 {
+                    "name": "minecraft:jungle_shelf"
+                },
+                {
+                    "name": "minecraft:mangrove_shelf"
+                },
+                {
                     "name": "minecraft:mob_spawner"
                 },
                 {
+                    "name": "minecraft:oak_shelf"
+                },
+                {
                     "name": "minecraft:oxidized_copper_chest"
+                },
+                {
+                    "name": "minecraft:pale_oak_shelf"
+                },
+                {
+                    "name": "minecraft:spruce_shelf"
                 },
                 {
                     "name": "minecraft:trial_spawner"
                 },
                 {
                     "name": "minecraft:vault"
+                },
+                {
+                    "name": "minecraft:warped_shelf"
                 },
                 {
                     "name": "minecraft:waxed_copper_chest"
@@ -3631,6 +3727,9 @@
                     "name": "minecraft:copper_chest"
                 },
                 {
+                    "name": "minecraft:copper_golem_statue"
+                },
+                {
                     "name": "minecraft:copper_grate"
                 },
                 {
@@ -3658,6 +3757,9 @@
                     "name": "minecraft:exposed_copper_chest"
                 },
                 {
+                    "name": "minecraft:exposed_copper_golem_statue"
+                },
+                {
                     "name": "minecraft:exposed_copper_grate"
                 },
                 {
@@ -3677,6 +3779,9 @@
                 },
                 {
                     "name": "minecraft:oxidized_copper_chest"
+                },
+                {
+                    "name": "minecraft:oxidized_copper_golem_statue"
                 },
                 {
                     "name": "minecraft:oxidized_copper_grate"
@@ -3703,6 +3808,9 @@
                     "name": "minecraft:waxed_copper_chest"
                 },
                 {
+                    "name": "minecraft:waxed_copper_golem_statue"
+                },
+                {
                     "name": "minecraft:waxed_copper_grate"
                 },
                 {
@@ -3724,6 +3832,9 @@
                     "name": "minecraft:waxed_exposed_copper_chest"
                 },
                 {
+                    "name": "minecraft:waxed_exposed_copper_golem_statue"
+                },
+                {
                     "name": "minecraft:waxed_exposed_copper_grate"
                 },
                 {
@@ -3743,6 +3854,9 @@
                 },
                 {
                     "name": "minecraft:waxed_oxidized_copper_chest"
+                },
+                {
+                    "name": "minecraft:waxed_oxidized_copper_golem_statue"
                 },
                 {
                     "name": "minecraft:waxed_oxidized_copper_grate"
@@ -3772,6 +3886,9 @@
                     "name": "minecraft:waxed_weathered_copper_chest"
                 },
                 {
+                    "name": "minecraft:waxed_weathered_copper_golem_statue"
+                },
+                {
                     "name": "minecraft:waxed_weathered_copper_grate"
                 },
                 {
@@ -3791,6 +3908,9 @@
                 },
                 {
                     "name": "minecraft:weathered_copper_chest"
+                },
+                {
+                    "name": "minecraft:weathered_copper_golem_statue"
                 },
                 {
                     "name": "minecraft:weathered_copper_grate"
@@ -4445,6 +4565,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.100-preview.25",
+    "minecraft_version": "1.21.110-preview.20",
     "name": "block-tags"
 }

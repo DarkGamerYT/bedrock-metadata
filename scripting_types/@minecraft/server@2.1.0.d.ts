@@ -2294,8 +2294,6 @@ export class Entity {
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
      * {@link InvalidEntityError}
-     *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     applyImpulse(vector: Vector3): void;
     /**
@@ -2320,8 +2318,6 @@ export class Entity {
      * @throws This function can throw errors.
      *
      * {@link InvalidEntityError}
-     *
-     * {@link minecraftcommon.UnsupportedFunctionalityError}
      */
     clearVelocity(): void;
     /**
@@ -5911,8 +5907,6 @@ export class System {
      */
     runTimeout(callback: () => void, tickDelay?: number): number;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}

@@ -24,6 +24,11 @@ export enum EditorRealmsServiceAvailability {
     Unknown = 5,
 }
 
+export enum ProjectRegionAvailabilityMode {
+    Loaded = 0,
+    Ticking = 1,
+}
+
 export enum RealmsServiceStatus {
     Fetching = 0,
     Idle = 1,
@@ -360,7 +365,7 @@ export class InternalPlayerServiceContext {
     readonly dataTransfer: DataTransferManager;
     readonly input: InputService;
     readonly realmsService: RealmsService;
-    readonly tickingArea: TickingAreaManager;
+    readonly regionManager: ProjectRegionManager;
 }
 
 export class MinecraftEditorInternal {
@@ -372,12 +377,6 @@ export class MinecraftEditorInternal {
      * @throws This function can throw errors.
      */
     fireTelemetryEvent(player: minecraftserver.Player, source: string, eventName: string, metadata: string): void;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    getMapColorUnsafe(player: minecraftserver.Player, coordinate: minecraftserver.Vector3): minecraftserver.RGBA;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -395,6 +394,181 @@ export class MinecraftEditorInternal {
         shutdownFunction: (arg0: minecraftservereditorbindings.ExtensionContext) => void,
         options?: minecraftservereditorbindings.ExtensionOptionalParameters,
     ): minecraftservereditorbindings.Extension;
+}
+
+export class ProjectRegion {
+    private constructor();
+    /**
+     * @throws This property can throw errors.
+     */
+    readonly availabilityMode: ProjectRegionAvailabilityMode;
+    readonly id: string;
+    readonly isValid: boolean;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    dispose(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    getAvailableLocationFromRay(
+        location: minecraftserver.Vector3,
+        direction: minecraftserver.Vector3,
+        options?: minecraftserver.BlockRaycastOptions,
+    ): minecraftserver.Vector3 | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
+    getBlock(location: minecraftserver.Vector3): minecraftserver.Block | undefined;
+    /**
+     * @throws This function can throw errors.
+     */
+    getBlockMapColor(location: minecraftserver.Vector3): minecraftserver.RGBA;
+    /**
+     * @throws This function can throw errors.
+     */
+    getBlockPermutation(location: minecraftserver.Vector3): minecraftserver.BlockPermutation;
+    /**
+     * @throws This function can throw errors.
+     */
+    getBlockTypeId(location: minecraftserver.Vector3): string;
+    /**
+     * @throws This function can throw errors.
+     */
+    getBounds(): minecraftserver.BlockBoundingBox;
+    /**
+     * @throws This function can throw errors.
+     */
+    isAirBlock(location: minecraftserver.Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    isAreaAvailable(boundingBox: minecraftserver.BlockBoundingBox): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    isAvailable(): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    isBlockWaterLogged(location: minecraftserver.Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    isLiquidBlock(location: minecraftserver.Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    isLocationAvailable(location: minecraftserver.Vector3): boolean;
+    /**
+     * @throws This function can throw errors.
+     */
+    isSolidBlock(location: minecraftserver.Vector3): boolean;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    requestBlockOperationArea(
+        volume: minecraftservereditorbindings.RelativeVolumeListBlockVolume,
+        callback: (arg0: minecraftserver.BlockLocationIterator) => void,
+    ): Promise<void>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    requestExpandToContain(extentX: minecraftcommon.NumberRange, extentZ: minecraftcommon.NumberRange): Promise<void>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    requestExtentsUpdate(extentX: minecraftcommon.NumberRange, extentZ: minecraftcommon.NumberRange): Promise<void>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    requestMove(center: minecraftserver.Vector3): Promise<void>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setBlockType(location: minecraftserver.Vector3, blockType: minecraftserver.BlockType | string): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setBlockWaterlogged(location: minecraftserver.Vector3, isWaterlogged: boolean): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftserver.EntitySpawnError}
+     *
+     * {@link Error}
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link minecraftserver.InvalidEntityError}
+     */
+    spawnEntity(
+        identifier: minecraftserver.EntityType | string,
+        location: minecraftserver.Vector3,
+        rotation?: number,
+    ): minecraftserver.Entity;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    waitUntilAvailable(): Promise<void>;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    waitUntilBoundsAvailable(boundingBox: minecraftserver.BlockBoundingBox): Promise<void>;
+}
+
+export class ProjectRegionManager {
+    private constructor();
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    disposeAllRegions(): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    disposeRegion(id: string): boolean;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getCursorRegion(): ProjectRegion;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    getSelectionRegion(): ProjectRegion;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    leaseRegion(options: ProjectRegionOptions): ProjectRegion;
 }
 
 export class RealmsService {
@@ -441,34 +615,6 @@ export class RealmsService {
     isRealmsServiceAvailable(): EditorRealmsServiceAvailability;
 }
 
-export class TickingAreaManager {
-    private constructor();
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    isTickingAreaActive(areaIdentifier: string): boolean;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    purgeTickingAreas(areaIdentifier: string): boolean;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    releaseTickingArea(areaIdentifier: string): boolean;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    requestTickingArea(areaIdentifier: string, from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
-}
-
 export interface DataTransferCollectionNameData {
     nameStringId: string;
     uniqueId: string;
@@ -489,6 +635,12 @@ export interface InputBindingInfo {
     canRebind: boolean;
     label?: string;
     tooltip?: string;
+}
+
+export interface ProjectRegionOptions {
+    availabilityMode?: ProjectRegionAvailabilityMode;
+    extentX: minecraftcommon.NumberRange;
+    extentZ: minecraftcommon.NumberRange;
 }
 
 export const editorInternal: MinecraftEditorInternal;

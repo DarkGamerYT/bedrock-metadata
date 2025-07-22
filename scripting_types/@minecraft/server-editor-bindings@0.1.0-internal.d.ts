@@ -2,13 +2,13 @@
 // Project: https://github.com/DarkGamerYT/bedrock-metadata
 // Definitions by: xKingDark <https://github.com/DarkGamerYT>
 /**
- * @beta
+ * @internal
  * @packageDocumentation
  * Manifest Details
  * ```json
  * {
  *     "module_name": "@minecraft/server-editor-bindings",
- *     "version": "0.1.0-beta"
+ *     "version": "0.1.0-internal"
  * }
  * ```
  */
@@ -2345,4 +2345,5 @@ export class InvalidWidgetGroupError extends Error {
     private constructor();
 }
 
+export const isInternal = true;
 export const editor: MinecraftEditor;
