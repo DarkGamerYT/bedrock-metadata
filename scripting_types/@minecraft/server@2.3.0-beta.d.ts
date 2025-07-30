@@ -83,6 +83,7 @@ export enum CustomCommandErrorReason {
     ParameterLimit = "ParameterLimit",
     RegistryInvalid = "RegistryInvalid",
     RegistryReadOnly = "RegistryReadOnly",
+    UnexpectedEnumName = "UnexpectedEnumName",
 }
 
 export enum CustomCommandParamType {
@@ -7454,6 +7455,7 @@ export interface CustomCommand {
 }
 
 export interface CustomCommandParameter {
+    enumName?: string;
     name: string;
     type: CustomCommandParamType;
 }

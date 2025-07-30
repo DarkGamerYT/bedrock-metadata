@@ -658,6 +658,9 @@
             "name": "minecraft:horse_armor",
             "items": [
                 {
+                    "name": "minecraft:copper_horse_armor"
+                },
+                {
                     "name": "minecraft:diamond_horse_armor"
                 },
                 {
@@ -2589,6 +2592,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.110-preview.20",
+    "minecraft_version": "1.21.110-preview.22",
     "name": "item-tags"
 }
