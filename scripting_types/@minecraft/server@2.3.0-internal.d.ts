@@ -1150,6 +1150,16 @@ export class Block {
      */
     getItemStack(amount?: number, withData?: boolean): ItemStack | undefined;
     /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getLightLevel(): number;
+    /**
      * @throws This function can throw errors.
      *
      * {@link LocationInUnloadedChunkError}
@@ -1165,6 +1175,16 @@ export class Block {
      * {@link LocationOutOfWorldBoundariesError}
      */
     getRedstonePower(): number | undefined;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.InvalidArgumentError}
+     *
+     * {@link LocationInUnloadedChunkError}
+     */
+    getSkyLightLevel(): number;
     /**
      * @throws This function can throw errors.
      *
@@ -4998,16 +5018,20 @@ export class ItemPotionComponent extends ItemComponent {
     private constructor();
     /**
      * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
+     */
+    readonly potionDeliveryType: PotionDeliveryType;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link Error}
      */
     readonly potionEffectType: PotionEffectType;
-    /**
-     * @throws This property can throw errors.
-     */
-    readonly potionLiquidType: PotionLiquidType;
-    /**
-     * @throws This property can throw errors.
-     */
-    readonly potionModifierType: PotionModifierType;
 }
 
 export class ItemReleaseUseAfterEvent {
@@ -5125,12 +5149,6 @@ export class ItemStack {
      * {@link Error}
      */
     setLore(loreList?: (RawMessage | string)[]): void;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     *
-     * @throws This function can throw errors.
-     */
-    static createPotion(options: PotionOptions): ItemStack;
 }
 
 export class ItemStartUseAfterEvent {
@@ -6221,26 +6239,38 @@ export class PlayerSpawnAfterEventSignal {
     unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
 }
 
+export class PotionDeliveryType {
+    private constructor();
+    readonly id: string;
+}
+
 export class PotionEffectType {
     private constructor();
-    readonly id: string;
-}
-
-export class PotionLiquidType {
-    private constructor();
-    readonly id: string;
-}
-
-export class PotionModifierType {
-    private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     */
+    readonly durationTicks?: number;
     readonly id: string;
 }
 
 export class Potions {
     private constructor();
-    static getPotionEffectType(potionEffectId: string): PotionEffectType | undefined;
-    static getPotionLiquidType(potionLiquidId: string): PotionLiquidType | undefined;
-    static getPotionModifierType(potionModifierId: string): PotionModifierType | undefined;
+    static getAllDeliveryTypes(): PotionDeliveryType[];
+    static getAllEffectTypes(): PotionEffectType[];
+    static getDeliveryType(potionDeliveryId: string): PotionDeliveryType | undefined;
+    static getEffectType(potionEffectId: string): PotionEffectType | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link minecraftcommon.EngineError}
+     *
+     * {@link InvalidPotionDeliveryTypeError}
+     *
+     * {@link InvalidPotionEffectTypeError}
+     */
+    static resolve(potionEffectType: PotionEffectType | string, potionDeliveryType: PotionDeliveryType | string): ItemStack;
 }
 
 // @ts-ignore
@@ -7790,12 +7820,6 @@ export interface PlayerSoundOptions {
     volume?: number;
 }
 
-export interface PotionOptions {
-    effect: PotionEffectType | string;
-    liquid?: PotionLiquidType | string;
-    modifier?: PotionModifierType | string;
-}
-
 export interface ProjectileShootOptions {
     uncertainty?: number;
 }
@@ -8035,6 +8059,16 @@ export class InvalidItemStackError extends Error {
 
 // @ts-ignore
 export class InvalidIteratorError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
+export class InvalidPotionDeliveryTypeError extends Error {
+    private constructor();
+}
+
+// @ts-ignore
+export class InvalidPotionEffectTypeError extends Error {
     private constructor();
 }
 

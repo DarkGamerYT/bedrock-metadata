@@ -103,6 +103,7 @@ export enum GraphicsSettingsProperty {
     ShowChunkBoundaries = "ShowChunkBoundaries",
     ShowCompass = "ShowCompass",
     ShowInvisibleBlocks = "ShowInvisibleBlocks",
+    ShowToastNotifications = "ShowToastNotifications",
 }
 
 export enum InputModifier {
@@ -403,6 +404,27 @@ export class BlockPaletteManager {
     setSelectedItem(item: IBlockPaletteItem): void;
 }
 
+export class BlockPaletteSelectedItemChangeAfterEvent {
+    private constructor();
+    readonly selectedPaletteItem: IBlockPaletteItem;
+}
+
+export class BlockPaletteSelectedItemChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    subscribe(callback: (arg0: BlockPaletteSelectedItemChangeAfterEvent) => void): (arg0: BlockPaletteSelectedItemChangeAfterEvent) => void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    unsubscribe(callback: (arg0: BlockPaletteSelectedItemChangeAfterEvent) => void): void;
+}
+
 export class BlockUtilities {
     private constructor();
     /**
@@ -607,6 +629,7 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     clear(): void;
+    getNormalizedOrigin(): minecraftserver.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -784,6 +807,12 @@ export class EditorConstants {
 
 export class EditorStructure {
     private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserver.InvalidStructureError}
+     */
+    readonly displayName: string;
     readonly id: string;
     readonly isValid: boolean;
     /**
@@ -933,6 +962,10 @@ export class ExtensionContext {
 
 export class ExtensionContextAfterEvents {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly blockPaletteSelectedItemChange: BlockPaletteSelectedItemChangeAfterEventSignal;
     /**
      * @remarks This property can be read in early-execution mode.
      */

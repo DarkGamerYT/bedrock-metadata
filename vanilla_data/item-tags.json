@@ -907,10 +907,19 @@
                     "name": "minecraft:chicken"
                 },
                 {
+                    "name": "minecraft:chorus_fruit"
+                },
+                {
+                    "name": "minecraft:cod"
+                },
+                {
                     "name": "minecraft:cooked_beef"
                 },
                 {
                     "name": "minecraft:cooked_chicken"
+                },
+                {
+                    "name": "minecraft:cooked_cod"
                 },
                 {
                     "name": "minecraft:cooked_mutton"
@@ -920,6 +929,9 @@
                 },
                 {
                     "name": "minecraft:cooked_rabbit"
+                },
+                {
+                    "name": "minecraft:cooked_salmon"
                 },
                 {
                     "name": "minecraft:cookie"
@@ -937,6 +949,9 @@
                     "name": "minecraft:golden_carrot"
                 },
                 {
+                    "name": "minecraft:honey_bottle"
+                },
+                {
                     "name": "minecraft:melon_slice"
                 },
                 {
@@ -946,10 +961,16 @@
                     "name": "minecraft:mutton"
                 },
                 {
+                    "name": "minecraft:poisonous_potato"
+                },
+                {
                     "name": "minecraft:porkchop"
                 },
                 {
                     "name": "minecraft:potato"
+                },
+                {
+                    "name": "minecraft:pufferfish"
                 },
                 {
                     "name": "minecraft:pumpkin_pie"
@@ -964,7 +985,19 @@
                     "name": "minecraft:rotten_flesh"
                 },
                 {
+                    "name": "minecraft:salmon"
+                },
+                {
+                    "name": "minecraft:spider_eye"
+                },
+                {
+                    "name": "minecraft:suspicious_stew"
+                },
+                {
                     "name": "minecraft:sweet_berries"
+                },
+                {
+                    "name": "minecraft:tropical_fish"
                 }
             ]
         },
@@ -2592,6 +2625,6 @@
             ]
         }
     ],
-    "minecraft_version": "1.21.110-preview.22",
+    "minecraft_version": "1.21.110-preview.23",
     "name": "item-tags"
 }
