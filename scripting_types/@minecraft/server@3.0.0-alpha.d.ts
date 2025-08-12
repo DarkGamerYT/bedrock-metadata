@@ -1792,6 +1792,12 @@ export class Camera {
      *
      * @throws This function can throw errors.
      */
+    setCameraWithEase(cameraPreset: string, easeOptions: EaseOptions): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
     /**
      * @remarks This function can't be called in read-only mode.
@@ -2364,6 +2370,14 @@ export class Dimension {
      *
      * {@link LocationOutOfWorldBoundariesError}
      */
+    getBiome(location: Vector3): BiomeType;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     */
     getBlock(location: Vector3): Block | undefined;
     /**
      * @remarks This function can't be called in read-only mode.
@@ -2842,7 +2856,19 @@ export class Entity {
      *
      * {@link InvalidEntityError}
      */
+    getAllBlocksStandingOn(options?: GetBlocksStandingOnOptions): Block[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
     getBlockFromViewDirection(options?: BlockRaycastOptions): BlockRaycastHit | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    getBlockStandingOn(options?: GetBlocksStandingOnOptions): Block | undefined;
     /**
      * @throws This function can throw errors.
      *
@@ -5341,7 +5367,7 @@ export class MolangVariableMap {
 export class PackSettingChangeAfterEvent {
     private constructor();
     readonly settingName: string;
-    readonly settingValue: boolean | number;
+    readonly settingValue: boolean | number | string;
 }
 
 export class PackSettingChangeAfterEventSignal {
@@ -7007,7 +7033,7 @@ export class World {
     /**
      * @remarks This function can be called in early-execution mode.
      */
-    getPackSettings(): Record<string, boolean | number>;
+    getPackSettings(): Record<string, boolean | number | string>;
     /**
      * @throws This function can throw errors.
      *
@@ -7629,6 +7655,11 @@ export interface ExplosionOptions {
     breaksBlocks?: boolean;
     causesFire?: boolean;
     source?: Entity;
+}
+
+export interface GetBlocksStandingOnOptions {
+    blockFilter?: BlockFilter;
+    ignoreThinBlocks?: boolean;
 }
 
 export interface GreaterThanComparison {

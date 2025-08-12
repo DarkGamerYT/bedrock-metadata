@@ -622,6 +622,8 @@ export class ClipboardItem {
     private constructor();
     readonly id: string;
     readonly isEmpty: boolean;
+    readonly normalizedOrigin: minecraftserver.Vector3;
+    readonly originalWorldLocation: minecraftserver.Vector3;
     readonly size: minecraftserver.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
@@ -629,7 +631,6 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     clear(): void;
-    getNormalizedOrigin(): minecraftserver.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
