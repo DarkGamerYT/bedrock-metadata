@@ -405,6 +405,11 @@ export enum GraphicsMode {
     Simple = "Simple",
 }
 
+export enum HeldItemOption {
+    AnyItem = "AnyItem",
+    NoItem = "NoItem",
+}
+
 export enum HudElement {
     PaperDoll = 0,
     Armor = 1,
@@ -2354,8 +2359,6 @@ export class Dimension {
         options?: BlockFillOptions,
     ): ListBlockVolume;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.EngineError}
@@ -2380,14 +2383,10 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
@@ -2425,8 +2424,6 @@ export class Dimension {
      */
     getEntitiesFromRay(location: Vector3, direction: Vector3, options?: EntityRaycastOptions): EntityRaycastHit[];
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.InvalidArgumentError}
@@ -2443,8 +2440,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.InvalidArgumentError}
@@ -2453,15 +2448,11 @@ export class Dimension {
      */
     getSkyLightLevel(location: Vector3): number;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
-    /**
-     * @remarks This function can't be called in read-only mode.
-     */
     getWeather(): WeatherType;
+    isChunkLoaded(location: Vector3): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2676,6 +2667,11 @@ export class EffectTypes {
      * @remarks This function can't be called in read-only mode.
      */
     static getAll(): EffectType[];
+}
+
+// @ts-ignore
+export class EmptyLootItem extends LootPoolEntry {
+    private constructor();
 }
 
 export class EnchantmentType {
@@ -5311,6 +5307,46 @@ export class ListBlockVolume extends BlockVolumeBase {
     remove(locations: Vector3[]): void;
 }
 
+// @ts-ignore
+export class LootItem extends LootPoolEntry {
+    private constructor();
+    readonly name?: ItemType;
+}
+
+export class LootPool {
+    private constructor();
+    readonly bonusRolls: minecraftcommon.NumberRange;
+    readonly entries: LootPoolEntry[];
+    readonly rolls: minecraftcommon.NumberRange;
+    readonly tiers?: LootPoolTiers;
+}
+
+export class LootPoolEntry {
+    private constructor();
+    readonly quality: number;
+    readonly subTable?: LootPoolEntry;
+    readonly weight: number;
+}
+
+export class LootPoolTiers {
+    private constructor();
+    readonly bonusChance: number;
+    readonly bonusRolls: number;
+    readonly initialRange: number;
+}
+
+export class LootTable {
+    private constructor();
+    readonly path: string;
+    readonly pools: LootPool[];
+}
+
+// @ts-ignore
+export class LootTableEntry extends LootPoolEntry {
+    private constructor();
+    readonly lootTable: LootTable;
+}
+
 export class LootTableManager {
     private constructor();
     /**
@@ -5332,6 +5368,14 @@ export class LootTableManager {
      */
     generateLootFromEntity(entity: Entity, tool?: ItemStack): ItemStack[] | undefined;
     generateLootFromEntityType(entityType: EntityType, tool?: ItemStack): ItemStack[] | undefined;
+    generateLootFromTable(lootTable: LootTable, tool?: ItemStack): ItemStack[] | undefined;
+    getLootTable(path: string): LootTable | undefined;
+}
+
+// @ts-ignore
+export class LootTableReference extends LootPoolEntry {
+    private constructor();
+    readonly path: string;
 }
 
 export class MessageReceiveAfterEvent {
@@ -6204,6 +6248,31 @@ export class PlayerSpawnAfterEventSignal {
      * This function can't be called in read-only mode.
      */
     unsubscribe(callback: (arg0: PlayerSpawnAfterEvent) => void): void;
+}
+
+export class PlayerSwingStartAfterEvent {
+    private constructor();
+    readonly heldItemStack?: ItemStack;
+    readonly player: Player;
+}
+
+export class PlayerSwingStartAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    subscribe(
+        callback: (arg0: PlayerSwingStartAfterEvent) => void,
+        options?: PlayerSwingEventOptions,
+    ): (arg0: PlayerSwingStartAfterEvent) => void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    unsubscribe(callback: (arg0: PlayerSwingStartAfterEvent) => void): void;
 }
 
 export class PotionDeliveryType {
@@ -7274,6 +7343,10 @@ export class WorldAfterEvents {
     /**
      * @remarks This property can be read in early-execution mode.
      */
+    readonly playerSwingStart: PlayerSwingStartAfterEventSignal;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
     readonly pressurePlatePop: PressurePlatePopAfterEventSignal;
     /**
      * @remarks This property can be read in early-execution mode.
@@ -7752,6 +7825,10 @@ export interface PlayerSoundOptions {
     location?: Vector3;
     pitch?: number;
     volume?: number;
+}
+
+export interface PlayerSwingEventOptions {
+    heldItemOption?: HeldItemOption;
 }
 
 export interface ProjectileShootOptions {

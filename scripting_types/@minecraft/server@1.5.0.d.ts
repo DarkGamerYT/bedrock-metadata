@@ -1242,8 +1242,10 @@ export class ItemStack {
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 export class ItemStartUseAfterEvent {

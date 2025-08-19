@@ -1308,9 +1308,11 @@ export class ContainerSlot {
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
+     * {@link Error}
+     *
      * {@link InvalidContainerSlotError}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 export class DataDrivenEntityTriggerAfterEvent {
@@ -1430,8 +1432,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
@@ -3824,8 +3824,10 @@ export class ItemStack {
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 export class ItemStartUseAfterEvent {

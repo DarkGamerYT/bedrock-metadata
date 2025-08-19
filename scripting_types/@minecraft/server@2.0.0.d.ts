@@ -1663,9 +1663,11 @@ export class ContainerSlot {
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
+     * {@link Error}
+     *
      * {@link InvalidContainerSlotError}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 export class CustomComponentParameters {
@@ -1749,14 +1751,10 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
@@ -1802,8 +1800,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
@@ -4211,8 +4207,10 @@ export class ItemStack {
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 export class ItemStartUseAfterEvent {

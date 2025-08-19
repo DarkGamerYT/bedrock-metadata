@@ -33,6 +33,12 @@ export enum BlockVolumeIntersection {
     Intersects = 2,
 }
 
+export enum BookErrorReason {
+    ExceedsMaxPageLength = "ExceedsMaxPageLength",
+    ExceedsMaxPages = "ExceedsMaxPages",
+    ExceedsTitleLength = "ExceedsTitleLength",
+}
+
 export enum ButtonState {
     Pressed = "Pressed",
     Released = "Released",
@@ -419,6 +425,7 @@ export enum InputPermissionCategory {
 }
 
 export enum ItemComponentTypes {
+    Book = "minecraft:book",
     Compostable = "minecraft:compostable",
     Cooldown = "minecraft:cooldown",
     Durability = "minecraft:durability",
@@ -750,12 +757,14 @@ export type ItemComponentReturnType<T extends string> = T extends keyof ItemComp
     : ItemComponent;
 
 export type ItemComponentTypeMap = {
+    book: ItemBookComponent;
     compostable: ItemCompostableComponent;
     cooldown: ItemCooldownComponent;
     durability: ItemDurabilityComponent;
     dyeable: ItemDyeableComponent;
     enchantable: ItemEnchantableComponent;
     food: ItemFoodComponent;
+    "minecraft:book": ItemBookComponent;
     "minecraft:compostable": ItemCompostableComponent;
     "minecraft:cooldown": ItemCooldownComponent;
     "minecraft:durability": ItemDurabilityComponent;
@@ -1474,6 +1483,12 @@ export class Camera {
      * @throws This function can throw errors.
      */
     setDefaultCamera(cameraPreset: string, easeOptions?: EaseOptions): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    setFov(fovCameraOptions?: CameraFovOptions): void;
 }
 
 // @ts-ignore
@@ -1699,6 +1714,12 @@ export class ContainerSlot {
      *
      * {@link InvalidContainerSlotError}
      */
+    getRawLore(): RawMessage[];
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidContainerSlotError}
+     */
     getTags(): string[];
     /**
      * @throws This function can throw errors.
@@ -1765,9 +1786,11 @@ export class ContainerSlot {
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
      *
+     * {@link Error}
+     *
      * {@link InvalidContainerSlotError}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 export class CustomCommandOrigin {
@@ -1895,14 +1918,10 @@ export class Dimension {
      */
     getBlock(location: Vector3): Block | undefined;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getBlockAbove(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getBlockBelow(location: Vector3, options?: BlockRaycastOptions): Block | undefined;
@@ -1948,8 +1967,6 @@ export class Dimension {
      */
     getPlayers(options?: EntityQueryOptions): Player[];
     /**
-     * @remarks This function can't be called in read-only mode.
-     *
      * @throws This function can throw errors.
      */
     getTopmostBlock(locationXZ: VectorXZ, minHeight?: number): Block | undefined;
@@ -4007,6 +4024,115 @@ export class InputInfo {
     getMovementVector(): Vector2;
 }
 
+// @ts-ignore
+export class ItemBookComponent extends ItemComponent {
+    private constructor();
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    readonly author?: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    readonly contents: (string | undefined)[];
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    readonly isSigned: boolean;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    readonly pageCount: number;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    readonly rawContents: (RawMessage | undefined)[];
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    readonly title?: string;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    getPageContent(pageIndex: number): string | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    getRawPageContent(pageIndex: number): RawMessage | undefined;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link BookError}
+     *
+     * {@link BookPageContentError}
+     *
+     * {@link InvalidItemStackError}
+     */
+    insertPage(pageIndex: number, content: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidItemStackError}
+     */
+    removePage(pageIndex: number): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link BookError}
+     *
+     * {@link BookPageContentError}
+     *
+     * {@link InvalidItemStackError}
+     */
+    setContents(contents: ((RawMessage | string)[] | RawMessage | string)[]): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link BookError}
+     *
+     * {@link BookPageContentError}
+     *
+     * {@link InvalidItemStackError}
+     */
+    setPageContent(pageIndex: number, content: (RawMessage | string)[] | RawMessage | string): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     *
+     * {@link BookError}
+     *
+     * {@link InvalidEntityError}
+     *
+     * {@link InvalidItemStackError}
+     */
+    signBook(title: string, author: string): void;
+}
+
 export class ItemCompleteUseAfterEvent {
     private constructor();
     readonly itemStack: ItemStack;
@@ -4365,6 +4491,7 @@ export class ItemStack {
     getDynamicPropertyIds(): string[];
     getDynamicPropertyTotalByteCount(): number;
     getLore(): string[];
+    getRawLore(): RawMessage[];
     getTags(): string[];
     hasComponent(componentId: string): boolean;
     hasTag(tag: string): boolean;
@@ -4396,8 +4523,10 @@ export class ItemStack {
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.ArgumentOutOfBoundsError}
+     *
+     * {@link Error}
      */
-    setLore(loreList?: string[]): void;
+    setLore(loreList?: (RawMessage | string)[]): void;
 }
 
 export class ItemStartUseAfterEvent {
@@ -4584,6 +4713,29 @@ export class ListBlockVolume extends BlockVolumeBase {
     constructor(locations: Vector3[]);
     add(locations: Vector3[]): void;
     remove(locations: Vector3[]): void;
+}
+
+export class LootTableManager {
+    private constructor();
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link LocationInUnloadedChunkError}
+     *
+     * {@link LocationOutOfWorldBoundariesError}
+     *
+     * {@link UnloadedChunksError}
+     */
+    generateLootFromBlock(block: Block, tool?: ItemStack): ItemStack[] | undefined;
+    generateLootFromBlockPermutation(blockPermutation: BlockPermutation, tool?: ItemStack): ItemStack[] | undefined;
+    generateLootFromBlockType(scriptBlockType: BlockType, tool?: ItemStack): ItemStack[] | undefined;
+    /**
+     * @throws This function can throw errors.
+     *
+     * {@link InvalidEntityError}
+     */
+    generateLootFromEntity(entity: Entity, tool?: ItemStack): ItemStack[] | undefined;
+    generateLootFromEntityType(entityType: EntityType, tool?: ItemStack): ItemStack[] | undefined;
 }
 
 export class MolangVariableMap {
@@ -6089,6 +6241,7 @@ export class World {
      * @throws This function can throw errors.
      */
     getEntity(id: string): Entity | undefined;
+    getLootTableManager(): LootTableManager;
     getMoonPhase(): MoonPhase;
     /**
      * @throws This function can throw errors.
@@ -6481,6 +6634,11 @@ export interface CameraFixedBoomOptions {
     viewOffset?: Vector2;
 }
 
+export interface CameraFovOptions {
+    easeOptions?: EaseOptions;
+    fov?: number;
+}
+
 export interface CameraSetFacingOptions {
     easeOptions?: EaseOptions;
     facingEntity: Entity;
@@ -6871,6 +7029,28 @@ export class BlockCustomComponentReloadVersionError extends Error {
 }
 
 // @ts-ignore
+export class BookError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly reason: BookErrorReason;
+}
+
+// @ts-ignore
+export class BookPageContentError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly pageIndex: number;
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly reason: BookErrorReason;
+}
+
+// @ts-ignore
 export class CommandError extends Error {
     private constructor();
 }
@@ -6944,6 +7124,15 @@ export class InvalidEntityError extends Error {
      * @remarks This property can be read in early-execution mode.
      */
     readonly "type": string;
+}
+
+// @ts-ignore
+export class InvalidItemStackError extends Error {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly itemType: ItemType;
 }
 
 // @ts-ignore

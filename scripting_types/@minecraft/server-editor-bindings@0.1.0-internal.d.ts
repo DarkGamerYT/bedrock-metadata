@@ -38,8 +38,21 @@ export enum BlockPaletteItemType {
 }
 
 export enum BrushDirectionalPlacementMode {
-    Default = 0,
-    ByCamera = 1,
+    IgnoreCamera = 0,
+    NormalCamera = 1,
+    OppositeCamera = 2,
+    CameraLeft = 3,
+    CameraRight = 4,
+    CameraFromAbove = 5,
+    CameraFromBelow = 6,
+    FrontFacePosX = 7,
+    FrontFaceNegX = 8,
+    FrontFacePosZ = 9,
+    FrontFaceNegZ = 10,
+    FrontFacePosY = 11,
+    FrontFaceNegY = 12,
+    Random2Axes = 13,
+    Random3Axes = 14,
 }
 
 export enum ContiguousSelectionType {
@@ -87,6 +100,12 @@ export enum ExportResult {
     WorldExportFailed = 5,
     WorldExportBusy = 6,
     EditorSystemFailure = 7,
+}
+
+export enum FlattenMode {
+    Both = 0,
+    Down = 1,
+    Up = 2,
 }
 
 export enum GamePublishSetting {
@@ -515,6 +534,10 @@ export class BrushShapeManager {
     /**
      * @remarks This function can't be called in read-only mode.
      */
+    clearBlockStateOverrides(): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
     deactivateBrushTool(): void;
     /**
      * @remarks This function can't be called in read-only mode.
@@ -548,6 +571,14 @@ export class BrushShapeManager {
     isBrushPaintBusy(): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
+     */
+    pushBlockStateOverride(stateName: string, stateValue: boolean | number | string): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
+    setBlockFacePlacementBasedOnCamera(enabled: boolean): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
@@ -571,11 +602,15 @@ export class BrushShapeManager {
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    setFlattenHeight(flattenHeight: number): void;
+    setFlattenMode(flattenMode: FlattenMode): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    setFlattenRadius(flattenRadius: number): void;
+    setFlattenSmoothing(flattenSmoothing: number): void;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     */
+    setFloorBlockOverride(floorBlockOverride: boolean): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -1054,6 +1089,10 @@ export class Logger {
 
 export class MinecraftEditor {
     private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly afterEvents: ProjectAfterEvents;
     readonly constants: EditorConstants;
     /**
      * @throws This property can throw errors.
@@ -1116,6 +1155,14 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      * @throws This function can throw errors.
      */
     removeBlockAt(index: number): void;
+}
+
+export class ProjectAfterEvents {
+    private constructor();
+    /**
+     * @remarks This property can be read in early-execution mode.
+     */
+    readonly simulationStateChange: SimulationStateChangeAfterEventSignal;
 }
 
 // @ts-ignore
@@ -1287,6 +1334,27 @@ export class SimulationState {
      * @throws This function can throw errors.
      */
     setPaused(isPaused: boolean): void;
+}
+
+export class SimulationStateAfterEvent {
+    private constructor();
+    readonly paused: boolean;
+}
+
+export class SimulationStateChangeAfterEventSignal {
+    private constructor();
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    subscribe(callback: (arg0: SimulationStateAfterEvent) => void): (arg0: SimulationStateAfterEvent) => void;
+    /**
+     * @remarks This function can be called in early-execution mode.
+     *
+     * This function can't be called in read-only mode.
+     */
+    unsubscribe(callback: (arg0: SimulationStateAfterEvent) => void): void;
 }
 
 export class SpeedSettings {

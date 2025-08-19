@@ -287,7 +287,7 @@ export class DataTransferManager {
     /**
      * @throws This function can throw errors.
      */
-    requestData(collectionUniqueId: string): Promise<DataTransferRequestResponse>;
+    requestData(collectionUniqueId: string, useSnapshot?: boolean): Promise<DataTransferRequestResponse>;
     /**
      * @throws This function can throw errors.
      */
