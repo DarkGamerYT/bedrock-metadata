@@ -88,7 +88,7 @@ export class DisconnectedError extends Error {
  * @throws This function can throw errors.
  */
 export function transferPlayer(
-    player: minecraftserver.Player,
+    player: minecraftserverbindings.Player,
     options: TransferPlayerIpPortOptions | TransferPlayerNetherNetOptions,
 ): void;
 export const beforeEvents: AdminBeforeEvents;

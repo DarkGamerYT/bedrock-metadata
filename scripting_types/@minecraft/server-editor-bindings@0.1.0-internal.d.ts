@@ -117,6 +117,11 @@ export enum GamePublishSetting {
 }
 
 export enum GraphicsSettingsProperty {
+    DisableBlockEntityRendering = "DisableBlockEntityRendering",
+    DisableEntityRendering = "DisableEntityRendering",
+    DisableParticleRendering = "DisableParticleRendering",
+    DisableTerrainRendering = "DisableTerrainRendering",
+    DisableWeatherRendering = "DisableWeatherRendering",
     GraphicsMode = "GraphicsMode",
     NightVision = "NightVision",
     ShowChunkBoundaries = "ShowChunkBoundaries",
@@ -289,11 +294,18 @@ export enum ThemeSettingsColorKey {
     Warning = "Warning",
 }
 
+export enum WidgetCollisionType {
+    None = 0,
+    Radius = 1,
+    Bounds = 2,
+}
+
 export enum WidgetComponentType {
     BoundingBox = "BoundingBox",
     Clipboard = "Clipboard",
     Entity = "Entity",
     Gizmo = "Gizmo",
+    Grid = "Grid",
     Guide = "Guide",
     RenderPrim = "RenderPrim",
     Spline = "Spline",
@@ -395,7 +407,7 @@ export class BlockPaletteManager {
     /**
      * @throws This function can throw errors.
      */
-    getSelectedBlockType(): minecraftserver.BlockType;
+    getSelectedBlockType(): minecraftserverbindings.BlockType;
     getSelectedItem(): IBlockPaletteItem;
     /**
      * @remarks This function can't be called in read-only mode.
@@ -453,47 +465,47 @@ export class BlockUtilities {
      */
     fillVolume(
         volume: 
-            | minecraftserver.BlockVolumeBase
-            | minecraftserver.CompoundBlockVolume
+            | minecraftserverbindings.BlockVolumeBase
+            | minecraftserverbindings.CompoundBlockVolume
             | RelativeVolumeListBlockVolume,
-        block?: minecraftserver.BlockPermutation | minecraftserver.BlockType | string,
+        block?: minecraftserverbindings.BlockPermutation | minecraftserverbindings.BlockType | string,
     ): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    findObscuredBlocksWithinVolume(volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): RelativeVolumeListBlockVolume;
+    findObscuredBlocksWithinVolume(volume: minecraftserverbindings.BlockVolumeBase | RelativeVolumeListBlockVolume): RelativeVolumeListBlockVolume;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserver.CompoundBlockVolume;
+    getContiguousSelection(properties?: ContiguousSelectionProperties): minecraftserverbindings.CompoundBlockVolume;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    getDimensionLocationBoundingBox(): minecraftserver.BlockBoundingBox;
+    getDimensionLocationBoundingBox(): minecraftserverbindings.BlockBoundingBox;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    getDimensionMaxLocation(): minecraftserver.Vector3;
+    getDimensionMaxLocation(): minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    getDimensionMinLocation(): minecraftserver.Vector3;
+    getDimensionMinLocation(): minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserver.ListBlockVolume;
+    getFacePreviewSelection(properties?: QuickExtrudeProperties): minecraftserverbindings.ListBlockVolume;
     /**
      * @remarks This function can't be called in read-only mode.
      */
     isLocationInsideCurrentDimensionBounds(locationOrVolumeOrBounds: 
-            | minecraftserver.BlockBoundingBox
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.BlockBoundingBox
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): boolean;
+            | minecraftserverbindings.Vector3): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -503,14 +515,14 @@ export class BlockUtilities {
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    shrinkWrapVolume(volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): RelativeVolumeListBlockVolume;
+    shrinkWrapVolume(volume: minecraftserverbindings.BlockVolumeBase | RelativeVolumeListBlockVolume): RelativeVolumeListBlockVolume;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
     trimVolumeToFitContents(
-        volume: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume: minecraftserverbindings.BlockVolumeBase | RelativeVolumeListBlockVolume,
         retainMarqueeAfterTrimming: boolean,
         ignoreLiquid: boolean,
         ignoreNoCollision: boolean,
@@ -546,7 +558,7 @@ export class BrushShapeManager {
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    enableItemPlacement(itemType: minecraftserver.ItemType, data?: number): void;
+    enableItemPlacement(itemType: minecraftserverbindings.ItemType, data?: number): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -556,7 +568,7 @@ export class BrushShapeManager {
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    getBrushShapeOffset(): minecraftserver.Vector3;
+    getBrushShapeOffset(): minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -586,11 +598,11 @@ export class BrushShapeManager {
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    setBrushShape(shape: minecraftserver.Vector3[] | RelativeVolumeListBlockVolume): void;
+    setBrushShape(shape: minecraftserverbindings.Vector3[] | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    setBrushShapeOffset(offset: minecraftserver.Vector3): void;
+    setBrushShapeOffset(offset: minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -657,9 +669,9 @@ export class ClipboardItem {
     private constructor();
     readonly id: string;
     readonly isEmpty: boolean;
-    readonly normalizedOrigin: minecraftserver.Vector3;
-    readonly originalWorldLocation: minecraftserver.Vector3;
-    readonly size: minecraftserver.Vector3;
+    readonly normalizedOrigin: minecraftserverbindings.Vector3;
+    readonly originalWorldLocation: minecraftserverbindings.Vector3;
+    readonly size: minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -672,7 +684,7 @@ export class ClipboardItem {
      * @throws This function can throw errors.
      */
     getPredictedWriteVolume(
-        location: minecraftserver.Vector3,
+        location: minecraftserverbindings.Vector3,
         options?: ClipboardWriteOptions,
     ): RelativeVolumeListBlockVolume;
     /**
@@ -686,13 +698,13 @@ export class ClipboardItem {
      *
      * @throws This function can throw errors.
      */
-    readFromWorld(source: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume): void;
+    readFromWorld(source: minecraftserverbindings.BlockVolumeBase | RelativeVolumeListBlockVolume): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    writeToWorld(location: minecraftserver.Vector3, options?: ClipboardWriteOptions): boolean;
+    writeToWorld(location: minecraftserverbindings.Vector3, options?: ClipboardWriteOptions): boolean;
 }
 
 export class ClipboardManager {
@@ -732,7 +744,7 @@ export class CurrentThemeChangeAfterEventSignal {
 
 export class CurrentThemeColorChangeAfterEvent {
     private constructor();
-    readonly color: minecraftserver.RGBA;
+    readonly color: minecraftserverbindings.RGBA;
     readonly colorKey: string;
 }
 
@@ -767,7 +779,7 @@ export class Cursor {
      *
      * @throws This function can throw errors.
      */
-    getPosition(): minecraftserver.Vector3;
+    getPosition(): minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -791,7 +803,7 @@ export class Cursor {
      *
      * @throws This function can throw errors.
      */
-    moveBy(offset: minecraftserver.Vector3): minecraftserver.Vector3;
+    moveBy(offset: minecraftserverbindings.Vector3): minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -836,9 +848,9 @@ export class CursorPropertyChangeAfterEventSignal {
 
 export class EditorConstants {
     private constructor();
-    readonly maxSelectionSize: minecraftserver.Vector3;
-    readonly maxStructureOffset: minecraftserver.Vector3;
-    readonly minStructureOffset: minecraftserver.Vector3;
+    readonly maxSelectionSize: minecraftserverbindings.Vector3;
+    readonly maxStructureOffset: minecraftserverbindings.Vector3;
+    readonly minStructureOffset: minecraftserverbindings.Vector3;
 }
 
 export class EditorStructure {
@@ -846,7 +858,13 @@ export class EditorStructure {
     /**
      * @throws This property can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly description: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
      */
     readonly displayName: string;
     readonly id: string;
@@ -854,29 +872,71 @@ export class EditorStructure {
     /**
      * @throws This property can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link minecraftserverbindings.InvalidStructureError}
      */
-    readonly size: minecraftserver.Vector3;
+    readonly normalizedOrigin: minecraftserverbindings.Vector3;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly notes: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly offset: minecraftserverbindings.Vector3;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly originalWorldLocation: minecraftserverbindings.Vector3;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly size: minecraftserverbindings.Vector3;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly structureFullName: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly structureName: string;
+    /**
+     * @throws This property can throw errors.
+     *
+     * {@link minecraftserverbindings.InvalidStructureError}
+     */
+    readonly structureNamespace: string;
     /**
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link minecraftserverbindings.InvalidStructureError}
      */
-    getBlockPermutation(location: minecraftserver.Vector3): minecraftserver.BlockPermutation | undefined;
+    getBlockPermutation(location: minecraftserverbindings.Vector3): minecraftserverbindings.BlockPermutation | undefined;
     /**
      * @throws This function can throw errors.
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link minecraftserverbindings.InvalidStructureError}
      */
-    getIsWaterlogged(location: minecraftserver.Vector3): boolean;
+    getIsWaterlogged(location: minecraftserverbindings.Vector3): boolean;
     /**
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link minecraftserverbindings.InvalidStructureError}
      */
     getTags(): string[];
     /**
@@ -886,11 +946,11 @@ export class EditorStructure {
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link minecraftserverbindings.InvalidStructureError}
      */
     setBlockPermutation(
-        location: minecraftserver.Vector3,
-        blockPermutation: minecraftserver.BlockPermutation,
+        location: minecraftserverbindings.Vector3,
+        blockPermutation: minecraftserverbindings.BlockPermutation,
         waterlogged?: boolean,
     ): void;
     /**
@@ -898,7 +958,7 @@ export class EditorStructure {
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.InvalidStructureError}
+     * {@link minecraftserverbindings.InvalidStructureError}
      */
     setTags(tags: string[]): void;
 }
@@ -910,13 +970,13 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    createEmpty(id: string, size: minecraftserver.Vector3): EditorStructure;
+    createEmpty(fullName: string, size: minecraftserverbindings.Vector3): EditorStructure;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    createFromClipboardItem(item: ClipboardItem, structureName: string): EditorStructure;
+    createFromClipboardItem(item: ClipboardItem, fullName: string): EditorStructure;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -934,7 +994,7 @@ export class EditorStructureManager {
      *
      * @throws This function can throw errors.
      */
-    getOrCreateStructure(id: string): EditorStructure;
+    getStructure(id: string): EditorStructure;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -987,7 +1047,7 @@ export class ExtensionContext {
     readonly cursor: Cursor;
     readonly exportManager: ExportManager;
     readonly extensionInfo: Extension;
-    readonly player: minecraftserver.Player;
+    readonly player: minecraftserverbindings.Player;
     readonly playtest: PlaytestManager;
     readonly selectionManager: SelectionManager;
     readonly settings: SettingsManager;
@@ -1048,7 +1108,7 @@ export class GraphicsSettings {
 
 export class IBlockPaletteItem {
     private constructor();
-    getBlock(): minecraftserver.BlockType | undefined;
+    getBlock(): minecraftserverbindings.BlockType | undefined;
     getDisplayName(): string | undefined;
     getType(): BlockPaletteItemType;
     /**
@@ -1056,7 +1116,7 @@ export class IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    setBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string): void;
+    setBlock(block: minecraftserverbindings.BlockPermutation | minecraftserverbindings.BlockType | string): void;
 }
 
 export class Logger {
@@ -1147,7 +1207,10 @@ export class ProbabilityBlockPaletteItem extends IBlockPaletteItem {
      *
      * @throws This function can throw errors.
      */
-    addBlock(block: minecraftserver.BlockPermutation | minecraftserver.BlockType | string, weight: number): void;
+    addBlock(
+        block: minecraftserverbindings.BlockPermutation | minecraftserverbindings.BlockType | string,
+        weight: number,
+    ): void;
     getBlocks(): WeightedBlock[];
     /**
      * @remarks This function can't be called in read-only mode.
@@ -1166,23 +1229,23 @@ export class ProjectAfterEvents {
 }
 
 // @ts-ignore
-export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBase {
+export class RelativeVolumeListBlockVolume extends minecraftserverbindings.BlockVolumeBase {
     readonly isEmpty: boolean;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    origin?: minecraftserver.Vector3;
+    origin?: minecraftserverbindings.Vector3;
     readonly volumeCount: number;
-    constructor(origin?: minecraftserver.Vector3);
+    constructor(origin?: minecraftserverbindings.Vector3);
     /**
      * @remarks This function can't be called in read-only mode.
      */
     add(toAdd: 
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.Vector3[]
+            | minecraftserverbindings.BlockVolume
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): void;
+            | minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -1190,34 +1253,34 @@ export class RelativeVolumeListBlockVolume extends minecraftserver.BlockVolumeBa
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    getVolumeList(): minecraftserver.BlockVolume[];
-    hasAdjacent(location: minecraftserver.Vector3, normalizedOffset: minecraftserver.Vector3): boolean;
+    getVolumeList(): minecraftserverbindings.BlockVolume[];
+    hasAdjacent(location: minecraftserverbindings.Vector3, normalizedOffset: minecraftserverbindings.Vector3): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    moveTo(location: minecraftserver.Vector3): void;
+    moveTo(location: minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
     remove(toRemove: 
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.Vector3[]
+            | minecraftserverbindings.BlockVolume
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): void;
+            | minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
     set(toSet: 
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.Vector3[]
+            | minecraftserverbindings.BlockVolume
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): void;
+            | minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    translate(offset: minecraftserver.Vector3): void;
+    translate(offset: minecraftserverbindings.Vector3): void;
 }
 
 export class SelectionChangeAfterEventSignal {
@@ -1254,11 +1317,11 @@ export class SelectionContainerVolume extends SelectionContainerBase {
      * @remarks This function can't be called in read-only mode.
      */
     add(volume: 
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.Vector3[]
+            | minecraftserverbindings.BlockVolume
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): void;
+            | minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -1267,33 +1330,33 @@ export class SelectionContainerVolume extends SelectionContainerBase {
     /**
      * @throws This function can throw errors.
      */
-    getBoundingBox(): minecraftserver.BlockBoundingBox;
+    getBoundingBox(): minecraftserverbindings.BlockBoundingBox;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    moveTo(location: minecraftserver.Vector3): void;
+    moveTo(location: minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
     remove(volume: 
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.Vector3[]
+            | minecraftserverbindings.BlockVolume
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): void;
+            | minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
     set(volume: 
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.Vector3[]
+            | minecraftserverbindings.BlockVolume
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): void;
+            | minecraftserverbindings.Vector3): void;
     /**
      * @remarks This function can't be called in read-only mode.
      */
-    translate(offset: minecraftserver.Vector3): void;
+    translate(offset: minecraftserverbindings.Vector3): void;
 }
 
 export class SelectionContainerVolumeEvent {
@@ -1391,13 +1454,13 @@ export class ThemeSettings {
      */
     deleteTheme(id: string): void;
     getCurrentTheme(): string;
-    getThemeColors(id: string): Record<string, minecraftserver.RGBA> | undefined;
+    getThemeColors(id: string): Record<string, minecraftserverbindings.RGBA> | undefined;
     getThemeIdList(): string[];
     /**
      * @throws This function can throw errors.
      */
     getThemeName(id: string): string;
-    resolveColorKey(key: ThemeSettingsColorKey): minecraftserver.RGBA;
+    resolveColorKey(key: ThemeSettingsColorKey): minecraftserverbindings.RGBA;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1415,7 +1478,7 @@ export class ThemeSettings {
      *
      * @throws This function can throw errors.
      */
-    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void;
+    updateThemeColor(id: string, key: ThemeSettingsColorKey, newColor: minecraftserverbindings.RGBA): void;
 }
 
 export class TransactionManager {
@@ -1425,7 +1488,7 @@ export class TransactionManager {
      *
      * @throws This function can throw errors.
      */
-    addEntityOperation(entity: minecraftserver.Entity, type: EntityOperationType): boolean;
+    addEntityOperation(entity: minecraftserverbindings.Entity, type: EntityOperationType): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1498,19 +1561,19 @@ export class TransactionManager {
      *
      * @throws This function can throw errors.
      */
-    trackBlockChangeArea(from: minecraftserver.Vector3, to: minecraftserver.Vector3): boolean;
+    trackBlockChangeArea(from: minecraftserverbindings.Vector3, to: minecraftserverbindings.Vector3): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    trackBlockChangeList(locations: minecraftserver.Vector3[]): boolean;
+    trackBlockChangeList(locations: minecraftserverbindings.Vector3[]): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    trackBlockChangeVolume(blockVolume: minecraftserver.BlockVolumeBase): boolean;
+    trackBlockChangeVolume(blockVolume: minecraftserverbindings.BlockVolumeBase): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1538,11 +1601,15 @@ export class Widget {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    collisionOffset: minecraftserver.Vector3;
+    collisionOffset: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
     collisionRadius: number;
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    collisionType: WidgetCollisionType;
     /**
      * @throws This property can throw errors.
      *
@@ -1552,7 +1619,7 @@ export class Widget {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    location: minecraftserver.Vector3;
+    location: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -1579,7 +1646,7 @@ export class Widget {
      */
     addBoundingBox(
         componentName: string,
-        size: minecraftserver.Vector3,
+        size: minecraftserverbindings.Vector3,
         options?: WidgetComponentBoundingBoxOptions,
     ): WidgetComponentBoundingBox;
     /**
@@ -1608,6 +1675,12 @@ export class Widget {
      * @throws This function can throw errors.
      */
     addGizmoComponent(componentName: string, options?: WidgetComponentGizmoOptions): WidgetComponentGizmo;
+    /**
+     * @remarks This function can't be called in read-only mode.
+     *
+     * @throws This function can throw errors.
+     */
+    addGridComponent(componentName: string, options?: WidgetComponentGridOptions): WidgetComponentGrid;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1647,7 +1720,7 @@ export class Widget {
      */
     addVolumeOutline(
         componentName: string,
-        volume?: minecraftserver.BlockVolumeBase | RelativeVolumeListBlockVolume,
+        volume?: minecraftserverbindings.BlockVolumeBase | RelativeVolumeListBlockVolume,
         options?: WidgetComponentVolumeOutlineOptions,
     ): WidgetComponentVolumeOutline;
     /**
@@ -1699,7 +1772,7 @@ export class WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly location: minecraftserver.Vector3;
+    readonly location: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -1713,7 +1786,7 @@ export class WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    offset: minecraftserver.Vector3;
+    offset: minecraftserverbindings.Vector3;
     readonly valid: boolean;
     visible: boolean;
     /**
@@ -1738,7 +1811,7 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    boundsOffset: minecraftserver.Vector3;
+    boundsOffset: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -1746,23 +1819,23 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    hullColor: minecraftserver.RGBA;
+    hullColor: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    mirror: minecraftserver.StructureMirrorAxis;
+    mirror: minecraftserverbindings.StructureMirrorAxis;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    normalizedOrigin: minecraftserver.Vector3;
+    normalizedOrigin: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    outlineColor: minecraftserver.RGBA;
+    outlineColor: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    rotation: minecraftserver.StructureRotation;
+    rotation: minecraftserverbindings.StructureRotation;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -1770,13 +1843,13 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    size: minecraftserver.Vector3;
+    size: minecraftserverbindings.Vector3;
     /**
      * @throws This property can throw errors.
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    readonly transformedWorldVolume: minecraftserverbindings.BlockVolume;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -1801,8 +1874,8 @@ export class WidgetComponentBoundingBox extends WidgetComponentBase {
 
 export class WidgetComponentBoundingBoxStateChangeEventParameters {
     private constructor();
-    readonly boundsOffset?: minecraftserver.Vector3;
-    readonly boundsSize?: minecraftserver.Vector3;
+    readonly boundsOffset?: minecraftserverbindings.Vector3;
+    readonly boundsSize?: minecraftserverbindings.Vector3;
     readonly component: WidgetComponentBoundingBox;
     readonly eventType: WidgetGizmoEventType;
     readonly widget: Widget;
@@ -1814,14 +1887,14 @@ export class WidgetComponentClipboard extends WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    clipboardOffset: minecraftserver.Vector3;
-    highlightHullColor: minecraftserver.RGBA;
-    highlightOutlineColor: minecraftserver.RGBA;
-    hullColor: minecraftserver.RGBA;
-    mirror: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin: minecraftserver.Vector3;
-    outlineColor: minecraftserver.RGBA;
-    rotation: minecraftserver.StructureRotation;
+    clipboardOffset: minecraftserverbindings.Vector3;
+    highlightHullColor: minecraftserverbindings.RGBA;
+    highlightOutlineColor: minecraftserverbindings.RGBA;
+    hullColor: minecraftserverbindings.RGBA;
+    mirror: minecraftserverbindings.StructureMirrorAxis;
+    normalizedOrigin: minecraftserverbindings.Vector3;
+    outlineColor: minecraftserverbindings.RGBA;
+    rotation: minecraftserverbindings.StructureRotation;
     showOutline: boolean;
 }
 
@@ -1853,7 +1926,7 @@ export class WidgetComponentGizmo extends WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    normalizedOffsetOverride?: minecraftserver.Vector3;
+    normalizedOffsetOverride?: minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -1869,6 +1942,27 @@ export class WidgetComponentGizmoStateChangeEventParameters {
     readonly component: WidgetComponentGizmo;
     readonly eventType?: WidgetGizmoEventType;
     readonly widget: Widget;
+}
+
+// @ts-ignore
+export class WidgetComponentGrid extends WidgetComponentBase {
+    private constructor();
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    gridColor: minecraftserverbindings.RGBA;
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    gridCount: minecraftserverbindings.Vector2;
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    gridSize: minecraftserverbindings.Vector2;
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    plane: Plane;
 }
 
 // @ts-ignore
@@ -1908,21 +2002,25 @@ export class WidgetComponentRenderPrimitiveTypeAxialSphere extends WidgetCompone
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    center: minecraftserver.Vector3;
+    center: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    color?: minecraftserver.RGBA;
+    color?: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
     radius: number;
-    constructor(center: minecraftserver.Vector3, radius: number, color?: minecraftserver.RGBA);
+    constructor(center: minecraftserverbindings.Vector3, radius: number, color?: minecraftserverbindings.RGBA);
 }
 
 export class WidgetComponentRenderPrimitiveTypeBase {
     private constructor();
     readonly primitiveType: PrimitiveType;
+    /**
+     * @remarks This property can't be edited in read-only mode.
+     */
+    renderPriority: number;
 }
 
 // @ts-ignore
@@ -1930,16 +2028,20 @@ export class WidgetComponentRenderPrimitiveTypeBox extends WidgetComponentRender
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    center: minecraftserver.Vector3;
+    center: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    color: minecraftserver.RGBA;
+    color: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    size?: minecraftserver.Vector3;
-    constructor(center: minecraftserver.Vector3, color: minecraftserver.RGBA, size?: minecraftserver.Vector3);
+    size?: minecraftserverbindings.Vector3;
+    constructor(
+        center: minecraftserverbindings.Vector3,
+        color: minecraftserverbindings.RGBA,
+        size?: minecraftserverbindings.Vector3,
+    );
 }
 
 // @ts-ignore
@@ -1947,16 +2049,16 @@ export class WidgetComponentRenderPrimitiveTypeDisc extends WidgetComponentRende
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    center: minecraftserver.Vector3;
+    center: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    color: minecraftserver.RGBA;
+    color: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
     radius: number;
-    constructor(center: minecraftserver.Vector3, radius: number, color: minecraftserver.RGBA);
+    constructor(center: minecraftserverbindings.Vector3, radius: number, color: minecraftserverbindings.RGBA);
 }
 
 // @ts-ignore
@@ -1964,16 +2066,20 @@ export class WidgetComponentRenderPrimitiveTypeLine extends WidgetComponentRende
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    color: minecraftserver.RGBA;
+    color: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    end: minecraftserver.Vector3;
+    end: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    start: minecraftserver.Vector3;
-    constructor(start: minecraftserver.Vector3, end: minecraftserver.Vector3, color: minecraftserver.RGBA);
+    start: minecraftserverbindings.Vector3;
+    constructor(
+        start: minecraftserverbindings.Vector3,
+        end: minecraftserverbindings.Vector3,
+        color: minecraftserverbindings.RGBA,
+    );
 }
 
 // @ts-ignore
@@ -2000,7 +2106,7 @@ export class WidgetComponentSpline extends WidgetComponentBase {
      *
      * @throws This function can throw errors.
      */
-    getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserver.Vector3[];
+    getInterpolatedPoints(maxPointsPerControlSegment?: number): minecraftserverbindings.Vector3[];
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2019,7 +2125,7 @@ export class WidgetComponentText extends WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    color: minecraftserver.RGBA;
+    color: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -2032,31 +2138,31 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    highlightHullColor: minecraftserver.RGBA;
+    highlightHullColor: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    highlightOutlineColor: minecraftserver.RGBA;
+    highlightOutlineColor: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    hullColor: minecraftserver.RGBA;
+    hullColor: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    mirror: minecraftserver.StructureMirrorAxis;
+    mirror: minecraftserverbindings.StructureMirrorAxis;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    normalizedOrigin: minecraftserver.Vector3;
+    normalizedOrigin: minecraftserverbindings.Vector3;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    outlineColor: minecraftserver.RGBA;
+    outlineColor: minecraftserverbindings.RGBA;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    rotation: minecraftserver.StructureRotation;
+    rotation: minecraftserverbindings.StructureRotation;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
@@ -2070,11 +2176,11 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      *
      * {@link InvalidWidgetComponentError}
      */
-    readonly transformedWorldVolume: minecraftserver.BlockVolume;
+    readonly transformedWorldVolume: minecraftserverbindings.BlockVolume;
     /**
      * @remarks This property can't be edited in read-only mode.
      */
-    volumeOffset: minecraftserver.Vector3;
+    volumeOffset: minecraftserverbindings.Vector3;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -2091,11 +2197,11 @@ export class WidgetComponentVolumeOutline extends WidgetComponentBase {
      * {@link InvalidWidgetComponentError}
      */
     setVolume(volumeToSet?: 
-            | minecraftserver.Vector3[]
-            | minecraftserver.BlockVolume
-            | minecraftserver.BlockVolumeBase
+            | minecraftserverbindings.Vector3[]
+            | minecraftserverbindings.BlockVolume
+            | minecraftserverbindings.BlockVolumeBase
             | RelativeVolumeListBlockVolume
-            | minecraftserver.Vector3): void;
+            | minecraftserverbindings.Vector3): void;
 }
 
 export class WidgetGroup {
@@ -2119,7 +2225,7 @@ export class WidgetGroup {
      *
      * @throws This function can throw errors.
      */
-    createWidget(location: minecraftserver.Vector3, options?: WidgetCreateOptions): Widget;
+    createWidget(location: minecraftserverbindings.Vector3, options?: WidgetCreateOptions): Widget;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -2175,7 +2281,7 @@ export class WidgetMouseButtonEventData {
 export class WidgetStateChangeEventData {
     private constructor();
     readonly group: WidgetGroup;
-    readonly location?: minecraftserver.Vector3;
+    readonly location?: minecraftserverbindings.Vector3;
     readonly mouseEvent?: WidgetMouseButtonEventData;
     readonly selected?: boolean;
     readonly visible?: boolean;
@@ -2183,15 +2289,15 @@ export class WidgetStateChangeEventData {
 }
 
 export interface BlockMaskList {
-    blockList: (minecraftserver.BlockPermutation | minecraftserver.BlockType | string)[];
+    blockList: (minecraftserverbindings.BlockPermutation | minecraftserverbindings.BlockType | string)[];
     maskType: BlockMaskListType;
 }
 
 export interface ClipboardWriteOptions {
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    offset?: minecraftserver.Vector3;
-    rotation?: minecraftserver.StructureRotation;
+    mirror?: minecraftserverbindings.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserverbindings.Vector3;
+    offset?: minecraftserverbindings.Vector3;
+    rotation?: minecraftserverbindings.StructureRotation;
 }
 
 export interface ContiguousSelectionProperties {
@@ -2202,35 +2308,37 @@ export interface ContiguousSelectionProperties {
     isFace?: boolean;
     selectionDirection?: number;
     size?: number;
-    startingLocation?: minecraftserver.Vector3;
+    startingLocation?: minecraftserverbindings.Vector3;
 }
 
 export interface CursorPosition {
     FaceDirection: number;
-    Position: minecraftserver.Vector3;
+    Position: minecraftserverbindings.Vector3;
 }
 
 export interface CursorProperties {
     controlMode?: CursorControlMode;
-    fillColor?: minecraftserver.RGBA;
+    fillColor?: minecraftserverbindings.RGBA;
     fixedModeDistance?: number;
-    outlineColor?: minecraftserver.RGBA;
+    outlineColor?: minecraftserverbindings.RGBA;
     projectThroughLiquid?: boolean;
     targetMode?: CursorTargetMode;
     visible?: boolean;
 }
 
 export interface CursorRay {
-    end: minecraftserver.Vector3;
+    end: minecraftserverbindings.Vector3;
     hit: boolean;
-    start: minecraftserver.Vector3;
+    start: minecraftserverbindings.Vector3;
 }
 
 export interface EditorStructureSearchOptions {
     displayName?: string;
-    idPattern?: string;
-    includeSources?: StructureSource[];
-    includeTags?: string[];
+    id?: string;
+    sources?: StructureSource[];
+    structureName?: string;
+    structureNamespace?: string;
+    tags?: string[];
 }
 
 export interface ExtensionOptionalParameters {
@@ -2246,7 +2354,7 @@ export interface GameOptions {
     commandBlockEnabled?: boolean;
     commandBlockOutput?: boolean;
     daylightCycle?: DaylightCycle;
-    difficulty?: minecraftserver.Difficulty;
+    difficulty?: minecraftserverbindings.Difficulty;
     dimensionId?: string;
     disableWeather?: boolean;
     drowningDamage?: boolean;
@@ -2259,7 +2367,7 @@ export interface GameOptions {
     freezeDamage?: boolean;
     friendlyFire?: boolean;
     functionCommandLimit?: number;
-    gameMode?: minecraftserver.GameMode;
+    gameMode?: minecraftserverbindings.GameMode;
     hardcore?: boolean;
     immediateRespawn?: boolean;
     insomnia?: boolean;
@@ -2274,7 +2382,7 @@ export interface GameOptions {
     multiplayerGame?: boolean;
     naturalRegeneration?: boolean;
     playerAccess?: GamePublishSetting;
-    playerPermissions?: minecraftserver.PlayerPermissionLevel;
+    playerPermissions?: minecraftserverbindings.PlayerPermissionLevel;
     randomTickSpeed?: number;
     recipeUnlocking?: boolean;
     respawnBlocksExplode?: boolean;
@@ -2287,7 +2395,7 @@ export interface GameOptions {
     showItemTags?: boolean;
     simulationDistance?: number;
     sleepSkipPercent?: number;
-    spawnPosition?: minecraftserver.Vector3;
+    spawnPosition?: minecraftserverbindings.Vector3;
     startingMap?: boolean;
     tileDrops?: boolean;
     timeOfDay?: number;
@@ -2298,18 +2406,18 @@ export interface GameOptions {
 
 export interface LogProperties {
     channelMask?: LogChannel;
-    player?: minecraftserver.Player;
+    player?: minecraftserverbindings.Player;
     subMessage?: string;
     tags?: string[];
 }
 
 export interface ProjectExportOptions {
     alwaysDay?: boolean;
-    difficulty?: minecraftserver.Difficulty;
+    difficulty?: minecraftserverbindings.Difficulty;
     disableWeather?: boolean;
     exportName?: string;
     exportType: ProjectExportType;
-    gameMode?: minecraftserver.GameMode;
+    gameMode?: minecraftserverbindings.GameMode;
     initialTimOfDay?: number;
 }
 
@@ -2321,31 +2429,31 @@ export interface QuickExtrudeProperties {
     layerCount?: number;
     selectionDirection?: number;
     size?: number;
-    startingLocation?: minecraftserver.Vector3;
+    startingLocation?: minecraftserverbindings.Vector3;
 }
 
 export interface WeightedBlock {
-    block: minecraftserver.BlockType;
+    block: minecraftserverbindings.BlockType;
     weight: number;
 }
 
 export interface WidgetComponentBaseOptions {
     lockToSurface?: boolean;
-    offset?: minecraftserver.Vector3;
+    offset?: minecraftserverbindings.Vector3;
     visible?: boolean;
 }
 
 // @ts-ignore
 export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOptions {
-    boundsOffset?: minecraftserver.Vector3;
+    boundsOffset?: minecraftserverbindings.Vector3;
     enableResizeHandles?: Axis;
-    hullColor?: minecraftserver.RGBA;
-    maxSize?: minecraftserver.Vector3;
-    minSize?: minecraftserver.Vector3;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    hullColor?: minecraftserverbindings.RGBA;
+    maxSize?: minecraftserverbindings.Vector3;
+    minSize?: minecraftserverbindings.Vector3;
+    mirror?: minecraftserverbindings.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserverbindings.Vector3;
+    outlineColor?: minecraftserverbindings.RGBA;
+    rotation?: minecraftserverbindings.StructureRotation;
     showWorldIntersections?: boolean;
     stateChangeEvent?: (arg0: WidgetComponentBoundingBoxStateChangeEventParameters) => void;
     visibleHull?: boolean;
@@ -2353,14 +2461,14 @@ export interface WidgetComponentBoundingBoxOptions extends WidgetComponentBaseOp
 
 // @ts-ignore
 export interface WidgetComponentClipboardOptions extends WidgetComponentBaseOptions {
-    clipboardOffset?: minecraftserver.Vector3;
-    highlightHullColor?: minecraftserver.RGBA;
-    highlightOutlineColor?: minecraftserver.RGBA;
-    hullColor?: minecraftserver.RGBA;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    clipboardOffset?: minecraftserverbindings.Vector3;
+    highlightHullColor?: minecraftserverbindings.RGBA;
+    highlightOutlineColor?: minecraftserverbindings.RGBA;
+    hullColor?: minecraftserverbindings.RGBA;
+    mirror?: minecraftserverbindings.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserverbindings.Vector3;
+    outlineColor?: minecraftserverbindings.RGBA;
+    rotation?: minecraftserverbindings.StructureRotation;
     showOutline?: boolean;
 }
 
@@ -2375,8 +2483,16 @@ export interface WidgetComponentEntityOptions extends WidgetComponentBaseOptions
 export interface WidgetComponentGizmoOptions extends WidgetComponentBaseOptions {
     axes?: Axis;
     enablePlanes?: boolean;
-    normalizedAutoOffset?: minecraftserver.Vector3;
+    normalizedAutoOffset?: minecraftserverbindings.Vector3;
     stateChangeEvent?: (arg0: WidgetComponentGizmoStateChangeEventParameters) => void;
+}
+
+// @ts-ignore
+export interface WidgetComponentGridOptions extends WidgetComponentBaseOptions {
+    color?: minecraftserverbindings.RGBA;
+    gridCount?: minecraftserverbindings.Vector2;
+    gridSize?: minecraftserverbindings.Vector2;
+    plane?: Plane;
 }
 
 // @ts-ignore
@@ -2395,35 +2511,36 @@ export interface WidgetComponentSplineOptions extends WidgetComponentBaseOptions
 
 // @ts-ignore
 export interface WidgetComponentTextOptions extends WidgetComponentBaseOptions {
-    color?: minecraftserver.RGBA;
+    color?: minecraftserverbindings.RGBA;
 }
 
 // @ts-ignore
 export interface WidgetComponentVolumeOutlineOptions extends WidgetComponentBaseOptions {
-    highlightHullColor?: minecraftserver.RGBA;
-    highlightOutlineColor?: minecraftserver.RGBA;
-    hullColor?: minecraftserver.RGBA;
-    mirror?: minecraftserver.StructureMirrorAxis;
-    normalizedOrigin?: minecraftserver.Vector3;
-    outlineColor?: minecraftserver.RGBA;
-    rotation?: minecraftserver.StructureRotation;
+    highlightHullColor?: minecraftserverbindings.RGBA;
+    highlightOutlineColor?: minecraftserverbindings.RGBA;
+    hullColor?: minecraftserverbindings.RGBA;
+    mirror?: minecraftserverbindings.StructureMirrorAxis;
+    normalizedOrigin?: minecraftserverbindings.Vector3;
+    outlineColor?: minecraftserverbindings.RGBA;
+    rotation?: minecraftserverbindings.StructureRotation;
     showHighlightOutline?: boolean;
     showOutline?: boolean;
-    volumeOffset?: minecraftserver.Vector3;
+    volumeOffset?: minecraftserverbindings.Vector3;
 }
 
 export interface WidgetCreateOptions {
     bindPositionToBlockCursor?: boolean;
-    collisionOffset?: minecraftserver.Vector3;
+    collisionOffset?: minecraftserverbindings.Vector3;
     collisionRadius?: number;
+    collisionType?: WidgetCollisionType;
     lockToSurface?: boolean;
     selectable?: boolean;
     snapToBlockLocation?: boolean;
     stateChangeEvent?: (arg0: WidgetStateChangeEventData) => void;
     visible?: boolean;
     widgetName?: string;
-    worldBoundsMax?: minecraftserver.Vector3;
-    worldBoundsMin?: minecraftserver.Vector3;
+    worldBoundsMax?: minecraftserverbindings.Vector3;
+    worldBoundsMin?: minecraftserverbindings.Vector3;
 }
 
 export interface WidgetGroupCreateOptions {

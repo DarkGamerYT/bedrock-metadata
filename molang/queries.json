@@ -181,6 +181,15 @@
             "name": "query.effect_particle_count"
         },
         {
+            "name": "query.entity_biome_has_all_tags"
+        },
+        {
+            "name": "query.entity_biome_has_any_identifier"
+        },
+        {
+            "name": "query.entity_biome_has_any_tags"
+        },
+        {
             "name": "query.equipment_count"
         },
         {
@@ -221,6 +230,9 @@
         },
         {
             "name": "query.get_name"
+        },
+        {
+            "name": "query.get_pack_setting"
         },
         {
             "name": "query.get_root_locator_offset"
@@ -506,6 +518,12 @@
         },
         {
             "name": "query.is_owner_identifier_any"
+        },
+        {
+            "name": "query.is_pack_setting_enabled"
+        },
+        {
+            "name": "query.is_pack_setting_selected"
         },
         {
             "name": "query.is_persona_or_premium_skin"
@@ -900,7 +918,5 @@
         {
             "name": "query.yaw_speed"
         }
-    ],
-    "minecraft_version": "1.21.110-preview.26",
-    "name": "molang-queries"
+    ]
 }

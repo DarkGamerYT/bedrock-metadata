@@ -27,7 +27,7 @@ export class ActionFormData {
      *
      * @throws This function can throw errors.
      */
-    show(player: mojangminecraft.Player): Promise<ActionFormResponse>;
+    show(player: minecraftserverbindings.Player): Promise<ActionFormResponse>;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -63,7 +63,7 @@ export class MessageFormData {
      *
      * @throws This function can throw errors.
      */
-    show(player: mojangminecraft.Player): Promise<MessageFormResponse>;
+    show(player: minecraftserverbindings.Player): Promise<MessageFormResponse>;
     /**
      * @remarks This function can't be called in read-only mode.
      */
@@ -90,7 +90,7 @@ export class ModalFormData {
      *
      * @throws This function can throw errors.
      */
-    show(player: mojangminecraft.Player): Promise<ModalFormResponse>;
+    show(player: minecraftserverbindings.Player): Promise<ModalFormResponse>;
     /**
      * @remarks This function can't be called in read-only mode.
      */

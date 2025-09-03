@@ -14,6 +14,6 @@
 import * as minecraftcommon from "@minecraft/common";
 import * as mojangminecraft from "mojang-minecraft";
 // @ts-ignore
-export class SimulatedPlayer extends mojangminecraft.Player {
+export class SimulatedPlayer extends minecraftserverbindings.Player {
     private constructor();
 }

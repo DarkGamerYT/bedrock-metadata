@@ -25,11 +25,11 @@ export enum FormRejectReason {
 }
 
 export class ActionFormData {
-    body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
-    button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
+    body(bodyText: minecraftserverbindings.RawMessage | string): ActionFormData;
+    button(text: minecraftserverbindings.RawMessage | string, iconPath?: string): ActionFormData;
     divider(): ActionFormData;
-    header(text: minecraftserver.RawMessage | string): ActionFormData;
-    label(text: minecraftserver.RawMessage | string): ActionFormData;
+    header(text: minecraftserverbindings.RawMessage | string): ActionFormData;
+    label(text: minecraftserverbindings.RawMessage | string): ActionFormData;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -37,12 +37,12 @@ export class ActionFormData {
      *
      * {@link minecraftcommon.EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link minecraftserverbindings.InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link minecraftserverbindings.RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<ActionFormResponse>;
-    title(titleText: minecraftserver.RawMessage | string): ActionFormData;
+    show(player: minecraftserverbindings.Player): Promise<ActionFormResponse>;
+    title(titleText: minecraftserverbindings.RawMessage | string): ActionFormData;
 }
 
 // @ts-ignore
@@ -58,9 +58,9 @@ export class FormResponse {
 }
 
 export class MessageFormData {
-    body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
-    button1(text: minecraftserver.RawMessage | string): MessageFormData;
-    button2(text: minecraftserver.RawMessage | string): MessageFormData;
+    body(bodyText: minecraftserverbindings.RawMessage | string): MessageFormData;
+    button1(text: minecraftserverbindings.RawMessage | string): MessageFormData;
+    button2(text: minecraftserverbindings.RawMessage | string): MessageFormData;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -68,12 +68,12 @@ export class MessageFormData {
      *
      * {@link minecraftcommon.EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link minecraftserverbindings.InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link minecraftserverbindings.RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<MessageFormResponse>;
-    title(titleText: minecraftserver.RawMessage | string): MessageFormData;
+    show(player: minecraftserverbindings.Player): Promise<MessageFormResponse>;
+    title(titleText: minecraftserverbindings.RawMessage | string): MessageFormData;
 }
 
 // @ts-ignore
@@ -85,12 +85,12 @@ export class MessageFormResponse extends FormResponse {
 export class ModalFormData {
     divider(): ModalFormData;
     dropdown(
-        label: minecraftserver.RawMessage | string,
-        items: (minecraftserver.RawMessage | string)[],
+        label: minecraftserverbindings.RawMessage | string,
+        items: (minecraftserverbindings.RawMessage | string)[],
         dropdownOptions?: ModalFormDataDropdownOptions,
     ): ModalFormData;
-    header(text: minecraftserver.RawMessage | string): ModalFormData;
-    label(text: minecraftserver.RawMessage | string): ModalFormData;
+    header(text: minecraftserverbindings.RawMessage | string): ModalFormData;
+    label(text: minecraftserverbindings.RawMessage | string): ModalFormData;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -98,25 +98,25 @@ export class ModalFormData {
      *
      * {@link minecraftcommon.EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link minecraftserverbindings.InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link minecraftserverbindings.RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<ModalFormResponse>;
+    show(player: minecraftserverbindings.Player): Promise<ModalFormResponse>;
     slider(
-        label: minecraftserver.RawMessage | string,
+        label: minecraftserverbindings.RawMessage | string,
         minimumValue: number,
         maximumValue: number,
         sliderOptions?: ModalFormDataSliderOptions,
     ): ModalFormData;
-    submitButton(submitButtonText: minecraftserver.RawMessage | string): ModalFormData;
+    submitButton(submitButtonText: minecraftserverbindings.RawMessage | string): ModalFormData;
     textField(
-        label: minecraftserver.RawMessage | string,
-        placeholderText: minecraftserver.RawMessage | string,
+        label: minecraftserverbindings.RawMessage | string,
+        placeholderText: minecraftserverbindings.RawMessage | string,
         textFieldOptions?: ModalFormDataTextFieldOptions,
     ): ModalFormData;
-    title(titleText: minecraftserver.RawMessage | string): ModalFormData;
-    toggle(label: minecraftserver.RawMessage | string, toggleOptions?: ModalFormDataToggleOptions): ModalFormData;
+    title(titleText: minecraftserverbindings.RawMessage | string): ModalFormData;
+    toggle(label: minecraftserverbindings.RawMessage | string, toggleOptions?: ModalFormDataToggleOptions): ModalFormData;
 }
 
 // @ts-ignore
@@ -132,28 +132,28 @@ export class UIManager {
      *
      * @throws This function can throw errors.
      */
-    closeAllForms(player: minecraftserver.Player): void;
+    closeAllForms(player: minecraftserverbindings.Player): void;
 }
 
 export interface ModalFormDataDropdownOptions {
     defaultValueIndex?: number;
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: minecraftserverbindings.RawMessage | string;
 }
 
 export interface ModalFormDataSliderOptions {
     defaultValue?: number;
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: minecraftserverbindings.RawMessage | string;
     valueStep?: number;
 }
 
 export interface ModalFormDataTextFieldOptions {
-    defaultValue?: minecraftserver.RawMessage | string;
-    tooltip?: minecraftserver.RawMessage | string;
+    defaultValue?: minecraftserverbindings.RawMessage | string;
+    tooltip?: minecraftserverbindings.RawMessage | string;
 }
 
 export interface ModalFormDataToggleOptions {
     defaultValue?: boolean;
-    tooltip?: minecraftserver.RawMessage | string;
+    tooltip?: minecraftserverbindings.RawMessage | string;
 }
 
 // @ts-ignore

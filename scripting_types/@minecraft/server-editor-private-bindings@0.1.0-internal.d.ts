@@ -376,13 +376,13 @@ export class MinecraftEditorInternal {
      *
      * @throws This function can throw errors.
      */
-    fireTelemetryEvent(player: minecraftserver.Player, source: string, eventName: string, metadata: string): void;
+    fireTelemetryEvent(player: minecraftserverbindings.Player, source: string, eventName: string, metadata: string): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    getPlayerServices(player: minecraftserver.Player): InternalPlayerServiceContext;
+    getPlayerServices(player: minecraftserverbindings.Player): InternalPlayerServiceContext;
     /**
      * @remarks This function can be called in early-execution mode.
      *
@@ -414,38 +414,38 @@ export class ProjectRegion {
      * @throws This function can throw errors.
      */
     getAvailableLocationFromRay(
-        location: minecraftserver.Vector3,
-        direction: minecraftserver.Vector3,
-        options?: minecraftserver.BlockRaycastOptions,
-    ): minecraftserver.Vector3 | undefined;
+        location: minecraftserverbindings.Vector3,
+        direction: minecraftserverbindings.Vector3,
+        options?: minecraftserverbindings.BlockRaycastOptions,
+    ): minecraftserverbindings.Vector3 | undefined;
     /**
      * @throws This function can throw errors.
      */
-    getBlock(location: minecraftserver.Vector3): minecraftserver.Block | undefined;
+    getBlock(location: minecraftserverbindings.Vector3): minecraftserverbindings.Block | undefined;
     /**
      * @throws This function can throw errors.
      */
-    getBlockMapColor(location: minecraftserver.Vector3): minecraftserver.RGBA;
+    getBlockMapColor(location: minecraftserverbindings.Vector3): minecraftserverbindings.RGBA;
     /**
      * @throws This function can throw errors.
      */
-    getBlockPermutation(location: minecraftserver.Vector3): minecraftserver.BlockPermutation;
+    getBlockPermutation(location: minecraftserverbindings.Vector3): minecraftserverbindings.BlockPermutation;
     /**
      * @throws This function can throw errors.
      */
-    getBlockTypeId(location: minecraftserver.Vector3): string;
+    getBlockTypeId(location: minecraftserverbindings.Vector3): string;
     /**
      * @throws This function can throw errors.
      */
-    getBounds(): minecraftserver.BlockBoundingBox;
+    getBounds(): minecraftserverbindings.BlockBoundingBox;
     /**
      * @throws This function can throw errors.
      */
-    isAirBlock(location: minecraftserver.Vector3): boolean;
+    isAirBlock(location: minecraftserverbindings.Vector3): boolean;
     /**
      * @throws This function can throw errors.
      */
-    isAreaAvailable(boundingBox: minecraftserver.BlockBoundingBox): boolean;
+    isAreaAvailable(boundingBox: minecraftserverbindings.BlockBoundingBox): boolean;
     /**
      * @throws This function can throw errors.
      */
@@ -453,19 +453,19 @@ export class ProjectRegion {
     /**
      * @throws This function can throw errors.
      */
-    isBlockWaterLogged(location: minecraftserver.Vector3): boolean;
+    isBlockWaterLogged(location: minecraftserverbindings.Vector3): boolean;
     /**
      * @throws This function can throw errors.
      */
-    isLiquidBlock(location: minecraftserver.Vector3): boolean;
+    isLiquidBlock(location: minecraftserverbindings.Vector3): boolean;
     /**
      * @throws This function can throw errors.
      */
-    isLocationAvailable(location: minecraftserver.Vector3): boolean;
+    isLocationAvailable(location: minecraftserverbindings.Vector3): boolean;
     /**
      * @throws This function can throw errors.
      */
-    isSolidBlock(location: minecraftserver.Vector3): boolean;
+    isSolidBlock(location: minecraftserverbindings.Vector3): boolean;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -473,7 +473,7 @@ export class ProjectRegion {
      */
     requestBlockOperationArea(
         volume: minecraftservereditorbindings.RelativeVolumeListBlockVolume,
-        callback: (arg0: minecraftserver.BlockLocationIterator) => void,
+        callback: (arg0: minecraftserverbindings.BlockLocationIterator) => void,
     ): Promise<void>;
     /**
      * @remarks This function can't be called in read-only mode.
@@ -492,37 +492,37 @@ export class ProjectRegion {
      *
      * @throws This function can throw errors.
      */
-    requestMove(center: minecraftserver.Vector3): Promise<void>;
+    requestMove(center: minecraftserverbindings.Vector3): Promise<void>;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    setBlockType(location: minecraftserver.Vector3, blockType: minecraftserver.BlockType | string): void;
+    setBlockType(location: minecraftserverbindings.Vector3, blockType: minecraftserverbindings.BlockType | string): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    setBlockWaterlogged(location: minecraftserver.Vector3, isWaterlogged: boolean): void;
+    setBlockWaterlogged(location: minecraftserverbindings.Vector3, isWaterlogged: boolean): void;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      *
-     * {@link minecraftserver.EntitySpawnError}
+     * {@link minecraftserverbindings.EntitySpawnError}
      *
      * {@link Error}
      *
      * {@link minecraftcommon.InvalidArgumentError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link minecraftserverbindings.InvalidEntityError}
      */
     spawnEntity(
-        identifier: minecraftserver.EntityType | string,
-        location: minecraftserver.Vector3,
+        identifier: minecraftserverbindings.EntityType | string,
+        location: minecraftserverbindings.Vector3,
         rotation?: number,
-    ): minecraftserver.Entity;
+    ): minecraftserverbindings.Entity;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -534,7 +534,7 @@ export class ProjectRegion {
      *
      * @throws This function can throw errors.
      */
-    waitUntilBoundsAvailable(boundingBox: minecraftserver.BlockBoundingBox): Promise<void>;
+    waitUntilBoundsAvailable(boundingBox: minecraftserverbindings.BlockBoundingBox): Promise<void>;
 }
 
 export class ProjectRegionManager {

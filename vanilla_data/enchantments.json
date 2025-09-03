@@ -164,7 +164,5 @@
             "name": "wind_burst",
             "max_level": 3
         }
-    ],
-    "minecraft_version": "1.21.110-preview.26",
-    "name": "enchantments"
+    ]
 }

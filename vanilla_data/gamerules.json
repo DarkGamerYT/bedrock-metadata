@@ -91,11 +91,6 @@
             "default_value": false
         },
         {
-            "name": "locatorBar",
-            "type": "boolean",
-            "default_value": true
-        },
-        {
             "name": "maxCommandChainLength",
             "type": "number",
             "default_value": 65535
@@ -190,7 +185,5 @@
             "type": "boolean",
             "default_value": false
         }
-    ],
-    "minecraft_version": "1.21.110-preview.26",
-    "name": "gamerules"
+    ]
 }

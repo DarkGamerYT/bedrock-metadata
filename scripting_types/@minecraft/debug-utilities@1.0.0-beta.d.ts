@@ -19,18 +19,18 @@ export class DebugArrow extends DebugLine {
     headLength: number;
     headRadius: number;
     headSegments: number;
-    constructor(location: minecraftserver.Vector3, endLocation: minecraftserver.Vector3);
+    constructor(location: minecraftserverbindings.Vector3, endLocation: minecraftserverbindings.Vector3);
 }
 
 // @ts-ignore
 export class DebugBox extends DebugShape {
-    bound: minecraftserver.Vector3;
-    constructor(location: minecraftserver.Vector3);
+    bound: minecraftserverbindings.Vector3;
+    constructor(location: minecraftserverbindings.Vector3);
 }
 
 // @ts-ignore
 export class DebugCircle extends DebugShape {
-    constructor(location: minecraftserver.Vector3);
+    constructor(location: minecraftserverbindings.Vector3);
 }
 
 export class DebugDrawer {
@@ -42,16 +42,16 @@ export class DebugDrawer {
 
 // @ts-ignore
 export class DebugLine extends DebugShape {
-    endLocation: minecraftserver.Vector3;
-    constructor(location: minecraftserver.Vector3, endLocation: minecraftserver.Vector3);
+    endLocation: minecraftserverbindings.Vector3;
+    constructor(location: minecraftserverbindings.Vector3, endLocation: minecraftserverbindings.Vector3);
 }
 
 export class DebugShape {
     private constructor();
-    color: minecraftserver.RGB;
+    color: minecraftserverbindings.RGB;
     readonly hasDuration: boolean;
-    location: minecraftserver.Vector3;
-    rotation: minecraftserver.Vector3;
+    location: minecraftserverbindings.Vector3;
+    rotation: minecraftserverbindings.Vector3;
     scale: number;
     timeLeft?: number;
     readonly totalTimeLeft?: number;
@@ -60,13 +60,13 @@ export class DebugShape {
 
 // @ts-ignore
 export class DebugSphere extends DebugShape {
-    constructor(location: minecraftserver.Vector3);
+    constructor(location: minecraftserverbindings.Vector3);
 }
 
 // @ts-ignore
 export class DebugText extends DebugShape {
     text: string;
-    constructor(location: minecraftserver.Vector3, text: string);
+    constructor(location: minecraftserverbindings.Vector3, text: string);
 }
 
 export interface HandleCounts {

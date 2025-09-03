@@ -25,8 +25,8 @@ export enum FormRejectReason {
 }
 
 export class ActionFormData {
-    body(bodyText: minecraftserver.RawMessage | string): ActionFormData;
-    button(text: minecraftserver.RawMessage | string, iconPath?: string): ActionFormData;
+    body(bodyText: minecraftserverbindings.RawMessage | string): ActionFormData;
+    button(text: minecraftserverbindings.RawMessage | string, iconPath?: string): ActionFormData;
     /**
      * @remarks This function can't be called in read-only mode.
      *
@@ -34,12 +34,12 @@ export class ActionFormData {
      *
      * {@link minecraftcommon.EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link minecraftserverbindings.InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link minecraftserverbindings.RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<ActionFormResponse>;
-    title(titleText: minecraftserver.RawMessage | string): ActionFormData;
+    show(player: minecraftserverbindings.Player): Promise<ActionFormResponse>;
+    title(titleText: minecraftserverbindings.RawMessage | string): ActionFormData;
 }
 
 // @ts-ignore
@@ -55,16 +55,16 @@ export class FormResponse {
 }
 
 export class MessageFormData {
-    body(bodyText: minecraftserver.RawMessage | string): MessageFormData;
-    button1(text: minecraftserver.RawMessage | string): MessageFormData;
-    button2(text: minecraftserver.RawMessage | string): MessageFormData;
+    body(bodyText: minecraftserverbindings.RawMessage | string): MessageFormData;
+    button1(text: minecraftserverbindings.RawMessage | string): MessageFormData;
+    button2(text: minecraftserverbindings.RawMessage | string): MessageFormData;
     /**
      * @remarks This function can't be called in read-only mode.
      *
      * @throws This function can throw errors.
      */
-    show(player: minecraftserver.Player): Promise<MessageFormResponse>;
-    title(titleText: minecraftserver.RawMessage | string): MessageFormData;
+    show(player: minecraftserverbindings.Player): Promise<MessageFormResponse>;
+    title(titleText: minecraftserverbindings.RawMessage | string): MessageFormData;
 }
 
 // @ts-ignore
@@ -75,8 +75,8 @@ export class MessageFormResponse extends FormResponse {
 
 export class ModalFormData {
     dropdown(
-        label: minecraftserver.RawMessage | string,
-        options: (minecraftserver.RawMessage | string)[],
+        label: minecraftserverbindings.RawMessage | string,
+        options: (minecraftserverbindings.RawMessage | string)[],
         defaultValueIndex?: number,
     ): ModalFormData;
     /**
@@ -86,26 +86,26 @@ export class ModalFormData {
      *
      * {@link minecraftcommon.EngineError}
      *
-     * {@link minecraftserver.InvalidEntityError}
+     * {@link minecraftserverbindings.InvalidEntityError}
      *
-     * {@link minecraftserver.RawMessageError}
+     * {@link minecraftserverbindings.RawMessageError}
      */
-    show(player: minecraftserver.Player): Promise<ModalFormResponse>;
+    show(player: minecraftserverbindings.Player): Promise<ModalFormResponse>;
     slider(
-        label: minecraftserver.RawMessage | string,
+        label: minecraftserverbindings.RawMessage | string,
         minimumValue: number,
         maximumValue: number,
         valueStep: number,
         defaultValue?: number,
     ): ModalFormData;
-    submitButton(submitButtonText: minecraftserver.RawMessage | string): ModalFormData;
+    submitButton(submitButtonText: minecraftserverbindings.RawMessage | string): ModalFormData;
     textField(
-        label: minecraftserver.RawMessage | string,
-        placeholderText: minecraftserver.RawMessage | string,
-        defaultValue?: minecraftserver.RawMessage | string,
+        label: minecraftserverbindings.RawMessage | string,
+        placeholderText: minecraftserverbindings.RawMessage | string,
+        defaultValue?: minecraftserverbindings.RawMessage | string,
     ): ModalFormData;
-    title(titleText: minecraftserver.RawMessage | string): ModalFormData;
-    toggle(label: minecraftserver.RawMessage | string, defaultValue?: boolean): ModalFormData;
+    title(titleText: minecraftserverbindings.RawMessage | string): ModalFormData;
+    toggle(label: minecraftserverbindings.RawMessage | string, defaultValue?: boolean): ModalFormData;
 }
 
 // @ts-ignore

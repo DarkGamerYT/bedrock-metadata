@@ -34,6 +34,96 @@
             "name": "math.die_roll_integer"
         },
         {
+            "name": "math.ease_in_back"
+        },
+        {
+            "name": "math.ease_in_bounce"
+        },
+        {
+            "name": "math.ease_in_circ"
+        },
+        {
+            "name": "math.ease_in_cubic"
+        },
+        {
+            "name": "math.ease_in_elastic"
+        },
+        {
+            "name": "math.ease_in_expo"
+        },
+        {
+            "name": "math.ease_in_out_back"
+        },
+        {
+            "name": "math.ease_in_out_bounce"
+        },
+        {
+            "name": "math.ease_in_out_circ"
+        },
+        {
+            "name": "math.ease_in_out_cubic"
+        },
+        {
+            "name": "math.ease_in_out_elastic"
+        },
+        {
+            "name": "math.ease_in_out_expo"
+        },
+        {
+            "name": "math.ease_in_out_quad"
+        },
+        {
+            "name": "math.ease_in_out_quart"
+        },
+        {
+            "name": "math.ease_in_out_quint"
+        },
+        {
+            "name": "math.ease_in_out_sine"
+        },
+        {
+            "name": "math.ease_in_quad"
+        },
+        {
+            "name": "math.ease_in_quart"
+        },
+        {
+            "name": "math.ease_in_quint"
+        },
+        {
+            "name": "math.ease_in_sine"
+        },
+        {
+            "name": "math.ease_out_back"
+        },
+        {
+            "name": "math.ease_out_bounce"
+        },
+        {
+            "name": "math.ease_out_circ"
+        },
+        {
+            "name": "math.ease_out_cubic"
+        },
+        {
+            "name": "math.ease_out_elastic"
+        },
+        {
+            "name": "math.ease_out_expo"
+        },
+        {
+            "name": "math.ease_out_quad"
+        },
+        {
+            "name": "math.ease_out_quart"
+        },
+        {
+            "name": "math.ease_out_quint"
+        },
+        {
+            "name": "math.ease_out_sine"
+        },
+        {
             "name": "math.exp"
         },
         {
@@ -41,6 +131,9 @@
         },
         {
             "name": "math.hermite_blend"
+        },
+        {
+            "name": "math.inverse_lerp"
         },
         {
             "name": "math.lerp"
@@ -90,7 +183,5 @@
         {
             "name": "math.trunc"
         }
-    ],
-    "minecraft_version": "1.21.110-preview.26",
-    "name": "molang-math"
+    ]
 }

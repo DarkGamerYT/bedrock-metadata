@@ -1,0 +1,16 @@
+// Type definitions for Minecraft Bedrock Edition script APIs
+// Project: https://github.com/DarkGamerYT/bedrock-metadata
+// Definitions by: xKingDark <https://github.com/DarkGamerYT>
+/**
+ * @internal
+ * @packageDocumentation
+ * Manifest Details
+ * ```json
+ * {
+ *     "module_name": "@minecraft/server",
+ *     "version": "2.4.0-internal"
+ * }
+ * ```
+ */
+import * as minecraftcommon from "@minecraft/common";
+import * as minecraftserverbindings from "@minecraft/server-bindings";
